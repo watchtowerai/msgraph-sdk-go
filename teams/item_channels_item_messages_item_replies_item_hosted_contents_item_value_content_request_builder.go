@@ -40,7 +40,7 @@ func NewItemChannelsItemMessagesItemRepliesItemHostedContentsItemValueContentReq
 // Get get media content for the navigation property hostedContents from teams
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/chatmessage-list-hostedcontents?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/chatmessage-list-hostedcontents?view=graph-rest-1.0
 func (m *ItemChannelsItemMessagesItemRepliesItemHostedContentsItemValueContentRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemChannelsItemMessagesItemRepliesItemHostedContentsItemValueContentRequestBuilderGetRequestConfiguration)([]byte, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -102,4 +102,8 @@ func (m *ItemChannelsItemMessagesItemRepliesItemHostedContentsItemValueContentRe
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemChannelsItemMessagesItemRepliesItemHostedContentsItemValueContentRequestBuilder) WithUrl(rawUrl string)(*ItemChannelsItemMessagesItemRepliesItemHostedContentsItemValueContentRequestBuilder) {
+    return NewItemChannelsItemMessagesItemRepliesItemHostedContentsItemValueContentRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

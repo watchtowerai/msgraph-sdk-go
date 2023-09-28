@@ -77,7 +77,7 @@ func (m *EntitlementManagementRoleAssignmentsRequestBuilder) Count()(*Entitlemen
 // Get get a list of unifiedRoleAssignment objects for the RBAC provider. The following RBAC providers are currently supported:- directory (Azure AD)- entitlement management (Azure AD)
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/rbacapplication-list-roleassignments?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/rbacapplication-list-roleassignments?view=graph-rest-1.0
 func (m *EntitlementManagementRoleAssignmentsRequestBuilder) Get(ctx context.Context, requestConfiguration *EntitlementManagementRoleAssignmentsRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.UnifiedRoleAssignmentCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -99,7 +99,7 @@ func (m *EntitlementManagementRoleAssignmentsRequestBuilder) Get(ctx context.Con
 // Post create a new unifiedRoleAssignment object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/rbacapplication-post-roleassignments?view=graph-rest-1.0
 func (m *EntitlementManagementRoleAssignmentsRequestBuilder) Post(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.UnifiedRoleAssignmentable, requestConfiguration *EntitlementManagementRoleAssignmentsRequestBuilderPostRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.UnifiedRoleAssignmentable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -150,4 +150,8 @@ func (m *EntitlementManagementRoleAssignmentsRequestBuilder) ToPostRequestInform
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *EntitlementManagementRoleAssignmentsRequestBuilder) WithUrl(rawUrl string)(*EntitlementManagementRoleAssignmentsRequestBuilder) {
+    return NewEntitlementManagementRoleAssignmentsRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

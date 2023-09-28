@@ -66,7 +66,7 @@ func (m *ItemPhotosRequestBuilder) Count()(*ItemPhotosCountRequestBuilder) {
 // Get retrieve a list of profilePhoto objects.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/group-list-photos?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/group-list-photos?view=graph-rest-1.0
 func (m *ItemPhotosRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemPhotosRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ProfilePhotoCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -100,4 +100,8 @@ func (m *ItemPhotosRequestBuilder) ToGetRequestInformation(ctx context.Context, 
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemPhotosRequestBuilder) WithUrl(rawUrl string)(*ItemPhotosRequestBuilder) {
+    return NewItemPhotosRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

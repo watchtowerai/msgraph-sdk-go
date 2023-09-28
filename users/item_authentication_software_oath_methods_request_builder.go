@@ -70,7 +70,7 @@ func (m *ItemAuthenticationSoftwareOathMethodsRequestBuilder) Count()(*ItemAuthe
 // Get retrieve a list of a user's software OATH token authentication method objects and their properties.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/authentication-list-softwareoathmethods?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/authentication-list-softwareoathmethods?view=graph-rest-1.0
 func (m *ItemAuthenticationSoftwareOathMethodsRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemAuthenticationSoftwareOathMethodsRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.SoftwareOathAuthenticationMethodCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -104,4 +104,8 @@ func (m *ItemAuthenticationSoftwareOathMethodsRequestBuilder) ToGetRequestInform
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemAuthenticationSoftwareOathMethodsRequestBuilder) WithUrl(rawUrl string)(*ItemAuthenticationSoftwareOathMethodsRequestBuilder) {
+    return NewItemAuthenticationSoftwareOathMethodsRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

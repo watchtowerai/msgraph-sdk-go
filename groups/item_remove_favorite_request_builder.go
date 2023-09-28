@@ -33,7 +33,7 @@ func NewItemRemoveFavoriteRequestBuilder(rawUrl string, requestAdapter i2ae4187f
 // Post remove the group from the list of the current user's favorite groups. Supported for Microsoft 365 groups only.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/group-removefavorite?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/group-removefavorite?view=graph-rest-1.0
 func (m *ItemRemoveFavoriteRequestBuilder) Post(ctx context.Context, requestConfiguration *ItemRemoveFavoriteRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -60,4 +60,8 @@ func (m *ItemRemoveFavoriteRequestBuilder) ToPostRequestInformation(ctx context.
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemRemoveFavoriteRequestBuilder) WithUrl(rawUrl string)(*ItemRemoveFavoriteRequestBuilder) {
+    return NewItemRemoveFavoriteRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

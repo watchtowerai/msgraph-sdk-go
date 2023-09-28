@@ -33,7 +33,7 @@ func NewItemItemsItemWorkbookWorksheetsItemProtectionProtectRequestBuilder(rawUr
 // Post protect a worksheet. It throws if the worksheet has been protected.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/worksheetprotection-protect?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/worksheetprotection-protect?view=graph-rest-1.0
 func (m *ItemItemsItemWorkbookWorksheetsItemProtectionProtectRequestBuilder) Post(ctx context.Context, body ItemItemsItemWorkbookWorksheetsItemProtectionProtectPostRequestBodyable, requestConfiguration *ItemItemsItemWorkbookWorksheetsItemProtectionProtectRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -64,4 +64,8 @@ func (m *ItemItemsItemWorkbookWorksheetsItemProtectionProtectRequestBuilder) ToP
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemItemsItemWorkbookWorksheetsItemProtectionProtectRequestBuilder) WithUrl(rawUrl string)(*ItemItemsItemWorkbookWorksheetsItemProtectionProtectRequestBuilder) {
+    return NewItemItemsItemWorkbookWorksheetsItemProtectionProtectRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

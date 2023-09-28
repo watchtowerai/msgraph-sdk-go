@@ -33,7 +33,7 @@ func NewItemCalendarsItemEventsItemAcceptRequestBuilder(rawUrl string, requestAd
 // Post accept the specified event in a user calendar.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/event-accept?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/event-accept?view=graph-rest-1.0
 func (m *ItemCalendarsItemEventsItemAcceptRequestBuilder) Post(ctx context.Context, body ItemCalendarsItemEventsItemAcceptPostRequestBodyable, requestConfiguration *ItemCalendarsItemEventsItemAcceptRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -64,4 +64,8 @@ func (m *ItemCalendarsItemEventsItemAcceptRequestBuilder) ToPostRequestInformati
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemCalendarsItemEventsItemAcceptRequestBuilder) WithUrl(rawUrl string)(*ItemCalendarsItemEventsItemAcceptRequestBuilder) {
+    return NewItemCalendarsItemEventsItemAcceptRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

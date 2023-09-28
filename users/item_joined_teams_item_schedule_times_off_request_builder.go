@@ -75,7 +75,7 @@ func (m *ItemJoinedTeamsItemScheduleTimesOffRequestBuilder) Count()(*ItemJoinedT
 // Get get the list of timeOff instances in a schedule.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/schedule-list-timesoff?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/schedule-list-timesoff?view=graph-rest-1.0
 func (m *ItemJoinedTeamsItemScheduleTimesOffRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemJoinedTeamsItemScheduleTimesOffRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.TimeOffCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -97,7 +97,7 @@ func (m *ItemJoinedTeamsItemScheduleTimesOffRequestBuilder) Get(ctx context.Cont
 // Post create a new timeOff instance in a schedule.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/schedule-post-timesoff?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/schedule-post-timesoff?view=graph-rest-1.0
 func (m *ItemJoinedTeamsItemScheduleTimesOffRequestBuilder) Post(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.TimeOffable, requestConfiguration *ItemJoinedTeamsItemScheduleTimesOffRequestBuilderPostRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.TimeOffable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -148,4 +148,8 @@ func (m *ItemJoinedTeamsItemScheduleTimesOffRequestBuilder) ToPostRequestInforma
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemJoinedTeamsItemScheduleTimesOffRequestBuilder) WithUrl(rawUrl string)(*ItemJoinedTeamsItemScheduleTimesOffRequestBuilder) {
+    return NewItemJoinedTeamsItemScheduleTimesOffRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

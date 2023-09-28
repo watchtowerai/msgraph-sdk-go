@@ -73,7 +73,7 @@ func (m *ItemItemsItemWorkbookTablesWorkbookTableItemRequestBuilder) DataBodyRan
 // Delete deletes the table.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/table-delete?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/table-delete?view=graph-rest-1.0
 func (m *ItemItemsItemWorkbookTablesWorkbookTableItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *ItemItemsItemWorkbookTablesWorkbookTableItemRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -92,7 +92,7 @@ func (m *ItemItemsItemWorkbookTablesWorkbookTableItemRequestBuilder) Delete(ctx 
 // Get retrieve the properties and relationships of table object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/table-get?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/table-get?view=graph-rest-1.0
 func (m *ItemItemsItemWorkbookTablesWorkbookTableItemRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemItemsItemWorkbookTablesWorkbookTableItemRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.WorkbookTableable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -118,7 +118,7 @@ func (m *ItemItemsItemWorkbookTablesWorkbookTableItemRequestBuilder) HeaderRowRa
 // Patch update the properties of table object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/table-update?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/table-update?view=graph-rest-1.0
 func (m *ItemItemsItemWorkbookTablesWorkbookTableItemRequestBuilder) Patch(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.WorkbookTableable, requestConfiguration *ItemItemsItemWorkbookTablesWorkbookTableItemRequestBuilderPatchRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.WorkbookTableable, error) {
     requestInfo, err := m.ToPatchRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -201,6 +201,10 @@ func (m *ItemItemsItemWorkbookTablesWorkbookTableItemRequestBuilder) ToPatchRequ
 // TotalRowRange provides operations to call the totalRowRange method.
 func (m *ItemItemsItemWorkbookTablesWorkbookTableItemRequestBuilder) TotalRowRange()(*ItemItemsItemWorkbookTablesItemTotalRowRangeRequestBuilder) {
     return NewItemItemsItemWorkbookTablesItemTotalRowRangeRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemItemsItemWorkbookTablesWorkbookTableItemRequestBuilder) WithUrl(rawUrl string)(*ItemItemsItemWorkbookTablesWorkbookTableItemRequestBuilder) {
+    return NewItemItemsItemWorkbookTablesWorkbookTableItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }
 // Worksheet provides operations to manage the worksheet property of the microsoft.graph.workbookTable entity.
 func (m *ItemItemsItemWorkbookTablesWorkbookTableItemRequestBuilder) Worksheet()(*ItemItemsItemWorkbookTablesItemWorksheetRequestBuilder) {

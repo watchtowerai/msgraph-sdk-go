@@ -73,7 +73,7 @@ func (m *RiskDetectionsRiskDetectionItemRequestBuilder) Delete(ctx context.Conte
 // Get read the properties and relationships of a riskDetection object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/riskdetection-get?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/riskdetection-get?view=graph-rest-1.0
 func (m *RiskDetectionsRiskDetectionItemRequestBuilder) Get(ctx context.Context, requestConfiguration *RiskDetectionsRiskDetectionItemRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.RiskDetectionable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -155,4 +155,8 @@ func (m *RiskDetectionsRiskDetectionItemRequestBuilder) ToPatchRequestInformatio
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *RiskDetectionsRiskDetectionItemRequestBuilder) WithUrl(rawUrl string)(*RiskDetectionsRiskDetectionItemRequestBuilder) {
+    return NewRiskDetectionsRiskDetectionItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

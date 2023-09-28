@@ -33,7 +33,7 @@ func NewItemListItemsItemVersionsItemRestoreVersionRequestBuilder(rawUrl string,
 // Post restore a previous version of a ListItem to be the current version. This will create a new version with the contents of the previous version, but preserves all existing versions of the item.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/listitemversion-restore?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/listitemversion-restore?view=graph-rest-1.0
 func (m *ItemListItemsItemVersionsItemRestoreVersionRequestBuilder) Post(ctx context.Context, requestConfiguration *ItemListItemsItemVersionsItemRestoreVersionRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -60,4 +60,8 @@ func (m *ItemListItemsItemVersionsItemRestoreVersionRequestBuilder) ToPostReques
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemListItemsItemVersionsItemRestoreVersionRequestBuilder) WithUrl(rawUrl string)(*ItemListItemsItemVersionsItemRestoreVersionRequestBuilder) {
+    return NewItemListItemsItemVersionsItemRestoreVersionRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

@@ -57,7 +57,7 @@ func NewEdgeInternetExplorerModeSiteListsBrowserSiteListItemRequestBuilder(rawUr
 // Delete delete a browserSiteList object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/internetexplorermode-delete-sitelists?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/internetexplorermode-delete-sitelists?view=graph-rest-1.0
 func (m *EdgeInternetExplorerModeSiteListsBrowserSiteListItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *EdgeInternetExplorerModeSiteListsBrowserSiteListItemRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -76,7 +76,7 @@ func (m *EdgeInternetExplorerModeSiteListsBrowserSiteListItemRequestBuilder) Del
 // Get get a browserSiteList that contains browserSite and browserSharedCookie resources.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/browsersitelist-get?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/browsersitelist-get?view=graph-rest-1.0
 func (m *EdgeInternetExplorerModeSiteListsBrowserSiteListItemRequestBuilder) Get(ctx context.Context, requestConfiguration *EdgeInternetExplorerModeSiteListsBrowserSiteListItemRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.BrowserSiteListable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -98,7 +98,7 @@ func (m *EdgeInternetExplorerModeSiteListsBrowserSiteListItemRequestBuilder) Get
 // Patch update the properties of a browserSiteList object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/browsersitelist-update?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/browsersitelist-update?view=graph-rest-1.0
 func (m *EdgeInternetExplorerModeSiteListsBrowserSiteListItemRequestBuilder) Patch(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.BrowserSiteListable, requestConfiguration *EdgeInternetExplorerModeSiteListsBrowserSiteListItemRequestBuilderPatchRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.BrowserSiteListable, error) {
     requestInfo, err := m.ToPatchRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -173,4 +173,8 @@ func (m *EdgeInternetExplorerModeSiteListsBrowserSiteListItemRequestBuilder) ToP
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *EdgeInternetExplorerModeSiteListsBrowserSiteListItemRequestBuilder) WithUrl(rawUrl string)(*EdgeInternetExplorerModeSiteListsBrowserSiteListItemRequestBuilder) {
+    return NewEdgeInternetExplorerModeSiteListsBrowserSiteListItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

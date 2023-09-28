@@ -31,6 +31,9 @@ func NewManagedDevicesItemRetireRequestBuilder(rawUrl string, requestAdapter i2a
     return NewManagedDevicesItemRetireRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Post retire a device
+// [Find more info here]
+// 
+// [Find more info here]: https://learn.microsoft.com/graph/api/intune-devices-manageddevice-retire?view=graph-rest-1.0
 func (m *ManagedDevicesItemRetireRequestBuilder) Post(ctx context.Context, requestConfiguration *ManagedDevicesItemRetireRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -57,4 +60,8 @@ func (m *ManagedDevicesItemRetireRequestBuilder) ToPostRequestInformation(ctx co
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ManagedDevicesItemRetireRequestBuilder) WithUrl(rawUrl string)(*ManagedDevicesItemRetireRequestBuilder) {
+    return NewManagedDevicesItemRetireRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

@@ -18,7 +18,7 @@ type ItemSynchronizationTemplatesItemSchemaRequestBuilderDeleteRequestConfigurat
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
-// ItemSynchronizationTemplatesItemSchemaRequestBuilderGetQueryParameters get schema from servicePrincipals
+// ItemSynchronizationTemplatesItemSchemaRequestBuilderGetQueryParameters default synchronization schema for the jobs based on this template.
 type ItemSynchronizationTemplatesItemSchemaRequestBuilderGetQueryParameters struct {
     // Expand related entities
     Expand []string `uriparametername:"%24expand"`
@@ -82,7 +82,7 @@ func (m *ItemSynchronizationTemplatesItemSchemaRequestBuilder) FilterOperators()
 func (m *ItemSynchronizationTemplatesItemSchemaRequestBuilder) Functions()(*ItemSynchronizationTemplatesItemSchemaFunctionsRequestBuilder) {
     return NewItemSynchronizationTemplatesItemSchemaFunctionsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
-// Get get schema from servicePrincipals
+// Get default synchronization schema for the jobs based on this template.
 func (m *ItemSynchronizationTemplatesItemSchemaRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemSynchronizationTemplatesItemSchemaRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.SynchronizationSchemaable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -136,7 +136,7 @@ func (m *ItemSynchronizationTemplatesItemSchemaRequestBuilder) ToDeleteRequestIn
     }
     return requestInfo, nil
 }
-// ToGetRequestInformation get schema from servicePrincipals
+// ToGetRequestInformation default synchronization schema for the jobs based on this template.
 func (m *ItemSynchronizationTemplatesItemSchemaRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *ItemSynchronizationTemplatesItemSchemaRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
@@ -168,4 +168,8 @@ func (m *ItemSynchronizationTemplatesItemSchemaRequestBuilder) ToPatchRequestInf
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemSynchronizationTemplatesItemSchemaRequestBuilder) WithUrl(rawUrl string)(*ItemSynchronizationTemplatesItemSchemaRequestBuilder) {
+    return NewItemSynchronizationTemplatesItemSchemaRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

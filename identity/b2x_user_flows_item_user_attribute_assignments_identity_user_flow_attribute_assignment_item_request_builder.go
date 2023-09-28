@@ -57,7 +57,7 @@ func NewB2xUserFlowsItemUserAttributeAssignmentsIdentityUserFlowAttributeAssignm
 // Delete delete an identityUserFlowAttributeAssignment object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/identityuserflowattributeassignment-delete?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/identityuserflowattributeassignment-delete?view=graph-rest-1.0
 func (m *B2xUserFlowsItemUserAttributeAssignmentsIdentityUserFlowAttributeAssignmentItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *B2xUserFlowsItemUserAttributeAssignmentsIdentityUserFlowAttributeAssignmentItemRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -76,7 +76,7 @@ func (m *B2xUserFlowsItemUserAttributeAssignmentsIdentityUserFlowAttributeAssign
 // Get read the properties and relationships of an identityUserFlowAttributeAssignment object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/identityuserflowattributeassignment-get?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/identityuserflowattributeassignment-get?view=graph-rest-1.0
 func (m *B2xUserFlowsItemUserAttributeAssignmentsIdentityUserFlowAttributeAssignmentItemRequestBuilder) Get(ctx context.Context, requestConfiguration *B2xUserFlowsItemUserAttributeAssignmentsIdentityUserFlowAttributeAssignmentItemRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.IdentityUserFlowAttributeAssignmentable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -98,7 +98,7 @@ func (m *B2xUserFlowsItemUserAttributeAssignmentsIdentityUserFlowAttributeAssign
 // Patch update the properties of a identityUserFlowAttributeAssignment object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/identityuserflowattributeassignment-update?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/identityuserflowattributeassignment-update?view=graph-rest-1.0
 func (m *B2xUserFlowsItemUserAttributeAssignmentsIdentityUserFlowAttributeAssignmentItemRequestBuilder) Patch(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.IdentityUserFlowAttributeAssignmentable, requestConfiguration *B2xUserFlowsItemUserAttributeAssignmentsIdentityUserFlowAttributeAssignmentItemRequestBuilderPatchRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.IdentityUserFlowAttributeAssignmentable, error) {
     requestInfo, err := m.ToPatchRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -165,4 +165,8 @@ func (m *B2xUserFlowsItemUserAttributeAssignmentsIdentityUserFlowAttributeAssign
 // UserAttribute provides operations to manage the userAttribute property of the microsoft.graph.identityUserFlowAttributeAssignment entity.
 func (m *B2xUserFlowsItemUserAttributeAssignmentsIdentityUserFlowAttributeAssignmentItemRequestBuilder) UserAttribute()(*B2xUserFlowsItemUserAttributeAssignmentsItemUserAttributeRequestBuilder) {
     return NewB2xUserFlowsItemUserAttributeAssignmentsItemUserAttributeRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *B2xUserFlowsItemUserAttributeAssignmentsIdentityUserFlowAttributeAssignmentItemRequestBuilder) WithUrl(rawUrl string)(*B2xUserFlowsItemUserAttributeAssignmentsIdentityUserFlowAttributeAssignmentItemRequestBuilder) {
+    return NewB2xUserFlowsItemUserAttributeAssignmentsIdentityUserFlowAttributeAssignmentItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

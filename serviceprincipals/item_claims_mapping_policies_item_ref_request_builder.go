@@ -40,7 +40,7 @@ func NewItemClaimsMappingPoliciesItemRefRequestBuilder(rawUrl string, requestAda
 // Delete remove a claimsMappingPolicy from a servicePrincipal.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/serviceprincipal-delete-claimsmappingpolicies?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/serviceprincipal-delete-claimsmappingpolicies?view=graph-rest-1.0
 func (m *ItemClaimsMappingPoliciesItemRefRequestBuilder) Delete(ctx context.Context, requestConfiguration *ItemClaimsMappingPoliciesItemRefRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -70,4 +70,8 @@ func (m *ItemClaimsMappingPoliciesItemRefRequestBuilder) ToDeleteRequestInformat
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemClaimsMappingPoliciesItemRefRequestBuilder) WithUrl(rawUrl string)(*ItemClaimsMappingPoliciesItemRefRequestBuilder) {
+    return NewItemClaimsMappingPoliciesItemRefRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

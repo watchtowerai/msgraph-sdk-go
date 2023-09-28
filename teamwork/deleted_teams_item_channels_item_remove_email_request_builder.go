@@ -33,7 +33,7 @@ func NewDeletedTeamsItemChannelsItemRemoveEmailRequestBuilder(rawUrl string, req
 // Post remove the email address of a channel. You can remove an email address only if it was provisioned using the provisionEmail method or through the Microsoft Teams client.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/channel-removeemail?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/channel-removeemail?view=graph-rest-1.0
 func (m *DeletedTeamsItemChannelsItemRemoveEmailRequestBuilder) Post(ctx context.Context, requestConfiguration *DeletedTeamsItemChannelsItemRemoveEmailRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -60,4 +60,8 @@ func (m *DeletedTeamsItemChannelsItemRemoveEmailRequestBuilder) ToPostRequestInf
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *DeletedTeamsItemChannelsItemRemoveEmailRequestBuilder) WithUrl(rawUrl string)(*DeletedTeamsItemChannelsItemRemoveEmailRequestBuilder) {
+    return NewDeletedTeamsItemChannelsItemRemoveEmailRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

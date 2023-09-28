@@ -34,7 +34,7 @@ func NewItemSitesItemOnenoteNotebooksItemSectionsItemCopyToSectionGroupRequestBu
 // Post for Copy operations, you follow an asynchronous calling pattern:  First call the Copy action, and then poll the operation endpoint for the result.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/section-copytosectiongroup?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/section-copytosectiongroup?view=graph-rest-1.0
 func (m *ItemSitesItemOnenoteNotebooksItemSectionsItemCopyToSectionGroupRequestBuilder) Post(ctx context.Context, body ItemSitesItemOnenoteNotebooksItemSectionsItemCopyToSectionGroupPostRequestBodyable, requestConfiguration *ItemSitesItemOnenoteNotebooksItemSectionsItemCopyToSectionGroupRequestBuilderPostRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.OnenoteOperationable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -69,4 +69,8 @@ func (m *ItemSitesItemOnenoteNotebooksItemSectionsItemCopyToSectionGroupRequestB
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemSitesItemOnenoteNotebooksItemSectionsItemCopyToSectionGroupRequestBuilder) WithUrl(rawUrl string)(*ItemSitesItemOnenoteNotebooksItemSectionsItemCopyToSectionGroupRequestBuilder) {
+    return NewItemSitesItemOnenoteNotebooksItemSectionsItemCopyToSectionGroupRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

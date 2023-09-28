@@ -81,7 +81,7 @@ func (m *AppConsentAppConsentRequestsItemUserConsentRequestsRequestBuilder) Filt
 // Get retrieve a collection of userConsentRequest objects and their properties.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/appconsentrequest-list-userconsentrequests?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/appconsentrequest-list-userconsentrequests?view=graph-rest-1.0
 func (m *AppConsentAppConsentRequestsItemUserConsentRequestsRequestBuilder) Get(ctx context.Context, requestConfiguration *AppConsentAppConsentRequestsItemUserConsentRequestsRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.UserConsentRequestCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -151,4 +151,8 @@ func (m *AppConsentAppConsentRequestsItemUserConsentRequestsRequestBuilder) ToPo
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *AppConsentAppConsentRequestsItemUserConsentRequestsRequestBuilder) WithUrl(rawUrl string)(*AppConsentAppConsentRequestsItemUserConsentRequestsRequestBuilder) {
+    return NewAppConsentAppConsentRequestsItemUserConsentRequestsRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

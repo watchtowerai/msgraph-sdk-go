@@ -10,7 +10,7 @@ type ConditionalAccessConditionSet struct {
     // Stores model information.
     backingStore ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStore
 }
-// NewConditionalAccessConditionSet instantiates a new ConditionalAccessConditionSet and sets the default values.
+// NewConditionalAccessConditionSet instantiates a new conditionalAccessConditionSet and sets the default values.
 func NewConditionalAccessConditionSet()(*ConditionalAccessConditionSet) {
     m := &ConditionalAccessConditionSet{
     }
@@ -60,7 +60,7 @@ func (m *ConditionalAccessConditionSet) GetClientApplications()(ConditionalAcces
     }
     return nil
 }
-// GetClientAppTypes gets the clientAppTypes property value. Client application types included in the policy. Possible values are: all, browser, mobileAppsAndDesktopClients, exchangeActiveSync, easSupported, other. Required.
+// GetClientAppTypes gets the clientAppTypes property value. Client application types included in the policy. Possible values are: all, browser, mobileAppsAndDesktopClients, exchangeActiveSync, easSupported, other. Required.  The easUnsupported enumeration member will be deprecated in favor of exchangeActiveSync which includes EAS supported and unsupported platforms.
 func (m *ConditionalAccessConditionSet) GetClientAppTypes()([]ConditionalAccessClientApp) {
     val, err := m.GetBackingStore().Get("clientAppTypes")
     if err != nil {
@@ -399,7 +399,7 @@ func (m *ConditionalAccessConditionSet) SetClientApplications(value ConditionalA
         panic(err)
     }
 }
-// SetClientAppTypes sets the clientAppTypes property value. Client application types included in the policy. Possible values are: all, browser, mobileAppsAndDesktopClients, exchangeActiveSync, easSupported, other. Required.
+// SetClientAppTypes sets the clientAppTypes property value. Client application types included in the policy. Possible values are: all, browser, mobileAppsAndDesktopClients, exchangeActiveSync, easSupported, other. Required.  The easUnsupported enumeration member will be deprecated in favor of exchangeActiveSync which includes EAS supported and unsupported platforms.
 func (m *ConditionalAccessConditionSet) SetClientAppTypes(value []ConditionalAccessClientApp)() {
     err := m.GetBackingStore().Set("clientAppTypes", value)
     if err != nil {

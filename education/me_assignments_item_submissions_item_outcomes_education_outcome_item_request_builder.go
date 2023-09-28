@@ -57,7 +57,7 @@ func NewMeAssignmentsItemSubmissionsItemOutcomesEducationOutcomeItemRequestBuild
 // Delete delete a feedback resource from a submission. This can only be done by a teacher.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/educationfeedbackresourceoutcome-delete?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/educationfeedbackresourceoutcome-delete?view=graph-rest-1.0
 func (m *MeAssignmentsItemSubmissionsItemOutcomesEducationOutcomeItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *MeAssignmentsItemSubmissionsItemOutcomesEducationOutcomeItemRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -95,7 +95,7 @@ func (m *MeAssignmentsItemSubmissionsItemOutcomesEducationOutcomeItemRequestBuil
 // Patch update the properties of an educationOutcome object. Only teachers can perform this operation.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/educationoutcome-update?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/educationoutcome-update?view=graph-rest-1.0
 func (m *MeAssignmentsItemSubmissionsItemOutcomesEducationOutcomeItemRequestBuilder) Patch(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.EducationOutcomeable, requestConfiguration *MeAssignmentsItemSubmissionsItemOutcomesEducationOutcomeItemRequestBuilderPatchRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.EducationOutcomeable, error) {
     requestInfo, err := m.ToPatchRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -158,4 +158,8 @@ func (m *MeAssignmentsItemSubmissionsItemOutcomesEducationOutcomeItemRequestBuil
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *MeAssignmentsItemSubmissionsItemOutcomesEducationOutcomeItemRequestBuilder) WithUrl(rawUrl string)(*MeAssignmentsItemSubmissionsItemOutcomesEducationOutcomeItemRequestBuilder) {
+    return NewMeAssignmentsItemSubmissionsItemOutcomesEducationOutcomeItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

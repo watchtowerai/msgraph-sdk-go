@@ -33,7 +33,7 @@ func NewItemChatsItemMarkChatUnreadForUserRequestBuilder(rawUrl string, requestA
 // Post mark a chat as unread for a user.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/chat-markchatunreadforuser?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/chat-markchatunreadforuser?view=graph-rest-1.0
 func (m *ItemChatsItemMarkChatUnreadForUserRequestBuilder) Post(ctx context.Context, body ItemChatsItemMarkChatUnreadForUserPostRequestBodyable, requestConfiguration *ItemChatsItemMarkChatUnreadForUserRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -64,4 +64,8 @@ func (m *ItemChatsItemMarkChatUnreadForUserRequestBuilder) ToPostRequestInformat
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemChatsItemMarkChatUnreadForUserRequestBuilder) WithUrl(rawUrl string)(*ItemChatsItemMarkChatUnreadForUserRequestBuilder) {
+    return NewItemChatsItemMarkChatUnreadForUserRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

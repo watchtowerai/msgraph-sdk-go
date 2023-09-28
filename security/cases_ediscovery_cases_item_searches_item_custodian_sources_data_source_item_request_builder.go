@@ -50,7 +50,7 @@ func NewCasesEdiscoveryCasesItemSearchesItemCustodianSourcesDataSourceItemReques
 // Delete remove a dataSource object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/security-ediscoverysearch-delete-custodiansources?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/security-ediscoverysearch-delete-custodiansources?view=graph-rest-1.0
 func (m *CasesEdiscoveryCasesItemSearchesItemCustodianSourcesDataSourceItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *CasesEdiscoveryCasesItemSearchesItemCustodianSourcesDataSourceItemRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -112,4 +112,8 @@ func (m *CasesEdiscoveryCasesItemSearchesItemCustodianSourcesDataSourceItemReque
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *CasesEdiscoveryCasesItemSearchesItemCustodianSourcesDataSourceItemRequestBuilder) WithUrl(rawUrl string)(*CasesEdiscoveryCasesItemSearchesItemCustodianSourcesDataSourceItemRequestBuilder) {
+    return NewCasesEdiscoveryCasesItemSearchesItemCustodianSourcesDataSourceItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

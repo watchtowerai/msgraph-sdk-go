@@ -57,7 +57,7 @@ func NewAdministrativeUnitsAdministrativeUnitItemRequestBuilder(rawUrl string, r
 // Delete delete an administrativeUnit.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/administrativeunit-delete?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/administrativeunit-delete?view=graph-rest-1.0
 func (m *AdministrativeUnitsAdministrativeUnitItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *AdministrativeUnitsAdministrativeUnitItemRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -80,7 +80,7 @@ func (m *AdministrativeUnitsAdministrativeUnitItemRequestBuilder) Extensions()(*
 // Get retrieve the properties and relationships of an administrativeUnit object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/administrativeunit-get?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/administrativeunit-get?view=graph-rest-1.0
 func (m *AdministrativeUnitsAdministrativeUnitItemRequestBuilder) Get(ctx context.Context, requestConfiguration *AdministrativeUnitsAdministrativeUnitItemRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.AdministrativeUnitable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -106,7 +106,7 @@ func (m *AdministrativeUnitsAdministrativeUnitItemRequestBuilder) Members()(*Adm
 // Patch update the properties of an administrativeUnit object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/administrativeunit-update?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/administrativeunit-update?view=graph-rest-1.0
 func (m *AdministrativeUnitsAdministrativeUnitItemRequestBuilder) Patch(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.AdministrativeUnitable, requestConfiguration *AdministrativeUnitsAdministrativeUnitItemRequestBuilderPatchRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.AdministrativeUnitable, error) {
     requestInfo, err := m.ToPatchRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -173,4 +173,8 @@ func (m *AdministrativeUnitsAdministrativeUnitItemRequestBuilder) ToPatchRequest
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *AdministrativeUnitsAdministrativeUnitItemRequestBuilder) WithUrl(rawUrl string)(*AdministrativeUnitsAdministrativeUnitItemRequestBuilder) {
+    return NewAdministrativeUnitsAdministrativeUnitItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

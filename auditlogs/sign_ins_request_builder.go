@@ -77,7 +77,7 @@ func (m *SignInsRequestBuilder) Count()(*SignInsCountRequestBuilder) {
 // Get retrieve the Azure AD user sign-ins for your tenant. Sign-ins that are interactive in nature (where a username/password is passed as part of auth token) and successful federated sign-ins are currently included in the sign-in logs.  The maximum and default page size is 1,000 objects and by default, the most recent sign-ins are returned first. Only sign-in events that occurred within the Azure Active Directory (Azure AD) default retention period are available.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/signin-list?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/signin-list?view=graph-rest-1.0
 func (m *SignInsRequestBuilder) Get(ctx context.Context, requestConfiguration *SignInsRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.SignInCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -147,4 +147,8 @@ func (m *SignInsRequestBuilder) ToPostRequestInformation(ctx context.Context, bo
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *SignInsRequestBuilder) WithUrl(rawUrl string)(*SignInsRequestBuilder) {
+    return NewSignInsRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

@@ -30,7 +30,10 @@ func NewReportsGetPolicyNonComplianceReportRequestBuilder(rawUrl string, request
     urlParams["request-raw-url"] = rawUrl
     return NewReportsGetPolicyNonComplianceReportRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Post invoke action getPolicyNonComplianceReport
+// Post not yet documented
+// [Find more info here]
+// 
+// [Find more info here]: https://learn.microsoft.com/graph/api/intune-reporting-devicemanagementreports-getpolicynoncompliancereport?view=graph-rest-1.0
 func (m *ReportsGetPolicyNonComplianceReportRequestBuilder) Post(ctx context.Context, body ReportsGetPolicyNonComplianceReportPostRequestBodyable, requestConfiguration *ReportsGetPolicyNonComplianceReportRequestBuilderPostRequestConfiguration)([]byte, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -49,7 +52,7 @@ func (m *ReportsGetPolicyNonComplianceReportRequestBuilder) Post(ctx context.Con
     }
     return res.([]byte), nil
 }
-// ToPostRequestInformation invoke action getPolicyNonComplianceReport
+// ToPostRequestInformation not yet documented
 func (m *ReportsGetPolicyNonComplianceReportRequestBuilder) ToPostRequestInformation(ctx context.Context, body ReportsGetPolicyNonComplianceReportPostRequestBodyable, requestConfiguration *ReportsGetPolicyNonComplianceReportRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
@@ -64,4 +67,8 @@ func (m *ReportsGetPolicyNonComplianceReportRequestBuilder) ToPostRequestInforma
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ReportsGetPolicyNonComplianceReportRequestBuilder) WithUrl(rawUrl string)(*ReportsGetPolicyNonComplianceReportRequestBuilder) {
+    return NewReportsGetPolicyNonComplianceReportRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

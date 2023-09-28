@@ -33,7 +33,7 @@ func NewItemTeamPrimaryChannelMessagesItemUndoSoftDeleteRequestBuilder(rawUrl st
 // Post undo soft deletion of a single chatMessage or a chat message reply in a channel or a chat.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/chatmessage-undosoftdelete?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/chatmessage-undosoftdelete?view=graph-rest-1.0
 func (m *ItemTeamPrimaryChannelMessagesItemUndoSoftDeleteRequestBuilder) Post(ctx context.Context, requestConfiguration *ItemTeamPrimaryChannelMessagesItemUndoSoftDeleteRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -60,4 +60,8 @@ func (m *ItemTeamPrimaryChannelMessagesItemUndoSoftDeleteRequestBuilder) ToPostR
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemTeamPrimaryChannelMessagesItemUndoSoftDeleteRequestBuilder) WithUrl(rawUrl string)(*ItemTeamPrimaryChannelMessagesItemUndoSoftDeleteRequestBuilder) {
+    return NewItemTeamPrimaryChannelMessagesItemUndoSoftDeleteRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

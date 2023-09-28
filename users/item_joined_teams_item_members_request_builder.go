@@ -81,7 +81,7 @@ func (m *ItemJoinedTeamsItemMembersRequestBuilder) Count()(*ItemJoinedTeamsItemM
 // Get get the conversationMember collection of a team.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/team-list-members?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/team-list-members?view=graph-rest-1.0
 func (m *ItemJoinedTeamsItemMembersRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemJoinedTeamsItemMembersRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ConversationMemberCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -103,7 +103,7 @@ func (m *ItemJoinedTeamsItemMembersRequestBuilder) Get(ctx context.Context, requ
 // Post add a new conversationMember to a team.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/team-post-members?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/team-post-members?view=graph-rest-1.0
 func (m *ItemJoinedTeamsItemMembersRequestBuilder) Post(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ConversationMemberable, requestConfiguration *ItemJoinedTeamsItemMembersRequestBuilderPostRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ConversationMemberable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -154,4 +154,8 @@ func (m *ItemJoinedTeamsItemMembersRequestBuilder) ToPostRequestInformation(ctx 
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemJoinedTeamsItemMembersRequestBuilder) WithUrl(rawUrl string)(*ItemJoinedTeamsItemMembersRequestBuilder) {
+    return NewItemJoinedTeamsItemMembersRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

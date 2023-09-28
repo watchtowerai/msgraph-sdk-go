@@ -129,6 +129,10 @@ func (m *ItemTeamRequestBuilder) Members()(*ItemTeamMembersRequestBuilder) {
 func (m *ItemTeamRequestBuilder) Operations()(*ItemTeamOperationsRequestBuilder) {
     return NewItemTeamOperationsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+// PermissionGrants provides operations to manage the permissionGrants property of the microsoft.graph.team entity.
+func (m *ItemTeamRequestBuilder) PermissionGrants()(*ItemTeamPermissionGrantsRequestBuilder) {
+    return NewItemTeamPermissionGrantsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
 // Photo provides operations to manage the photo property of the microsoft.graph.team entity.
 func (m *ItemTeamRequestBuilder) Photo()(*ItemTeamPhotoRequestBuilder) {
     return NewItemTeamPhotoRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
@@ -220,4 +224,8 @@ func (m *ItemTeamRequestBuilder) ToPutRequestInformation(ctx context.Context, bo
 // Unarchive provides operations to call the unarchive method.
 func (m *ItemTeamRequestBuilder) Unarchive()(*ItemTeamUnarchiveRequestBuilder) {
     return NewItemTeamUnarchiveRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemTeamRequestBuilder) WithUrl(rawUrl string)(*ItemTeamRequestBuilder) {
+    return NewItemTeamRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

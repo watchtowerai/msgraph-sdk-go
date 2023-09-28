@@ -9,7 +9,7 @@ import (
 type AccessReviewScheduleDefinition struct {
     Entity
 }
-// NewAccessReviewScheduleDefinition instantiates a new AccessReviewScheduleDefinition and sets the default values.
+// NewAccessReviewScheduleDefinition instantiates a new accessReviewScheduleDefinition and sets the default values.
 func NewAccessReviewScheduleDefinition()(*AccessReviewScheduleDefinition) {
     m := &AccessReviewScheduleDefinition{
         Entity: *NewEntity(),
@@ -75,7 +75,7 @@ func (m *AccessReviewScheduleDefinition) GetDescriptionForReviewers()(*string) {
     }
     return nil
 }
-// GetDisplayName gets the displayName property value. Name of the access review series. Supports $select and $orderBy. Required on create.
+// GetDisplayName gets the displayName property value. Name of the access review series. Supports $select and $orderby. Required on create.
 func (m *AccessReviewScheduleDefinition) GetDisplayName()(*string) {
     val, err := m.GetBackingStore().Get("displayName")
     if err != nil {
@@ -533,7 +533,7 @@ func (m *AccessReviewScheduleDefinition) SetDescriptionForReviewers(value *strin
         panic(err)
     }
 }
-// SetDisplayName sets the displayName property value. Name of the access review series. Supports $select and $orderBy. Required on create.
+// SetDisplayName sets the displayName property value. Name of the access review series. Supports $select and $orderby. Required on create.
 func (m *AccessReviewScheduleDefinition) SetDisplayName(value *string)() {
     err := m.GetBackingStore().Set("displayName", value)
     if err != nil {

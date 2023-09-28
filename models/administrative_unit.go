@@ -8,7 +8,7 @@ import (
 type AdministrativeUnit struct {
     DirectoryObject
 }
-// NewAdministrativeUnit instantiates a new AdministrativeUnit and sets the default values.
+// NewAdministrativeUnit instantiates a new administrativeUnit and sets the default values.
 func NewAdministrativeUnit()(*AdministrativeUnit) {
     m := &AdministrativeUnit{
         DirectoryObject: *NewDirectoryObject(),
@@ -32,7 +32,7 @@ func (m *AdministrativeUnit) GetDescription()(*string) {
     }
     return nil
 }
-// GetDisplayName gets the displayName property value. Display name for the administrative unit. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderBy.
+// GetDisplayName gets the displayName property value. Display name for the administrative unit. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderby.
 func (m *AdministrativeUnit) GetDisplayName()(*string) {
     val, err := m.GetBackingStore().Get("displayName")
     if err != nil {
@@ -239,7 +239,7 @@ func (m *AdministrativeUnit) SetDescription(value *string)() {
         panic(err)
     }
 }
-// SetDisplayName sets the displayName property value. Display name for the administrative unit. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderBy.
+// SetDisplayName sets the displayName property value. Display name for the administrative unit. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderby.
 func (m *AdministrativeUnit) SetDisplayName(value *string)() {
     err := m.GetBackingStore().Set("displayName", value)
     if err != nil {

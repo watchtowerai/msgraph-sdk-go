@@ -4,11 +4,11 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// MobileLobApp 
+// MobileLobApp an abstract base class containing properties for all mobile line of business apps.
 type MobileLobApp struct {
     MobileApp
 }
-// NewMobileLobApp instantiates a new MobileLobApp and sets the default values.
+// NewMobileLobApp instantiates a new mobileLobApp and sets the default values.
 func NewMobileLobApp()(*MobileLobApp) {
     m := &MobileLobApp{
         MobileApp: *NewMobileApp(),
@@ -35,6 +35,8 @@ func CreateMobileLobAppFromDiscriminatorValue(parseNode i878a80d2330e89d26896388
                         return NewAndroidLobApp(), nil
                     case "#microsoft.graph.iosLobApp":
                         return NewIosLobApp(), nil
+                    case "#microsoft.graph.macOSDmgApp":
+                        return NewMacOSDmgApp(), nil
                     case "#microsoft.graph.macOSLobApp":
                         return NewMacOSLobApp(), nil
                     case "#microsoft.graph.win32LobApp":

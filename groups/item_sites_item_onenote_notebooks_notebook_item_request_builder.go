@@ -77,7 +77,7 @@ func (m *ItemSitesItemOnenoteNotebooksNotebookItemRequestBuilder) Delete(ctx con
 // Get retrieve the properties and relationships of a notebook object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/notebook-get?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/notebook-get?view=graph-rest-1.0
 func (m *ItemSitesItemOnenoteNotebooksNotebookItemRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemSitesItemOnenoteNotebooksNotebookItemRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.Notebookable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -167,4 +167,8 @@ func (m *ItemSitesItemOnenoteNotebooksNotebookItemRequestBuilder) ToPatchRequest
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemSitesItemOnenoteNotebooksNotebookItemRequestBuilder) WithUrl(rawUrl string)(*ItemSitesItemOnenoteNotebooksNotebookItemRequestBuilder) {
+    return NewItemSitesItemOnenoteNotebooksNotebookItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

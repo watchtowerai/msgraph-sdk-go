@@ -33,7 +33,7 @@ func NewItemRemovePasswordRequestBuilder(rawUrl string, requestAdapter i2ae4187f
 // Post remove a password from a servicePrincipal object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/serviceprincipal-removepassword?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/serviceprincipal-removepassword?view=graph-rest-1.0
 func (m *ItemRemovePasswordRequestBuilder) Post(ctx context.Context, body ItemRemovePasswordPostRequestBodyable, requestConfiguration *ItemRemovePasswordRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -64,4 +64,8 @@ func (m *ItemRemovePasswordRequestBuilder) ToPostRequestInformation(ctx context.
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemRemovePasswordRequestBuilder) WithUrl(rawUrl string)(*ItemRemovePasswordRequestBuilder) {
+    return NewItemRemovePasswordRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

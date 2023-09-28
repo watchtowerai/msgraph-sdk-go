@@ -33,7 +33,7 @@ func NewCasesEdiscoveryCasesItemNoncustodialDataSourcesItemMicrosoftGraphSecurit
 // Post release the non-custodial data source from the case.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/security-ediscoverynoncustodialdatasource-release?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/security-ediscoverynoncustodialdatasource-release?view=graph-rest-1.0
 func (m *CasesEdiscoveryCasesItemNoncustodialDataSourcesItemMicrosoftGraphSecurityReleaseRequestBuilder) Post(ctx context.Context, requestConfiguration *CasesEdiscoveryCasesItemNoncustodialDataSourcesItemMicrosoftGraphSecurityReleaseRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -60,4 +60,8 @@ func (m *CasesEdiscoveryCasesItemNoncustodialDataSourcesItemMicrosoftGraphSecuri
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *CasesEdiscoveryCasesItemNoncustodialDataSourcesItemMicrosoftGraphSecurityReleaseRequestBuilder) WithUrl(rawUrl string)(*CasesEdiscoveryCasesItemNoncustodialDataSourcesItemMicrosoftGraphSecurityReleaseRequestBuilder) {
+    return NewCasesEdiscoveryCasesItemNoncustodialDataSourcesItemMicrosoftGraphSecurityReleaseRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

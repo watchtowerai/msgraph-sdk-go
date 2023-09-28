@@ -11,7 +11,7 @@ import (
 type SubscribedSkusRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
-// SubscribedSkusRequestBuilderGetQueryParameters get the list of commercial subscriptions that an organization has acquired. For the mapping of license names as displayed on the Azure portal or the Microsoft 365 admin center against their Microsoft Graph **skuId** and **skuPartNumber** properties, see Product names and service plan identifiers for licensing.
+// SubscribedSkusRequestBuilderGetQueryParameters get the list of commercial subscriptions that an organization has acquired. For the mapping of license names as displayed on the Azure portal or the Microsoft 365 admin center against their Microsoft Graph skuId and skuPartNumber properties, see Product names and service plan identifiers for licensing.
 type SubscribedSkusRequestBuilderGetQueryParameters struct {
     // Order items by property values
     Orderby []string `uriparametername:"%24orderby"`
@@ -60,10 +60,10 @@ func NewSubscribedSkusRequestBuilder(rawUrl string, requestAdapter i2ae4187f7dae
     urlParams["request-raw-url"] = rawUrl
     return NewSubscribedSkusRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Get get the list of commercial subscriptions that an organization has acquired. For the mapping of license names as displayed on the Azure portal or the Microsoft 365 admin center against their Microsoft Graph **skuId** and **skuPartNumber** properties, see Product names and service plan identifiers for licensing.
+// Get get the list of commercial subscriptions that an organization has acquired. For the mapping of license names as displayed on the Azure portal or the Microsoft 365 admin center against their Microsoft Graph skuId and skuPartNumber properties, see Product names and service plan identifiers for licensing.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/subscribedsku-list?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/subscribedsku-list?view=graph-rest-1.0
 func (m *SubscribedSkusRequestBuilder) Get(ctx context.Context, requestConfiguration *SubscribedSkusRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.SubscribedSkuCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -101,7 +101,7 @@ func (m *SubscribedSkusRequestBuilder) Post(ctx context.Context, body iadcd81124
     }
     return res.(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.SubscribedSkuable), nil
 }
-// ToGetRequestInformation get the list of commercial subscriptions that an organization has acquired. For the mapping of license names as displayed on the Azure portal or the Microsoft 365 admin center against their Microsoft Graph **skuId** and **skuPartNumber** properties, see Product names and service plan identifiers for licensing.
+// ToGetRequestInformation get the list of commercial subscriptions that an organization has acquired. For the mapping of license names as displayed on the Azure portal or the Microsoft 365 admin center against their Microsoft Graph skuId and skuPartNumber properties, see Product names and service plan identifiers for licensing.
 func (m *SubscribedSkusRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *SubscribedSkusRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
@@ -133,4 +133,8 @@ func (m *SubscribedSkusRequestBuilder) ToPostRequestInformation(ctx context.Cont
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *SubscribedSkusRequestBuilder) WithUrl(rawUrl string)(*SubscribedSkusRequestBuilder) {
+    return NewSubscribedSkusRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

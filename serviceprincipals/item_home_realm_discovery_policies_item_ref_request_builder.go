@@ -40,7 +40,7 @@ func NewItemHomeRealmDiscoveryPoliciesItemRefRequestBuilder(rawUrl string, reque
 // Delete remove a homeRealmDiscoveryPolicy from a servicePrincipal.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/serviceprincipal-delete-homerealmdiscoverypolicies?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/serviceprincipal-delete-homerealmdiscoverypolicies?view=graph-rest-1.0
 func (m *ItemHomeRealmDiscoveryPoliciesItemRefRequestBuilder) Delete(ctx context.Context, requestConfiguration *ItemHomeRealmDiscoveryPoliciesItemRefRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -70,4 +70,8 @@ func (m *ItemHomeRealmDiscoveryPoliciesItemRefRequestBuilder) ToDeleteRequestInf
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemHomeRealmDiscoveryPoliciesItemRefRequestBuilder) WithUrl(rawUrl string)(*ItemHomeRealmDiscoveryPoliciesItemRefRequestBuilder) {
+    return NewItemHomeRealmDiscoveryPoliciesItemRefRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

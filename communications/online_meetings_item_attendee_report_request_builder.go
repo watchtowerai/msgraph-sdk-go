@@ -40,7 +40,7 @@ func NewOnlineMeetingsItemAttendeeReportRequestBuilder(rawUrl string, requestAda
 // Get the content stream of the attendee report of a Microsoft Teams live event. Read-only.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/onlinemeeting-get?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/onlinemeeting-get?view=graph-rest-1.0
 func (m *OnlineMeetingsItemAttendeeReportRequestBuilder) Get(ctx context.Context, requestConfiguration *OnlineMeetingsItemAttendeeReportRequestBuilderGetRequestConfiguration)([]byte, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -102,4 +102,8 @@ func (m *OnlineMeetingsItemAttendeeReportRequestBuilder) ToPutRequestInformation
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *OnlineMeetingsItemAttendeeReportRequestBuilder) WithUrl(rawUrl string)(*OnlineMeetingsItemAttendeeReportRequestBuilder) {
+    return NewOnlineMeetingsItemAttendeeReportRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

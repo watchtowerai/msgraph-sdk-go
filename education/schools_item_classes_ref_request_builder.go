@@ -58,7 +58,7 @@ func NewSchoolsItemClassesRefRequestBuilder(rawUrl string, requestAdapter i2ae41
 // Get get the educationClass resources owned by an educationSchool.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/educationschool-list-classes?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/educationschool-list-classes?view=graph-rest-1.0
 func (m *SchoolsItemClassesRefRequestBuilder) Get(ctx context.Context, requestConfiguration *SchoolsItemClassesRefRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.StringCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -80,7 +80,7 @@ func (m *SchoolsItemClassesRefRequestBuilder) Get(ctx context.Context, requestCo
 // Post add a class to a school.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/educationschool-post-classes?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/educationschool-post-classes?view=graph-rest-1.0
 func (m *SchoolsItemClassesRefRequestBuilder) Post(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ReferenceCreateable, requestConfiguration *SchoolsItemClassesRefRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -127,4 +127,8 @@ func (m *SchoolsItemClassesRefRequestBuilder) ToPostRequestInformation(ctx conte
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *SchoolsItemClassesRefRequestBuilder) WithUrl(rawUrl string)(*SchoolsItemClassesRefRequestBuilder) {
+    return NewSchoolsItemClassesRefRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

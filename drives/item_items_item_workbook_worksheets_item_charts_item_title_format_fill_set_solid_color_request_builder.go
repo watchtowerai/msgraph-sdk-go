@@ -33,7 +33,7 @@ func NewItemItemsItemWorkbookWorksheetsItemChartsItemTitleFormatFillSetSolidColo
 // Post sets the fill formatting of a chart element to a uniform color.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/chartfill-setsolidcolor?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/chartfill-setsolidcolor?view=graph-rest-1.0
 func (m *ItemItemsItemWorkbookWorksheetsItemChartsItemTitleFormatFillSetSolidColorRequestBuilder) Post(ctx context.Context, body ItemItemsItemWorkbookWorksheetsItemChartsItemTitleFormatFillSetSolidColorPostRequestBodyable, requestConfiguration *ItemItemsItemWorkbookWorksheetsItemChartsItemTitleFormatFillSetSolidColorRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -64,4 +64,8 @@ func (m *ItemItemsItemWorkbookWorksheetsItemChartsItemTitleFormatFillSetSolidCol
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemItemsItemWorkbookWorksheetsItemChartsItemTitleFormatFillSetSolidColorRequestBuilder) WithUrl(rawUrl string)(*ItemItemsItemWorkbookWorksheetsItemChartsItemTitleFormatFillSetSolidColorRequestBuilder) {
+    return NewItemItemsItemWorkbookWorksheetsItemChartsItemTitleFormatFillSetSolidColorRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

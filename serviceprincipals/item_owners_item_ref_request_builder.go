@@ -40,7 +40,7 @@ func NewItemOwnersItemRefRequestBuilder(rawUrl string, requestAdapter i2ae4187f7
 // Delete remove an owner from a servicePrincipal object. As a recommended best practice, service principals should have at least two owners.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/serviceprincipal-delete-owners?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/serviceprincipal-delete-owners?view=graph-rest-1.0
 func (m *ItemOwnersItemRefRequestBuilder) Delete(ctx context.Context, requestConfiguration *ItemOwnersItemRefRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -70,4 +70,8 @@ func (m *ItemOwnersItemRefRequestBuilder) ToDeleteRequestInformation(ctx context
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemOwnersItemRefRequestBuilder) WithUrl(rawUrl string)(*ItemOwnersItemRefRequestBuilder) {
+    return NewItemOwnersItemRefRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

@@ -33,7 +33,7 @@ func NewItemRenewRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee2633
 // Post renews a group's expiration. When a group is renewed, the group expiration is extended by the number of days defined in the policy.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/group-renew?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/group-renew?view=graph-rest-1.0
 func (m *ItemRenewRequestBuilder) Post(ctx context.Context, requestConfiguration *ItemRenewRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -60,4 +60,8 @@ func (m *ItemRenewRequestBuilder) ToPostRequestInformation(ctx context.Context, 
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemRenewRequestBuilder) WithUrl(rawUrl string)(*ItemRenewRequestBuilder) {
+    return NewItemRenewRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

@@ -33,7 +33,7 @@ func NewItemTranslateExchangeIdsRequestBuilder(rawUrl string, requestAdapter i2a
 // Post translate identifiers of Outlook-related resources between formats.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/user-translateexchangeids?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/user-translateexchangeids?view=graph-rest-1.0
 func (m *ItemTranslateExchangeIdsRequestBuilder) Post(ctx context.Context, body ItemTranslateExchangeIdsPostRequestBodyable, requestConfiguration *ItemTranslateExchangeIdsRequestBuilderPostRequestConfiguration)(ItemTranslateExchangeIdsResponseable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -68,4 +68,8 @@ func (m *ItemTranslateExchangeIdsRequestBuilder) ToPostRequestInformation(ctx co
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemTranslateExchangeIdsRequestBuilder) WithUrl(rawUrl string)(*ItemTranslateExchangeIdsRequestBuilder) {
+    return NewItemTranslateExchangeIdsRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

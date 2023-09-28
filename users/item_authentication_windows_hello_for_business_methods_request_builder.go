@@ -70,7 +70,7 @@ func (m *ItemAuthenticationWindowsHelloForBusinessMethodsRequestBuilder) Count()
 // Get get a list of the windowsHelloForBusinessAuthenticationMethod objects and their properties.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/windowshelloforbusinessauthenticationmethod-list?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/windowshelloforbusinessauthenticationmethod-list?view=graph-rest-1.0
 func (m *ItemAuthenticationWindowsHelloForBusinessMethodsRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemAuthenticationWindowsHelloForBusinessMethodsRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.WindowsHelloForBusinessAuthenticationMethodCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -104,4 +104,8 @@ func (m *ItemAuthenticationWindowsHelloForBusinessMethodsRequestBuilder) ToGetRe
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemAuthenticationWindowsHelloForBusinessMethodsRequestBuilder) WithUrl(rawUrl string)(*ItemAuthenticationWindowsHelloForBusinessMethodsRequestBuilder) {
+    return NewItemAuthenticationWindowsHelloForBusinessMethodsRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

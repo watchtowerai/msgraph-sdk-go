@@ -77,7 +77,7 @@ func (m *MonthlyPrintUsageByUserRequestBuilder) Count()(*MonthlyPrintUsageByUser
 // Get retrieve a list of monthly print usage summaries, grouped by user.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/reportroot-list-monthlyprintusagebyuser?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/reportroot-list-monthlyprintusagebyuser?view=graph-rest-1.0
 func (m *MonthlyPrintUsageByUserRequestBuilder) Get(ctx context.Context, requestConfiguration *MonthlyPrintUsageByUserRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.PrintUsageByUserCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -147,4 +147,8 @@ func (m *MonthlyPrintUsageByUserRequestBuilder) ToPostRequestInformation(ctx con
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *MonthlyPrintUsageByUserRequestBuilder) WithUrl(rawUrl string)(*MonthlyPrintUsageByUserRequestBuilder) {
+    return NewMonthlyPrintUsageByUserRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

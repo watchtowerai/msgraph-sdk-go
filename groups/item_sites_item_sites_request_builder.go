@@ -70,7 +70,7 @@ func (m *ItemSitesItemSitesRequestBuilder) Count()(*ItemSitesItemSitesCountReque
 // Get get a collection of subsites defined for a [site][].
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/site-list-subsites?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/site-list-subsites?view=graph-rest-1.0
 func (m *ItemSitesItemSitesRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemSitesItemSitesRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.SiteCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -104,4 +104,8 @@ func (m *ItemSitesItemSitesRequestBuilder) ToGetRequestInformation(ctx context.C
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemSitesItemSitesRequestBuilder) WithUrl(rawUrl string)(*ItemSitesItemSitesRequestBuilder) {
+    return NewItemSitesItemSitesRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

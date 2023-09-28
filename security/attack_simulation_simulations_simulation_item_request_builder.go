@@ -73,7 +73,7 @@ func (m *AttackSimulationSimulationsSimulationItemRequestBuilder) Delete(ctx con
 // Get get an attack simulation campaign for a tenant.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/simulation-get?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/simulation-get?view=graph-rest-1.0
 func (m *AttackSimulationSimulationsSimulationItemRequestBuilder) Get(ctx context.Context, requestConfiguration *AttackSimulationSimulationsSimulationItemRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.Simulationable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -155,4 +155,8 @@ func (m *AttackSimulationSimulationsSimulationItemRequestBuilder) ToPatchRequest
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *AttackSimulationSimulationsSimulationItemRequestBuilder) WithUrl(rawUrl string)(*AttackSimulationSimulationsSimulationItemRequestBuilder) {
+    return NewAttackSimulationSimulationsSimulationItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

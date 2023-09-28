@@ -31,6 +31,9 @@ func NewRemoteAssistancePartnersItemDisconnectRequestBuilder(rawUrl string, requ
     return NewRemoteAssistancePartnersItemDisconnectRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Post a request to remove the active TeamViewer connector
+// [Find more info here]
+// 
+// [Find more info here]: https://learn.microsoft.com/graph/api/intune-remoteassistance-remoteassistancepartner-disconnect?view=graph-rest-1.0
 func (m *RemoteAssistancePartnersItemDisconnectRequestBuilder) Post(ctx context.Context, requestConfiguration *RemoteAssistancePartnersItemDisconnectRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -57,4 +60,8 @@ func (m *RemoteAssistancePartnersItemDisconnectRequestBuilder) ToPostRequestInfo
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *RemoteAssistancePartnersItemDisconnectRequestBuilder) WithUrl(rawUrl string)(*RemoteAssistancePartnersItemDisconnectRequestBuilder) {
+    return NewRemoteAssistancePartnersItemDisconnectRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

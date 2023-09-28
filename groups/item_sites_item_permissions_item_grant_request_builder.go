@@ -33,7 +33,7 @@ func NewItemSitesItemPermissionsItemGrantRequestBuilder(rawUrl string, requestAd
 // Post grant users access to a link represented by a [permission][].
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/permission-grant?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/permission-grant?view=graph-rest-1.0
 func (m *ItemSitesItemPermissionsItemGrantRequestBuilder) Post(ctx context.Context, body ItemSitesItemPermissionsItemGrantPostRequestBodyable, requestConfiguration *ItemSitesItemPermissionsItemGrantRequestBuilderPostRequestConfiguration)(ItemSitesItemPermissionsItemGrantResponseable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -68,4 +68,8 @@ func (m *ItemSitesItemPermissionsItemGrantRequestBuilder) ToPostRequestInformati
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemSitesItemPermissionsItemGrantRequestBuilder) WithUrl(rawUrl string)(*ItemSitesItemPermissionsItemGrantRequestBuilder) {
+    return NewItemSitesItemPermissionsItemGrantRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

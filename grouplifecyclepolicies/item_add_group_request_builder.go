@@ -30,10 +30,10 @@ func NewItemAddGroupRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee2
     urlParams["request-raw-url"] = rawUrl
     return NewItemAddGroupRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Post adds specific groups to a lifecycle policy. This action limits the group lifecycle policy to a set of groups only if the **managedGroupTypes** property of groupLifecyclePolicy is set to `Selected`.
+// Post adds specific groups to a lifecycle policy. This action limits the group lifecycle policy to a set of groups only if the managedGroupTypes property of groupLifecyclePolicy is set to Selected.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/grouplifecyclepolicy-addgroup?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/grouplifecyclepolicy-addgroup?view=graph-rest-1.0
 func (m *ItemAddGroupRequestBuilder) Post(ctx context.Context, body ItemAddGroupPostRequestBodyable, requestConfiguration *ItemAddGroupRequestBuilderPostRequestConfiguration)(ItemAddGroupResponseable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -52,7 +52,7 @@ func (m *ItemAddGroupRequestBuilder) Post(ctx context.Context, body ItemAddGroup
     }
     return res.(ItemAddGroupResponseable), nil
 }
-// ToPostRequestInformation adds specific groups to a lifecycle policy. This action limits the group lifecycle policy to a set of groups only if the **managedGroupTypes** property of groupLifecyclePolicy is set to `Selected`.
+// ToPostRequestInformation adds specific groups to a lifecycle policy. This action limits the group lifecycle policy to a set of groups only if the managedGroupTypes property of groupLifecyclePolicy is set to Selected.
 func (m *ItemAddGroupRequestBuilder) ToPostRequestInformation(ctx context.Context, body ItemAddGroupPostRequestBodyable, requestConfiguration *ItemAddGroupRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
@@ -68,4 +68,8 @@ func (m *ItemAddGroupRequestBuilder) ToPostRequestInformation(ctx context.Contex
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemAddGroupRequestBuilder) WithUrl(rawUrl string)(*ItemAddGroupRequestBuilder) {
+    return NewItemAddGroupRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

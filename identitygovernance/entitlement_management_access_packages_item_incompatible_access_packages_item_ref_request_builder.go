@@ -40,7 +40,7 @@ func NewEntitlementManagementAccessPackagesItemIncompatibleAccessPackagesItemRef
 // Delete remove an access package from the list of access packages that have been marked as incompatible on an accessPackage.  
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/accesspackage-delete-incompatibleaccesspackage?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/accesspackage-delete-incompatibleaccesspackage?view=graph-rest-1.0
 func (m *EntitlementManagementAccessPackagesItemIncompatibleAccessPackagesItemRefRequestBuilder) Delete(ctx context.Context, requestConfiguration *EntitlementManagementAccessPackagesItemIncompatibleAccessPackagesItemRefRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -70,4 +70,8 @@ func (m *EntitlementManagementAccessPackagesItemIncompatibleAccessPackagesItemRe
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *EntitlementManagementAccessPackagesItemIncompatibleAccessPackagesItemRefRequestBuilder) WithUrl(rawUrl string)(*EntitlementManagementAccessPackagesItemIncompatibleAccessPackagesItemRefRequestBuilder) {
+    return NewEntitlementManagementAccessPackagesItemIncompatibleAccessPackagesItemRefRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

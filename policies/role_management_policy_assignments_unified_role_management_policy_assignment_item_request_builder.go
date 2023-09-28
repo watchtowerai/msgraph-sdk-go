@@ -73,7 +73,7 @@ func (m *RoleManagementPolicyAssignmentsUnifiedRoleManagementPolicyAssignmentIte
 // Get get the details of a role management policy assignment including the policy and rules associated with the Azure AD role.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/unifiedrolemanagementpolicyassignment-get?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/unifiedrolemanagementpolicyassignment-get?view=graph-rest-1.0
 func (m *RoleManagementPolicyAssignmentsUnifiedRoleManagementPolicyAssignmentItemRequestBuilder) Get(ctx context.Context, requestConfiguration *RoleManagementPolicyAssignmentsUnifiedRoleManagementPolicyAssignmentItemRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.UnifiedRoleManagementPolicyAssignmentable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -159,4 +159,8 @@ func (m *RoleManagementPolicyAssignmentsUnifiedRoleManagementPolicyAssignmentIte
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *RoleManagementPolicyAssignmentsUnifiedRoleManagementPolicyAssignmentItemRequestBuilder) WithUrl(rawUrl string)(*RoleManagementPolicyAssignmentsUnifiedRoleManagementPolicyAssignmentItemRequestBuilder) {
+    return NewRoleManagementPolicyAssignmentsUnifiedRoleManagementPolicyAssignmentItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

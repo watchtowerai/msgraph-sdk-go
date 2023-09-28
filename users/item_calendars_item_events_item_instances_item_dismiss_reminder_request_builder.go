@@ -33,7 +33,7 @@ func NewItemCalendarsItemEventsItemInstancesItemDismissReminderRequestBuilder(ra
 // Post dismiss a reminder that has been triggered for an event in a user calendar.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/event-dismissreminder?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/event-dismissreminder?view=graph-rest-1.0
 func (m *ItemCalendarsItemEventsItemInstancesItemDismissReminderRequestBuilder) Post(ctx context.Context, requestConfiguration *ItemCalendarsItemEventsItemInstancesItemDismissReminderRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -60,4 +60,8 @@ func (m *ItemCalendarsItemEventsItemInstancesItemDismissReminderRequestBuilder) 
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemCalendarsItemEventsItemInstancesItemDismissReminderRequestBuilder) WithUrl(rawUrl string)(*ItemCalendarsItemEventsItemInstancesItemDismissReminderRequestBuilder) {
+    return NewItemCalendarsItemEventsItemInstancesItemDismissReminderRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

@@ -61,7 +61,7 @@ func NewTeamsAppsTeamsAppItemRequestBuilder(rawUrl string, requestAdapter i2ae41
 // Delete delete teamsApp
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/teamsapp-delete?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/teamsapp-delete?view=graph-rest-1.0
 func (m *TeamsAppsTeamsAppItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *TeamsAppsTeamsAppItemRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -159,4 +159,8 @@ func (m *TeamsAppsTeamsAppItemRequestBuilder) ToPatchRequestInformation(ctx cont
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *TeamsAppsTeamsAppItemRequestBuilder) WithUrl(rawUrl string)(*TeamsAppsTeamsAppItemRequestBuilder) {
+    return NewTeamsAppsTeamsAppItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

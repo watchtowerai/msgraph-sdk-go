@@ -31,6 +31,9 @@ func NewItemSetMobileDeviceManagementAuthorityRequestBuilder(rawUrl string, requ
     return NewItemSetMobileDeviceManagementAuthorityRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Post set mobile device management authority
+// [Find more info here]
+// 
+// [Find more info here]: https://learn.microsoft.com/graph/api/intune-onboarding-organization-setmobiledevicemanagementauthority?view=graph-rest-1.0
 func (m *ItemSetMobileDeviceManagementAuthorityRequestBuilder) Post(ctx context.Context, requestConfiguration *ItemSetMobileDeviceManagementAuthorityRequestBuilderPostRequestConfiguration)(ItemSetMobileDeviceManagementAuthorityResponseable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -61,4 +64,8 @@ func (m *ItemSetMobileDeviceManagementAuthorityRequestBuilder) ToPostRequestInfo
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemSetMobileDeviceManagementAuthorityRequestBuilder) WithUrl(rawUrl string)(*ItemSetMobileDeviceManagementAuthorityRequestBuilder) {
+    return NewItemSetMobileDeviceManagementAuthorityRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

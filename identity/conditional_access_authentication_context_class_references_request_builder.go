@@ -77,7 +77,7 @@ func (m *ConditionalAccessAuthenticationContextClassReferencesRequestBuilder) Co
 // Get retrieve a list of authenticationContextClassReference objects.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/conditionalaccessroot-list-authenticationcontextclassreferences?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/conditionalaccessroot-list-authenticationcontextclassreferences?view=graph-rest-1.0
 func (m *ConditionalAccessAuthenticationContextClassReferencesRequestBuilder) Get(ctx context.Context, requestConfiguration *ConditionalAccessAuthenticationContextClassReferencesRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.AuthenticationContextClassReferenceCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -147,4 +147,8 @@ func (m *ConditionalAccessAuthenticationContextClassReferencesRequestBuilder) To
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ConditionalAccessAuthenticationContextClassReferencesRequestBuilder) WithUrl(rawUrl string)(*ConditionalAccessAuthenticationContextClassReferencesRequestBuilder) {
+    return NewConditionalAccessAuthenticationContextClassReferencesRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

@@ -73,7 +73,7 @@ func (m *ItemTermStoreRequestBuilder) Delete(ctx context.Context, requestConfigu
 // Get read the properties and relationships of a store object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/termstore-store-get?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/termstore-store-get?view=graph-rest-1.0
 func (m *ItemTermStoreRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemTermStoreRequestBuilderGetRequestConfiguration)(ia3c27b33aa3d3ed80f9de797c48fbb8ed73f13887e301daf51f08450e9a634a3.Storeable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -99,7 +99,7 @@ func (m *ItemTermStoreRequestBuilder) Groups()(*ItemTermStoreGroupsRequestBuilde
 // Patch update the properties of a store object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/termstore-store-update?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/termstore-store-update?view=graph-rest-1.0
 func (m *ItemTermStoreRequestBuilder) Patch(ctx context.Context, body ia3c27b33aa3d3ed80f9de797c48fbb8ed73f13887e301daf51f08450e9a634a3.Storeable, requestConfiguration *ItemTermStoreRequestBuilderPatchRequestConfiguration)(ia3c27b33aa3d3ed80f9de797c48fbb8ed73f13887e301daf51f08450e9a634a3.Storeable, error) {
     requestInfo, err := m.ToPatchRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -166,4 +166,8 @@ func (m *ItemTermStoreRequestBuilder) ToPatchRequestInformation(ctx context.Cont
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemTermStoreRequestBuilder) WithUrl(rawUrl string)(*ItemTermStoreRequestBuilder) {
+    return NewItemTermStoreRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

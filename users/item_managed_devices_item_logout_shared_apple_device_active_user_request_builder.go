@@ -31,6 +31,9 @@ func NewItemManagedDevicesItemLogoutSharedAppleDeviceActiveUserRequestBuilder(ra
     return NewItemManagedDevicesItemLogoutSharedAppleDeviceActiveUserRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Post logout shared Apple device active user
+// [Find more info here]
+// 
+// [Find more info here]: https://learn.microsoft.com/graph/api/intune-devices-manageddevice-logoutsharedappledeviceactiveuser?view=graph-rest-1.0
 func (m *ItemManagedDevicesItemLogoutSharedAppleDeviceActiveUserRequestBuilder) Post(ctx context.Context, requestConfiguration *ItemManagedDevicesItemLogoutSharedAppleDeviceActiveUserRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -57,4 +60,8 @@ func (m *ItemManagedDevicesItemLogoutSharedAppleDeviceActiveUserRequestBuilder) 
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemManagedDevicesItemLogoutSharedAppleDeviceActiveUserRequestBuilder) WithUrl(rawUrl string)(*ItemManagedDevicesItemLogoutSharedAppleDeviceActiveUserRequestBuilder) {
+    return NewItemManagedDevicesItemLogoutSharedAppleDeviceActiveUserRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

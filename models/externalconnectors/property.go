@@ -10,7 +10,7 @@ type Property struct {
     // Stores model information.
     backingStore ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStore
 }
-// NewProperty instantiates a new Property and sets the default values.
+// NewProperty instantiates a new property and sets the default values.
 func NewProperty()(*Property) {
     m := &Property{
     }
@@ -150,7 +150,7 @@ func (m *Property) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896
             return err
         }
         if val != nil {
-            m.SetType(val.(*PropertyType))
+            m.SetTypeEscaped(val.(*PropertyType))
         }
         return nil
     }
@@ -200,7 +200,7 @@ func (m *Property) GetIsSearchable()(*bool) {
     }
     return nil
 }
-// GetLabels gets the labels property value. Specifies one or more well-known tags added against a property. Labels help Microsoft Search understand the semantics of the data in the connection. Adding appropriate labels would result in an enhanced search experience (e.g. better relevance). The possible values are: title, url, createdBy, lastModifiedBy, authors, createdDateTime, lastModifiedDateTime, fileName, fileExtension, unknownFutureValue. Optional.
+// GetLabels gets the labels property value. Specifies one or more well-known tags added against a property. Labels help Microsoft Search understand the semantics of the data in the connection. Adding appropriate labels would result in an enhanced search experience (e.g. better relevance). The possible values are: title, url, createdBy, lastModifiedBy, authors, createdDateTime, lastModifiedDateTime, fileName, fileExtension, iconUrl, unknownFutureValue. Optional.
 func (m *Property) GetLabels()([]Label) {
     val, err := m.GetBackingStore().Get("labels")
     if err != nil {
@@ -233,8 +233,8 @@ func (m *Property) GetOdataType()(*string) {
     }
     return nil
 }
-// GetType gets the type property value. The type property
-func (m *Property) GetType()(*PropertyType) {
+// GetTypeEscaped gets the type property value. The type property
+func (m *Property) GetTypeEscaped()(*PropertyType) {
     val, err := m.GetBackingStore().Get("typeEscaped")
     if err != nil {
         panic(err)
@@ -294,8 +294,8 @@ func (m *Property) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c01
             return err
         }
     }
-    if m.GetType() != nil {
-        cast := (*m.GetType()).String()
+    if m.GetTypeEscaped() != nil {
+        cast := (*m.GetTypeEscaped()).String()
         err := writer.WriteStringValue("type", &cast)
         if err != nil {
             return err
@@ -355,7 +355,7 @@ func (m *Property) SetIsSearchable(value *bool)() {
         panic(err)
     }
 }
-// SetLabels sets the labels property value. Specifies one or more well-known tags added against a property. Labels help Microsoft Search understand the semantics of the data in the connection. Adding appropriate labels would result in an enhanced search experience (e.g. better relevance). The possible values are: title, url, createdBy, lastModifiedBy, authors, createdDateTime, lastModifiedDateTime, fileName, fileExtension, unknownFutureValue. Optional.
+// SetLabels sets the labels property value. Specifies one or more well-known tags added against a property. Labels help Microsoft Search understand the semantics of the data in the connection. Adding appropriate labels would result in an enhanced search experience (e.g. better relevance). The possible values are: title, url, createdBy, lastModifiedBy, authors, createdDateTime, lastModifiedDateTime, fileName, fileExtension, iconUrl, unknownFutureValue. Optional.
 func (m *Property) SetLabels(value []Label)() {
     err := m.GetBackingStore().Set("labels", value)
     if err != nil {
@@ -376,8 +376,8 @@ func (m *Property) SetOdataType(value *string)() {
         panic(err)
     }
 }
-// SetType sets the type property value. The type property
-func (m *Property) SetType(value *PropertyType)() {
+// SetTypeEscaped sets the type property value. The type property
+func (m *Property) SetTypeEscaped(value *PropertyType)() {
     err := m.GetBackingStore().Set("typeEscaped", value)
     if err != nil {
         panic(err)
@@ -397,7 +397,7 @@ type Propertyable interface {
     GetLabels()([]Label)
     GetName()(*string)
     GetOdataType()(*string)
-    GetType()(*PropertyType)
+    GetTypeEscaped()(*PropertyType)
     SetAliases(value []string)()
     SetBackingStore(value ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStore)()
     SetIsQueryable(value *bool)()
@@ -407,5 +407,5 @@ type Propertyable interface {
     SetLabels(value []Label)()
     SetName(value *string)()
     SetOdataType(value *string)()
-    SetType(value *PropertyType)()
+    SetTypeEscaped(value *PropertyType)()
 }

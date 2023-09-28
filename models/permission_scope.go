@@ -11,7 +11,7 @@ type PermissionScope struct {
     // Stores model information.
     backingStore ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStore
 }
-// NewPermissionScope instantiates a new PermissionScope and sets the default values.
+// NewPermissionScope instantiates a new permissionScope and sets the default values.
 func NewPermissionScope()(*PermissionScope) {
     m := &PermissionScope{
     }
@@ -130,7 +130,7 @@ func (m *PermissionScope) GetFieldDeserializers()(map[string]func(i878a80d2330e8
             return err
         }
         if val != nil {
-            m.SetType(val)
+            m.SetTypeEscaped(val)
         }
         return nil
     }
@@ -177,7 +177,7 @@ func (m *PermissionScope) GetId()(*i561e97a8befe7661a44c8f54600992b4207a3a0cf677
     }
     return nil
 }
-// GetIsEnabled gets the isEnabled property value. When creating or updating a permission, this property must be set to true (which is the default). To delete a permission, this property must first be set to false.  At that point, in a subsequent call, the permission may be removed.
+// GetIsEnabled gets the isEnabled property value. When you create or update a permission, this property must be set to true (which is the default). To delete a permission, this property must first be set to false.  At that point, in a subsequent call, the permission may be removed.
 func (m *PermissionScope) GetIsEnabled()(*bool) {
     val, err := m.GetBackingStore().Get("isEnabled")
     if err != nil {
@@ -210,8 +210,8 @@ func (m *PermissionScope) GetOrigin()(*string) {
     }
     return nil
 }
-// GetType gets the type property value. The possible values are: User and Admin. Specifies whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator consent should always be required. While Microsoft Graph defines the default consent requirement for each permission, the tenant administrator may override the behavior in their organization (by allowing, restricting, or limiting user consent to this delegated permission). For more information, see Configure how users consent to applications.
-func (m *PermissionScope) GetType()(*string) {
+// GetTypeEscaped gets the type property value. The possible values are: User and Admin. Specifies whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator consent should always be required. While Microsoft Graph defines the default consent requirement for each permission, the tenant administrator may override the behavior in their organization (by allowing, restricting, or limiting user consent to this delegated permission). For more information, see Configure how users consent to applications.
+func (m *PermissionScope) GetTypeEscaped()(*string) {
     val, err := m.GetBackingStore().Get("typeEscaped")
     if err != nil {
         panic(err)
@@ -243,7 +243,7 @@ func (m *PermissionScope) GetUserConsentDisplayName()(*string) {
     }
     return nil
 }
-// GetValue gets the value property value. Specifies the value to include in the scp (scope) claim in access tokens. Must not exceed 120 characters in length. Allowed characters are : ! # $ % & ' ( ) * + , - . / : ;  =  ? @ [ ] ^ + _  {  } ~, as well as characters in the ranges 0-9, A-Z and a-z. Any other character, including the space character, are not allowed. May not begin with ..
+// GetValue gets the value property value. Specifies the value to include in the scp (scope) claim in access tokens. Must not exceed 120 characters in length. Allowed characters are : ! # $ % & ' ( ) * + , - . / : ;  =  ? @ [ ] ^ + _  {  } ~, and characters in the ranges 0-9, A-Z and a-z. Any other character, including the space character, aren't allowed. May not begin with ..
 func (m *PermissionScope) GetValue()(*string) {
     val, err := m.GetBackingStore().Get("value")
     if err != nil {
@@ -293,7 +293,7 @@ func (m *PermissionScope) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0
         }
     }
     {
-        err := writer.WriteStringValue("type", m.GetType())
+        err := writer.WriteStringValue("type", m.GetTypeEscaped())
         if err != nil {
             return err
         }
@@ -356,7 +356,7 @@ func (m *PermissionScope) SetId(value *i561e97a8befe7661a44c8f54600992b4207a3a0c
         panic(err)
     }
 }
-// SetIsEnabled sets the isEnabled property value. When creating or updating a permission, this property must be set to true (which is the default). To delete a permission, this property must first be set to false.  At that point, in a subsequent call, the permission may be removed.
+// SetIsEnabled sets the isEnabled property value. When you create or update a permission, this property must be set to true (which is the default). To delete a permission, this property must first be set to false.  At that point, in a subsequent call, the permission may be removed.
 func (m *PermissionScope) SetIsEnabled(value *bool)() {
     err := m.GetBackingStore().Set("isEnabled", value)
     if err != nil {
@@ -377,8 +377,8 @@ func (m *PermissionScope) SetOrigin(value *string)() {
         panic(err)
     }
 }
-// SetType sets the type property value. The possible values are: User and Admin. Specifies whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator consent should always be required. While Microsoft Graph defines the default consent requirement for each permission, the tenant administrator may override the behavior in their organization (by allowing, restricting, or limiting user consent to this delegated permission). For more information, see Configure how users consent to applications.
-func (m *PermissionScope) SetType(value *string)() {
+// SetTypeEscaped sets the type property value. The possible values are: User and Admin. Specifies whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator consent should always be required. While Microsoft Graph defines the default consent requirement for each permission, the tenant administrator may override the behavior in their organization (by allowing, restricting, or limiting user consent to this delegated permission). For more information, see Configure how users consent to applications.
+func (m *PermissionScope) SetTypeEscaped(value *string)() {
     err := m.GetBackingStore().Set("typeEscaped", value)
     if err != nil {
         panic(err)
@@ -398,7 +398,7 @@ func (m *PermissionScope) SetUserConsentDisplayName(value *string)() {
         panic(err)
     }
 }
-// SetValue sets the value property value. Specifies the value to include in the scp (scope) claim in access tokens. Must not exceed 120 characters in length. Allowed characters are : ! # $ % & ' ( ) * + , - . / : ;  =  ? @ [ ] ^ + _  {  } ~, as well as characters in the ranges 0-9, A-Z and a-z. Any other character, including the space character, are not allowed. May not begin with ..
+// SetValue sets the value property value. Specifies the value to include in the scp (scope) claim in access tokens. Must not exceed 120 characters in length. Allowed characters are : ! # $ % & ' ( ) * + , - . / : ;  =  ? @ [ ] ^ + _  {  } ~, and characters in the ranges 0-9, A-Z and a-z. Any other character, including the space character, aren't allowed. May not begin with ..
 func (m *PermissionScope) SetValue(value *string)() {
     err := m.GetBackingStore().Set("value", value)
     if err != nil {
@@ -417,7 +417,7 @@ type PermissionScopeable interface {
     GetIsEnabled()(*bool)
     GetOdataType()(*string)
     GetOrigin()(*string)
-    GetType()(*string)
+    GetTypeEscaped()(*string)
     GetUserConsentDescription()(*string)
     GetUserConsentDisplayName()(*string)
     GetValue()(*string)
@@ -428,7 +428,7 @@ type PermissionScopeable interface {
     SetIsEnabled(value *bool)()
     SetOdataType(value *string)()
     SetOrigin(value *string)()
-    SetType(value *string)()
+    SetTypeEscaped(value *string)()
     SetUserConsentDescription(value *string)()
     SetUserConsentDisplayName(value *string)()
     SetValue(value *string)()

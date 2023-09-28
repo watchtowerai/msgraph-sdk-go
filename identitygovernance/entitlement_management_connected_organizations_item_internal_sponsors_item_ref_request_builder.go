@@ -40,7 +40,7 @@ func NewEntitlementManagementConnectedOrganizationsItemInternalSponsorsItemRefRe
 // Delete remove a user or a group from the connected organization's internal sponsors. The internal sponsors are a set of users who can approve requests on behalf of other users from that connected organization.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/connectedorganization-delete-internalsponsors?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/connectedorganization-delete-internalsponsors?view=graph-rest-1.0
 func (m *EntitlementManagementConnectedOrganizationsItemInternalSponsorsItemRefRequestBuilder) Delete(ctx context.Context, requestConfiguration *EntitlementManagementConnectedOrganizationsItemInternalSponsorsItemRefRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -70,4 +70,8 @@ func (m *EntitlementManagementConnectedOrganizationsItemInternalSponsorsItemRefR
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *EntitlementManagementConnectedOrganizationsItemInternalSponsorsItemRefRequestBuilder) WithUrl(rawUrl string)(*EntitlementManagementConnectedOrganizationsItemInternalSponsorsItemRefRequestBuilder) {
+    return NewEntitlementManagementConnectedOrganizationsItemInternalSponsorsItemRefRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

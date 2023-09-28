@@ -73,7 +73,7 @@ func (m *ItemScheduleSwapShiftsChangeRequestsSwapShiftsChangeRequestItemRequestB
 // Get retrieve the properties and relationships of a swapShiftsChangeRequest object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/swapshiftschangerequest-get?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/swapshiftschangerequest-get?view=graph-rest-1.0
 func (m *ItemScheduleSwapShiftsChangeRequestsSwapShiftsChangeRequestItemRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemScheduleSwapShiftsChangeRequestsSwapShiftsChangeRequestItemRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.SwapShiftsChangeRequestable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -155,4 +155,8 @@ func (m *ItemScheduleSwapShiftsChangeRequestsSwapShiftsChangeRequestItemRequestB
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemScheduleSwapShiftsChangeRequestsSwapShiftsChangeRequestItemRequestBuilder) WithUrl(rawUrl string)(*ItemScheduleSwapShiftsChangeRequestsSwapShiftsChangeRequestItemRequestBuilder) {
+    return NewItemScheduleSwapShiftsChangeRequestsSwapShiftsChangeRequestItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

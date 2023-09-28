@@ -70,7 +70,7 @@ func (m *ItemDirectReportsRequestBuilder) Count()(*ItemDirectReportsCountRequest
 // Get the contact's direct reports. (The users and contacts that have their manager property set to this contact.)  Read-only. Nullable. Supports $expand.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/orgcontact-list-directreports?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/orgcontact-list-directreports?view=graph-rest-1.0
 func (m *ItemDirectReportsRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemDirectReportsRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.DirectoryObjectCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -112,4 +112,8 @@ func (m *ItemDirectReportsRequestBuilder) ToGetRequestInformation(ctx context.Co
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemDirectReportsRequestBuilder) WithUrl(rawUrl string)(*ItemDirectReportsRequestBuilder) {
+    return NewItemDirectReportsRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

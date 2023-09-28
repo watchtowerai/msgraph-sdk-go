@@ -75,7 +75,7 @@ func (m *ItemTeamScheduleTimeOffRequestsRequestBuilder) Count()(*ItemTeamSchedul
 // Get retrieve a list of timeOffRequest objects in the team.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/timeoffrequest-list?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/timeoffrequest-list?view=graph-rest-1.0
 func (m *ItemTeamScheduleTimeOffRequestsRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemTeamScheduleTimeOffRequestsRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.TimeOffRequestCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -145,4 +145,8 @@ func (m *ItemTeamScheduleTimeOffRequestsRequestBuilder) ToPostRequestInformation
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemTeamScheduleTimeOffRequestsRequestBuilder) WithUrl(rawUrl string)(*ItemTeamScheduleTimeOffRequestsRequestBuilder) {
+    return NewItemTeamScheduleTimeOffRequestsRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

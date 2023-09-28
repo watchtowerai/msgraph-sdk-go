@@ -34,7 +34,7 @@ func NewCallsItemParticipantsItemStartHoldMusicRequestBuilder(rawUrl string, req
 // Post put a participant on hold and play music in the background.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/participant-startholdmusic?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/participant-startholdmusic?view=graph-rest-1.0
 func (m *CallsItemParticipantsItemStartHoldMusicRequestBuilder) Post(ctx context.Context, body CallsItemParticipantsItemStartHoldMusicPostRequestBodyable, requestConfiguration *CallsItemParticipantsItemStartHoldMusicRequestBuilderPostRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.StartHoldMusicOperationable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -69,4 +69,8 @@ func (m *CallsItemParticipantsItemStartHoldMusicRequestBuilder) ToPostRequestInf
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *CallsItemParticipantsItemStartHoldMusicRequestBuilder) WithUrl(rawUrl string)(*CallsItemParticipantsItemStartHoldMusicRequestBuilder) {
+    return NewCallsItemParticipantsItemStartHoldMusicRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

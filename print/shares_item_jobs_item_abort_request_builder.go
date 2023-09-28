@@ -30,10 +30,10 @@ func NewSharesItemJobsItemAbortRequestBuilder(rawUrl string, requestAdapter i2ae
     urlParams["request-raw-url"] = rawUrl
     return NewSharesItemJobsItemAbortRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Post abort a print job. Only applications using application permissions can abort a print job. Aborting a print job will only succeed if there is a printTask in a `processing` state on the associated print job, started by a trigger that the requesting app created. For details about how to register a task trigger, see Extending Universal Print to support pull printing.
+// Post abort a print job. Only applications using application permissions can abort a print job. Aborting a print job will only succeed if there is a printTask in a processing state on the associated print job, started by a trigger that the requesting app created. For details about how to register a task trigger, see Extending Universal Print to support pull printing.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/printjob-abort?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/printjob-abort?view=graph-rest-1.0
 func (m *SharesItemJobsItemAbortRequestBuilder) Post(ctx context.Context, body SharesItemJobsItemAbortPostRequestBodyable, requestConfiguration *SharesItemJobsItemAbortRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -49,7 +49,7 @@ func (m *SharesItemJobsItemAbortRequestBuilder) Post(ctx context.Context, body S
     }
     return nil
 }
-// ToPostRequestInformation abort a print job. Only applications using application permissions can abort a print job. Aborting a print job will only succeed if there is a printTask in a `processing` state on the associated print job, started by a trigger that the requesting app created. For details about how to register a task trigger, see Extending Universal Print to support pull printing.
+// ToPostRequestInformation abort a print job. Only applications using application permissions can abort a print job. Aborting a print job will only succeed if there is a printTask in a processing state on the associated print job, started by a trigger that the requesting app created. For details about how to register a task trigger, see Extending Universal Print to support pull printing.
 func (m *SharesItemJobsItemAbortRequestBuilder) ToPostRequestInformation(ctx context.Context, body SharesItemJobsItemAbortPostRequestBodyable, requestConfiguration *SharesItemJobsItemAbortRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
@@ -64,4 +64,8 @@ func (m *SharesItemJobsItemAbortRequestBuilder) ToPostRequestInformation(ctx con
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *SharesItemJobsItemAbortRequestBuilder) WithUrl(rawUrl string)(*SharesItemJobsItemAbortRequestBuilder) {
+    return NewSharesItemJobsItemAbortRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

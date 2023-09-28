@@ -33,7 +33,7 @@ func NewItemConversationsItemThreadsItemPostsItemInReplyToForwardRequestBuilder(
 // Post forward a post to a recipient. You can specify both the parent conversation and thread in the request, or, you can specify just the parent thread without the parent conversation. 
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/post-forward?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/post-forward?view=graph-rest-1.0
 func (m *ItemConversationsItemThreadsItemPostsItemInReplyToForwardRequestBuilder) Post(ctx context.Context, body ItemConversationsItemThreadsItemPostsItemInReplyToForwardPostRequestBodyable, requestConfiguration *ItemConversationsItemThreadsItemPostsItemInReplyToForwardRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -64,4 +64,8 @@ func (m *ItemConversationsItemThreadsItemPostsItemInReplyToForwardRequestBuilder
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemConversationsItemThreadsItemPostsItemInReplyToForwardRequestBuilder) WithUrl(rawUrl string)(*ItemConversationsItemThreadsItemPostsItemInReplyToForwardRequestBuilder) {
+    return NewItemConversationsItemThreadsItemPostsItemInReplyToForwardRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

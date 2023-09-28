@@ -34,7 +34,7 @@ func NewItemItemsItemWorkbookNamesItemRangeRequestBuilder(rawUrl string, request
 // Get returns the range object that is associated with the name. Throws an exception if the named item's type is not a range.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/nameditem-range?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/nameditem-range?view=graph-rest-1.0
 func (m *ItemItemsItemWorkbookNamesItemRangeRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemItemsItemWorkbookNamesItemRangeRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.WorkbookRangeable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -65,4 +65,8 @@ func (m *ItemItemsItemWorkbookNamesItemRangeRequestBuilder) ToGetRequestInformat
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemItemsItemWorkbookNamesItemRangeRequestBuilder) WithUrl(rawUrl string)(*ItemItemsItemWorkbookNamesItemRangeRequestBuilder) {
+    return NewItemItemsItemWorkbookNamesItemRangeRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

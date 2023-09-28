@@ -57,7 +57,7 @@ func NewItemSitesItemTermStoresItemGroupsGroupItemRequestBuilder(rawUrl string, 
 // Delete delete a group object in a term [store].
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/termstore-group-delete?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/termstore-group-delete?view=graph-rest-1.0
 func (m *ItemSitesItemTermStoresItemGroupsGroupItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *ItemSitesItemTermStoresItemGroupsGroupItemRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -76,7 +76,7 @@ func (m *ItemSitesItemTermStoresItemGroupsGroupItemRequestBuilder) Delete(ctx co
 // Get read the properties and relationships of a term store group object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/termstore-group-get?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/termstore-group-get?view=graph-rest-1.0
 func (m *ItemSitesItemTermStoresItemGroupsGroupItemRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemSitesItemTermStoresItemGroupsGroupItemRequestBuilderGetRequestConfiguration)(ia3c27b33aa3d3ed80f9de797c48fbb8ed73f13887e301daf51f08450e9a634a3.Groupable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -162,4 +162,8 @@ func (m *ItemSitesItemTermStoresItemGroupsGroupItemRequestBuilder) ToPatchReques
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemSitesItemTermStoresItemGroupsGroupItemRequestBuilder) WithUrl(rawUrl string)(*ItemSitesItemTermStoresItemGroupsGroupItemRequestBuilder) {
+    return NewItemSitesItemTermStoresItemGroupsGroupItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

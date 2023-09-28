@@ -77,7 +77,7 @@ func (m *ServiceAnnouncementMessagesItemAttachmentsServiceAnnouncementAttachment
 // Get read the properties and relationships of a serviceAnnouncementAttachment object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/serviceannouncementattachment-get?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/serviceannouncementattachment-get?view=graph-rest-1.0
 func (m *ServiceAnnouncementMessagesItemAttachmentsServiceAnnouncementAttachmentItemRequestBuilder) Get(ctx context.Context, requestConfiguration *ServiceAnnouncementMessagesItemAttachmentsServiceAnnouncementAttachmentItemRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ServiceAnnouncementAttachmentable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -159,4 +159,8 @@ func (m *ServiceAnnouncementMessagesItemAttachmentsServiceAnnouncementAttachment
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ServiceAnnouncementMessagesItemAttachmentsServiceAnnouncementAttachmentItemRequestBuilder) WithUrl(rawUrl string)(*ServiceAnnouncementMessagesItemAttachmentsServiceAnnouncementAttachmentItemRequestBuilder) {
+    return NewServiceAnnouncementMessagesItemAttachmentsServiceAnnouncementAttachmentItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

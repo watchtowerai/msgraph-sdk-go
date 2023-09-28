@@ -104,7 +104,7 @@ func (m *CasesEdiscoveryCasesItemNoncustodialDataSourcesRequestBuilder) Microsof
 // Post create a new ediscoveryNoncustodialDataSource object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/security-ediscoverycase-post-noncustodialdatasources?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/security-ediscoverycase-post-noncustodialdatasources?view=graph-rest-1.0
 func (m *CasesEdiscoveryCasesItemNoncustodialDataSourcesRequestBuilder) Post(ctx context.Context, body idd6d442c3cc83a389b8f0b8dd7ac355916e813c2882ff3aaa23331424ba827ae.EdiscoveryNoncustodialDataSourceable, requestConfiguration *CasesEdiscoveryCasesItemNoncustodialDataSourcesRequestBuilderPostRequestConfiguration)(idd6d442c3cc83a389b8f0b8dd7ac355916e813c2882ff3aaa23331424ba827ae.EdiscoveryNoncustodialDataSourceable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -155,4 +155,8 @@ func (m *CasesEdiscoveryCasesItemNoncustodialDataSourcesRequestBuilder) ToPostRe
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *CasesEdiscoveryCasesItemNoncustodialDataSourcesRequestBuilder) WithUrl(rawUrl string)(*CasesEdiscoveryCasesItemNoncustodialDataSourcesRequestBuilder) {
+    return NewCasesEdiscoveryCasesItemNoncustodialDataSourcesRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

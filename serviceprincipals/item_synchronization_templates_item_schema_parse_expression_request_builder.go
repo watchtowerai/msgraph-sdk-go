@@ -31,7 +31,10 @@ func NewItemSynchronizationTemplatesItemSchemaParseExpressionRequestBuilder(rawU
     urlParams["request-raw-url"] = rawUrl
     return NewItemSynchronizationTemplatesItemSchemaParseExpressionRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Post invoke action parseExpression
+// Post parse a given string expression into an attributeMappingSource object. For more information about expressions, see Writing Expressions for Attribute Mappings in Azure Active Directory.
+// [Find more info here]
+// 
+// [Find more info here]: https://learn.microsoft.com/graph/api/synchronization-synchronizationschema-parseexpression?view=graph-rest-1.0
 func (m *ItemSynchronizationTemplatesItemSchemaParseExpressionRequestBuilder) Post(ctx context.Context, body ItemSynchronizationTemplatesItemSchemaParseExpressionPostRequestBodyable, requestConfiguration *ItemSynchronizationTemplatesItemSchemaParseExpressionRequestBuilderPostRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ParseExpressionResponseable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -50,7 +53,7 @@ func (m *ItemSynchronizationTemplatesItemSchemaParseExpressionRequestBuilder) Po
     }
     return res.(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ParseExpressionResponseable), nil
 }
-// ToPostRequestInformation invoke action parseExpression
+// ToPostRequestInformation parse a given string expression into an attributeMappingSource object. For more information about expressions, see Writing Expressions for Attribute Mappings in Azure Active Directory.
 func (m *ItemSynchronizationTemplatesItemSchemaParseExpressionRequestBuilder) ToPostRequestInformation(ctx context.Context, body ItemSynchronizationTemplatesItemSchemaParseExpressionPostRequestBodyable, requestConfiguration *ItemSynchronizationTemplatesItemSchemaParseExpressionRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
@@ -66,4 +69,8 @@ func (m *ItemSynchronizationTemplatesItemSchemaParseExpressionRequestBuilder) To
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemSynchronizationTemplatesItemSchemaParseExpressionRequestBuilder) WithUrl(rawUrl string)(*ItemSynchronizationTemplatesItemSchemaParseExpressionRequestBuilder) {
+    return NewItemSynchronizationTemplatesItemSchemaParseExpressionRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

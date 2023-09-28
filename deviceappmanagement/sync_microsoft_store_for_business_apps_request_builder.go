@@ -31,6 +31,9 @@ func NewSyncMicrosoftStoreForBusinessAppsRequestBuilder(rawUrl string, requestAd
     return NewSyncMicrosoftStoreForBusinessAppsRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Post syncs Intune account with Microsoft Store For Business
+// [Find more info here]
+// 
+// [Find more info here]: https://learn.microsoft.com/graph/api/intune-onboarding-deviceappmanagement-syncmicrosoftstoreforbusinessapps?view=graph-rest-1.0
 func (m *SyncMicrosoftStoreForBusinessAppsRequestBuilder) Post(ctx context.Context, requestConfiguration *SyncMicrosoftStoreForBusinessAppsRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -57,4 +60,8 @@ func (m *SyncMicrosoftStoreForBusinessAppsRequestBuilder) ToPostRequestInformati
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *SyncMicrosoftStoreForBusinessAppsRequestBuilder) WithUrl(rawUrl string)(*SyncMicrosoftStoreForBusinessAppsRequestBuilder) {
+    return NewSyncMicrosoftStoreForBusinessAppsRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

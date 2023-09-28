@@ -85,7 +85,7 @@ func (m *ItemListsItemContentTypesRequestBuilder) Count()(*ItemListsItemContentT
 // Get get the collection of [contentType][contentType] resources in a [list][].
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/list-list-contenttypes?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/list-list-contenttypes?view=graph-rest-1.0
 func (m *ItemListsItemContentTypesRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemListsItemContentTypesRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ContentTypeCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -159,4 +159,8 @@ func (m *ItemListsItemContentTypesRequestBuilder) ToPostRequestInformation(ctx c
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemListsItemContentTypesRequestBuilder) WithUrl(rawUrl string)(*ItemListsItemContentTypesRequestBuilder) {
+    return NewItemListsItemContentTypesRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

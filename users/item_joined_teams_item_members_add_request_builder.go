@@ -33,7 +33,7 @@ func NewItemJoinedTeamsItemMembersAddRequestBuilder(rawUrl string, requestAdapte
 // Post add multiple members in a single request to a team. The response provides details about which memberships could and couldn't be created.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/conversationmembers-add?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/conversationmembers-add?view=graph-rest-1.0
 func (m *ItemJoinedTeamsItemMembersAddRequestBuilder) Post(ctx context.Context, body ItemJoinedTeamsItemMembersAddPostRequestBodyable, requestConfiguration *ItemJoinedTeamsItemMembersAddRequestBuilderPostRequestConfiguration)(ItemJoinedTeamsItemMembersAddResponseable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -68,4 +68,8 @@ func (m *ItemJoinedTeamsItemMembersAddRequestBuilder) ToPostRequestInformation(c
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemJoinedTeamsItemMembersAddRequestBuilder) WithUrl(rawUrl string)(*ItemJoinedTeamsItemMembersAddRequestBuilder) {
+    return NewItemJoinedTeamsItemMembersAddRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

@@ -77,7 +77,7 @@ func (m *ItemServiceConfigurationRecordsRequestBuilder) Count()(*ItemServiceConf
 // Get retrieves a list of domainDnsRecord objects needed to enable services for the domain. Use the returned list to add records to the zone file of the domain. This can be done through the domain registrar or DNS server configuration.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/domain-list-serviceconfigurationrecords?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/domain-list-serviceconfigurationrecords?view=graph-rest-1.0
 func (m *ItemServiceConfigurationRecordsRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemServiceConfigurationRecordsRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.DomainDnsRecordCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -147,4 +147,8 @@ func (m *ItemServiceConfigurationRecordsRequestBuilder) ToPostRequestInformation
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemServiceConfigurationRecordsRequestBuilder) WithUrl(rawUrl string)(*ItemServiceConfigurationRecordsRequestBuilder) {
+    return NewItemServiceConfigurationRecordsRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

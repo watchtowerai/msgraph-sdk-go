@@ -73,7 +73,7 @@ func (m *ItemItemsItemWorkbookWorksheetsItemProtectionRequestBuilder) Delete(ctx
 // Get retrieve the properties and relationships of worksheetprotection object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/worksheetprotection-get?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/worksheetprotection-get?view=graph-rest-1.0
 func (m *ItemItemsItemWorkbookWorksheetsItemProtectionRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemItemsItemWorkbookWorksheetsItemProtectionRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.WorkbookWorksheetProtectionable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -163,4 +163,8 @@ func (m *ItemItemsItemWorkbookWorksheetsItemProtectionRequestBuilder) ToPatchReq
 // Unprotect provides operations to call the unprotect method.
 func (m *ItemItemsItemWorkbookWorksheetsItemProtectionRequestBuilder) Unprotect()(*ItemItemsItemWorkbookWorksheetsItemProtectionUnprotectRequestBuilder) {
     return NewItemItemsItemWorkbookWorksheetsItemProtectionUnprotectRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemItemsItemWorkbookWorksheetsItemProtectionRequestBuilder) WithUrl(rawUrl string)(*ItemItemsItemWorkbookWorksheetsItemProtectionRequestBuilder) {
+    return NewItemItemsItemWorkbookWorksheetsItemProtectionRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

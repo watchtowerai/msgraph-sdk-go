@@ -77,7 +77,7 @@ func (m *TaskDefinitionsItemTasksPrintTaskItemRequestBuilder) Delete(ctx context
 // Get get details about a print task. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/printtask-get?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/printtask-get?view=graph-rest-1.0
 func (m *TaskDefinitionsItemTasksPrintTaskItemRequestBuilder) Get(ctx context.Context, requestConfiguration *TaskDefinitionsItemTasksPrintTaskItemRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.PrintTaskable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -99,7 +99,7 @@ func (m *TaskDefinitionsItemTasksPrintTaskItemRequestBuilder) Get(ctx context.Co
 // Patch update a print task. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/printtaskdefinition-update-task?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/printtaskdefinition-update-task?view=graph-rest-1.0
 func (m *TaskDefinitionsItemTasksPrintTaskItemRequestBuilder) Patch(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.PrintTaskable, requestConfiguration *TaskDefinitionsItemTasksPrintTaskItemRequestBuilderPatchRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.PrintTaskable, error) {
     requestInfo, err := m.ToPatchRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -166,4 +166,8 @@ func (m *TaskDefinitionsItemTasksPrintTaskItemRequestBuilder) ToPatchRequestInfo
 // Trigger provides operations to manage the trigger property of the microsoft.graph.printTask entity.
 func (m *TaskDefinitionsItemTasksPrintTaskItemRequestBuilder) Trigger()(*TaskDefinitionsItemTasksItemTriggerRequestBuilder) {
     return NewTaskDefinitionsItemTasksItemTriggerRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *TaskDefinitionsItemTasksPrintTaskItemRequestBuilder) WithUrl(rawUrl string)(*TaskDefinitionsItemTasksPrintTaskItemRequestBuilder) {
+    return NewTaskDefinitionsItemTasksPrintTaskItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

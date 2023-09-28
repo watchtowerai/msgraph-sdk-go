@@ -79,7 +79,7 @@ func (m *UsersRequestBuilder) Delta()(*DeltaRequestBuilder) {
 // Get retrieve a list of user objects.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/user-list?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/user-list?view=graph-rest-1.0
 func (m *UsersRequestBuilder) Get(ctx context.Context, requestConfiguration *UsersRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.UserCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -109,7 +109,7 @@ func (m *UsersRequestBuilder) GetByIds()(*GetByIdsRequestBuilder) {
 // Post create a new user.The request body contains the user to create. At a minimum, you must specify the required properties for the user. You can optionally specify any other writable properties.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0
 func (m *UsersRequestBuilder) Post(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.Userable, requestConfiguration *UsersRequestBuilderPostRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.Userable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -164,4 +164,8 @@ func (m *UsersRequestBuilder) ToPostRequestInformation(ctx context.Context, body
 // ValidateProperties provides operations to call the validateProperties method.
 func (m *UsersRequestBuilder) ValidateProperties()(*ValidatePropertiesRequestBuilder) {
     return NewValidatePropertiesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *UsersRequestBuilder) WithUrl(rawUrl string)(*UsersRequestBuilder) {
+    return NewUsersRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

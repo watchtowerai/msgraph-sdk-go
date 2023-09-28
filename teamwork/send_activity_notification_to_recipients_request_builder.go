@@ -33,7 +33,7 @@ func NewSendActivityNotificationToRecipientsRequestBuilder(rawUrl string, reques
 // Post send activity feed notifications to multiple users, in bulk.  For more details about sending notifications and the requirements for doing so, seesending Teams activity notifications.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/teamwork-sendactivitynotificationtorecipients?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/teamwork-sendactivitynotificationtorecipients?view=graph-rest-1.0
 func (m *SendActivityNotificationToRecipientsRequestBuilder) Post(ctx context.Context, body SendActivityNotificationToRecipientsPostRequestBodyable, requestConfiguration *SendActivityNotificationToRecipientsRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -64,4 +64,8 @@ func (m *SendActivityNotificationToRecipientsRequestBuilder) ToPostRequestInform
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *SendActivityNotificationToRecipientsRequestBuilder) WithUrl(rawUrl string)(*SendActivityNotificationToRecipientsRequestBuilder) {
+    return NewSendActivityNotificationToRecipientsRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

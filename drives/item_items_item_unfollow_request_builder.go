@@ -33,7 +33,7 @@ func NewItemItemsItemUnfollowRequestBuilder(rawUrl string, requestAdapter i2ae41
 // Post unfollow a driveItem.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/driveitem-unfollow?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/driveitem-unfollow?view=graph-rest-1.0
 func (m *ItemItemsItemUnfollowRequestBuilder) Post(ctx context.Context, requestConfiguration *ItemItemsItemUnfollowRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -60,4 +60,8 @@ func (m *ItemItemsItemUnfollowRequestBuilder) ToPostRequestInformation(ctx conte
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemItemsItemUnfollowRequestBuilder) WithUrl(rawUrl string)(*ItemItemsItemUnfollowRequestBuilder) {
+    return NewItemItemsItemUnfollowRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

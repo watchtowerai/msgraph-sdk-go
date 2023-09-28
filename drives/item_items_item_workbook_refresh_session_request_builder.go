@@ -33,7 +33,7 @@ func NewItemItemsItemWorkbookRefreshSessionRequestBuilder(rawUrl string, request
 // Post use this API to refresh an existing workbook session. 
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/workbook-refreshsession?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/workbook-refreshsession?view=graph-rest-1.0
 func (m *ItemItemsItemWorkbookRefreshSessionRequestBuilder) Post(ctx context.Context, requestConfiguration *ItemItemsItemWorkbookRefreshSessionRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -60,4 +60,8 @@ func (m *ItemItemsItemWorkbookRefreshSessionRequestBuilder) ToPostRequestInforma
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemItemsItemWorkbookRefreshSessionRequestBuilder) WithUrl(rawUrl string)(*ItemItemsItemWorkbookRefreshSessionRequestBuilder) {
+    return NewItemItemsItemWorkbookRefreshSessionRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

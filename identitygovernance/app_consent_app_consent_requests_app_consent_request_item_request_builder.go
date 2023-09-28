@@ -73,7 +73,7 @@ func (m *AppConsentAppConsentRequestsAppConsentRequestItemRequestBuilder) Delete
 // Get read the properties and relationships of an appConsentRequest object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/appconsentrequest-get?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/appconsentrequest-get?view=graph-rest-1.0
 func (m *AppConsentAppConsentRequestsAppConsentRequestItemRequestBuilder) Get(ctx context.Context, requestConfiguration *AppConsentAppConsentRequestsAppConsentRequestItemRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.AppConsentRequestable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -159,4 +159,8 @@ func (m *AppConsentAppConsentRequestsAppConsentRequestItemRequestBuilder) ToPatc
 // UserConsentRequests provides operations to manage the userConsentRequests property of the microsoft.graph.appConsentRequest entity.
 func (m *AppConsentAppConsentRequestsAppConsentRequestItemRequestBuilder) UserConsentRequests()(*AppConsentAppConsentRequestsItemUserConsentRequestsRequestBuilder) {
     return NewAppConsentAppConsentRequestsItemUserConsentRequestsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *AppConsentAppConsentRequestsAppConsentRequestItemRequestBuilder) WithUrl(rawUrl string)(*AppConsentAppConsentRequestsAppConsentRequestItemRequestBuilder) {
+    return NewAppConsentAppConsentRequestsAppConsentRequestItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

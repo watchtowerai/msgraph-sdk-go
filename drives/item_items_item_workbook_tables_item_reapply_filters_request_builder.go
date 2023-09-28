@@ -33,7 +33,7 @@ func NewItemItemsItemWorkbookTablesItemReapplyFiltersRequestBuilder(rawUrl strin
 // Post reapplies all the filters currently on the table.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/table-reapplyfilters?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/table-reapplyfilters?view=graph-rest-1.0
 func (m *ItemItemsItemWorkbookTablesItemReapplyFiltersRequestBuilder) Post(ctx context.Context, requestConfiguration *ItemItemsItemWorkbookTablesItemReapplyFiltersRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -60,4 +60,8 @@ func (m *ItemItemsItemWorkbookTablesItemReapplyFiltersRequestBuilder) ToPostRequ
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemItemsItemWorkbookTablesItemReapplyFiltersRequestBuilder) WithUrl(rawUrl string)(*ItemItemsItemWorkbookTablesItemReapplyFiltersRequestBuilder) {
+    return NewItemItemsItemWorkbookTablesItemReapplyFiltersRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

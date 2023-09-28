@@ -73,7 +73,7 @@ func (m *ItemItemsItemWorkbookCommentsItemRepliesWorkbookCommentReplyItemRequest
 // Get retrieve the properties and relationships of workbookCommentReply object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/workbookcommentreply-get?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/workbookcommentreply-get?view=graph-rest-1.0
 func (m *ItemItemsItemWorkbookCommentsItemRepliesWorkbookCommentReplyItemRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemItemsItemWorkbookCommentsItemRepliesWorkbookCommentReplyItemRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.WorkbookCommentReplyable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -155,4 +155,8 @@ func (m *ItemItemsItemWorkbookCommentsItemRepliesWorkbookCommentReplyItemRequest
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemItemsItemWorkbookCommentsItemRepliesWorkbookCommentReplyItemRequestBuilder) WithUrl(rawUrl string)(*ItemItemsItemWorkbookCommentsItemRepliesWorkbookCommentReplyItemRequestBuilder) {
+    return NewItemItemsItemWorkbookCommentsItemRepliesWorkbookCommentReplyItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

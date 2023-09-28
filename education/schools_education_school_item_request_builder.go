@@ -65,7 +65,7 @@ func NewSchoolsEducationSchoolItemRequestBuilder(rawUrl string, requestAdapter i
 // Delete delete a school.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/educationschool-delete?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/educationschool-delete?view=graph-rest-1.0
 func (m *SchoolsEducationSchoolItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *SchoolsEducationSchoolItemRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -84,7 +84,7 @@ func (m *SchoolsEducationSchoolItemRequestBuilder) Delete(ctx context.Context, r
 // Get read the properties and relationships of an educationSchool object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/educationschool-get?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/educationschool-get?view=graph-rest-1.0
 func (m *SchoolsEducationSchoolItemRequestBuilder) Get(ctx context.Context, requestConfiguration *SchoolsEducationSchoolItemRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.EducationSchoolable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -106,7 +106,7 @@ func (m *SchoolsEducationSchoolItemRequestBuilder) Get(ctx context.Context, requ
 // Patch update the properties of an educationSchool object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/educationschool-update?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/educationschool-update?view=graph-rest-1.0
 func (m *SchoolsEducationSchoolItemRequestBuilder) Patch(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.EducationSchoolable, requestConfiguration *SchoolsEducationSchoolItemRequestBuilderPatchRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.EducationSchoolable, error) {
     requestInfo, err := m.ToPatchRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -173,4 +173,8 @@ func (m *SchoolsEducationSchoolItemRequestBuilder) ToPatchRequestInformation(ctx
 // Users provides operations to manage the users property of the microsoft.graph.educationSchool entity.
 func (m *SchoolsEducationSchoolItemRequestBuilder) Users()(*SchoolsItemUsersRequestBuilder) {
     return NewSchoolsItemUsersRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *SchoolsEducationSchoolItemRequestBuilder) WithUrl(rawUrl string)(*SchoolsEducationSchoolItemRequestBuilder) {
+    return NewSchoolsEducationSchoolItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

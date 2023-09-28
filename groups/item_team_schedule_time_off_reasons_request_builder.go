@@ -75,7 +75,7 @@ func (m *ItemTeamScheduleTimeOffReasonsRequestBuilder) Count()(*ItemTeamSchedule
 // Get get the list of timeOffReasons in a schedule.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/schedule-list-timeoffreasons?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/schedule-list-timeoffreasons?view=graph-rest-1.0
 func (m *ItemTeamScheduleTimeOffReasonsRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemTeamScheduleTimeOffReasonsRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.TimeOffReasonCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -97,7 +97,7 @@ func (m *ItemTeamScheduleTimeOffReasonsRequestBuilder) Get(ctx context.Context, 
 // Post create a new timeOffReason.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/schedule-post-timeoffreasons?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/schedule-post-timeoffreasons?view=graph-rest-1.0
 func (m *ItemTeamScheduleTimeOffReasonsRequestBuilder) Post(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.TimeOffReasonable, requestConfiguration *ItemTeamScheduleTimeOffReasonsRequestBuilderPostRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.TimeOffReasonable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -148,4 +148,8 @@ func (m *ItemTeamScheduleTimeOffReasonsRequestBuilder) ToPostRequestInformation(
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemTeamScheduleTimeOffReasonsRequestBuilder) WithUrl(rawUrl string)(*ItemTeamScheduleTimeOffReasonsRequestBuilder) {
+    return NewItemTeamScheduleTimeOffReasonsRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

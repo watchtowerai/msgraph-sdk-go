@@ -33,7 +33,7 @@ func NewPrintersItemJobsItemCancelRequestBuilder(rawUrl string, requestAdapter i
 // Post cancel a print job. Print jobs can be canceled only on behalf of a user, using delegated permissions.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/printjob-cancel?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/printjob-cancel?view=graph-rest-1.0
 func (m *PrintersItemJobsItemCancelRequestBuilder) Post(ctx context.Context, requestConfiguration *PrintersItemJobsItemCancelRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -60,4 +60,8 @@ func (m *PrintersItemJobsItemCancelRequestBuilder) ToPostRequestInformation(ctx 
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *PrintersItemJobsItemCancelRequestBuilder) WithUrl(rawUrl string)(*PrintersItemJobsItemCancelRequestBuilder) {
+    return NewPrintersItemJobsItemCancelRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

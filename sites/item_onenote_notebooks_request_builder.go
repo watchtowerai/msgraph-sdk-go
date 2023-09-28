@@ -77,7 +77,7 @@ func (m *ItemOnenoteNotebooksRequestBuilder) Count()(*ItemOnenoteNotebooksCountR
 // Get retrieve a list of notebook objects.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/onenote-list-notebooks?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/onenote-list-notebooks?view=graph-rest-1.0
 func (m *ItemOnenoteNotebooksRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemOnenoteNotebooksRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.NotebookCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -107,7 +107,7 @@ func (m *ItemOnenoteNotebooksRequestBuilder) GetRecentNotebooksWithIncludePerson
 // Post create a new OneNote notebook.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/onenote-post-notebooks?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/onenote-post-notebooks?view=graph-rest-1.0
 func (m *ItemOnenoteNotebooksRequestBuilder) Post(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.Notebookable, requestConfiguration *ItemOnenoteNotebooksRequestBuilderPostRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.Notebookable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -158,4 +158,8 @@ func (m *ItemOnenoteNotebooksRequestBuilder) ToPostRequestInformation(ctx contex
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemOnenoteNotebooksRequestBuilder) WithUrl(rawUrl string)(*ItemOnenoteNotebooksRequestBuilder) {
+    return NewItemOnenoteNotebooksRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

@@ -34,7 +34,7 @@ func NewCallsItemUpdateRecordingStatusRequestBuilder(rawUrl string, requestAdapt
 // Post update the application's recording status associated with a call. This requires the use of the Teams policy-based recording solution.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/call-updaterecordingstatus?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/call-updaterecordingstatus?view=graph-rest-1.0
 func (m *CallsItemUpdateRecordingStatusRequestBuilder) Post(ctx context.Context, body CallsItemUpdateRecordingStatusPostRequestBodyable, requestConfiguration *CallsItemUpdateRecordingStatusRequestBuilderPostRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.UpdateRecordingStatusOperationable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -69,4 +69,8 @@ func (m *CallsItemUpdateRecordingStatusRequestBuilder) ToPostRequestInformation(
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *CallsItemUpdateRecordingStatusRequestBuilder) WithUrl(rawUrl string)(*CallsItemUpdateRecordingStatusRequestBuilder) {
+    return NewCallsItemUpdateRecordingStatusRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

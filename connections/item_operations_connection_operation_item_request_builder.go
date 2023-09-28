@@ -73,7 +73,7 @@ func (m *ItemOperationsConnectionOperationItemRequestBuilder) Delete(ctx context
 // Get read the properties and relationships of a connectionOperation object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/externalconnectors-connectionoperation-get?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/externalconnectors-connectionoperation-get?view=graph-rest-1.0
 func (m *ItemOperationsConnectionOperationItemRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemOperationsConnectionOperationItemRequestBuilderGetRequestConfiguration)(i648e92ed22999203da3c8fad3bc63deefe974fd0d511e7f830d70ea0aff57ffc.ConnectionOperationable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -155,4 +155,8 @@ func (m *ItemOperationsConnectionOperationItemRequestBuilder) ToPatchRequestInfo
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemOperationsConnectionOperationItemRequestBuilder) WithUrl(rawUrl string)(*ItemOperationsConnectionOperationItemRequestBuilder) {
+    return NewItemOperationsConnectionOperationItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

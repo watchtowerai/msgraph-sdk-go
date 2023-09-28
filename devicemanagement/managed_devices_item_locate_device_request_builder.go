@@ -31,6 +31,9 @@ func NewManagedDevicesItemLocateDeviceRequestBuilder(rawUrl string, requestAdapt
     return NewManagedDevicesItemLocateDeviceRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Post locate a device
+// [Find more info here]
+// 
+// [Find more info here]: https://learn.microsoft.com/graph/api/intune-devices-manageddevice-locatedevice?view=graph-rest-1.0
 func (m *ManagedDevicesItemLocateDeviceRequestBuilder) Post(ctx context.Context, requestConfiguration *ManagedDevicesItemLocateDeviceRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -57,4 +60,8 @@ func (m *ManagedDevicesItemLocateDeviceRequestBuilder) ToPostRequestInformation(
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ManagedDevicesItemLocateDeviceRequestBuilder) WithUrl(rawUrl string)(*ManagedDevicesItemLocateDeviceRequestBuilder) {
+    return NewManagedDevicesItemLocateDeviceRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

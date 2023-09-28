@@ -10,7 +10,7 @@ import (
 type Application struct {
     DirectoryObject
 }
-// NewApplication instantiates a new Application and sets the default values.
+// NewApplication instantiates a new application and sets the default values.
 func NewApplication()(*Application) {
     m := &Application{
         DirectoryObject: *NewDirectoryObject(),
@@ -100,7 +100,7 @@ func (m *Application) GetCertification()(Certificationable) {
     }
     return nil
 }
-// GetCreatedDateTime gets the createdDateTime property value. The date and time the application was registered. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.  Supports $filter (eq, ne, not, ge, le, in, and eq on null values) and $orderBy.
+// GetCreatedDateTime gets the createdDateTime property value. The date and time the application was registered. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.  Supports $filter (eq, ne, not, ge, le, in, and eq on null values) and $orderby.
 func (m *Application) GetCreatedDateTime()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time) {
     val, err := m.GetBackingStore().Get("createdDateTime")
     if err != nil {
@@ -155,7 +155,7 @@ func (m *Application) GetDisabledByMicrosoftStatus()(*string) {
     }
     return nil
 }
-// GetDisplayName gets the displayName property value. The display name for the application. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderBy.
+// GetDisplayName gets the displayName property value. The display name for the application. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderby.
 func (m *Application) GetDisplayName()(*string) {
     val, err := m.GetBackingStore().Get("displayName")
     if err != nil {
@@ -607,6 +607,16 @@ func (m *Application) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26
         }
         return nil
     }
+    res["servicePrincipalLockConfiguration"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreateServicePrincipalLockConfigurationFromDiscriminatorValue)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetServicePrincipalLockConfiguration(val.(ServicePrincipalLockConfigurationable))
+        }
+        return nil
+    }
     res["signInAudience"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -838,7 +848,7 @@ func (m *Application) GetOptionalClaims()(OptionalClaimsable) {
     }
     return nil
 }
-// GetOwners gets the owners property value. Directory objects that are owners of the application. Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
+// GetOwners gets the owners property value. Directory objects that are owners of the application. Read-only. Nullable. Supports $expand, $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1), and $select nested in $expand.
 func (m *Application) GetOwners()([]DirectoryObjectable) {
     val, err := m.GetBackingStore().Get("owners")
     if err != nil {
@@ -937,6 +947,17 @@ func (m *Application) GetServiceManagementReference()(*string) {
     }
     return nil
 }
+// GetServicePrincipalLockConfiguration gets the servicePrincipalLockConfiguration property value. Specifies whether sensitive properties of a multi-tenant application should be locked for editing after the application is provisioned in a tenant. Nullable. null by default.
+func (m *Application) GetServicePrincipalLockConfiguration()(ServicePrincipalLockConfigurationable) {
+    val, err := m.GetBackingStore().Get("servicePrincipalLockConfiguration")
+    if err != nil {
+        panic(err)
+    }
+    if val != nil {
+        return val.(ServicePrincipalLockConfigurationable)
+    }
+    return nil
+}
 // GetSignInAudience gets the signInAudience property value. Specifies the Microsoft accounts that are supported for the current application. The possible values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount (default), and PersonalMicrosoftAccount. See more in the table. The value of this object also limits the number of permissions an app can request. For more information, see Limits on requested permissions per app. The value for this property has implications on other app object properties. As a result, if you change this property, you may need to change other properties first. For more information, see Validation differences for signInAudience.Supports $filter (eq, ne, not).
 func (m *Application) GetSignInAudience()(*string) {
     val, err := m.GetBackingStore().Get("signInAudience")
@@ -959,7 +980,7 @@ func (m *Application) GetSpa()(SpaApplicationable) {
     }
     return nil
 }
-// GetSynchronization gets the synchronization property value. The synchronization property
+// GetSynchronization gets the synchronization property value. Represents the capability for Azure Active Directory (Azure AD) identity synchronization through the Microsoft Graph API.
 func (m *Application) GetSynchronization()(Synchronizationable) {
     val, err := m.GetBackingStore().Get("synchronization")
     if err != nil {
@@ -1313,6 +1334,12 @@ func (m *Application) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6
         }
     }
     {
+        err = writer.WriteObjectValue("servicePrincipalLockConfiguration", m.GetServicePrincipalLockConfiguration())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err = writer.WriteStringValue("signInAudience", m.GetSignInAudience())
         if err != nil {
             return err
@@ -1429,7 +1456,7 @@ func (m *Application) SetCertification(value Certificationable)() {
         panic(err)
     }
 }
-// SetCreatedDateTime sets the createdDateTime property value. The date and time the application was registered. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.  Supports $filter (eq, ne, not, ge, le, in, and eq on null values) and $orderBy.
+// SetCreatedDateTime sets the createdDateTime property value. The date and time the application was registered. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.  Supports $filter (eq, ne, not, ge, le, in, and eq on null values) and $orderby.
 func (m *Application) SetCreatedDateTime(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)() {
     err := m.GetBackingStore().Set("createdDateTime", value)
     if err != nil {
@@ -1464,7 +1491,7 @@ func (m *Application) SetDisabledByMicrosoftStatus(value *string)() {
         panic(err)
     }
 }
-// SetDisplayName sets the displayName property value. The display name for the application. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderBy.
+// SetDisplayName sets the displayName property value. The display name for the application. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderby.
 func (m *Application) SetDisplayName(value *string)() {
     err := m.GetBackingStore().Set("displayName", value)
     if err != nil {
@@ -1562,7 +1589,7 @@ func (m *Application) SetOptionalClaims(value OptionalClaimsable)() {
         panic(err)
     }
 }
-// SetOwners sets the owners property value. Directory objects that are owners of the application. Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
+// SetOwners sets the owners property value. Directory objects that are owners of the application. Read-only. Nullable. Supports $expand, $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1), and $select nested in $expand.
 func (m *Application) SetOwners(value []DirectoryObjectable)() {
     err := m.GetBackingStore().Set("owners", value)
     if err != nil {
@@ -1625,6 +1652,13 @@ func (m *Application) SetServiceManagementReference(value *string)() {
         panic(err)
     }
 }
+// SetServicePrincipalLockConfiguration sets the servicePrincipalLockConfiguration property value. Specifies whether sensitive properties of a multi-tenant application should be locked for editing after the application is provisioned in a tenant. Nullable. null by default.
+func (m *Application) SetServicePrincipalLockConfiguration(value ServicePrincipalLockConfigurationable)() {
+    err := m.GetBackingStore().Set("servicePrincipalLockConfiguration", value)
+    if err != nil {
+        panic(err)
+    }
+}
 // SetSignInAudience sets the signInAudience property value. Specifies the Microsoft accounts that are supported for the current application. The possible values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount (default), and PersonalMicrosoftAccount. See more in the table. The value of this object also limits the number of permissions an app can request. For more information, see Limits on requested permissions per app. The value for this property has implications on other app object properties. As a result, if you change this property, you may need to change other properties first. For more information, see Validation differences for signInAudience.Supports $filter (eq, ne, not).
 func (m *Application) SetSignInAudience(value *string)() {
     err := m.GetBackingStore().Set("signInAudience", value)
@@ -1639,7 +1673,7 @@ func (m *Application) SetSpa(value SpaApplicationable)() {
         panic(err)
     }
 }
-// SetSynchronization sets the synchronization property value. The synchronization property
+// SetSynchronization sets the synchronization property value. Represents the capability for Azure Active Directory (Azure AD) identity synchronization through the Microsoft Graph API.
 func (m *Application) SetSynchronization(value Synchronizationable)() {
     err := m.GetBackingStore().Set("synchronization", value)
     if err != nil {
@@ -1727,6 +1761,7 @@ type Applicationable interface {
     GetRequiredResourceAccess()([]RequiredResourceAccessable)
     GetSamlMetadataUrl()(*string)
     GetServiceManagementReference()(*string)
+    GetServicePrincipalLockConfiguration()(ServicePrincipalLockConfigurationable)
     GetSignInAudience()(*string)
     GetSpa()(SpaApplicationable)
     GetSynchronization()(Synchronizationable)
@@ -1771,6 +1806,7 @@ type Applicationable interface {
     SetRequiredResourceAccess(value []RequiredResourceAccessable)()
     SetSamlMetadataUrl(value *string)()
     SetServiceManagementReference(value *string)()
+    SetServicePrincipalLockConfiguration(value ServicePrincipalLockConfigurationable)()
     SetSignInAudience(value *string)()
     SetSpa(value SpaApplicationable)()
     SetSynchronization(value Synchronizationable)()

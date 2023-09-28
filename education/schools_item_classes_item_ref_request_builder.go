@@ -40,7 +40,7 @@ func NewSchoolsItemClassesItemRefRequestBuilder(rawUrl string, requestAdapter i2
 // Delete delete a class from a school.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/educationschool-delete-classes?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/educationschool-delete-classes?view=graph-rest-1.0
 func (m *SchoolsItemClassesItemRefRequestBuilder) Delete(ctx context.Context, requestConfiguration *SchoolsItemClassesItemRefRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -70,4 +70,8 @@ func (m *SchoolsItemClassesItemRefRequestBuilder) ToDeleteRequestInformation(ctx
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *SchoolsItemClassesItemRefRequestBuilder) WithUrl(rawUrl string)(*SchoolsItemClassesItemRefRequestBuilder) {
+    return NewSchoolsItemClassesItemRefRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

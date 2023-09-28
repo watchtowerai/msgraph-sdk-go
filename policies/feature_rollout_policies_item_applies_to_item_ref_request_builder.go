@@ -40,7 +40,7 @@ func NewFeatureRolloutPoliciesItemAppliesToItemRefRequestBuilder(rawUrl string, 
 // Delete remove an appliesTo on a featureRolloutPolicy object to remove the directoryObject from feature rollout.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/featurerolloutpolicy-delete-appliesto?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/featurerolloutpolicy-delete-appliesto?view=graph-rest-1.0
 func (m *FeatureRolloutPoliciesItemAppliesToItemRefRequestBuilder) Delete(ctx context.Context, requestConfiguration *FeatureRolloutPoliciesItemAppliesToItemRefRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -70,4 +70,8 @@ func (m *FeatureRolloutPoliciesItemAppliesToItemRefRequestBuilder) ToDeleteReque
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *FeatureRolloutPoliciesItemAppliesToItemRefRequestBuilder) WithUrl(rawUrl string)(*FeatureRolloutPoliciesItemAppliesToItemRefRequestBuilder) {
+    return NewFeatureRolloutPoliciesItemAppliesToItemRefRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

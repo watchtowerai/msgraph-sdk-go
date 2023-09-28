@@ -77,7 +77,7 @@ func (m *ServicePrincipalRiskDetectionsRequestBuilder) Count()(*ServicePrincipal
 // Get retrieve the properties of a collection of servicePrincipalRiskDetection objects.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/identityprotectionroot-list-serviceprincipalriskdetections?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/identityprotectionroot-list-serviceprincipalriskdetections?view=graph-rest-1.0
 func (m *ServicePrincipalRiskDetectionsRequestBuilder) Get(ctx context.Context, requestConfiguration *ServicePrincipalRiskDetectionsRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ServicePrincipalRiskDetectionCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -147,4 +147,8 @@ func (m *ServicePrincipalRiskDetectionsRequestBuilder) ToPostRequestInformation(
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ServicePrincipalRiskDetectionsRequestBuilder) WithUrl(rawUrl string)(*ServicePrincipalRiskDetectionsRequestBuilder) {
+    return NewServicePrincipalRiskDetectionsRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

@@ -34,7 +34,7 @@ func NewCallsItemUnmuteRequestBuilder(rawUrl string, requestAdapter i2ae4187f7da
 // Post allow the application to unmute itself. This is a server unmute, meaning that the server will start sending audio packets for this participant to other participants again. For more information about how to handle unmute operations, see unmuteParticipantOperation.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/call-unmute?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/call-unmute?view=graph-rest-1.0
 func (m *CallsItemUnmuteRequestBuilder) Post(ctx context.Context, body CallsItemUnmutePostRequestBodyable, requestConfiguration *CallsItemUnmuteRequestBuilderPostRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.UnmuteParticipantOperationable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -69,4 +69,8 @@ func (m *CallsItemUnmuteRequestBuilder) ToPostRequestInformation(ctx context.Con
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *CallsItemUnmuteRequestBuilder) WithUrl(rawUrl string)(*CallsItemUnmuteRequestBuilder) {
+    return NewCallsItemUnmuteRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

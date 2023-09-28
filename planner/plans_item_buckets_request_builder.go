@@ -77,7 +77,7 @@ func (m *PlansItemBucketsRequestBuilder) Count()(*PlansItemBucketsCountRequestBu
 // Get retrieve a list of plannerBucket objects contained by a plannerPlan object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/plannerplan-list-buckets?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/plannerplan-list-buckets?view=graph-rest-1.0
 func (m *PlansItemBucketsRequestBuilder) Get(ctx context.Context, requestConfiguration *PlansItemBucketsRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.PlannerBucketCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -147,4 +147,8 @@ func (m *PlansItemBucketsRequestBuilder) ToPostRequestInformation(ctx context.Co
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *PlansItemBucketsRequestBuilder) WithUrl(rawUrl string)(*PlansItemBucketsRequestBuilder) {
+    return NewPlansItemBucketsRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

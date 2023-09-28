@@ -31,6 +31,9 @@ func NewItemManagedDevicesItemRecoverPasscodeRequestBuilder(rawUrl string, reque
     return NewItemManagedDevicesItemRecoverPasscodeRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Post recover passcode
+// [Find more info here]
+// 
+// [Find more info here]: https://learn.microsoft.com/graph/api/intune-devices-manageddevice-recoverpasscode?view=graph-rest-1.0
 func (m *ItemManagedDevicesItemRecoverPasscodeRequestBuilder) Post(ctx context.Context, requestConfiguration *ItemManagedDevicesItemRecoverPasscodeRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -57,4 +60,8 @@ func (m *ItemManagedDevicesItemRecoverPasscodeRequestBuilder) ToPostRequestInfor
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemManagedDevicesItemRecoverPasscodeRequestBuilder) WithUrl(rawUrl string)(*ItemManagedDevicesItemRecoverPasscodeRequestBuilder) {
+    return NewItemManagedDevicesItemRecoverPasscodeRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

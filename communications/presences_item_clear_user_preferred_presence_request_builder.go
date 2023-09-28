@@ -33,7 +33,7 @@ func NewPresencesItemClearUserPreferredPresenceRequestBuilder(rawUrl string, req
 // Post clear the preferred availability and activity status for a user.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/presence-clearuserpreferredpresence?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/presence-clearuserpreferredpresence?view=graph-rest-1.0
 func (m *PresencesItemClearUserPreferredPresenceRequestBuilder) Post(ctx context.Context, requestConfiguration *PresencesItemClearUserPreferredPresenceRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -60,4 +60,8 @@ func (m *PresencesItemClearUserPreferredPresenceRequestBuilder) ToPostRequestInf
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *PresencesItemClearUserPreferredPresenceRequestBuilder) WithUrl(rawUrl string)(*PresencesItemClearUserPreferredPresenceRequestBuilder) {
+    return NewPresencesItemClearUserPreferredPresenceRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

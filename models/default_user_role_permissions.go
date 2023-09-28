@@ -10,7 +10,7 @@ type DefaultUserRolePermissions struct {
     // Stores model information.
     backingStore ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStore
 }
-// NewDefaultUserRolePermissions instantiates a new DefaultUserRolePermissions and sets the default values.
+// NewDefaultUserRolePermissions instantiates a new defaultUserRolePermissions and sets the default values.
 func NewDefaultUserRolePermissions()(*DefaultUserRolePermissions) {
     m := &DefaultUserRolePermissions{
     }
@@ -78,7 +78,7 @@ func (m *DefaultUserRolePermissions) GetAllowedToReadBitlockerKeysForOwnedDevice
     }
     return nil
 }
-// GetAllowedToReadOtherUsers gets the allowedToReadOtherUsers property value. Indicates whether the default user role can read other users.
+// GetAllowedToReadOtherUsers gets the allowedToReadOtherUsers property value. Indicates whether the default user role can read other users. DO NOT SET THIS VALUE TO false.
 func (m *DefaultUserRolePermissions) GetAllowedToReadOtherUsers()(*bool) {
     val, err := m.GetBackingStore().Get("allowedToReadOtherUsers")
     if err != nil {
@@ -283,7 +283,7 @@ func (m *DefaultUserRolePermissions) SetAllowedToReadBitlockerKeysForOwnedDevice
         panic(err)
     }
 }
-// SetAllowedToReadOtherUsers sets the allowedToReadOtherUsers property value. Indicates whether the default user role can read other users.
+// SetAllowedToReadOtherUsers sets the allowedToReadOtherUsers property value. Indicates whether the default user role can read other users. DO NOT SET THIS VALUE TO false.
 func (m *DefaultUserRolePermissions) SetAllowedToReadOtherUsers(value *bool)() {
     err := m.GetBackingStore().Set("allowedToReadOtherUsers", value)
     if err != nil {

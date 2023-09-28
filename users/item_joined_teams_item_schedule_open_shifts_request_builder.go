@@ -77,7 +77,7 @@ func (m *ItemJoinedTeamsItemScheduleOpenShiftsRequestBuilder) Count()(*ItemJoine
 // Get list openShift objects in a team.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/openshift-list?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/openshift-list?view=graph-rest-1.0
 func (m *ItemJoinedTeamsItemScheduleOpenShiftsRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemJoinedTeamsItemScheduleOpenShiftsRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.OpenShiftCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -99,7 +99,7 @@ func (m *ItemJoinedTeamsItemScheduleOpenShiftsRequestBuilder) Get(ctx context.Co
 // Post create an instance of an openShift object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/openshift-post?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/openshift-post?view=graph-rest-1.0
 func (m *ItemJoinedTeamsItemScheduleOpenShiftsRequestBuilder) Post(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.OpenShiftable, requestConfiguration *ItemJoinedTeamsItemScheduleOpenShiftsRequestBuilderPostRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.OpenShiftable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -150,4 +150,8 @@ func (m *ItemJoinedTeamsItemScheduleOpenShiftsRequestBuilder) ToPostRequestInfor
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemJoinedTeamsItemScheduleOpenShiftsRequestBuilder) WithUrl(rawUrl string)(*ItemJoinedTeamsItemScheduleOpenShiftsRequestBuilder) {
+    return NewItemJoinedTeamsItemScheduleOpenShiftsRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

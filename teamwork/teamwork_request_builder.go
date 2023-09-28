@@ -93,6 +93,10 @@ func (m *TeamworkRequestBuilder) Patch(ctx context.Context, body iadcd81124412c6
 func (m *TeamworkRequestBuilder) SendActivityNotificationToRecipients()(*SendActivityNotificationToRecipientsRequestBuilder) {
     return NewSendActivityNotificationToRecipientsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+// TeamsAppSettings provides operations to manage the teamsAppSettings property of the microsoft.graph.teamwork entity.
+func (m *TeamworkRequestBuilder) TeamsAppSettings()(*TeamsAppSettingsRequestBuilder) {
+    return NewTeamsAppSettingsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
 // ToGetRequestInformation get teamwork
 func (m *TeamworkRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *TeamworkRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
@@ -125,6 +129,10 @@ func (m *TeamworkRequestBuilder) ToPatchRequestInformation(ctx context.Context, 
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *TeamworkRequestBuilder) WithUrl(rawUrl string)(*TeamworkRequestBuilder) {
+    return NewTeamworkRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }
 // WorkforceIntegrations provides operations to manage the workforceIntegrations property of the microsoft.graph.teamwork entity.
 func (m *TeamworkRequestBuilder) WorkforceIntegrations()(*WorkforceIntegrationsRequestBuilder) {

@@ -77,7 +77,7 @@ func (m *RoleManagementPoliciesRequestBuilder) Count()(*RoleManagementPoliciesCo
 // Get get role management policies and their details.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/policyroot-list-rolemanagementpolicies?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/policyroot-list-rolemanagementpolicies?view=graph-rest-1.0
 func (m *RoleManagementPoliciesRequestBuilder) Get(ctx context.Context, requestConfiguration *RoleManagementPoliciesRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.UnifiedRoleManagementPolicyCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -147,4 +147,8 @@ func (m *RoleManagementPoliciesRequestBuilder) ToPostRequestInformation(ctx cont
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *RoleManagementPoliciesRequestBuilder) WithUrl(rawUrl string)(*RoleManagementPoliciesRequestBuilder) {
+    return NewRoleManagementPoliciesRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

@@ -34,7 +34,7 @@ func NewCallsItemSubscribeToToneRequestBuilder(rawUrl string, requestAdapter i2a
 // Post subscribe to DTMF (dual-tone multi-frequency signaling). This allows you to be notified when the user presses keys on a 'dialpad'.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/call-subscribetotone?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/call-subscribetotone?view=graph-rest-1.0
 func (m *CallsItemSubscribeToToneRequestBuilder) Post(ctx context.Context, body CallsItemSubscribeToTonePostRequestBodyable, requestConfiguration *CallsItemSubscribeToToneRequestBuilderPostRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.SubscribeToToneOperationable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -69,4 +69,8 @@ func (m *CallsItemSubscribeToToneRequestBuilder) ToPostRequestInformation(ctx co
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *CallsItemSubscribeToToneRequestBuilder) WithUrl(rawUrl string)(*CallsItemSubscribeToToneRequestBuilder) {
+    return NewCallsItemSubscribeToToneRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

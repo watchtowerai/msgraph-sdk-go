@@ -70,7 +70,7 @@ func (m *ItemMembersRequestBuilder) Count()(*ItemMembersCountRequestBuilder) {
 // Get users that are members of this directory role. HTTP Methods: GET, POST, DELETE. Read-only. Nullable. Supports $expand.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/directoryrole-list-members?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/directoryrole-list-members?view=graph-rest-1.0
 func (m *ItemMembersRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemMembersRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.DirectoryObjectCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -132,4 +132,8 @@ func (m *ItemMembersRequestBuilder) ToGetRequestInformation(ctx context.Context,
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemMembersRequestBuilder) WithUrl(rawUrl string)(*ItemMembersRequestBuilder) {
+    return NewItemMembersRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

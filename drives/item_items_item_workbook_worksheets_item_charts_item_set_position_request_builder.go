@@ -33,7 +33,7 @@ func NewItemItemsItemWorkbookWorksheetsItemChartsItemSetPositionRequestBuilder(r
 // Post positions the chart relative to cells on the worksheet.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/chart-setposition?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/chart-setposition?view=graph-rest-1.0
 func (m *ItemItemsItemWorkbookWorksheetsItemChartsItemSetPositionRequestBuilder) Post(ctx context.Context, body ItemItemsItemWorkbookWorksheetsItemChartsItemSetPositionPostRequestBodyable, requestConfiguration *ItemItemsItemWorkbookWorksheetsItemChartsItemSetPositionRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -64,4 +64,8 @@ func (m *ItemItemsItemWorkbookWorksheetsItemChartsItemSetPositionRequestBuilder)
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemItemsItemWorkbookWorksheetsItemChartsItemSetPositionRequestBuilder) WithUrl(rawUrl string)(*ItemItemsItemWorkbookWorksheetsItemChartsItemSetPositionRequestBuilder) {
+    return NewItemItemsItemWorkbookWorksheetsItemChartsItemSetPositionRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

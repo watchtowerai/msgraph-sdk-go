@@ -33,7 +33,7 @@ func NewItemRemoveGroupRequestBuilder(rawUrl string, requestAdapter i2ae4187f7da
 // Post removes a group from a lifecycle policy.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/grouplifecyclepolicy-removegroup?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/grouplifecyclepolicy-removegroup?view=graph-rest-1.0
 func (m *ItemRemoveGroupRequestBuilder) Post(ctx context.Context, body ItemRemoveGroupPostRequestBodyable, requestConfiguration *ItemRemoveGroupRequestBuilderPostRequestConfiguration)(ItemRemoveGroupResponseable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -68,4 +68,8 @@ func (m *ItemRemoveGroupRequestBuilder) ToPostRequestInformation(ctx context.Con
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemRemoveGroupRequestBuilder) WithUrl(rawUrl string)(*ItemRemoveGroupRequestBuilder) {
+    return NewItemRemoveGroupRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

@@ -40,7 +40,7 @@ func NewB2xUserFlowsItemLanguagesItemOverridesPagesItemValueContentRequestBuilde
 // Get get media content for the navigation property overridesPages from identity
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/userflowlanguageconfiguration-list-overridespages?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/userflowlanguageconfiguration-list-overridespages?view=graph-rest-1.0
 func (m *B2xUserFlowsItemLanguagesItemOverridesPagesItemValueContentRequestBuilder) Get(ctx context.Context, requestConfiguration *B2xUserFlowsItemLanguagesItemOverridesPagesItemValueContentRequestBuilderGetRequestConfiguration)([]byte, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -102,4 +102,8 @@ func (m *B2xUserFlowsItemLanguagesItemOverridesPagesItemValueContentRequestBuild
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *B2xUserFlowsItemLanguagesItemOverridesPagesItemValueContentRequestBuilder) WithUrl(rawUrl string)(*B2xUserFlowsItemLanguagesItemOverridesPagesItemValueContentRequestBuilder) {
+    return NewB2xUserFlowsItemLanguagesItemOverridesPagesItemValueContentRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

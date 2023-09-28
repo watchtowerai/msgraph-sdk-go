@@ -77,7 +77,7 @@ func (m *HomeRealmDiscoveryPoliciesRequestBuilder) Count()(*HomeRealmDiscoveryPo
 // Get get a list of homeRealmDiscoveryPolicy objects.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/homerealmdiscoverypolicy-list?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/homerealmdiscoverypolicy-list?view=graph-rest-1.0
 func (m *HomeRealmDiscoveryPoliciesRequestBuilder) Get(ctx context.Context, requestConfiguration *HomeRealmDiscoveryPoliciesRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.HomeRealmDiscoveryPolicyCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -99,7 +99,7 @@ func (m *HomeRealmDiscoveryPoliciesRequestBuilder) Get(ctx context.Context, requ
 // Post create a new homeRealmDiscoveryPolicy object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/homerealmdiscoverypolicy-post-homerealmdiscoverypolicies?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/homerealmdiscoverypolicy-post-homerealmdiscoverypolicies?view=graph-rest-1.0
 func (m *HomeRealmDiscoveryPoliciesRequestBuilder) Post(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.HomeRealmDiscoveryPolicyable, requestConfiguration *HomeRealmDiscoveryPoliciesRequestBuilderPostRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.HomeRealmDiscoveryPolicyable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -150,4 +150,8 @@ func (m *HomeRealmDiscoveryPoliciesRequestBuilder) ToPostRequestInformation(ctx 
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *HomeRealmDiscoveryPoliciesRequestBuilder) WithUrl(rawUrl string)(*HomeRealmDiscoveryPoliciesRequestBuilder) {
+    return NewHomeRealmDiscoveryPoliciesRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

@@ -79,7 +79,7 @@ func (m *ItemCalendarCalendarViewItemAttachmentsRequestBuilder) CreateUploadSess
 // Get retrieve a list of attachment objects attached to an event.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/event-list-attachments?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/event-list-attachments?view=graph-rest-1.0
 func (m *ItemCalendarCalendarViewItemAttachmentsRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemCalendarCalendarViewItemAttachmentsRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.AttachmentCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -101,7 +101,7 @@ func (m *ItemCalendarCalendarViewItemAttachmentsRequestBuilder) Get(ctx context.
 // Post use this API to add an attachment to an existing event. This operation limits the size of the attachment you can add to under 3 MB. If an organizer adds an attachment to a meeting event, the organizer can subsequently update the event to send the attachment and update the event for each attendee as well.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/event-post-attachments?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/event-post-attachments?view=graph-rest-1.0
 func (m *ItemCalendarCalendarViewItemAttachmentsRequestBuilder) Post(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.Attachmentable, requestConfiguration *ItemCalendarCalendarViewItemAttachmentsRequestBuilderPostRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.Attachmentable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -152,4 +152,8 @@ func (m *ItemCalendarCalendarViewItemAttachmentsRequestBuilder) ToPostRequestInf
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemCalendarCalendarViewItemAttachmentsRequestBuilder) WithUrl(rawUrl string)(*ItemCalendarCalendarViewItemAttachmentsRequestBuilder) {
+    return NewItemCalendarCalendarViewItemAttachmentsRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

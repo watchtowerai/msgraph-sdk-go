@@ -77,7 +77,7 @@ func (m *B2xUserFlowsItemLanguagesItemOverridesPagesRequestBuilder) Count()(*B2x
 // Get get the userFlowLanguagePage resources from the overridesPages navigation property. These pages are used to customize the values shown to the user during a user journey in a user flow.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/userflowlanguageconfiguration-list-overridespages?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/userflowlanguageconfiguration-list-overridespages?view=graph-rest-1.0
 func (m *B2xUserFlowsItemLanguagesItemOverridesPagesRequestBuilder) Get(ctx context.Context, requestConfiguration *B2xUserFlowsItemLanguagesItemOverridesPagesRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.UserFlowLanguagePageCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -147,4 +147,8 @@ func (m *B2xUserFlowsItemLanguagesItemOverridesPagesRequestBuilder) ToPostReques
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *B2xUserFlowsItemLanguagesItemOverridesPagesRequestBuilder) WithUrl(rawUrl string)(*B2xUserFlowsItemLanguagesItemOverridesPagesRequestBuilder) {
+    return NewB2xUserFlowsItemLanguagesItemOverridesPagesRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

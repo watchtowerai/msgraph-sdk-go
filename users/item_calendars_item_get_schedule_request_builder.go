@@ -33,7 +33,7 @@ func NewItemCalendarsItemGetScheduleRequestBuilder(rawUrl string, requestAdapter
 // Post get the free/busy availability information for a collection of users, distributions lists, or resources (rooms or equipment) for a specified time period.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/calendar-getschedule?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/calendar-getschedule?view=graph-rest-1.0
 func (m *ItemCalendarsItemGetScheduleRequestBuilder) Post(ctx context.Context, body ItemCalendarsItemGetSchedulePostRequestBodyable, requestConfiguration *ItemCalendarsItemGetScheduleRequestBuilderPostRequestConfiguration)(ItemCalendarsItemGetScheduleResponseable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -68,4 +68,8 @@ func (m *ItemCalendarsItemGetScheduleRequestBuilder) ToPostRequestInformation(ct
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemCalendarsItemGetScheduleRequestBuilder) WithUrl(rawUrl string)(*ItemCalendarsItemGetScheduleRequestBuilder) {
+    return NewItemCalendarsItemGetScheduleRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

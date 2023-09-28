@@ -34,7 +34,7 @@ func NewItemSitesItemOnenotePagesItemCopyToSectionRequestBuilder(rawUrl string, 
 // Post copy a page to a specific section. For copy operations, you follow an asynchronous calling pattern:  First call the Copy action, and then poll the operation endpoint for the result.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/page-copytosection?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/page-copytosection?view=graph-rest-1.0
 func (m *ItemSitesItemOnenotePagesItemCopyToSectionRequestBuilder) Post(ctx context.Context, body ItemSitesItemOnenotePagesItemCopyToSectionPostRequestBodyable, requestConfiguration *ItemSitesItemOnenotePagesItemCopyToSectionRequestBuilderPostRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.OnenoteOperationable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -69,4 +69,8 @@ func (m *ItemSitesItemOnenotePagesItemCopyToSectionRequestBuilder) ToPostRequest
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemSitesItemOnenotePagesItemCopyToSectionRequestBuilder) WithUrl(rawUrl string)(*ItemSitesItemOnenotePagesItemCopyToSectionRequestBuilder) {
+    return NewItemSitesItemOnenotePagesItemCopyToSectionRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

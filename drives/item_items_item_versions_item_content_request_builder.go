@@ -41,7 +41,7 @@ func NewItemItemsItemVersionsItemContentRequestBuilder(rawUrl string, requestAda
 // Get the content stream for this version of the item.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/driveitem-list-versions?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/driveitem-list-versions?view=graph-rest-1.0
 func (m *ItemItemsItemVersionsItemContentRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemItemsItemVersionsItemContentRequestBuilderGetRequestConfiguration)([]byte, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -104,4 +104,8 @@ func (m *ItemItemsItemVersionsItemContentRequestBuilder) ToPutRequestInformation
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemItemsItemVersionsItemContentRequestBuilder) WithUrl(rawUrl string)(*ItemItemsItemVersionsItemContentRequestBuilder) {
+    return NewItemItemsItemVersionsItemContentRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

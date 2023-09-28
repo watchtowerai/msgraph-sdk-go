@@ -33,7 +33,7 @@ func NewAddRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c
 // Post follow a user's site or multiple sites.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/site-follow?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/site-follow?view=graph-rest-1.0
 func (m *AddRequestBuilder) Post(ctx context.Context, body AddPostRequestBodyable, requestConfiguration *AddRequestBuilderPostRequestConfiguration)(AddResponseable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -68,4 +68,8 @@ func (m *AddRequestBuilder) ToPostRequestInformation(ctx context.Context, body A
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *AddRequestBuilder) WithUrl(rawUrl string)(*AddRequestBuilder) {
+    return NewAddRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

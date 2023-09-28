@@ -81,7 +81,7 @@ func (m *DevicesRequestBuilder) Delta()(*DeltaRequestBuilder) {
 // Get retrieve a list of device objects registered in the organization.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/device-list?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/device-list?view=graph-rest-1.0
 func (m *DevicesRequestBuilder) Get(ctx context.Context, requestConfiguration *DevicesRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.DeviceCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -111,7 +111,7 @@ func (m *DevicesRequestBuilder) GetByIds()(*GetByIdsRequestBuilder) {
 // Post create and register a new device in the organization.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/device-post-devices?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/device-post-devices?view=graph-rest-1.0
 func (m *DevicesRequestBuilder) Post(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.Deviceable, requestConfiguration *DevicesRequestBuilderPostRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.Deviceable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -166,4 +166,8 @@ func (m *DevicesRequestBuilder) ToPostRequestInformation(ctx context.Context, bo
 // ValidateProperties provides operations to call the validateProperties method.
 func (m *DevicesRequestBuilder) ValidateProperties()(*ValidatePropertiesRequestBuilder) {
     return NewValidatePropertiesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *DevicesRequestBuilder) WithUrl(rawUrl string)(*DevicesRequestBuilder) {
+    return NewDevicesRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

@@ -31,6 +31,9 @@ func NewItemManagedDevicesItemRequestRemoteAssistanceRequestBuilder(rawUrl strin
     return NewItemManagedDevicesItemRequestRemoteAssistanceRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Post request remote assistance
+// [Find more info here]
+// 
+// [Find more info here]: https://learn.microsoft.com/graph/api/intune-devices-manageddevice-requestremoteassistance?view=graph-rest-1.0
 func (m *ItemManagedDevicesItemRequestRemoteAssistanceRequestBuilder) Post(ctx context.Context, requestConfiguration *ItemManagedDevicesItemRequestRemoteAssistanceRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -57,4 +60,8 @@ func (m *ItemManagedDevicesItemRequestRemoteAssistanceRequestBuilder) ToPostRequ
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemManagedDevicesItemRequestRemoteAssistanceRequestBuilder) WithUrl(rawUrl string)(*ItemManagedDevicesItemRequestRemoteAssistanceRequestBuilder) {
+    return NewItemManagedDevicesItemRequestRemoteAssistanceRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

@@ -77,7 +77,7 @@ func (m *ItemItemsItemWorkbookWorksheetsItemChartsItemSeriesWorkbookChartSeriesI
 // Get retrieve the properties and relationships of chartseries object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/chartseries-get?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/chartseries-get?view=graph-rest-1.0
 func (m *ItemItemsItemWorkbookWorksheetsItemChartsItemSeriesWorkbookChartSeriesItemRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemItemsItemWorkbookWorksheetsItemChartsItemSeriesWorkbookChartSeriesItemRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.WorkbookChartSeriesable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -99,7 +99,7 @@ func (m *ItemItemsItemWorkbookWorksheetsItemChartsItemSeriesWorkbookChartSeriesI
 // Patch update the properties of chartseries object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/chartseries-update?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/chartseries-update?view=graph-rest-1.0
 func (m *ItemItemsItemWorkbookWorksheetsItemChartsItemSeriesWorkbookChartSeriesItemRequestBuilder) Patch(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.WorkbookChartSeriesable, requestConfiguration *ItemItemsItemWorkbookWorksheetsItemChartsItemSeriesWorkbookChartSeriesItemRequestBuilderPatchRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.WorkbookChartSeriesable, error) {
     requestInfo, err := m.ToPatchRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -166,4 +166,8 @@ func (m *ItemItemsItemWorkbookWorksheetsItemChartsItemSeriesWorkbookChartSeriesI
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemItemsItemWorkbookWorksheetsItemChartsItemSeriesWorkbookChartSeriesItemRequestBuilder) WithUrl(rawUrl string)(*ItemItemsItemWorkbookWorksheetsItemChartsItemSeriesWorkbookChartSeriesItemRequestBuilder) {
+    return NewItemItemsItemWorkbookWorksheetsItemChartsItemSeriesWorkbookChartSeriesItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

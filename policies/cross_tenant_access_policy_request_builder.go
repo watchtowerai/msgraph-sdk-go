@@ -77,7 +77,7 @@ func (m *CrossTenantAccessPolicyRequestBuilder) Delete(ctx context.Context, requ
 // Get read the properties and relationships of a crossTenantAccessPolicy object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/crosstenantaccesspolicy-get?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/crosstenantaccesspolicy-get?view=graph-rest-1.0
 func (m *CrossTenantAccessPolicyRequestBuilder) Get(ctx context.Context, requestConfiguration *CrossTenantAccessPolicyRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.CrossTenantAccessPolicyable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -103,7 +103,7 @@ func (m *CrossTenantAccessPolicyRequestBuilder) Partners()(*CrossTenantAccessPol
 // Patch update the properties of a cross-tenant access policy.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/crosstenantaccesspolicy-update?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/crosstenantaccesspolicy-update?view=graph-rest-1.0
 func (m *CrossTenantAccessPolicyRequestBuilder) Patch(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.CrossTenantAccessPolicyable, requestConfiguration *CrossTenantAccessPolicyRequestBuilderPatchRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.CrossTenantAccessPolicyable, error) {
     requestInfo, err := m.ToPatchRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -166,4 +166,8 @@ func (m *CrossTenantAccessPolicyRequestBuilder) ToPatchRequestInformation(ctx co
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *CrossTenantAccessPolicyRequestBuilder) WithUrl(rawUrl string)(*CrossTenantAccessPolicyRequestBuilder) {
+    return NewCrossTenantAccessPolicyRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

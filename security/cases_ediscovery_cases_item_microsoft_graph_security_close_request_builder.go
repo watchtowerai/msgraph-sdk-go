@@ -33,7 +33,7 @@ func NewCasesEdiscoveryCasesItemMicrosoftGraphSecurityCloseRequestBuilder(rawUrl
 // Post close an eDiscovery case. For details, see Close a case.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/security-ediscoverycase-close?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/security-ediscoverycase-close?view=graph-rest-1.0
 func (m *CasesEdiscoveryCasesItemMicrosoftGraphSecurityCloseRequestBuilder) Post(ctx context.Context, requestConfiguration *CasesEdiscoveryCasesItemMicrosoftGraphSecurityCloseRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -60,4 +60,8 @@ func (m *CasesEdiscoveryCasesItemMicrosoftGraphSecurityCloseRequestBuilder) ToPo
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *CasesEdiscoveryCasesItemMicrosoftGraphSecurityCloseRequestBuilder) WithUrl(rawUrl string)(*CasesEdiscoveryCasesItemMicrosoftGraphSecurityCloseRequestBuilder) {
+    return NewCasesEdiscoveryCasesItemMicrosoftGraphSecurityCloseRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

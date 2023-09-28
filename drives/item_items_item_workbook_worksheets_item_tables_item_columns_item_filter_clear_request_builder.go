@@ -33,7 +33,7 @@ func NewItemItemsItemWorkbookWorksheetsItemTablesItemColumnsItemFilterClearReque
 // Post clear the filter on the given column.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/filter-clear?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/filter-clear?view=graph-rest-1.0
 func (m *ItemItemsItemWorkbookWorksheetsItemTablesItemColumnsItemFilterClearRequestBuilder) Post(ctx context.Context, requestConfiguration *ItemItemsItemWorkbookWorksheetsItemTablesItemColumnsItemFilterClearRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -60,4 +60,8 @@ func (m *ItemItemsItemWorkbookWorksheetsItemTablesItemColumnsItemFilterClearRequ
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemItemsItemWorkbookWorksheetsItemTablesItemColumnsItemFilterClearRequestBuilder) WithUrl(rawUrl string)(*ItemItemsItemWorkbookWorksheetsItemTablesItemColumnsItemFilterClearRequestBuilder) {
+    return NewItemItemsItemWorkbookWorksheetsItemTablesItemColumnsItemFilterClearRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

@@ -40,7 +40,7 @@ func NewItemMailFoldersItemChildFoldersItemMessagesItemValueContentRequestBuilde
 // Get get media content for the navigation property messages from users
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/mailfolder-list-messages?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/mailfolder-list-messages?view=graph-rest-1.0
 func (m *ItemMailFoldersItemChildFoldersItemMessagesItemValueContentRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemMailFoldersItemChildFoldersItemMessagesItemValueContentRequestBuilderGetRequestConfiguration)([]byte, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -102,4 +102,8 @@ func (m *ItemMailFoldersItemChildFoldersItemMessagesItemValueContentRequestBuild
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemMailFoldersItemChildFoldersItemMessagesItemValueContentRequestBuilder) WithUrl(rawUrl string)(*ItemMailFoldersItemChildFoldersItemMessagesItemValueContentRequestBuilder) {
+    return NewItemMailFoldersItemChildFoldersItemMessagesItemValueContentRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

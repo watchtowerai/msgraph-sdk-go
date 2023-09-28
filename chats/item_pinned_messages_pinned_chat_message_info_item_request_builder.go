@@ -57,7 +57,7 @@ func NewItemPinnedMessagesPinnedChatMessageInfoItemRequestBuilder(rawUrl string,
 // Delete unpin a message from a chat.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/chat-delete-pinnedmessages?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/chat-delete-pinnedmessages?view=graph-rest-1.0
 func (m *ItemPinnedMessagesPinnedChatMessageInfoItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *ItemPinnedMessagesPinnedChatMessageInfoItemRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -159,4 +159,8 @@ func (m *ItemPinnedMessagesPinnedChatMessageInfoItemRequestBuilder) ToPatchReque
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemPinnedMessagesPinnedChatMessageInfoItemRequestBuilder) WithUrl(rawUrl string)(*ItemPinnedMessagesPinnedChatMessageInfoItemRequestBuilder) {
+    return NewItemPinnedMessagesPinnedChatMessageInfoItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

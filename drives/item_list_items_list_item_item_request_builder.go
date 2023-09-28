@@ -65,7 +65,7 @@ func (m *ItemListItemsListItemItemRequestBuilder) CreatedByUser()(*ItemListItems
 // Delete removes an item from a [list][].
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/listitem-delete?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/listitem-delete?view=graph-rest-1.0
 func (m *ItemListItemsListItemItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *ItemListItemsListItemItemRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -96,7 +96,7 @@ func (m *ItemListItemsListItemItemRequestBuilder) Fields()(*ItemListItemsItemFie
 // Get returns the metadata for an [item][] in a [list][].
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/listitem-get?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/listitem-get?view=graph-rest-1.0
 func (m *ItemListItemsListItemItemRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemListItemsListItemItemRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ListItemable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -194,4 +194,8 @@ func (m *ItemListItemsListItemItemRequestBuilder) ToPatchRequestInformation(ctx 
 // Versions provides operations to manage the versions property of the microsoft.graph.listItem entity.
 func (m *ItemListItemsListItemItemRequestBuilder) Versions()(*ItemListItemsItemVersionsRequestBuilder) {
     return NewItemListItemsItemVersionsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemListItemsListItemItemRequestBuilder) WithUrl(rawUrl string)(*ItemListItemsListItemItemRequestBuilder) {
+    return NewItemListItemsListItemItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

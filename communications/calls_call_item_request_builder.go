@@ -81,7 +81,7 @@ func (m *CallsCallItemRequestBuilder) ContentSharingSessions()(*CallsItemContent
 // Delete delete or hang up an active call. For group calls, this will only delete your call leg and the underlying group call will still continue.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/call-delete?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/call-delete?view=graph-rest-1.0
 func (m *CallsCallItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *CallsCallItemRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -100,7 +100,7 @@ func (m *CallsCallItemRequestBuilder) Delete(ctx context.Context, requestConfigu
 // Get retrieve the properties and relationships of a call object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/call-get?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/call-get?view=graph-rest-1.0
 func (m *CallsCallItemRequestBuilder) Get(ctx context.Context, requestConfiguration *CallsCallItemRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.Callable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -230,4 +230,8 @@ func (m *CallsCallItemRequestBuilder) Unmute()(*CallsItemUnmuteRequestBuilder) {
 // UpdateRecordingStatus provides operations to call the updateRecordingStatus method.
 func (m *CallsCallItemRequestBuilder) UpdateRecordingStatus()(*CallsItemUpdateRecordingStatusRequestBuilder) {
     return NewCallsItemUpdateRecordingStatusRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *CallsCallItemRequestBuilder) WithUrl(rawUrl string)(*CallsCallItemRequestBuilder) {
+    return NewCallsCallItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

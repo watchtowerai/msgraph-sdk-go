@@ -77,7 +77,7 @@ func (m *ActivityBasedTimeoutPoliciesRequestBuilder) Count()(*ActivityBasedTimeo
 // Get get a list of activityBasedTimeoutPolicy objects.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/activitybasedtimeoutpolicy-list?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/activitybasedtimeoutpolicy-list?view=graph-rest-1.0
 func (m *ActivityBasedTimeoutPoliciesRequestBuilder) Get(ctx context.Context, requestConfiguration *ActivityBasedTimeoutPoliciesRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ActivityBasedTimeoutPolicyCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -99,7 +99,7 @@ func (m *ActivityBasedTimeoutPoliciesRequestBuilder) Get(ctx context.Context, re
 // Post create a new activityBasedTimeoutPolicy object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/activitybasedtimeoutpolicy-post-activitybasedtimeoutpolicies?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/activitybasedtimeoutpolicy-post-activitybasedtimeoutpolicies?view=graph-rest-1.0
 func (m *ActivityBasedTimeoutPoliciesRequestBuilder) Post(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ActivityBasedTimeoutPolicyable, requestConfiguration *ActivityBasedTimeoutPoliciesRequestBuilderPostRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ActivityBasedTimeoutPolicyable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -150,4 +150,8 @@ func (m *ActivityBasedTimeoutPoliciesRequestBuilder) ToPostRequestInformation(ct
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ActivityBasedTimeoutPoliciesRequestBuilder) WithUrl(rawUrl string)(*ActivityBasedTimeoutPoliciesRequestBuilder) {
+    return NewActivityBasedTimeoutPoliciesRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

@@ -77,7 +77,7 @@ func (m *ItemItemsItemWorkbookWorksheetsItemChartsItemAxesCategoryAxisTitleReque
 // Get retrieve the properties and relationships of chartaxistitle object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/chartaxistitle-get?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/chartaxistitle-get?view=graph-rest-1.0
 func (m *ItemItemsItemWorkbookWorksheetsItemChartsItemAxesCategoryAxisTitleRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemItemsItemWorkbookWorksheetsItemChartsItemAxesCategoryAxisTitleRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.WorkbookChartAxisTitleable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -99,7 +99,7 @@ func (m *ItemItemsItemWorkbookWorksheetsItemChartsItemAxesCategoryAxisTitleReque
 // Patch update the properties of chartaxistitle object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/chartaxistitle-update?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/chartaxistitle-update?view=graph-rest-1.0
 func (m *ItemItemsItemWorkbookWorksheetsItemChartsItemAxesCategoryAxisTitleRequestBuilder) Patch(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.WorkbookChartAxisTitleable, requestConfiguration *ItemItemsItemWorkbookWorksheetsItemChartsItemAxesCategoryAxisTitleRequestBuilderPatchRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.WorkbookChartAxisTitleable, error) {
     requestInfo, err := m.ToPatchRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -162,4 +162,8 @@ func (m *ItemItemsItemWorkbookWorksheetsItemChartsItemAxesCategoryAxisTitleReque
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemItemsItemWorkbookWorksheetsItemChartsItemAxesCategoryAxisTitleRequestBuilder) WithUrl(rawUrl string)(*ItemItemsItemWorkbookWorksheetsItemChartsItemAxesCategoryAxisTitleRequestBuilder) {
+    return NewItemItemsItemWorkbookWorksheetsItemChartsItemAxesCategoryAxisTitleRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

@@ -16,7 +16,7 @@ type BookingBusinessesItemCalendarViewRequestBuilderGetQueryParameters struct {
     // Include count of items
     Count *bool `uriparametername:"%24count"`
     // The end date and time of the time range, represented in ISO 8601 format. For example, 2019-11-08T20:00:00-08:00
-    End *string
+    End *string `uriparametername:"end"`
     // Expand related entities
     Expand []string `uriparametername:"%24expand"`
     // Filter items by property values
@@ -30,7 +30,7 @@ type BookingBusinessesItemCalendarViewRequestBuilderGetQueryParameters struct {
     // Skip the first n items
     Skip *int32 `uriparametername:"%24skip"`
     // The start date and time of the time range, represented in ISO 8601 format. For example, 2019-11-08T19:00:00-08:00
-    Start *string
+    Start *string `uriparametername:"start"`
     // Show only the first n items
     Top *int32 `uriparametername:"%24top"`
 }
@@ -81,7 +81,7 @@ func (m *BookingBusinessesItemCalendarViewRequestBuilder) Count()(*BookingBusine
 // Get the set of appointments of this business in a specified date range. Read-only. Nullable.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/bookingbusiness-list-calendarview?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/bookingbusiness-list-calendarview?view=graph-rest-1.0
 func (m *BookingBusinessesItemCalendarViewRequestBuilder) Get(ctx context.Context, requestConfiguration *BookingBusinessesItemCalendarViewRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.BookingAppointmentCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -151,4 +151,8 @@ func (m *BookingBusinessesItemCalendarViewRequestBuilder) ToPostRequestInformati
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *BookingBusinessesItemCalendarViewRequestBuilder) WithUrl(rawUrl string)(*BookingBusinessesItemCalendarViewRequestBuilder) {
+    return NewBookingBusinessesItemCalendarViewRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

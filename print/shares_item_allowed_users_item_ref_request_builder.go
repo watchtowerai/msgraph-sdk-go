@@ -40,7 +40,7 @@ func NewSharesItemAllowedUsersItemRefRequestBuilder(rawUrl string, requestAdapte
 // Delete revoke the specified user's access to submit print jobs to the associated printerShare.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/printershare-delete-alloweduser?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/printershare-delete-alloweduser?view=graph-rest-1.0
 func (m *SharesItemAllowedUsersItemRefRequestBuilder) Delete(ctx context.Context, requestConfiguration *SharesItemAllowedUsersItemRefRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -70,4 +70,8 @@ func (m *SharesItemAllowedUsersItemRefRequestBuilder) ToDeleteRequestInformation
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *SharesItemAllowedUsersItemRefRequestBuilder) WithUrl(rawUrl string)(*SharesItemAllowedUsersItemRefRequestBuilder) {
+    return NewSharesItemAllowedUsersItemRefRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

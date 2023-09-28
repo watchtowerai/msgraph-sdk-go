@@ -73,7 +73,7 @@ func (m *IdentitySecurityDefaultsEnforcementPolicyRequestBuilder) Delete(ctx con
 // Get retrieve the properties of an identitySecurityDefaultsEnforcementPolicy object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/identitysecuritydefaultsenforcementpolicy-get?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/identitysecuritydefaultsenforcementpolicy-get?view=graph-rest-1.0
 func (m *IdentitySecurityDefaultsEnforcementPolicyRequestBuilder) Get(ctx context.Context, requestConfiguration *IdentitySecurityDefaultsEnforcementPolicyRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.IdentitySecurityDefaultsEnforcementPolicyable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -95,7 +95,7 @@ func (m *IdentitySecurityDefaultsEnforcementPolicyRequestBuilder) Get(ctx contex
 // Patch update the properties of an identitySecurityDefaultsEnforcementPolicy object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/identitysecuritydefaultsenforcementpolicy-update?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/identitysecuritydefaultsenforcementpolicy-update?view=graph-rest-1.0
 func (m *IdentitySecurityDefaultsEnforcementPolicyRequestBuilder) Patch(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.IdentitySecurityDefaultsEnforcementPolicyable, requestConfiguration *IdentitySecurityDefaultsEnforcementPolicyRequestBuilderPatchRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.IdentitySecurityDefaultsEnforcementPolicyable, error) {
     requestInfo, err := m.ToPatchRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -158,4 +158,8 @@ func (m *IdentitySecurityDefaultsEnforcementPolicyRequestBuilder) ToPatchRequest
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *IdentitySecurityDefaultsEnforcementPolicyRequestBuilder) WithUrl(rawUrl string)(*IdentitySecurityDefaultsEnforcementPolicyRequestBuilder) {
+    return NewIdentitySecurityDefaultsEnforcementPolicyRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

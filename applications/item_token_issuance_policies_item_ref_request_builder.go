@@ -40,7 +40,7 @@ func NewItemTokenIssuancePoliciesItemRefRequestBuilder(rawUrl string, requestAda
 // Delete remove a tokenIssuancePolicy from an application.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/application-delete-tokenissuancepolicies?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/application-delete-tokenissuancepolicies?view=graph-rest-1.0
 func (m *ItemTokenIssuancePoliciesItemRefRequestBuilder) Delete(ctx context.Context, requestConfiguration *ItemTokenIssuancePoliciesItemRefRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -70,4 +70,8 @@ func (m *ItemTokenIssuancePoliciesItemRefRequestBuilder) ToDeleteRequestInformat
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemTokenIssuancePoliciesItemRefRequestBuilder) WithUrl(rawUrl string)(*ItemTokenIssuancePoliciesItemRefRequestBuilder) {
+    return NewItemTokenIssuancePoliciesItemRefRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

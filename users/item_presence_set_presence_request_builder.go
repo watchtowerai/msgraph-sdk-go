@@ -33,7 +33,7 @@ func NewItemPresenceSetPresenceRequestBuilder(rawUrl string, requestAdapter i2ae
 // Post set the state of a user's presence session as an application.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/presence-setpresence?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/presence-setpresence?view=graph-rest-1.0
 func (m *ItemPresenceSetPresenceRequestBuilder) Post(ctx context.Context, body ItemPresenceSetPresencePostRequestBodyable, requestConfiguration *ItemPresenceSetPresenceRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -64,4 +64,8 @@ func (m *ItemPresenceSetPresenceRequestBuilder) ToPostRequestInformation(ctx con
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemPresenceSetPresenceRequestBuilder) WithUrl(rawUrl string)(*ItemPresenceSetPresenceRequestBuilder) {
+    return NewItemPresenceSetPresenceRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

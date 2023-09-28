@@ -33,7 +33,7 @@ func NewItemUnsubscribeByMailRequestBuilder(rawUrl string, requestAdapter i2ae41
 // Post calling this method will prevent the current user from receiving email notifications for this group about new posts, events, and files in that group. Supported for Microsoft 365 groups only.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/group-unsubscribebymail?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/group-unsubscribebymail?view=graph-rest-1.0
 func (m *ItemUnsubscribeByMailRequestBuilder) Post(ctx context.Context, requestConfiguration *ItemUnsubscribeByMailRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -60,4 +60,8 @@ func (m *ItemUnsubscribeByMailRequestBuilder) ToPostRequestInformation(ctx conte
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemUnsubscribeByMailRequestBuilder) WithUrl(rawUrl string)(*ItemUnsubscribeByMailRequestBuilder) {
+    return NewItemUnsubscribeByMailRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

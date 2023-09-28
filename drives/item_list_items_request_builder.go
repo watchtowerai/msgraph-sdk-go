@@ -75,7 +75,7 @@ func (m *ItemListItemsRequestBuilder) Count()(*ItemListItemsCountRequestBuilder)
 // Get get the collection of [items][item] in a [list][].
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/listitem-list?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/listitem-list?view=graph-rest-1.0
 func (m *ItemListItemsRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemListItemsRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ListItemCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -97,7 +97,7 @@ func (m *ItemListItemsRequestBuilder) Get(ctx context.Context, requestConfigurat
 // Post create a new [listItem][] in a [list][].
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/listitem-create?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/listitem-create?view=graph-rest-1.0
 func (m *ItemListItemsRequestBuilder) Post(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ListItemable, requestConfiguration *ItemListItemsRequestBuilderPostRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ListItemable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -148,4 +148,8 @@ func (m *ItemListItemsRequestBuilder) ToPostRequestInformation(ctx context.Conte
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemListItemsRequestBuilder) WithUrl(rawUrl string)(*ItemListItemsRequestBuilder) {
+    return NewItemListItemsRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

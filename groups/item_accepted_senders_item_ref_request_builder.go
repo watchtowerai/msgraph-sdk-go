@@ -40,7 +40,7 @@ func NewItemAcceptedSendersItemRefRequestBuilder(rawUrl string, requestAdapter i
 // Delete remove acceptedSender
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/group-delete-acceptedsenders?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/group-delete-acceptedsenders?view=graph-rest-1.0
 func (m *ItemAcceptedSendersItemRefRequestBuilder) Delete(ctx context.Context, requestConfiguration *ItemAcceptedSendersItemRefRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -70,4 +70,8 @@ func (m *ItemAcceptedSendersItemRefRequestBuilder) ToDeleteRequestInformation(ct
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemAcceptedSendersItemRefRequestBuilder) WithUrl(rawUrl string)(*ItemAcceptedSendersItemRefRequestBuilder) {
+    return NewItemAcceptedSendersItemRefRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

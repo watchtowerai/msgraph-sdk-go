@@ -31,6 +31,9 @@ func NewManagedDevicesItemShutDownRequestBuilder(rawUrl string, requestAdapter i
     return NewManagedDevicesItemShutDownRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Post shut down device
+// [Find more info here]
+// 
+// [Find more info here]: https://learn.microsoft.com/graph/api/intune-devices-manageddevice-shutdown?view=graph-rest-1.0
 func (m *ManagedDevicesItemShutDownRequestBuilder) Post(ctx context.Context, requestConfiguration *ManagedDevicesItemShutDownRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -57,4 +60,8 @@ func (m *ManagedDevicesItemShutDownRequestBuilder) ToPostRequestInformation(ctx 
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ManagedDevicesItemShutDownRequestBuilder) WithUrl(rawUrl string)(*ManagedDevicesItemShutDownRequestBuilder) {
+    return NewManagedDevicesItemShutDownRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

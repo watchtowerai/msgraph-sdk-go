@@ -33,7 +33,7 @@ func NewItemItemsItemWorkbookWorksheetsItemTablesItemColumnsItemFilterApplyReque
 // Post apply the given filter criteria on the given column.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/filter-apply?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/filter-apply?view=graph-rest-1.0
 func (m *ItemItemsItemWorkbookWorksheetsItemTablesItemColumnsItemFilterApplyRequestBuilder) Post(ctx context.Context, body ItemItemsItemWorkbookWorksheetsItemTablesItemColumnsItemFilterApplyPostRequestBodyable, requestConfiguration *ItemItemsItemWorkbookWorksheetsItemTablesItemColumnsItemFilterApplyRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -64,4 +64,8 @@ func (m *ItemItemsItemWorkbookWorksheetsItemTablesItemColumnsItemFilterApplyRequ
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemItemsItemWorkbookWorksheetsItemTablesItemColumnsItemFilterApplyRequestBuilder) WithUrl(rawUrl string)(*ItemItemsItemWorkbookWorksheetsItemTablesItemColumnsItemFilterApplyRequestBuilder) {
+    return NewItemItemsItemWorkbookWorksheetsItemTablesItemColumnsItemFilterApplyRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

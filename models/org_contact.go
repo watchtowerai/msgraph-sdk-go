@@ -9,7 +9,7 @@ import (
 type OrgContact struct {
     DirectoryObject
 }
-// NewOrgContact instantiates a new OrgContact and sets the default values.
+// NewOrgContact instantiates a new orgContact and sets the default values.
 func NewOrgContact()(*OrgContact) {
     m := &OrgContact{
         DirectoryObject: *NewDirectoryObject(),
@@ -66,7 +66,7 @@ func (m *OrgContact) GetDirectReports()([]DirectoryObjectable) {
     }
     return nil
 }
-// GetDisplayName gets the displayName property value. Display name for this organizational contact. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq for null values), $search, and $orderBy.
+// GetDisplayName gets the displayName property value. Display name for this organizational contact. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq for null values), $search, and $orderby.
 func (m *OrgContact) GetDisplayName()(*string) {
     val, err := m.GetBackingStore().Get("displayName")
     if err != nil {
@@ -276,6 +276,22 @@ func (m *OrgContact) GetFieldDeserializers()(map[string]func(i878a80d2330e89d268
         }
         return nil
     }
+    res["serviceProvisioningErrors"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetCollectionOfObjectValues(CreateServiceProvisioningErrorFromDiscriminatorValue)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            res := make([]ServiceProvisioningErrorable, len(val))
+            for i, v := range val {
+                if v != nil {
+                    res[i] = v.(ServiceProvisioningErrorable)
+                }
+            }
+            m.SetServiceProvisioningErrors(res)
+        }
+        return nil
+    }
     res["surname"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -422,6 +438,17 @@ func (m *OrgContact) GetProxyAddresses()([]string) {
     }
     if val != nil {
         return val.([]string)
+    }
+    return nil
+}
+// GetServiceProvisioningErrors gets the serviceProvisioningErrors property value. The serviceProvisioningErrors property
+func (m *OrgContact) GetServiceProvisioningErrors()([]ServiceProvisioningErrorable) {
+    val, err := m.GetBackingStore().Get("serviceProvisioningErrors")
+    if err != nil {
+        panic(err)
+    }
+    if val != nil {
+        return val.([]ServiceProvisioningErrorable)
     }
     return nil
 }
@@ -579,6 +606,18 @@ func (m *OrgContact) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c
             return err
         }
     }
+    if m.GetServiceProvisioningErrors() != nil {
+        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetServiceProvisioningErrors()))
+        for i, v := range m.GetServiceProvisioningErrors() {
+            if v != nil {
+                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+            }
+        }
+        err = writer.WriteCollectionOfObjectValues("serviceProvisioningErrors", cast)
+        if err != nil {
+            return err
+        }
+    }
     {
         err = writer.WriteStringValue("surname", m.GetSurname())
         if err != nil {
@@ -627,7 +666,7 @@ func (m *OrgContact) SetDirectReports(value []DirectoryObjectable)() {
         panic(err)
     }
 }
-// SetDisplayName sets the displayName property value. Display name for this organizational contact. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq for null values), $search, and $orderBy.
+// SetDisplayName sets the displayName property value. Display name for this organizational contact. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq for null values), $search, and $orderby.
 func (m *OrgContact) SetDisplayName(value *string)() {
     err := m.GetBackingStore().Set("displayName", value)
     if err != nil {
@@ -711,6 +750,13 @@ func (m *OrgContact) SetProxyAddresses(value []string)() {
         panic(err)
     }
 }
+// SetServiceProvisioningErrors sets the serviceProvisioningErrors property value. The serviceProvisioningErrors property
+func (m *OrgContact) SetServiceProvisioningErrors(value []ServiceProvisioningErrorable)() {
+    err := m.GetBackingStore().Set("serviceProvisioningErrors", value)
+    if err != nil {
+        panic(err)
+    }
+}
 // SetSurname sets the surname property value. Last name for this organizational contact. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq for null values).
 func (m *OrgContact) SetSurname(value *string)() {
     err := m.GetBackingStore().Set("surname", value)
@@ -745,6 +791,7 @@ type OrgContactable interface {
     GetOnPremisesSyncEnabled()(*bool)
     GetPhones()([]Phoneable)
     GetProxyAddresses()([]string)
+    GetServiceProvisioningErrors()([]ServiceProvisioningErrorable)
     GetSurname()(*string)
     GetTransitiveMemberOf()([]DirectoryObjectable)
     SetAddresses(value []PhysicalOfficeAddressable)()
@@ -763,6 +810,7 @@ type OrgContactable interface {
     SetOnPremisesSyncEnabled(value *bool)()
     SetPhones(value []Phoneable)()
     SetProxyAddresses(value []string)()
+    SetServiceProvisioningErrors(value []ServiceProvisioningErrorable)()
     SetSurname(value *string)()
     SetTransitiveMemberOf(value []DirectoryObjectable)()
 }

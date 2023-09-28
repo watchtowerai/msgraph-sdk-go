@@ -39,8 +39,18 @@ func CreateAlertEvidenceFromDiscriminatorValue(parseNode i878a80d2330e89d2689638
                         return NewAnalyzedMessageEvidence(), nil
                     case "#microsoft.graph.security.azureResourceEvidence":
                         return NewAzureResourceEvidence(), nil
+                    case "#microsoft.graph.security.blobContainerEvidence":
+                        return NewBlobContainerEvidence(), nil
+                    case "#microsoft.graph.security.blobEvidence":
+                        return NewBlobEvidence(), nil
                     case "#microsoft.graph.security.cloudApplicationEvidence":
                         return NewCloudApplicationEvidence(), nil
+                    case "#microsoft.graph.security.containerEvidence":
+                        return NewContainerEvidence(), nil
+                    case "#microsoft.graph.security.containerImageEvidence":
+                        return NewContainerImageEvidence(), nil
+                    case "#microsoft.graph.security.containerRegistryEvidence":
+                        return NewContainerRegistryEvidence(), nil
                     case "#microsoft.graph.security.deviceEvidence":
                         return NewDeviceEvidence(), nil
                     case "#microsoft.graph.security.fileEvidence":
@@ -49,6 +59,20 @@ func CreateAlertEvidenceFromDiscriminatorValue(parseNode i878a80d2330e89d2689638
                         return NewGoogleCloudResourceEvidence(), nil
                     case "#microsoft.graph.security.ipEvidence":
                         return NewIpEvidence(), nil
+                    case "#microsoft.graph.security.kubernetesClusterEvidence":
+                        return NewKubernetesClusterEvidence(), nil
+                    case "#microsoft.graph.security.kubernetesControllerEvidence":
+                        return NewKubernetesControllerEvidence(), nil
+                    case "#microsoft.graph.security.kubernetesNamespaceEvidence":
+                        return NewKubernetesNamespaceEvidence(), nil
+                    case "#microsoft.graph.security.kubernetesPodEvidence":
+                        return NewKubernetesPodEvidence(), nil
+                    case "#microsoft.graph.security.kubernetesSecretEvidence":
+                        return NewKubernetesSecretEvidence(), nil
+                    case "#microsoft.graph.security.kubernetesServiceAccountEvidence":
+                        return NewKubernetesServiceAccountEvidence(), nil
+                    case "#microsoft.graph.security.kubernetesServiceEvidence":
+                        return NewKubernetesServiceEvidence(), nil
                     case "#microsoft.graph.security.mailboxEvidence":
                         return NewMailboxEvidence(), nil
                     case "#microsoft.graph.security.mailClusterEvidence":
@@ -100,7 +124,7 @@ func (m *AlertEvidence) GetCreatedDateTime()(*i336074805fc853987abe6f7fe3ad97a6a
     }
     return nil
 }
-// GetDetailedRoles gets the detailedRoles property value. The detailedRoles property
+// GetDetailedRoles gets the detailedRoles property value. Detailed description of the entity role/s in an alert. Values are free-form.
 func (m *AlertEvidence) GetDetailedRoles()([]string) {
     val, err := m.GetBackingStore().Get("detailedRoles")
     if err != nil {
@@ -247,7 +271,7 @@ func (m *AlertEvidence) GetRemediationStatusDetails()(*string) {
     }
     return nil
 }
-// GetRoles gets the roles property value. One or more roles that an evidence entity represents in an alert. For example, an IP address that is associated with an attacker has the evidence role Attacker.
+// GetRoles gets the roles property value. The role/s that an evidence entity represents in an alert, e.g., an IP address that is associated with an attacker will have the evidence role Attacker.
 func (m *AlertEvidence) GetRoles()([]EvidenceRole) {
     val, err := m.GetBackingStore().Get("roles")
     if err != nil {
@@ -258,7 +282,7 @@ func (m *AlertEvidence) GetRoles()([]EvidenceRole) {
     }
     return nil
 }
-// GetTags gets the tags property value. Array of custom tags associated with an evidence instance. For example, to denote a group of devices or high value assets.
+// GetTags gets the tags property value. Array of custom tags associated with an evidence instance, for example, to denote a group of devices, high-value assets, etc.
 func (m *AlertEvidence) GetTags()([]string) {
     val, err := m.GetBackingStore().Get("tags")
     if err != nil {
@@ -358,7 +382,7 @@ func (m *AlertEvidence) SetCreatedDateTime(value *i336074805fc853987abe6f7fe3ad9
         panic(err)
     }
 }
-// SetDetailedRoles sets the detailedRoles property value. The detailedRoles property
+// SetDetailedRoles sets the detailedRoles property value. Detailed description of the entity role/s in an alert. Values are free-form.
 func (m *AlertEvidence) SetDetailedRoles(value []string)() {
     err := m.GetBackingStore().Set("detailedRoles", value)
     if err != nil {
@@ -386,14 +410,14 @@ func (m *AlertEvidence) SetRemediationStatusDetails(value *string)() {
         panic(err)
     }
 }
-// SetRoles sets the roles property value. One or more roles that an evidence entity represents in an alert. For example, an IP address that is associated with an attacker has the evidence role Attacker.
+// SetRoles sets the roles property value. The role/s that an evidence entity represents in an alert, e.g., an IP address that is associated with an attacker will have the evidence role Attacker.
 func (m *AlertEvidence) SetRoles(value []EvidenceRole)() {
     err := m.GetBackingStore().Set("roles", value)
     if err != nil {
         panic(err)
     }
 }
-// SetTags sets the tags property value. Array of custom tags associated with an evidence instance. For example, to denote a group of devices or high value assets.
+// SetTags sets the tags property value. Array of custom tags associated with an evidence instance, for example, to denote a group of devices, high-value assets, etc.
 func (m *AlertEvidence) SetTags(value []string)() {
     err := m.GetBackingStore().Set("tags", value)
     if err != nil {

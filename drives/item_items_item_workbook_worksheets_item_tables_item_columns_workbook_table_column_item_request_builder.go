@@ -61,7 +61,7 @@ func (m *ItemItemsItemWorkbookWorksheetsItemTablesItemColumnsWorkbookTableColumn
 // Delete deletes the column from the table.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/tablecolumn-delete?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/tablecolumn-delete?view=graph-rest-1.0
 func (m *ItemItemsItemWorkbookWorksheetsItemTablesItemColumnsWorkbookTableColumnItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *ItemItemsItemWorkbookWorksheetsItemTablesItemColumnsWorkbookTableColumnItemRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -84,7 +84,7 @@ func (m *ItemItemsItemWorkbookWorksheetsItemTablesItemColumnsWorkbookTableColumn
 // Get retrieve the properties and relationships of tablecolumn object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/tablecolumn-get?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/tablecolumn-get?view=graph-rest-1.0
 func (m *ItemItemsItemWorkbookWorksheetsItemTablesItemColumnsWorkbookTableColumnItemRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemItemsItemWorkbookWorksheetsItemTablesItemColumnsWorkbookTableColumnItemRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.WorkbookTableColumnable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -110,7 +110,7 @@ func (m *ItemItemsItemWorkbookWorksheetsItemTablesItemColumnsWorkbookTableColumn
 // Patch update the properties of tablecolumn object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/tablecolumn-update?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/tablecolumn-update?view=graph-rest-1.0
 func (m *ItemItemsItemWorkbookWorksheetsItemTablesItemColumnsWorkbookTableColumnItemRequestBuilder) Patch(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.WorkbookTableColumnable, requestConfiguration *ItemItemsItemWorkbookWorksheetsItemTablesItemColumnsWorkbookTableColumnItemRequestBuilderPatchRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.WorkbookTableColumnable, error) {
     requestInfo, err := m.ToPatchRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -181,4 +181,8 @@ func (m *ItemItemsItemWorkbookWorksheetsItemTablesItemColumnsWorkbookTableColumn
 // TotalRowRange provides operations to call the totalRowRange method.
 func (m *ItemItemsItemWorkbookWorksheetsItemTablesItemColumnsWorkbookTableColumnItemRequestBuilder) TotalRowRange()(*ItemItemsItemWorkbookWorksheetsItemTablesItemColumnsItemTotalRowRangeRequestBuilder) {
     return NewItemItemsItemWorkbookWorksheetsItemTablesItemColumnsItemTotalRowRangeRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemItemsItemWorkbookWorksheetsItemTablesItemColumnsWorkbookTableColumnItemRequestBuilder) WithUrl(rawUrl string)(*ItemItemsItemWorkbookWorksheetsItemTablesItemColumnsWorkbookTableColumnItemRequestBuilder) {
+    return NewItemItemsItemWorkbookWorksheetsItemTablesItemColumnsWorkbookTableColumnItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

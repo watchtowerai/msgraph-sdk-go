@@ -70,7 +70,7 @@ func (m *UsersItemSchoolsRequestBuilder) Count()(*UsersItemSchoolsCountRequestBu
 // Get retrieve a list of schools for a user.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/educationuser-list-schools?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/educationuser-list-schools?view=graph-rest-1.0
 func (m *UsersItemSchoolsRequestBuilder) Get(ctx context.Context, requestConfiguration *UsersItemSchoolsRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.EducationSchoolCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -104,4 +104,8 @@ func (m *UsersItemSchoolsRequestBuilder) ToGetRequestInformation(ctx context.Con
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *UsersItemSchoolsRequestBuilder) WithUrl(rawUrl string)(*UsersItemSchoolsRequestBuilder) {
+    return NewUsersItemSchoolsRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

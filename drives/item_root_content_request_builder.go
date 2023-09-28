@@ -41,7 +41,7 @@ func NewItemRootContentRequestBuilder(rawUrl string, requestAdapter i2ae4187f7da
 // Get the content stream, if the item represents a file.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/driveitem-get?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/driveitem-get?view=graph-rest-1.0
 func (m *ItemRootContentRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemRootContentRequestBuilderGetRequestConfiguration)([]byte, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -104,4 +104,8 @@ func (m *ItemRootContentRequestBuilder) ToPutRequestInformation(ctx context.Cont
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemRootContentRequestBuilder) WithUrl(rawUrl string)(*ItemRootContentRequestBuilder) {
+    return NewItemRootContentRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

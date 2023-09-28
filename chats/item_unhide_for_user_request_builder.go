@@ -33,7 +33,7 @@ func NewItemUnhideForUserRequestBuilder(rawUrl string, requestAdapter i2ae4187f7
 // Post unhide a chat for a user.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/chat-unhideforuser?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/chat-unhideforuser?view=graph-rest-1.0
 func (m *ItemUnhideForUserRequestBuilder) Post(ctx context.Context, body ItemUnhideForUserPostRequestBodyable, requestConfiguration *ItemUnhideForUserRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -64,4 +64,8 @@ func (m *ItemUnhideForUserRequestBuilder) ToPostRequestInformation(ctx context.C
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemUnhideForUserRequestBuilder) WithUrl(rawUrl string)(*ItemUnhideForUserRequestBuilder) {
+    return NewItemUnhideForUserRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

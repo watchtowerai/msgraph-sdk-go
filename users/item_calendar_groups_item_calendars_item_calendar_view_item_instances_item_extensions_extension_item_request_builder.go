@@ -73,7 +73,7 @@ func (m *ItemCalendarGroupsItemCalendarsItemCalendarViewItemInstancesItemExtensi
 // Get get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/opentypeextension-get?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/opentypeextension-get?view=graph-rest-1.0
 func (m *ItemCalendarGroupsItemCalendarsItemCalendarViewItemInstancesItemExtensionsExtensionItemRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemCalendarGroupsItemCalendarsItemCalendarViewItemInstancesItemExtensionsExtensionItemRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.Extensionable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -155,4 +155,8 @@ func (m *ItemCalendarGroupsItemCalendarsItemCalendarViewItemInstancesItemExtensi
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemCalendarGroupsItemCalendarsItemCalendarViewItemInstancesItemExtensionsExtensionItemRequestBuilder) WithUrl(rawUrl string)(*ItemCalendarGroupsItemCalendarsItemCalendarViewItemInstancesItemExtensionsExtensionItemRequestBuilder) {
+    return NewItemCalendarGroupsItemCalendarsItemCalendarViewItemInstancesItemExtensionsExtensionItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

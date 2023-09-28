@@ -40,7 +40,7 @@ func NewItemTokenLifetimePoliciesItemRefRequestBuilder(rawUrl string, requestAda
 // Delete remove a tokenLifetimePolicy from an application.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/application-delete-tokenlifetimepolicies?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/application-delete-tokenlifetimepolicies?view=graph-rest-1.0
 func (m *ItemTokenLifetimePoliciesItemRefRequestBuilder) Delete(ctx context.Context, requestConfiguration *ItemTokenLifetimePoliciesItemRefRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -70,4 +70,8 @@ func (m *ItemTokenLifetimePoliciesItemRefRequestBuilder) ToDeleteRequestInformat
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemTokenLifetimePoliciesItemRefRequestBuilder) WithUrl(rawUrl string)(*ItemTokenLifetimePoliciesItemRefRequestBuilder) {
+    return NewItemTokenLifetimePoliciesItemRefRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

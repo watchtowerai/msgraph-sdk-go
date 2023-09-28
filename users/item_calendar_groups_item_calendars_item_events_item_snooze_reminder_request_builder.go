@@ -33,7 +33,7 @@ func NewItemCalendarGroupsItemCalendarsItemEventsItemSnoozeReminderRequestBuilde
 // Post postpone a reminder for an event in a user calendar until a new time.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/event-snoozereminder?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/event-snoozereminder?view=graph-rest-1.0
 func (m *ItemCalendarGroupsItemCalendarsItemEventsItemSnoozeReminderRequestBuilder) Post(ctx context.Context, body ItemCalendarGroupsItemCalendarsItemEventsItemSnoozeReminderPostRequestBodyable, requestConfiguration *ItemCalendarGroupsItemCalendarsItemEventsItemSnoozeReminderRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -64,4 +64,8 @@ func (m *ItemCalendarGroupsItemCalendarsItemEventsItemSnoozeReminderRequestBuild
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemCalendarGroupsItemCalendarsItemEventsItemSnoozeReminderRequestBuilder) WithUrl(rawUrl string)(*ItemCalendarGroupsItemCalendarsItemEventsItemSnoozeReminderRequestBuilder) {
+    return NewItemCalendarGroupsItemCalendarsItemEventsItemSnoozeReminderRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

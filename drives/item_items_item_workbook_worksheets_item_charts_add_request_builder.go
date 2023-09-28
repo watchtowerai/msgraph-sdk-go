@@ -34,7 +34,7 @@ func NewItemItemsItemWorkbookWorksheetsItemChartsAddRequestBuilder(rawUrl string
 // Post creates a new chart.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/chartcollection-add?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/chartcollection-add?view=graph-rest-1.0
 func (m *ItemItemsItemWorkbookWorksheetsItemChartsAddRequestBuilder) Post(ctx context.Context, body ItemItemsItemWorkbookWorksheetsItemChartsAddPostRequestBodyable, requestConfiguration *ItemItemsItemWorkbookWorksheetsItemChartsAddRequestBuilderPostRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.WorkbookChartable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -69,4 +69,8 @@ func (m *ItemItemsItemWorkbookWorksheetsItemChartsAddRequestBuilder) ToPostReque
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemItemsItemWorkbookWorksheetsItemChartsAddRequestBuilder) WithUrl(rawUrl string)(*ItemItemsItemWorkbookWorksheetsItemChartsAddRequestBuilder) {
+    return NewItemItemsItemWorkbookWorksheetsItemChartsAddRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

@@ -57,7 +57,7 @@ func NewItemInstalledAppsTeamsAppInstallationItemRequestBuilder(rawUrl string, r
 // Delete uninstalls an app from the specified team.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/team-delete-installedapps?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/team-delete-installedapps?view=graph-rest-1.0
 func (m *ItemInstalledAppsTeamsAppInstallationItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *ItemInstalledAppsTeamsAppInstallationItemRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -76,7 +76,7 @@ func (m *ItemInstalledAppsTeamsAppInstallationItemRequestBuilder) Delete(ctx con
 // Get retrieve the app installed in the specified team.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/team-get-installedapps?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/team-get-installedapps?view=graph-rest-1.0
 func (m *ItemInstalledAppsTeamsAppInstallationItemRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemInstalledAppsTeamsAppInstallationItemRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.TeamsAppInstallationable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -170,4 +170,8 @@ func (m *ItemInstalledAppsTeamsAppInstallationItemRequestBuilder) ToPatchRequest
 // Upgrade provides operations to call the upgrade method.
 func (m *ItemInstalledAppsTeamsAppInstallationItemRequestBuilder) Upgrade()(*ItemInstalledAppsItemUpgradeRequestBuilder) {
     return NewItemInstalledAppsItemUpgradeRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemInstalledAppsTeamsAppInstallationItemRequestBuilder) WithUrl(rawUrl string)(*ItemInstalledAppsTeamsAppInstallationItemRequestBuilder) {
+    return NewItemInstalledAppsTeamsAppInstallationItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

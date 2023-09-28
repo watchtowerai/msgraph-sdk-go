@@ -33,7 +33,7 @@ func NewItemSitesItemContentTypesItemUnpublishRequestBuilder(rawUrl string, requ
 // Post unpublish a [contentType][] from a content type hub site.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/contenttype-unpublish?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/contenttype-unpublish?view=graph-rest-1.0
 func (m *ItemSitesItemContentTypesItemUnpublishRequestBuilder) Post(ctx context.Context, requestConfiguration *ItemSitesItemContentTypesItemUnpublishRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -60,4 +60,8 @@ func (m *ItemSitesItemContentTypesItemUnpublishRequestBuilder) ToPostRequestInfo
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemSitesItemContentTypesItemUnpublishRequestBuilder) WithUrl(rawUrl string)(*ItemSitesItemContentTypesItemUnpublishRequestBuilder) {
+    return NewItemSitesItemContentTypesItemUnpublishRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

@@ -33,7 +33,7 @@ func NewAccessReviewsDefinitionsItemInstancesItemSendReminderRequestBuilder(rawU
 // Post send a reminder to the reviewers of an active accessReviewInstance.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/accessreviewinstance-sendreminder?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/accessreviewinstance-sendreminder?view=graph-rest-1.0
 func (m *AccessReviewsDefinitionsItemInstancesItemSendReminderRequestBuilder) Post(ctx context.Context, requestConfiguration *AccessReviewsDefinitionsItemInstancesItemSendReminderRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -60,4 +60,8 @@ func (m *AccessReviewsDefinitionsItemInstancesItemSendReminderRequestBuilder) To
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *AccessReviewsDefinitionsItemInstancesItemSendReminderRequestBuilder) WithUrl(rawUrl string)(*AccessReviewsDefinitionsItemInstancesItemSendReminderRequestBuilder) {
+    return NewAccessReviewsDefinitionsItemInstancesItemSendReminderRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

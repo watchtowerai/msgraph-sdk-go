@@ -77,7 +77,7 @@ func (m *ItemScopedMembersRequestBuilder) Count()(*ItemScopedMembersCountRequest
 // Get retrieve a list of scopedRoleMembership objects for a directory role.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/directoryrole-list-scopedmembers?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/directoryrole-list-scopedmembers?view=graph-rest-1.0
 func (m *ItemScopedMembersRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemScopedMembersRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ScopedRoleMembershipCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -147,4 +147,8 @@ func (m *ItemScopedMembersRequestBuilder) ToPostRequestInformation(ctx context.C
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemScopedMembersRequestBuilder) WithUrl(rawUrl string)(*ItemScopedMembersRequestBuilder) {
+    return NewItemScopedMembersRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

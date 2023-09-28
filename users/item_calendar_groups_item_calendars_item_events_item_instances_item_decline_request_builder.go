@@ -30,10 +30,10 @@ func NewItemCalendarGroupsItemCalendarsItemEventsItemInstancesItemDeclineRequest
     urlParams["request-raw-url"] = rawUrl
     return NewItemCalendarGroupsItemCalendarsItemEventsItemInstancesItemDeclineRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Post decline invitation to the specified event in a user calendar. If the event allows proposals for new times, on declining the event, an invitee can choose to suggest an alternative time by including the **proposedNewTime** parameter. For more information on how to propose a time, and how to receive and accept a new time proposal, see Propose new meeting times.
+// Post decline invitation to the specified event in a user calendar. If the event allows proposals for new times, on declining the event, an invitee can choose to suggest an alternative time by including the proposedNewTime parameter. For more information on how to propose a time, and how to receive and accept a new time proposal, see Propose new meeting times.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/event-decline?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/event-decline?view=graph-rest-1.0
 func (m *ItemCalendarGroupsItemCalendarsItemEventsItemInstancesItemDeclineRequestBuilder) Post(ctx context.Context, body ItemCalendarGroupsItemCalendarsItemEventsItemInstancesItemDeclinePostRequestBodyable, requestConfiguration *ItemCalendarGroupsItemCalendarsItemEventsItemInstancesItemDeclineRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -49,7 +49,7 @@ func (m *ItemCalendarGroupsItemCalendarsItemEventsItemInstancesItemDeclineReques
     }
     return nil
 }
-// ToPostRequestInformation decline invitation to the specified event in a user calendar. If the event allows proposals for new times, on declining the event, an invitee can choose to suggest an alternative time by including the **proposedNewTime** parameter. For more information on how to propose a time, and how to receive and accept a new time proposal, see Propose new meeting times.
+// ToPostRequestInformation decline invitation to the specified event in a user calendar. If the event allows proposals for new times, on declining the event, an invitee can choose to suggest an alternative time by including the proposedNewTime parameter. For more information on how to propose a time, and how to receive and accept a new time proposal, see Propose new meeting times.
 func (m *ItemCalendarGroupsItemCalendarsItemEventsItemInstancesItemDeclineRequestBuilder) ToPostRequestInformation(ctx context.Context, body ItemCalendarGroupsItemCalendarsItemEventsItemInstancesItemDeclinePostRequestBodyable, requestConfiguration *ItemCalendarGroupsItemCalendarsItemEventsItemInstancesItemDeclineRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
@@ -64,4 +64,8 @@ func (m *ItemCalendarGroupsItemCalendarsItemEventsItemInstancesItemDeclineReques
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemCalendarGroupsItemCalendarsItemEventsItemInstancesItemDeclineRequestBuilder) WithUrl(rawUrl string)(*ItemCalendarGroupsItemCalendarsItemEventsItemInstancesItemDeclineRequestBuilder) {
+    return NewItemCalendarGroupsItemCalendarsItemEventsItemInstancesItemDeclineRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

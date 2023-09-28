@@ -33,7 +33,7 @@ func NewItemTeamSendActivityNotificationRequestBuilder(rawUrl string, requestAda
 // Post send an activity feed notification in the scope of a team. For more details about sending notifications and the requirements for doing so, seesending Teams activity notifications.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/team-sendactivitynotification?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/team-sendactivitynotification?view=graph-rest-1.0
 func (m *ItemTeamSendActivityNotificationRequestBuilder) Post(ctx context.Context, body ItemTeamSendActivityNotificationPostRequestBodyable, requestConfiguration *ItemTeamSendActivityNotificationRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -64,4 +64,8 @@ func (m *ItemTeamSendActivityNotificationRequestBuilder) ToPostRequestInformatio
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemTeamSendActivityNotificationRequestBuilder) WithUrl(rawUrl string)(*ItemTeamSendActivityNotificationRequestBuilder) {
+    return NewItemTeamSendActivityNotificationRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

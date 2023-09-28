@@ -33,7 +33,7 @@ func NewItemItemsItemWorkbookTablesItemSortClearRequestBuilder(rawUrl string, re
 // Post clears the sorting that is currently on the table. While this doesn't modify the table's ordering, it clears the state of the header buttons.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/tablesort-clear?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/tablesort-clear?view=graph-rest-1.0
 func (m *ItemItemsItemWorkbookTablesItemSortClearRequestBuilder) Post(ctx context.Context, requestConfiguration *ItemItemsItemWorkbookTablesItemSortClearRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -60,4 +60,8 @@ func (m *ItemItemsItemWorkbookTablesItemSortClearRequestBuilder) ToPostRequestIn
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemItemsItemWorkbookTablesItemSortClearRequestBuilder) WithUrl(rawUrl string)(*ItemItemsItemWorkbookTablesItemSortClearRequestBuilder) {
+    return NewItemItemsItemWorkbookTablesItemSortClearRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

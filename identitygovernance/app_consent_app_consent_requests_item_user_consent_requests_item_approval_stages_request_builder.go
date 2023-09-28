@@ -77,7 +77,7 @@ func (m *AppConsentAppConsentRequestsItemUserConsentRequestsItemApprovalStagesRe
 // Get in Azure AD entitlement management, list the approvalStage objects associated with an approval object. This call can be made by an approver, providing the identifier of the access package assignment request.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/approval-list-stages?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/approval-list-stages?view=graph-rest-1.0
 func (m *AppConsentAppConsentRequestsItemUserConsentRequestsItemApprovalStagesRequestBuilder) Get(ctx context.Context, requestConfiguration *AppConsentAppConsentRequestsItemUserConsentRequestsItemApprovalStagesRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ApprovalStageCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -147,4 +147,8 @@ func (m *AppConsentAppConsentRequestsItemUserConsentRequestsItemApprovalStagesRe
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *AppConsentAppConsentRequestsItemUserConsentRequestsItemApprovalStagesRequestBuilder) WithUrl(rawUrl string)(*AppConsentAppConsentRequestsItemUserConsentRequestsItemApprovalStagesRequestBuilder) {
+    return NewAppConsentAppConsentRequestsItemUserConsentRequestsItemApprovalStagesRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

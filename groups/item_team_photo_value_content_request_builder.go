@@ -38,6 +38,9 @@ func NewItemTeamPhotoValueContentRequestBuilder(rawUrl string, requestAdapter i2
     return NewItemTeamPhotoValueContentRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Get get media content for the navigation property photo from groups
+// [Find more info here]
+// 
+// [Find more info here]: https://learn.microsoft.com/graph/api/profilephoto-get?view=graph-rest-1.0
 func (m *ItemTeamPhotoValueContentRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemTeamPhotoValueContentRequestBuilderGetRequestConfiguration)([]byte, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -99,4 +102,8 @@ func (m *ItemTeamPhotoValueContentRequestBuilder) ToPutRequestInformation(ctx co
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemTeamPhotoValueContentRequestBuilder) WithUrl(rawUrl string)(*ItemTeamPhotoValueContentRequestBuilder) {
+    return NewItemTeamPhotoValueContentRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

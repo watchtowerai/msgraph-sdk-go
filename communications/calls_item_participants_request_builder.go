@@ -77,7 +77,7 @@ func (m *CallsItemParticipantsRequestBuilder) Count()(*CallsItemParticipantsCoun
 // Get retrieve a list of participant objects in the call.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/call-list-participants?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/call-list-participants?view=graph-rest-1.0
 func (m *CallsItemParticipantsRequestBuilder) Get(ctx context.Context, requestConfiguration *CallsItemParticipantsRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ParticipantCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -151,4 +151,8 @@ func (m *CallsItemParticipantsRequestBuilder) ToPostRequestInformation(ctx conte
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *CallsItemParticipantsRequestBuilder) WithUrl(rawUrl string)(*CallsItemParticipantsRequestBuilder) {
+    return NewCallsItemParticipantsRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

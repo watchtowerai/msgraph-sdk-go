@@ -57,7 +57,7 @@ func NewItemJoinedTeamsItemTagsItemMembersTeamworkTagMemberItemRequestBuilder(ra
 // Delete delete a member from a standard tag in a team.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/teamworktagmember-delete?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/teamworktagmember-delete?view=graph-rest-1.0
 func (m *ItemJoinedTeamsItemTagsItemMembersTeamworkTagMemberItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *ItemJoinedTeamsItemTagsItemMembersTeamworkTagMemberItemRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -76,7 +76,7 @@ func (m *ItemJoinedTeamsItemTagsItemMembersTeamworkTagMemberItemRequestBuilder) 
 // Get get the properties and relationships of a member of a standard tag in a team.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/teamworktagmember-get?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/teamworktagmember-get?view=graph-rest-1.0
 func (m *ItemJoinedTeamsItemTagsItemMembersTeamworkTagMemberItemRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemJoinedTeamsItemTagsItemMembersTeamworkTagMemberItemRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.TeamworkTagMemberable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -158,4 +158,8 @@ func (m *ItemJoinedTeamsItemTagsItemMembersTeamworkTagMemberItemRequestBuilder) 
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemJoinedTeamsItemTagsItemMembersTeamworkTagMemberItemRequestBuilder) WithUrl(rawUrl string)(*ItemJoinedTeamsItemTagsItemMembersTeamworkTagMemberItemRequestBuilder) {
+    return NewItemJoinedTeamsItemTagsItemMembersTeamworkTagMemberItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

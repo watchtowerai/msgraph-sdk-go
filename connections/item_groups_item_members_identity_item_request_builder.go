@@ -57,7 +57,7 @@ func NewItemGroupsItemMembersIdentityItemRequestBuilder(rawUrl string, requestAd
 // Delete delete an identity resource to remove the corresponding member from an externalGroup.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/externalconnectors-identity-delete?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/externalconnectors-identity-delete?view=graph-rest-1.0
 func (m *ItemGroupsItemMembersIdentityItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *ItemGroupsItemMembersIdentityItemRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -155,4 +155,8 @@ func (m *ItemGroupsItemMembersIdentityItemRequestBuilder) ToPatchRequestInformat
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemGroupsItemMembersIdentityItemRequestBuilder) WithUrl(rawUrl string)(*ItemGroupsItemMembersIdentityItemRequestBuilder) {
+    return NewItemGroupsItemMembersIdentityItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

@@ -50,7 +50,7 @@ func NewItemAppManagementPoliciesAppManagementPolicyItemRequestBuilder(rawUrl st
 // Delete remove an appManagementPolicy policy object from an application or service principal object. When you remove the appManagementPolicy, the application or service principal adopts the tenant-wide tenantAppManagementPolicy setting. 
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/appmanagementpolicy-delete-appliesto?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/appmanagementpolicy-delete-appliesto?view=graph-rest-1.0
 func (m *ItemAppManagementPoliciesAppManagementPolicyItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *ItemAppManagementPoliciesAppManagementPolicyItemRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -112,4 +112,8 @@ func (m *ItemAppManagementPoliciesAppManagementPolicyItemRequestBuilder) ToGetRe
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemAppManagementPoliciesAppManagementPolicyItemRequestBuilder) WithUrl(rawUrl string)(*ItemAppManagementPoliciesAppManagementPolicyItemRequestBuilder) {
+    return NewItemAppManagementPoliciesAppManagementPolicyItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

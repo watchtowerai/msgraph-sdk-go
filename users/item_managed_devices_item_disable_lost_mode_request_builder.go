@@ -31,6 +31,9 @@ func NewItemManagedDevicesItemDisableLostModeRequestBuilder(rawUrl string, reque
     return NewItemManagedDevicesItemDisableLostModeRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Post disable lost mode
+// [Find more info here]
+// 
+// [Find more info here]: https://learn.microsoft.com/graph/api/intune-devices-manageddevice-disablelostmode?view=graph-rest-1.0
 func (m *ItemManagedDevicesItemDisableLostModeRequestBuilder) Post(ctx context.Context, requestConfiguration *ItemManagedDevicesItemDisableLostModeRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -57,4 +60,8 @@ func (m *ItemManagedDevicesItemDisableLostModeRequestBuilder) ToPostRequestInfor
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemManagedDevicesItemDisableLostModeRequestBuilder) WithUrl(rawUrl string)(*ItemManagedDevicesItemDisableLostModeRequestBuilder) {
+    return NewItemManagedDevicesItemDisableLostModeRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

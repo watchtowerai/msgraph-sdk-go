@@ -63,6 +63,10 @@ func (m *ItemTransitiveMemberOfDirectoryObjectItemRequestBuilder) Get(ctx contex
 func (m *ItemTransitiveMemberOfDirectoryObjectItemRequestBuilder) GraphAdministrativeUnit()(*ItemTransitiveMemberOfItemGraphAdministrativeUnitRequestBuilder) {
     return NewItemTransitiveMemberOfItemGraphAdministrativeUnitRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+// GraphDirectoryRole casts the previous resource to directoryRole.
+func (m *ItemTransitiveMemberOfDirectoryObjectItemRequestBuilder) GraphDirectoryRole()(*ItemTransitiveMemberOfItemGraphDirectoryRoleRequestBuilder) {
+    return NewItemTransitiveMemberOfItemGraphDirectoryRoleRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
 // GraphGroup casts the previous resource to group.
 func (m *ItemTransitiveMemberOfDirectoryObjectItemRequestBuilder) GraphGroup()(*ItemTransitiveMemberOfItemGraphGroupRequestBuilder) {
     return NewItemTransitiveMemberOfItemGraphGroupRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
@@ -82,4 +86,8 @@ func (m *ItemTransitiveMemberOfDirectoryObjectItemRequestBuilder) ToGetRequestIn
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemTransitiveMemberOfDirectoryObjectItemRequestBuilder) WithUrl(rawUrl string)(*ItemTransitiveMemberOfDirectoryObjectItemRequestBuilder) {
+    return NewItemTransitiveMemberOfDirectoryObjectItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

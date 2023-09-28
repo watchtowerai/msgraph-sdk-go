@@ -77,7 +77,7 @@ func (m *ItemTeamworkAssociatedTeamsRequestBuilder) Count()(*ItemTeamworkAssocia
 // Get get the list of teams in Microsoft Teams that a user is associated with.Currently, a user can be associated with a team in two different ways:* A user can be a direct member of a team.* A user can be a member of a shared channel that is hosted inside a team.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/associatedteaminfo-list?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/associatedteaminfo-list?view=graph-rest-1.0
 func (m *ItemTeamworkAssociatedTeamsRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemTeamworkAssociatedTeamsRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.AssociatedTeamInfoCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -147,4 +147,8 @@ func (m *ItemTeamworkAssociatedTeamsRequestBuilder) ToPostRequestInformation(ctx
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemTeamworkAssociatedTeamsRequestBuilder) WithUrl(rawUrl string)(*ItemTeamworkAssociatedTeamsRequestBuilder) {
+    return NewItemTeamworkAssociatedTeamsRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

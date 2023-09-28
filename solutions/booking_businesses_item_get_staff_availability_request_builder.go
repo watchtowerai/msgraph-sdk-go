@@ -33,7 +33,7 @@ func NewBookingBusinessesItemGetStaffAvailabilityRequestBuilder(rawUrl string, r
 // Post get the availability information of staff members of a Microsoft Bookings calendar.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/bookingbusiness-getstaffavailability?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/bookingbusiness-getstaffavailability?view=graph-rest-1.0
 func (m *BookingBusinessesItemGetStaffAvailabilityRequestBuilder) Post(ctx context.Context, body BookingBusinessesItemGetStaffAvailabilityPostRequestBodyable, requestConfiguration *BookingBusinessesItemGetStaffAvailabilityRequestBuilderPostRequestConfiguration)(BookingBusinessesItemGetStaffAvailabilityResponseable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -68,4 +68,8 @@ func (m *BookingBusinessesItemGetStaffAvailabilityRequestBuilder) ToPostRequestI
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *BookingBusinessesItemGetStaffAvailabilityRequestBuilder) WithUrl(rawUrl string)(*BookingBusinessesItemGetStaffAvailabilityRequestBuilder) {
+    return NewBookingBusinessesItemGetStaffAvailabilityRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

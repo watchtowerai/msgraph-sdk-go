@@ -81,7 +81,7 @@ func (m *PresencesPresenceItemRequestBuilder) Delete(ctx context.Context, reques
 // Get get a user's presence information.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/presence-get?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/presence-get?view=graph-rest-1.0
 func (m *PresencesPresenceItemRequestBuilder) Get(ctx context.Context, requestConfiguration *PresencesPresenceItemRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.Presenceable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -122,6 +122,10 @@ func (m *PresencesPresenceItemRequestBuilder) Patch(ctx context.Context, body ia
 // SetPresence provides operations to call the setPresence method.
 func (m *PresencesPresenceItemRequestBuilder) SetPresence()(*PresencesItemSetPresenceRequestBuilder) {
     return NewPresencesItemSetPresenceRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// SetStatusMessage provides operations to call the setStatusMessage method.
+func (m *PresencesPresenceItemRequestBuilder) SetStatusMessage()(*PresencesItemSetStatusMessageRequestBuilder) {
+    return NewPresencesItemSetStatusMessageRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // SetUserPreferredPresence provides operations to call the setUserPreferredPresence method.
 func (m *PresencesPresenceItemRequestBuilder) SetUserPreferredPresence()(*PresencesItemSetUserPreferredPresenceRequestBuilder) {
@@ -171,4 +175,8 @@ func (m *PresencesPresenceItemRequestBuilder) ToPatchRequestInformation(ctx cont
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *PresencesPresenceItemRequestBuilder) WithUrl(rawUrl string)(*PresencesPresenceItemRequestBuilder) {
+    return NewPresencesPresenceItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

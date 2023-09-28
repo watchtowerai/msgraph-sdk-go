@@ -33,7 +33,7 @@ func NewItemSitesItemContentTypesItemPublishRequestBuilder(rawUrl string, reques
 // Post publishes a [contentType][] present in the content type hub site.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/contenttype-publish?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/contenttype-publish?view=graph-rest-1.0
 func (m *ItemSitesItemContentTypesItemPublishRequestBuilder) Post(ctx context.Context, requestConfiguration *ItemSitesItemContentTypesItemPublishRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -60,4 +60,8 @@ func (m *ItemSitesItemContentTypesItemPublishRequestBuilder) ToPostRequestInform
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemSitesItemContentTypesItemPublishRequestBuilder) WithUrl(rawUrl string)(*ItemSitesItemContentTypesItemPublishRequestBuilder) {
+    return NewItemSitesItemContentTypesItemPublishRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

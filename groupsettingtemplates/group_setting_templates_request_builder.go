@@ -81,7 +81,7 @@ func (m *GroupSettingTemplatesRequestBuilder) Delta()(*DeltaRequestBuilder) {
 // Get group setting templates represents a set of templates from which group settings may be created and used within a tenant. This operation retrieves the list of available groupSettingTemplates objects.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/groupsettingtemplate-list?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/groupsettingtemplate-list?view=graph-rest-1.0
 func (m *GroupSettingTemplatesRequestBuilder) Get(ctx context.Context, requestConfiguration *GroupSettingTemplatesRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.GroupSettingTemplateCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -163,4 +163,8 @@ func (m *GroupSettingTemplatesRequestBuilder) ToPostRequestInformation(ctx conte
 // ValidateProperties provides operations to call the validateProperties method.
 func (m *GroupSettingTemplatesRequestBuilder) ValidateProperties()(*ValidatePropertiesRequestBuilder) {
     return NewValidatePropertiesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *GroupSettingTemplatesRequestBuilder) WithUrl(rawUrl string)(*GroupSettingTemplatesRequestBuilder) {
+    return NewGroupSettingTemplatesRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

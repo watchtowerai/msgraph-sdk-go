@@ -81,7 +81,7 @@ func (m *SchoolsRequestBuilder) Delta()(*SchoolsDeltaRequestBuilder) {
 // Get get a list of the educationSchool objects and their properties.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/educationschool-list?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/educationschool-list?view=graph-rest-1.0
 func (m *SchoolsRequestBuilder) Get(ctx context.Context, requestConfiguration *SchoolsRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.EducationSchoolCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -103,7 +103,7 @@ func (m *SchoolsRequestBuilder) Get(ctx context.Context, requestConfiguration *S
 // Post create a new educationSchool object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/educationschool-post?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/educationschool-post?view=graph-rest-1.0
 func (m *SchoolsRequestBuilder) Post(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.EducationSchoolable, requestConfiguration *SchoolsRequestBuilderPostRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.EducationSchoolable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -154,4 +154,8 @@ func (m *SchoolsRequestBuilder) ToPostRequestInformation(ctx context.Context, bo
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *SchoolsRequestBuilder) WithUrl(rawUrl string)(*SchoolsRequestBuilder) {
+    return NewSchoolsRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

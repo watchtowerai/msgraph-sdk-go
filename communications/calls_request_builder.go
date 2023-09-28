@@ -100,7 +100,7 @@ func (m *CallsRequestBuilder) LogTeleconferenceDeviceQuality()(*CallsLogTeleconf
 // Post create call enables your bot to create a new outgoing peer-to-peer or group call, or join an existing meeting. You will need to register the calling bot and go through the list of permissions needed as mentioned below.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/application-post-calls?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/application-post-calls?view=graph-rest-1.0
 func (m *CallsRequestBuilder) Post(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.Callable, requestConfiguration *CallsRequestBuilderPostRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.Callable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -151,4 +151,8 @@ func (m *CallsRequestBuilder) ToPostRequestInformation(ctx context.Context, body
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *CallsRequestBuilder) WithUrl(rawUrl string)(*CallsRequestBuilder) {
+    return NewCallsRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

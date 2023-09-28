@@ -34,7 +34,7 @@ func NewItemRestoreRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee26
 // Post restore a recently deleted application, group, servicePrincipal, administrative unit, or user object from deleted items. If an item was accidentally deleted, you can fully restore the item. This is not applicable to security groups, which are deleted permanently. A recently deleted item will remain available for up to 30 days. After 30 days, the item is permanently deleted.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/directory-deleteditems-restore?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/directory-deleteditems-restore?view=graph-rest-1.0
 func (m *ItemRestoreRequestBuilder) Post(ctx context.Context, requestConfiguration *ItemRestoreRequestBuilderPostRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.DirectoryObjectable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -65,4 +65,8 @@ func (m *ItemRestoreRequestBuilder) ToPostRequestInformation(ctx context.Context
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemRestoreRequestBuilder) WithUrl(rawUrl string)(*ItemRestoreRequestBuilder) {
+    return NewItemRestoreRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

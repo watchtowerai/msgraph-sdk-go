@@ -33,7 +33,7 @@ func NewItemExportPersonalDataRequestBuilder(rawUrl string, requestAdapter i2ae4
 // Post submit a data policy operation request from a company administrator or an application to export an organizational user's data. This data includes the user's data stored in OneDrive and their activity reports. For more guidance about exporting data while complying with regulations, see Data Subject Requests and the GDPR and CCPA.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/user-exportpersonaldata?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/user-exportpersonaldata?view=graph-rest-1.0
 func (m *ItemExportPersonalDataRequestBuilder) Post(ctx context.Context, body ItemExportPersonalDataPostRequestBodyable, requestConfiguration *ItemExportPersonalDataRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -64,4 +64,8 @@ func (m *ItemExportPersonalDataRequestBuilder) ToPostRequestInformation(ctx cont
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemExportPersonalDataRequestBuilder) WithUrl(rawUrl string)(*ItemExportPersonalDataRequestBuilder) {
+    return NewItemExportPersonalDataRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

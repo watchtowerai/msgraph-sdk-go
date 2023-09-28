@@ -31,6 +31,9 @@ func NewItemManagedDevicesItemBypassActivationLockRequestBuilder(rawUrl string, 
     return NewItemManagedDevicesItemBypassActivationLockRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Post bypass activation lock
+// [Find more info here]
+// 
+// [Find more info here]: https://learn.microsoft.com/graph/api/intune-devices-manageddevice-bypassactivationlock?view=graph-rest-1.0
 func (m *ItemManagedDevicesItemBypassActivationLockRequestBuilder) Post(ctx context.Context, requestConfiguration *ItemManagedDevicesItemBypassActivationLockRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -57,4 +60,8 @@ func (m *ItemManagedDevicesItemBypassActivationLockRequestBuilder) ToPostRequest
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemManagedDevicesItemBypassActivationLockRequestBuilder) WithUrl(rawUrl string)(*ItemManagedDevicesItemBypassActivationLockRequestBuilder) {
+    return NewItemManagedDevicesItemBypassActivationLockRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

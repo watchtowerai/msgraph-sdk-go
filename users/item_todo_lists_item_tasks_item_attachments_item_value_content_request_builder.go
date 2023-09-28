@@ -40,7 +40,7 @@ func NewItemTodoListsItemTasksItemAttachmentsItemValueContentRequestBuilder(rawU
 // Get get media content for the navigation property attachments from users
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/todotask-list-attachments?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/todotask-list-attachments?view=graph-rest-1.0
 func (m *ItemTodoListsItemTasksItemAttachmentsItemValueContentRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemTodoListsItemTasksItemAttachmentsItemValueContentRequestBuilderGetRequestConfiguration)([]byte, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -102,4 +102,8 @@ func (m *ItemTodoListsItemTasksItemAttachmentsItemValueContentRequestBuilder) To
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemTodoListsItemTasksItemAttachmentsItemValueContentRequestBuilder) WithUrl(rawUrl string)(*ItemTodoListsItemTasksItemAttachmentsItemValueContentRequestBuilder) {
+    return NewItemTodoListsItemTasksItemAttachmentsItemValueContentRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

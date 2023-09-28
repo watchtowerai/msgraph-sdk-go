@@ -31,6 +31,9 @@ func NewItemRemoveAllDevicesFromManagementRequestBuilder(rawUrl string, requestA
     return NewItemRemoveAllDevicesFromManagementRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Post retire all devices from management for this user
+// [Find more info here]
+// 
+// [Find more info here]: https://learn.microsoft.com/graph/api/intune-devices-user-removealldevicesfrommanagement?view=graph-rest-1.0
 func (m *ItemRemoveAllDevicesFromManagementRequestBuilder) Post(ctx context.Context, requestConfiguration *ItemRemoveAllDevicesFromManagementRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -57,4 +60,8 @@ func (m *ItemRemoveAllDevicesFromManagementRequestBuilder) ToPostRequestInformat
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemRemoveAllDevicesFromManagementRequestBuilder) WithUrl(rawUrl string)(*ItemRemoveAllDevicesFromManagementRequestBuilder) {
+    return NewItemRemoveAllDevicesFromManagementRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

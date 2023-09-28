@@ -31,6 +31,9 @@ func NewManagedDevicesItemRebootNowRequestBuilder(rawUrl string, requestAdapter 
     return NewManagedDevicesItemRebootNowRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Post reboot device
+// [Find more info here]
+// 
+// [Find more info here]: https://learn.microsoft.com/graph/api/intune-devices-manageddevice-rebootnow?view=graph-rest-1.0
 func (m *ManagedDevicesItemRebootNowRequestBuilder) Post(ctx context.Context, requestConfiguration *ManagedDevicesItemRebootNowRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -57,4 +60,8 @@ func (m *ManagedDevicesItemRebootNowRequestBuilder) ToPostRequestInformation(ctx
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ManagedDevicesItemRebootNowRequestBuilder) WithUrl(rawUrl string)(*ManagedDevicesItemRebootNowRequestBuilder) {
+    return NewManagedDevicesItemRebootNowRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

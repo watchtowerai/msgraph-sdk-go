@@ -18,7 +18,7 @@ type ItemPlannerTasksItemDetailsRequestBuilderDeleteRequestConfiguration struct 
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
-// ItemPlannerTasksItemDetailsRequestBuilderGetQueryParameters retrieve the properties and relationships of a **plannerTaskDetails** object.
+// ItemPlannerTasksItemDetailsRequestBuilderGetQueryParameters retrieve the properties and relationships of a plannerTaskDetails object.
 type ItemPlannerTasksItemDetailsRequestBuilderGetQueryParameters struct {
     // Expand related entities
     Expand []string `uriparametername:"%24expand"`
@@ -70,10 +70,10 @@ func (m *ItemPlannerTasksItemDetailsRequestBuilder) Delete(ctx context.Context, 
     }
     return nil
 }
-// Get retrieve the properties and relationships of a **plannerTaskDetails** object.
+// Get retrieve the properties and relationships of a plannerTaskDetails object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/plannertaskdetails-get?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/plannertaskdetails-get?view=graph-rest-1.0
 func (m *ItemPlannerTasksItemDetailsRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemPlannerTasksItemDetailsRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.PlannerTaskDetailsable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -95,7 +95,7 @@ func (m *ItemPlannerTasksItemDetailsRequestBuilder) Get(ctx context.Context, req
 // Patch update the navigation property details in users
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/plannertaskdetails-update?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/plannertaskdetails-update?view=graph-rest-1.0
 func (m *ItemPlannerTasksItemDetailsRequestBuilder) Patch(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.PlannerTaskDetailsable, requestConfiguration *ItemPlannerTasksItemDetailsRequestBuilderPatchRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.PlannerTaskDetailsable, error) {
     requestInfo, err := m.ToPatchRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -126,7 +126,7 @@ func (m *ItemPlannerTasksItemDetailsRequestBuilder) ToDeleteRequestInformation(c
     }
     return requestInfo, nil
 }
-// ToGetRequestInformation retrieve the properties and relationships of a **plannerTaskDetails** object.
+// ToGetRequestInformation retrieve the properties and relationships of a plannerTaskDetails object.
 func (m *ItemPlannerTasksItemDetailsRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *ItemPlannerTasksItemDetailsRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
@@ -158,4 +158,8 @@ func (m *ItemPlannerTasksItemDetailsRequestBuilder) ToPatchRequestInformation(ct
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemPlannerTasksItemDetailsRequestBuilder) WithUrl(rawUrl string)(*ItemPlannerTasksItemDetailsRequestBuilder) {
+    return NewItemPlannerTasksItemDetailsRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

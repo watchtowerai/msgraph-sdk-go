@@ -81,7 +81,7 @@ func (m *DirectoryRoleEligibilitySchedulesRequestBuilder) FilterByCurrentUserWit
 // Get get the unifiedRoleEligibilitySchedule resources from the roleEligibilitySchedules navigation property.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/rbacapplication-list-roleeligibilityschedules?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/rbacapplication-list-roleeligibilityschedules?view=graph-rest-1.0
 func (m *DirectoryRoleEligibilitySchedulesRequestBuilder) Get(ctx context.Context, requestConfiguration *DirectoryRoleEligibilitySchedulesRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.UnifiedRoleEligibilityScheduleCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -151,4 +151,8 @@ func (m *DirectoryRoleEligibilitySchedulesRequestBuilder) ToPostRequestInformati
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *DirectoryRoleEligibilitySchedulesRequestBuilder) WithUrl(rawUrl string)(*DirectoryRoleEligibilitySchedulesRequestBuilder) {
+    return NewDirectoryRoleEligibilitySchedulesRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

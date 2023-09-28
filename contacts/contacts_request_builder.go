@@ -81,7 +81,7 @@ func (m *ContactsRequestBuilder) Delta()(*DeltaRequestBuilder) {
 // Get get the list of organizational contacts for this organization.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/orgcontact-list?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/orgcontact-list?view=graph-rest-1.0
 func (m *ContactsRequestBuilder) Get(ctx context.Context, requestConfiguration *ContactsRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.OrgContactCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -163,4 +163,8 @@ func (m *ContactsRequestBuilder) ToPostRequestInformation(ctx context.Context, b
 // ValidateProperties provides operations to call the validateProperties method.
 func (m *ContactsRequestBuilder) ValidateProperties()(*ValidatePropertiesRequestBuilder) {
     return NewValidatePropertiesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ContactsRequestBuilder) WithUrl(rawUrl string)(*ContactsRequestBuilder) {
+    return NewContactsRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

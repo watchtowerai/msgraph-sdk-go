@@ -73,7 +73,7 @@ func (m *DailyPrintUsageByPrinterPrintUsageByPrinterItemRequestBuilder) Delete(c
 // Get retrieve a usage summary for a printer for a particular time period. For descriptions of each of the endpoints, see printUsageByPrinter.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/printusagebyprinter-get?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/printusagebyprinter-get?view=graph-rest-1.0
 func (m *DailyPrintUsageByPrinterPrintUsageByPrinterItemRequestBuilder) Get(ctx context.Context, requestConfiguration *DailyPrintUsageByPrinterPrintUsageByPrinterItemRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.PrintUsageByPrinterable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -155,4 +155,8 @@ func (m *DailyPrintUsageByPrinterPrintUsageByPrinterItemRequestBuilder) ToPatchR
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *DailyPrintUsageByPrinterPrintUsageByPrinterItemRequestBuilder) WithUrl(rawUrl string)(*DailyPrintUsageByPrinterPrintUsageByPrinterItemRequestBuilder) {
+    return NewDailyPrintUsageByPrinterPrintUsageByPrinterItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

@@ -50,7 +50,7 @@ func NewItemCalendarEventsItemInstancesItemAttachmentsAttachmentItemRequestBuild
 // Delete delete an attachment from a user calendar event, mail message, or group post.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/attachment-delete?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/attachment-delete?view=graph-rest-1.0
 func (m *ItemCalendarEventsItemInstancesItemAttachmentsAttachmentItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *ItemCalendarEventsItemInstancesItemAttachmentsAttachmentItemRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -112,4 +112,8 @@ func (m *ItemCalendarEventsItemInstancesItemAttachmentsAttachmentItemRequestBuil
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemCalendarEventsItemInstancesItemAttachmentsAttachmentItemRequestBuilder) WithUrl(rawUrl string)(*ItemCalendarEventsItemInstancesItemAttachmentsAttachmentItemRequestBuilder) {
+    return NewItemCalendarEventsItemInstancesItemAttachmentsAttachmentItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

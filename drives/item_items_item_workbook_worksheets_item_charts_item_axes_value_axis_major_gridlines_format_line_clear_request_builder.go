@@ -33,7 +33,7 @@ func NewItemItemsItemWorkbookWorksheetsItemChartsItemAxesValueAxisMajorGridlines
 // Post clear the line format of a chart element.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/chartlineformat-clear?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/chartlineformat-clear?view=graph-rest-1.0
 func (m *ItemItemsItemWorkbookWorksheetsItemChartsItemAxesValueAxisMajorGridlinesFormatLineClearRequestBuilder) Post(ctx context.Context, requestConfiguration *ItemItemsItemWorkbookWorksheetsItemChartsItemAxesValueAxisMajorGridlinesFormatLineClearRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -60,4 +60,8 @@ func (m *ItemItemsItemWorkbookWorksheetsItemChartsItemAxesValueAxisMajorGridline
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemItemsItemWorkbookWorksheetsItemChartsItemAxesValueAxisMajorGridlinesFormatLineClearRequestBuilder) WithUrl(rawUrl string)(*ItemItemsItemWorkbookWorksheetsItemChartsItemAxesValueAxisMajorGridlinesFormatLineClearRequestBuilder) {
+    return NewItemItemsItemWorkbookWorksheetsItemChartsItemAxesValueAxisMajorGridlinesFormatLineClearRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

@@ -57,7 +57,7 @@ func NewTriggerTypesRetentionEventTypesRetentionEventTypeItemRequestBuilder(rawU
 // Delete delete a retentionEventType object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/security-retentioneventtype-delete?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/security-retentioneventtype-delete?view=graph-rest-1.0
 func (m *TriggerTypesRetentionEventTypesRetentionEventTypeItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *TriggerTypesRetentionEventTypesRetentionEventTypeItemRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -76,7 +76,7 @@ func (m *TriggerTypesRetentionEventTypesRetentionEventTypeItemRequestBuilder) De
 // Get read the properties and relationships of a retentionEventType object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/security-retentioneventtype-get?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/security-retentioneventtype-get?view=graph-rest-1.0
 func (m *TriggerTypesRetentionEventTypesRetentionEventTypeItemRequestBuilder) Get(ctx context.Context, requestConfiguration *TriggerTypesRetentionEventTypesRetentionEventTypeItemRequestBuilderGetRequestConfiguration)(idd6d442c3cc83a389b8f0b8dd7ac355916e813c2882ff3aaa23331424ba827ae.RetentionEventTypeable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -158,4 +158,8 @@ func (m *TriggerTypesRetentionEventTypesRetentionEventTypeItemRequestBuilder) To
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *TriggerTypesRetentionEventTypesRetentionEventTypeItemRequestBuilder) WithUrl(rawUrl string)(*TriggerTypesRetentionEventTypesRetentionEventTypeItemRequestBuilder) {
+    return NewTriggerTypesRetentionEventTypesRetentionEventTypeItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

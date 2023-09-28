@@ -73,7 +73,7 @@ func (m *ItemOutlookMasterCategoriesRequestBuilder) Count()(*ItemOutlookMasterCa
 // Get get all the categories that have been defined for the user.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/outlookuser-list-mastercategories?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/outlookuser-list-mastercategories?view=graph-rest-1.0
 func (m *ItemOutlookMasterCategoriesRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemOutlookMasterCategoriesRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.OutlookCategoryCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -95,7 +95,7 @@ func (m *ItemOutlookMasterCategoriesRequestBuilder) Get(ctx context.Context, req
 // Post create an outlookCategory object in the user's master list of categories.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/outlookuser-post-mastercategories?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/outlookuser-post-mastercategories?view=graph-rest-1.0
 func (m *ItemOutlookMasterCategoriesRequestBuilder) Post(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.OutlookCategoryable, requestConfiguration *ItemOutlookMasterCategoriesRequestBuilderPostRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.OutlookCategoryable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -146,4 +146,8 @@ func (m *ItemOutlookMasterCategoriesRequestBuilder) ToPostRequestInformation(ctx
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemOutlookMasterCategoriesRequestBuilder) WithUrl(rawUrl string)(*ItemOutlookMasterCategoriesRequestBuilder) {
+    return NewItemOutlookMasterCategoriesRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

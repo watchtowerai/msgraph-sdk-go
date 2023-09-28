@@ -33,7 +33,7 @@ func NewItemCalendarCalendarViewItemForwardRequestBuilder(rawUrl string, request
 // Post this action allows the organizer or attendee of a meeting event to forward the meeting request to a new recipient.  If the meeting event is forwarded from an attendee's Microsoft 365 mailbox to another recipient, this action also sends a message to notify the organizer of the forwarding, and adds the recipient to the organizer's copy of the meeting event. This convenience is not available when forwarding from an Outlook.com account.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/event-forward?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/event-forward?view=graph-rest-1.0
 func (m *ItemCalendarCalendarViewItemForwardRequestBuilder) Post(ctx context.Context, body ItemCalendarCalendarViewItemForwardPostRequestBodyable, requestConfiguration *ItemCalendarCalendarViewItemForwardRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -64,4 +64,8 @@ func (m *ItemCalendarCalendarViewItemForwardRequestBuilder) ToPostRequestInforma
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemCalendarCalendarViewItemForwardRequestBuilder) WithUrl(rawUrl string)(*ItemCalendarCalendarViewItemForwardRequestBuilder) {
+    return NewItemCalendarCalendarViewItemForwardRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

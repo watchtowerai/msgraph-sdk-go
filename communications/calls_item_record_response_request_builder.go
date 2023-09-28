@@ -34,7 +34,7 @@ func NewCallsItemRecordResponseRequestBuilder(rawUrl string, requestAdapter i2ae
 // Post records a short audio response from the caller.A bot can utilize this to capture a voice response from a caller after they are prompted for a response. For further information on how to handle operations, please review commsOperation This action is not intended to record the entire call. The maximum length of recording is 2 minutes. The recording is not saved permanently by the Cloud Communications Platform and is discarded shortly after the call ends. The bot must download the recording promptly after the recording operation finishes by using the recordingLocation value that's given in the completed notification.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/call-record?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/call-record?view=graph-rest-1.0
 func (m *CallsItemRecordResponseRequestBuilder) Post(ctx context.Context, body CallsItemRecordResponsePostRequestBodyable, requestConfiguration *CallsItemRecordResponseRequestBuilderPostRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.RecordOperationable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -69,4 +69,8 @@ func (m *CallsItemRecordResponseRequestBuilder) ToPostRequestInformation(ctx con
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *CallsItemRecordResponseRequestBuilder) WithUrl(rawUrl string)(*CallsItemRecordResponseRequestBuilder) {
+    return NewCallsItemRecordResponseRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

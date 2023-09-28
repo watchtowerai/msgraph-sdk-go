@@ -81,7 +81,7 @@ func (m *ContractItemRequestBuilder) Delete(ctx context.Context, requestConfigur
 // Get retrieve the properties and relationships of contract object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/contract-get?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/contract-get?view=graph-rest-1.0
 func (m *ContractItemRequestBuilder) Get(ctx context.Context, requestConfiguration *ContractItemRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.Contractable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -175,4 +175,8 @@ func (m *ContractItemRequestBuilder) ToPatchRequestInformation(ctx context.Conte
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ContractItemRequestBuilder) WithUrl(rawUrl string)(*ContractItemRequestBuilder) {
+    return NewContractItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

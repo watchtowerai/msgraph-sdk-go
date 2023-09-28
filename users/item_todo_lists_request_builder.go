@@ -81,7 +81,7 @@ func (m *ItemTodoListsRequestBuilder) Delta()(*ItemTodoListsDeltaRequestBuilder)
 // Get get a list of the todoTaskList objects and their properties.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/todo-list-lists?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/todo-list-lists?view=graph-rest-1.0
 func (m *ItemTodoListsRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemTodoListsRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.TodoTaskListCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -103,7 +103,7 @@ func (m *ItemTodoListsRequestBuilder) Get(ctx context.Context, requestConfigurat
 // Post create a new lists object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/todo-post-lists?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/todo-post-lists?view=graph-rest-1.0
 func (m *ItemTodoListsRequestBuilder) Post(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.TodoTaskListable, requestConfiguration *ItemTodoListsRequestBuilderPostRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.TodoTaskListable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -154,4 +154,8 @@ func (m *ItemTodoListsRequestBuilder) ToPostRequestInformation(ctx context.Conte
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemTodoListsRequestBuilder) WithUrl(rawUrl string)(*ItemTodoListsRequestBuilder) {
+    return NewItemTodoListsRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

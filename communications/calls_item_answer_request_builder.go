@@ -33,7 +33,7 @@ func NewCallsItemAnswerRequestBuilder(rawUrl string, requestAdapter i2ae4187f7da
 // Post enable a bot to answer an incoming call. The incoming call request can be an invite from a participant in a group call or a peer-to-peer call. If an invite to a group call is received, the notification will contain the chatInfo and meetingInfo parameters. The bot is expected to answer, reject, or redirect the call before the call times out. The current timeout value is 15 seconds for regular scenarios, and 5 seconds for policy-based recording scenarios.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/call-answer?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/call-answer?view=graph-rest-1.0
 func (m *CallsItemAnswerRequestBuilder) Post(ctx context.Context, body CallsItemAnswerPostRequestBodyable, requestConfiguration *CallsItemAnswerRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -64,4 +64,8 @@ func (m *CallsItemAnswerRequestBuilder) ToPostRequestInformation(ctx context.Con
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *CallsItemAnswerRequestBuilder) WithUrl(rawUrl string)(*CallsItemAnswerRequestBuilder) {
+    return NewCallsItemAnswerRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

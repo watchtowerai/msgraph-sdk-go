@@ -33,7 +33,7 @@ func NewBookingBusinessesItemAppointmentsItemCancelRequestBuilder(rawUrl string,
 // Post cancel the specified bookingAppointment in the specified bookingBusiness and send a message to the involved customer and staff members.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/bookingappointment-cancel?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/bookingappointment-cancel?view=graph-rest-1.0
 func (m *BookingBusinessesItemAppointmentsItemCancelRequestBuilder) Post(ctx context.Context, body BookingBusinessesItemAppointmentsItemCancelPostRequestBodyable, requestConfiguration *BookingBusinessesItemAppointmentsItemCancelRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -64,4 +64,8 @@ func (m *BookingBusinessesItemAppointmentsItemCancelRequestBuilder) ToPostReques
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *BookingBusinessesItemAppointmentsItemCancelRequestBuilder) WithUrl(rawUrl string)(*BookingBusinessesItemAppointmentsItemCancelRequestBuilder) {
+    return NewBookingBusinessesItemAppointmentsItemCancelRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

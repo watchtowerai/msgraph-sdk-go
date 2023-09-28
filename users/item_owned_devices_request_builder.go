@@ -70,7 +70,7 @@ func (m *ItemOwnedDevicesRequestBuilder) Count()(*ItemOwnedDevicesCountRequestBu
 // Get devices that are owned by the user. Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/user-list-owneddevices?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/user-list-owneddevices?view=graph-rest-1.0
 func (m *ItemOwnedDevicesRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemOwnedDevicesRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.DirectoryObjectCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -116,4 +116,8 @@ func (m *ItemOwnedDevicesRequestBuilder) ToGetRequestInformation(ctx context.Con
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemOwnedDevicesRequestBuilder) WithUrl(rawUrl string)(*ItemOwnedDevicesRequestBuilder) {
+    return NewItemOwnedDevicesRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

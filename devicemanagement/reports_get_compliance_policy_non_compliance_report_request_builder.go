@@ -30,7 +30,10 @@ func NewReportsGetCompliancePolicyNonComplianceReportRequestBuilder(rawUrl strin
     urlParams["request-raw-url"] = rawUrl
     return NewReportsGetCompliancePolicyNonComplianceReportRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Post invoke action getCompliancePolicyNonComplianceReport
+// Post not yet documented
+// [Find more info here]
+// 
+// [Find more info here]: https://learn.microsoft.com/graph/api/intune-reporting-devicemanagementreports-getcompliancepolicynoncompliancereport?view=graph-rest-1.0
 func (m *ReportsGetCompliancePolicyNonComplianceReportRequestBuilder) Post(ctx context.Context, body ReportsGetCompliancePolicyNonComplianceReportPostRequestBodyable, requestConfiguration *ReportsGetCompliancePolicyNonComplianceReportRequestBuilderPostRequestConfiguration)([]byte, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -49,7 +52,7 @@ func (m *ReportsGetCompliancePolicyNonComplianceReportRequestBuilder) Post(ctx c
     }
     return res.([]byte), nil
 }
-// ToPostRequestInformation invoke action getCompliancePolicyNonComplianceReport
+// ToPostRequestInformation not yet documented
 func (m *ReportsGetCompliancePolicyNonComplianceReportRequestBuilder) ToPostRequestInformation(ctx context.Context, body ReportsGetCompliancePolicyNonComplianceReportPostRequestBodyable, requestConfiguration *ReportsGetCompliancePolicyNonComplianceReportRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
@@ -64,4 +67,8 @@ func (m *ReportsGetCompliancePolicyNonComplianceReportRequestBuilder) ToPostRequ
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ReportsGetCompliancePolicyNonComplianceReportRequestBuilder) WithUrl(rawUrl string)(*ReportsGetCompliancePolicyNonComplianceReportRequestBuilder) {
+    return NewReportsGetCompliancePolicyNonComplianceReportRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

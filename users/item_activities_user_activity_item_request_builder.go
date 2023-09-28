@@ -57,7 +57,7 @@ func NewItemActivitiesUserActivityItemRequestBuilder(rawUrl string, requestAdapt
 // Delete delete an existing user activity for your app.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/projectrome-delete-activity?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/projectrome-delete-activity?view=graph-rest-1.0
 func (m *ItemActivitiesUserActivityItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *ItemActivitiesUserActivityItemRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -159,4 +159,8 @@ func (m *ItemActivitiesUserActivityItemRequestBuilder) ToPatchRequestInformation
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemActivitiesUserActivityItemRequestBuilder) WithUrl(rawUrl string)(*ItemActivitiesUserActivityItemRequestBuilder) {
+    return NewItemActivitiesUserActivityItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

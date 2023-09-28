@@ -20,6 +20,17 @@ func NewTeamsAppDefinition()(*TeamsAppDefinition) {
 func CreateTeamsAppDefinitionFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewTeamsAppDefinition(), nil
 }
+// GetAuthorization gets the authorization property value. Authorization requirements specified in the Teams app manifest.
+func (m *TeamsAppDefinition) GetAuthorization()(TeamsAppAuthorizationable) {
+    val, err := m.GetBackingStore().Get("authorization")
+    if err != nil {
+        panic(err)
+    }
+    if val != nil {
+        return val.(TeamsAppAuthorizationable)
+    }
+    return nil
+}
 // GetBot gets the bot property value. The details of the bot specified in the Teams app manifest.
 func (m *TeamsAppDefinition) GetBot()(TeamworkBotable) {
     val, err := m.GetBackingStore().Get("bot")
@@ -67,6 +78,16 @@ func (m *TeamsAppDefinition) GetDisplayName()(*string) {
 // GetFieldDeserializers the deserialization information for the current model
 func (m *TeamsAppDefinition) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := m.Entity.GetFieldDeserializers()
+    res["authorization"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreateTeamsAppAuthorizationFromDiscriminatorValue)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetAuthorization(val.(TeamsAppAuthorizationable))
+        }
+        return nil
+    }
     res["bot"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetObjectValue(CreateTeamworkBotFromDiscriminatorValue)
         if err != nil {
@@ -170,7 +191,7 @@ func (m *TeamsAppDefinition) GetLastModifiedDateTime()(*i336074805fc853987abe6f7
     }
     return nil
 }
-// GetPublishingState gets the publishingState property value. The published status of a specific version of a Teams app. Possible values are:submitted — The specific version of the Teams app has been submitted and is under review. published  — The request to publish the specific version of the Teams app has been approved by the admin and the app is published.  rejected — The request to publish the specific version of the Teams app was rejected by the admin.
+// GetPublishingState gets the publishingState property value. The published status of a specific version of a Teams app. Possible values are:submitted—The specific version of the Teams app has been submitted and is under review. published—The request to publish the specific version of the Teams app has been approved by the admin and the app is published.  rejected—The admin rejected the request to publish the specific version of the Teams app.
 func (m *TeamsAppDefinition) GetPublishingState()(*TeamsAppPublishingState) {
     val, err := m.GetBackingStore().Get("publishingState")
     if err != nil {
@@ -219,6 +240,12 @@ func (m *TeamsAppDefinition) Serialize(writer i878a80d2330e89d26896388a3f487eef2
     err := m.Entity.Serialize(writer)
     if err != nil {
         return err
+    }
+    {
+        err = writer.WriteObjectValue("authorization", m.GetAuthorization())
+        if err != nil {
+            return err
+        }
     }
     {
         err = writer.WriteObjectValue("bot", m.GetBot())
@@ -277,6 +304,13 @@ func (m *TeamsAppDefinition) Serialize(writer i878a80d2330e89d26896388a3f487eef2
     }
     return nil
 }
+// SetAuthorization sets the authorization property value. Authorization requirements specified in the Teams app manifest.
+func (m *TeamsAppDefinition) SetAuthorization(value TeamsAppAuthorizationable)() {
+    err := m.GetBackingStore().Set("authorization", value)
+    if err != nil {
+        panic(err)
+    }
+}
 // SetBot sets the bot property value. The details of the bot specified in the Teams app manifest.
 func (m *TeamsAppDefinition) SetBot(value TeamworkBotable)() {
     err := m.GetBackingStore().Set("bot", value)
@@ -312,7 +346,7 @@ func (m *TeamsAppDefinition) SetLastModifiedDateTime(value *i336074805fc853987ab
         panic(err)
     }
 }
-// SetPublishingState sets the publishingState property value. The published status of a specific version of a Teams app. Possible values are:submitted — The specific version of the Teams app has been submitted and is under review. published  — The request to publish the specific version of the Teams app has been approved by the admin and the app is published.  rejected — The request to publish the specific version of the Teams app was rejected by the admin.
+// SetPublishingState sets the publishingState property value. The published status of a specific version of a Teams app. Possible values are:submitted—The specific version of the Teams app has been submitted and is under review. published—The request to publish the specific version of the Teams app has been approved by the admin and the app is published.  rejected—The admin rejected the request to publish the specific version of the Teams app.
 func (m *TeamsAppDefinition) SetPublishingState(value *TeamsAppPublishingState)() {
     err := m.GetBackingStore().Set("publishingState", value)
     if err != nil {
@@ -344,6 +378,7 @@ func (m *TeamsAppDefinition) SetVersion(value *string)() {
 type TeamsAppDefinitionable interface {
     Entityable
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
+    GetAuthorization()(TeamsAppAuthorizationable)
     GetBot()(TeamworkBotable)
     GetCreatedBy()(IdentitySetable)
     GetDescription()(*string)
@@ -353,6 +388,7 @@ type TeamsAppDefinitionable interface {
     GetShortDescription()(*string)
     GetTeamsAppId()(*string)
     GetVersion()(*string)
+    SetAuthorization(value TeamsAppAuthorizationable)()
     SetBot(value TeamworkBotable)()
     SetCreatedBy(value IdentitySetable)()
     SetDescription(value *string)()

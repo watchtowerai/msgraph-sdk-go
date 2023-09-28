@@ -8,11 +8,13 @@ import (
 type RegistryValueEvidence struct {
     AlertEvidence
 }
-// NewRegistryValueEvidence instantiates a new RegistryValueEvidence and sets the default values.
+// NewRegistryValueEvidence instantiates a new registryValueEvidence and sets the default values.
 func NewRegistryValueEvidence()(*RegistryValueEvidence) {
     m := &RegistryValueEvidence{
         AlertEvidence: *NewAlertEvidence(),
     }
+    odataTypeValue := "#microsoft.graph.security.registryValueEvidence"
+    m.SetOdataType(&odataTypeValue)
     return m
 }
 // CreateRegistryValueEvidenceFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
@@ -84,7 +86,7 @@ func (m *RegistryValueEvidence) GetFieldDeserializers()(map[string]func(i878a80d
     }
     return res
 }
-// GetMdeDeviceId gets the mdeDeviceId property value. The mdeDeviceId property
+// GetMdeDeviceId gets the mdeDeviceId property value. A unique identifier assigned to a device by Microsoft Defender for Endpoint.
 func (m *RegistryValueEvidence) GetMdeDeviceId()(*string) {
     val, err := m.GetBackingStore().Get("mdeDeviceId")
     if err != nil {
@@ -194,7 +196,7 @@ func (m *RegistryValueEvidence) Serialize(writer i878a80d2330e89d26896388a3f487e
     }
     return nil
 }
-// SetMdeDeviceId sets the mdeDeviceId property value. The mdeDeviceId property
+// SetMdeDeviceId sets the mdeDeviceId property value. A unique identifier assigned to a device by Microsoft Defender for Endpoint.
 func (m *RegistryValueEvidence) SetMdeDeviceId(value *string)() {
     err := m.GetBackingStore().Set("mdeDeviceId", value)
     if err != nil {

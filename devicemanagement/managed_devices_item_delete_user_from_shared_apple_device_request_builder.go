@@ -31,6 +31,9 @@ func NewManagedDevicesItemDeleteUserFromSharedAppleDeviceRequestBuilder(rawUrl s
     return NewManagedDevicesItemDeleteUserFromSharedAppleDeviceRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Post delete user from shared Apple device
+// [Find more info here]
+// 
+// [Find more info here]: https://learn.microsoft.com/graph/api/intune-devices-manageddevice-deleteuserfromsharedappledevice?view=graph-rest-1.0
 func (m *ManagedDevicesItemDeleteUserFromSharedAppleDeviceRequestBuilder) Post(ctx context.Context, body ManagedDevicesItemDeleteUserFromSharedAppleDevicePostRequestBodyable, requestConfiguration *ManagedDevicesItemDeleteUserFromSharedAppleDeviceRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -61,4 +64,8 @@ func (m *ManagedDevicesItemDeleteUserFromSharedAppleDeviceRequestBuilder) ToPost
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ManagedDevicesItemDeleteUserFromSharedAppleDeviceRequestBuilder) WithUrl(rawUrl string)(*ManagedDevicesItemDeleteUserFromSharedAppleDeviceRequestBuilder) {
+    return NewManagedDevicesItemDeleteUserFromSharedAppleDeviceRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

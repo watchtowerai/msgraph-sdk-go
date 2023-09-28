@@ -31,6 +31,9 @@ func NewWindowsAutopilotDeviceIdentitiesItemUnassignUserFromDeviceRequestBuilder
     return NewWindowsAutopilotDeviceIdentitiesItemUnassignUserFromDeviceRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Post unassigns the user from an Autopilot device.
+// [Find more info here]
+// 
+// [Find more info here]: https://learn.microsoft.com/graph/api/intune-enrollment-windowsautopilotdeviceidentity-unassignuserfromdevice?view=graph-rest-1.0
 func (m *WindowsAutopilotDeviceIdentitiesItemUnassignUserFromDeviceRequestBuilder) Post(ctx context.Context, requestConfiguration *WindowsAutopilotDeviceIdentitiesItemUnassignUserFromDeviceRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -57,4 +60,8 @@ func (m *WindowsAutopilotDeviceIdentitiesItemUnassignUserFromDeviceRequestBuilde
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *WindowsAutopilotDeviceIdentitiesItemUnassignUserFromDeviceRequestBuilder) WithUrl(rawUrl string)(*WindowsAutopilotDeviceIdentitiesItemUnassignUserFromDeviceRequestBuilder) {
+    return NewWindowsAutopilotDeviceIdentitiesItemUnassignUserFromDeviceRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

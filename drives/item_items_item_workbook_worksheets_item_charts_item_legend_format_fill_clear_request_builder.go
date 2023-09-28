@@ -33,7 +33,7 @@ func NewItemItemsItemWorkbookWorksheetsItemChartsItemLegendFormatFillClearReques
 // Post clear the fill color of a chart element.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/chartfill-clear?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/chartfill-clear?view=graph-rest-1.0
 func (m *ItemItemsItemWorkbookWorksheetsItemChartsItemLegendFormatFillClearRequestBuilder) Post(ctx context.Context, requestConfiguration *ItemItemsItemWorkbookWorksheetsItemChartsItemLegendFormatFillClearRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -60,4 +60,8 @@ func (m *ItemItemsItemWorkbookWorksheetsItemChartsItemLegendFormatFillClearReque
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemItemsItemWorkbookWorksheetsItemChartsItemLegendFormatFillClearRequestBuilder) WithUrl(rawUrl string)(*ItemItemsItemWorkbookWorksheetsItemChartsItemLegendFormatFillClearRequestBuilder) {
+    return NewItemItemsItemWorkbookWorksheetsItemChartsItemLegendFormatFillClearRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

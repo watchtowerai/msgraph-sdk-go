@@ -39,6 +39,9 @@ func NewItemOnenotePagesItemContentRequestBuilder(rawUrl string, requestAdapter 
     return NewItemOnenotePagesItemContentRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Get the page's HTML content.
+// [Find more info here]
+// 
+// [Find more info here]: https://learn.microsoft.com/graph/api/onenote-list-pages?view=graph-rest-1.0
 func (m *ItemOnenotePagesItemContentRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemOnenotePagesItemContentRequestBuilderGetRequestConfiguration)([]byte, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -101,4 +104,8 @@ func (m *ItemOnenotePagesItemContentRequestBuilder) ToPutRequestInformation(ctx 
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemOnenotePagesItemContentRequestBuilder) WithUrl(rawUrl string)(*ItemOnenotePagesItemContentRequestBuilder) {
+    return NewItemOnenotePagesItemContentRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

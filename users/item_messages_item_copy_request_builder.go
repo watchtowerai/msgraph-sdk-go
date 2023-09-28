@@ -34,7 +34,7 @@ func NewItemMessagesItemCopyRequestBuilder(rawUrl string, requestAdapter i2ae418
 // Post copy a message to a folder within the user's mailbox.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/message-copy?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/message-copy?view=graph-rest-1.0
 func (m *ItemMessagesItemCopyRequestBuilder) Post(ctx context.Context, body ItemMessagesItemCopyPostRequestBodyable, requestConfiguration *ItemMessagesItemCopyRequestBuilderPostRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.Messageable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -69,4 +69,8 @@ func (m *ItemMessagesItemCopyRequestBuilder) ToPostRequestInformation(ctx contex
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemMessagesItemCopyRequestBuilder) WithUrl(rawUrl string)(*ItemMessagesItemCopyRequestBuilder) {
+    return NewItemMessagesItemCopyRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

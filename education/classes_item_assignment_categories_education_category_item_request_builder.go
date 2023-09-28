@@ -57,7 +57,7 @@ func NewClassesItemAssignmentCategoriesEducationCategoryItemRequestBuilder(rawUr
 // Delete delete an existing category. Only teachers can perform this operation.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/educationcategory-delete?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/educationcategory-delete?view=graph-rest-1.0
 func (m *ClassesItemAssignmentCategoriesEducationCategoryItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *ClassesItemAssignmentCategoriesEducationCategoryItemRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -76,7 +76,7 @@ func (m *ClassesItemAssignmentCategoriesEducationCategoryItemRequestBuilder) Del
 // Get retrieve an educationCategory object. Only teachers, students, and applications with application permissions can perform this operation.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/educationcategory-get?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/educationcategory-get?view=graph-rest-1.0
 func (m *ClassesItemAssignmentCategoriesEducationCategoryItemRequestBuilder) Get(ctx context.Context, requestConfiguration *ClassesItemAssignmentCategoriesEducationCategoryItemRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.EducationCategoryable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -158,4 +158,8 @@ func (m *ClassesItemAssignmentCategoriesEducationCategoryItemRequestBuilder) ToP
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ClassesItemAssignmentCategoriesEducationCategoryItemRequestBuilder) WithUrl(rawUrl string)(*ClassesItemAssignmentCategoriesEducationCategoryItemRequestBuilder) {
+    return NewClassesItemAssignmentCategoriesEducationCategoryItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

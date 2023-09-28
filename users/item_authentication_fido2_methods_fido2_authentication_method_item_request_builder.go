@@ -50,7 +50,7 @@ func NewItemAuthenticationFido2MethodsFido2AuthenticationMethodItemRequestBuilde
 // Delete deletes a user's FIDO2 Security Key Authentication Method object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/fido2authenticationmethod-delete?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/fido2authenticationmethod-delete?view=graph-rest-1.0
 func (m *ItemAuthenticationFido2MethodsFido2AuthenticationMethodItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *ItemAuthenticationFido2MethodsFido2AuthenticationMethodItemRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -69,7 +69,7 @@ func (m *ItemAuthenticationFido2MethodsFido2AuthenticationMethodItemRequestBuild
 // Get retrieve a user's single FIDO2 Security Key Authentication Method object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/fido2authenticationmethod-get?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/fido2authenticationmethod-get?view=graph-rest-1.0
 func (m *ItemAuthenticationFido2MethodsFido2AuthenticationMethodItemRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemAuthenticationFido2MethodsFido2AuthenticationMethodItemRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.Fido2AuthenticationMethodable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -115,4 +115,8 @@ func (m *ItemAuthenticationFido2MethodsFido2AuthenticationMethodItemRequestBuild
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemAuthenticationFido2MethodsFido2AuthenticationMethodItemRequestBuilder) WithUrl(rawUrl string)(*ItemAuthenticationFido2MethodsFido2AuthenticationMethodItemRequestBuilder) {
+    return NewItemAuthenticationFido2MethodsFido2AuthenticationMethodItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

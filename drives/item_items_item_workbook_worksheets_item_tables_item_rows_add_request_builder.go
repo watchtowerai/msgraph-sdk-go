@@ -34,7 +34,7 @@ func NewItemItemsItemWorkbookWorksheetsItemTablesItemRowsAddRequestBuilder(rawUr
 // Post adds rows to the end of the table. Note that the API can accept multiple rows data using this API. Adding one row at a time could lead to performance degradation. The recommended approach would be to batch the rows together in a single call rather than doing single row insertion. For best results, collect the rows to be inserted on the application side and perform single rows add operation. Experiment with the number of rows to determine the ideal number of rows to use in single API call. 
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/tablerowcollection-add?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/tablerowcollection-add?view=graph-rest-1.0
 func (m *ItemItemsItemWorkbookWorksheetsItemTablesItemRowsAddRequestBuilder) Post(ctx context.Context, body ItemItemsItemWorkbookWorksheetsItemTablesItemRowsAddPostRequestBodyable, requestConfiguration *ItemItemsItemWorkbookWorksheetsItemTablesItemRowsAddRequestBuilderPostRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.WorkbookTableRowable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -69,4 +69,8 @@ func (m *ItemItemsItemWorkbookWorksheetsItemTablesItemRowsAddRequestBuilder) ToP
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemItemsItemWorkbookWorksheetsItemTablesItemRowsAddRequestBuilder) WithUrl(rawUrl string)(*ItemItemsItemWorkbookWorksheetsItemTablesItemRowsAddRequestBuilder) {
+    return NewItemItemsItemWorkbookWorksheetsItemTablesItemRowsAddRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

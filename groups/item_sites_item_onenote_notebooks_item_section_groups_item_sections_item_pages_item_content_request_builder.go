@@ -41,7 +41,7 @@ func NewItemSitesItemOnenoteNotebooksItemSectionGroupsItemSectionsItemPagesItemC
 // Get the page's HTML content.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/section-list-pages?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/section-list-pages?view=graph-rest-1.0
 func (m *ItemSitesItemOnenoteNotebooksItemSectionGroupsItemSectionsItemPagesItemContentRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemSitesItemOnenoteNotebooksItemSectionGroupsItemSectionsItemPagesItemContentRequestBuilderGetRequestConfiguration)([]byte, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -104,4 +104,8 @@ func (m *ItemSitesItemOnenoteNotebooksItemSectionGroupsItemSectionsItemPagesItem
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemSitesItemOnenoteNotebooksItemSectionGroupsItemSectionsItemPagesItemContentRequestBuilder) WithUrl(rawUrl string)(*ItemSitesItemOnenoteNotebooksItemSectionGroupsItemSectionsItemPagesItemContentRequestBuilder) {
+    return NewItemSitesItemOnenoteNotebooksItemSectionGroupsItemSectionsItemPagesItemContentRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

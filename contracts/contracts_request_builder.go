@@ -81,7 +81,7 @@ func (m *ContractsRequestBuilder) Delta()(*DeltaRequestBuilder) {
 // Get retrieve a list of contract objects associated to a partner tenant.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/contract-list?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/contract-list?view=graph-rest-1.0
 func (m *ContractsRequestBuilder) Get(ctx context.Context, requestConfiguration *ContractsRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ContractCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -163,4 +163,8 @@ func (m *ContractsRequestBuilder) ToPostRequestInformation(ctx context.Context, 
 // ValidateProperties provides operations to call the validateProperties method.
 func (m *ContractsRequestBuilder) ValidateProperties()(*ValidatePropertiesRequestBuilder) {
     return NewValidatePropertiesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ContractsRequestBuilder) WithUrl(rawUrl string)(*ContractsRequestBuilder) {
+    return NewContractsRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

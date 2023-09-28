@@ -57,7 +57,7 @@ func NewItemAppRoleAssignedToAppRoleAssignmentItemRequestBuilder(rawUrl string, 
 // Delete deletes an appRoleAssignment that a user, group, or client service principal has been granted for a resource service principal.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/serviceprincipal-delete-approleassignedto?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/serviceprincipal-delete-approleassignedto?view=graph-rest-1.0
 func (m *ItemAppRoleAssignedToAppRoleAssignmentItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *ItemAppRoleAssignedToAppRoleAssignmentItemRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -155,4 +155,8 @@ func (m *ItemAppRoleAssignedToAppRoleAssignmentItemRequestBuilder) ToPatchReques
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemAppRoleAssignedToAppRoleAssignmentItemRequestBuilder) WithUrl(rawUrl string)(*ItemAppRoleAssignedToAppRoleAssignmentItemRequestBuilder) {
+    return NewItemAppRoleAssignedToAppRoleAssignmentItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

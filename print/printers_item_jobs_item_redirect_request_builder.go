@@ -31,10 +31,10 @@ func NewPrintersItemJobsItemRedirectRequestBuilder(rawUrl string, requestAdapter
     urlParams["request-raw-url"] = rawUrl
     return NewPrintersItemJobsItemRedirectRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Post redirect a print job to a different printer. Redirecting a print job will only succeed if there is a printTask in a `processing` state on the associated print job, started by a trigger that the requesting app created.  For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
+// Post redirect a print job to a different printer. Redirecting a print job will only succeed if there is a printTask in a processing state on the associated print job, started by a trigger that the requesting app created.  For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/printjob-redirect?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/printjob-redirect?view=graph-rest-1.0
 func (m *PrintersItemJobsItemRedirectRequestBuilder) Post(ctx context.Context, body PrintersItemJobsItemRedirectPostRequestBodyable, requestConfiguration *PrintersItemJobsItemRedirectRequestBuilderPostRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.PrintJobable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -53,7 +53,7 @@ func (m *PrintersItemJobsItemRedirectRequestBuilder) Post(ctx context.Context, b
     }
     return res.(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.PrintJobable), nil
 }
-// ToPostRequestInformation redirect a print job to a different printer. Redirecting a print job will only succeed if there is a printTask in a `processing` state on the associated print job, started by a trigger that the requesting app created.  For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
+// ToPostRequestInformation redirect a print job to a different printer. Redirecting a print job will only succeed if there is a printTask in a processing state on the associated print job, started by a trigger that the requesting app created.  For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
 func (m *PrintersItemJobsItemRedirectRequestBuilder) ToPostRequestInformation(ctx context.Context, body PrintersItemJobsItemRedirectPostRequestBodyable, requestConfiguration *PrintersItemJobsItemRedirectRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
@@ -69,4 +69,8 @@ func (m *PrintersItemJobsItemRedirectRequestBuilder) ToPostRequestInformation(ct
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *PrintersItemJobsItemRedirectRequestBuilder) WithUrl(rawUrl string)(*PrintersItemJobsItemRedirectRequestBuilder) {
+    return NewPrintersItemJobsItemRedirectRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

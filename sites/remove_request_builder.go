@@ -33,7 +33,7 @@ func NewRemoveRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371c
 // Post unfollow a user's site or multiple sites.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/site-unfollow?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/site-unfollow?view=graph-rest-1.0
 func (m *RemoveRequestBuilder) Post(ctx context.Context, body RemovePostRequestBodyable, requestConfiguration *RemoveRequestBuilderPostRequestConfiguration)(RemoveResponseable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -68,4 +68,8 @@ func (m *RemoveRequestBuilder) ToPostRequestInformation(ctx context.Context, bod
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *RemoveRequestBuilder) WithUrl(rawUrl string)(*RemoveRequestBuilder) {
+    return NewRemoveRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

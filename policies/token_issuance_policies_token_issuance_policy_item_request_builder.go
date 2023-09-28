@@ -61,7 +61,7 @@ func NewTokenIssuancePoliciesTokenIssuancePolicyItemRequestBuilder(rawUrl string
 // Delete delete a tokenIssuancePolicy object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/tokenissuancepolicy-delete?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/tokenissuancepolicy-delete?view=graph-rest-1.0
 func (m *TokenIssuancePoliciesTokenIssuancePolicyItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *TokenIssuancePoliciesTokenIssuancePolicyItemRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -99,7 +99,7 @@ func (m *TokenIssuancePoliciesTokenIssuancePolicyItemRequestBuilder) Get(ctx con
 // Patch update the properties of a tokenIssuancePolicy object.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/tokenissuancepolicy-update?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/tokenissuancepolicy-update?view=graph-rest-1.0
 func (m *TokenIssuancePoliciesTokenIssuancePolicyItemRequestBuilder) Patch(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.TokenIssuancePolicyable, requestConfiguration *TokenIssuancePoliciesTokenIssuancePolicyItemRequestBuilderPatchRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.TokenIssuancePolicyable, error) {
     requestInfo, err := m.ToPatchRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -162,4 +162,8 @@ func (m *TokenIssuancePoliciesTokenIssuancePolicyItemRequestBuilder) ToPatchRequ
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *TokenIssuancePoliciesTokenIssuancePolicyItemRequestBuilder) WithUrl(rawUrl string)(*TokenIssuancePoliciesTokenIssuancePolicyItemRequestBuilder) {
+    return NewTokenIssuancePoliciesTokenIssuancePolicyItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

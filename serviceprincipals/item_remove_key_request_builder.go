@@ -33,7 +33,7 @@ func NewItemRemoveKeyRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee
 // Post remove a key credential from a servicePrincipal. This method along with addKey can be used by a servicePrincipal to automate rolling its expiring keys. As part of the request validation for this method, a proof of possession of an existing key is verified before the action can be performed.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/serviceprincipal-removekey?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/serviceprincipal-removekey?view=graph-rest-1.0
 func (m *ItemRemoveKeyRequestBuilder) Post(ctx context.Context, body ItemRemoveKeyPostRequestBodyable, requestConfiguration *ItemRemoveKeyRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -64,4 +64,8 @@ func (m *ItemRemoveKeyRequestBuilder) ToPostRequestInformation(ctx context.Conte
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemRemoveKeyRequestBuilder) WithUrl(rawUrl string)(*ItemRemoveKeyRequestBuilder) {
+    return NewItemRemoveKeyRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

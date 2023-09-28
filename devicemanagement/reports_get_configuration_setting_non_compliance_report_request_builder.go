@@ -30,7 +30,10 @@ func NewReportsGetConfigurationSettingNonComplianceReportRequestBuilder(rawUrl s
     urlParams["request-raw-url"] = rawUrl
     return NewReportsGetConfigurationSettingNonComplianceReportRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Post invoke action getConfigurationSettingNonComplianceReport
+// Post not yet documented
+// [Find more info here]
+// 
+// [Find more info here]: https://learn.microsoft.com/graph/api/intune-reporting-devicemanagementreports-getconfigurationsettingnoncompliancereport?view=graph-rest-1.0
 func (m *ReportsGetConfigurationSettingNonComplianceReportRequestBuilder) Post(ctx context.Context, body ReportsGetConfigurationSettingNonComplianceReportPostRequestBodyable, requestConfiguration *ReportsGetConfigurationSettingNonComplianceReportRequestBuilderPostRequestConfiguration)([]byte, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -49,7 +52,7 @@ func (m *ReportsGetConfigurationSettingNonComplianceReportRequestBuilder) Post(c
     }
     return res.([]byte), nil
 }
-// ToPostRequestInformation invoke action getConfigurationSettingNonComplianceReport
+// ToPostRequestInformation not yet documented
 func (m *ReportsGetConfigurationSettingNonComplianceReportRequestBuilder) ToPostRequestInformation(ctx context.Context, body ReportsGetConfigurationSettingNonComplianceReportPostRequestBodyable, requestConfiguration *ReportsGetConfigurationSettingNonComplianceReportRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
@@ -64,4 +67,8 @@ func (m *ReportsGetConfigurationSettingNonComplianceReportRequestBuilder) ToPost
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ReportsGetConfigurationSettingNonComplianceReportRequestBuilder) WithUrl(rawUrl string)(*ReportsGetConfigurationSettingNonComplianceReportRequestBuilder) {
+    return NewReportsGetConfigurationSettingNonComplianceReportRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

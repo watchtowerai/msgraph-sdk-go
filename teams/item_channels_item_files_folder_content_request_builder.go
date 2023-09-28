@@ -41,7 +41,7 @@ func NewItemChannelsItemFilesFolderContentRequestBuilder(rawUrl string, requestA
 // Get the content stream, if the item represents a file.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/channel-get-filesfolder?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/channel-get-filesfolder?view=graph-rest-1.0
 func (m *ItemChannelsItemFilesFolderContentRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemChannelsItemFilesFolderContentRequestBuilderGetRequestConfiguration)([]byte, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -104,4 +104,8 @@ func (m *ItemChannelsItemFilesFolderContentRequestBuilder) ToPutRequestInformati
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemChannelsItemFilesFolderContentRequestBuilder) WithUrl(rawUrl string)(*ItemChannelsItemFilesFolderContentRequestBuilder) {
+    return NewItemChannelsItemFilesFolderContentRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

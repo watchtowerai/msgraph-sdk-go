@@ -33,7 +33,7 @@ func NewItemItemsItemWorkbookWorksheetsItemChartsItemSetDataRequestBuilder(rawUr
 // Post resets the source data for the chart.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/chart-setdata?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/chart-setdata?view=graph-rest-1.0
 func (m *ItemItemsItemWorkbookWorksheetsItemChartsItemSetDataRequestBuilder) Post(ctx context.Context, body ItemItemsItemWorkbookWorksheetsItemChartsItemSetDataPostRequestBodyable, requestConfiguration *ItemItemsItemWorkbookWorksheetsItemChartsItemSetDataRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -64,4 +64,8 @@ func (m *ItemItemsItemWorkbookWorksheetsItemChartsItemSetDataRequestBuilder) ToP
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemItemsItemWorkbookWorksheetsItemChartsItemSetDataRequestBuilder) WithUrl(rawUrl string)(*ItemItemsItemWorkbookWorksheetsItemChartsItemSetDataRequestBuilder) {
+    return NewItemItemsItemWorkbookWorksheetsItemChartsItemSetDataRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

@@ -33,7 +33,7 @@ func NewItemChangePasswordRequestBuilder(rawUrl string, requestAdapter i2ae4187f
 // Post enable the user to update their password. Any user can update their password without belonging to any administrator role.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/user-changepassword?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/user-changepassword?view=graph-rest-1.0
 func (m *ItemChangePasswordRequestBuilder) Post(ctx context.Context, body ItemChangePasswordPostRequestBodyable, requestConfiguration *ItemChangePasswordRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -64,4 +64,8 @@ func (m *ItemChangePasswordRequestBuilder) ToPostRequestInformation(ctx context.
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemChangePasswordRequestBuilder) WithUrl(rawUrl string)(*ItemChangePasswordRequestBuilder) {
+    return NewItemChangePasswordRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

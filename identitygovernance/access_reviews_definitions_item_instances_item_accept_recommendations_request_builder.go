@@ -33,7 +33,7 @@ func NewAccessReviewsDefinitionsItemInstancesItemAcceptRecommendationsRequestBui
 // Post allows the acceptance of recommendations on all accessReviewInstanceDecisionItem objects that have not been reviewed on an accessReviewInstance object for which the calling user is a reviewer.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/accessreviewinstance-acceptrecommendations?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/accessreviewinstance-acceptrecommendations?view=graph-rest-1.0
 func (m *AccessReviewsDefinitionsItemInstancesItemAcceptRecommendationsRequestBuilder) Post(ctx context.Context, requestConfiguration *AccessReviewsDefinitionsItemInstancesItemAcceptRecommendationsRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -60,4 +60,8 @@ func (m *AccessReviewsDefinitionsItemInstancesItemAcceptRecommendationsRequestBu
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *AccessReviewsDefinitionsItemInstancesItemAcceptRecommendationsRequestBuilder) WithUrl(rawUrl string)(*AccessReviewsDefinitionsItemInstancesItemAcceptRecommendationsRequestBuilder) {
+    return NewAccessReviewsDefinitionsItemInstancesItemAcceptRecommendationsRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

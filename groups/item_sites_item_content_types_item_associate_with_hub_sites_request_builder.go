@@ -33,7 +33,7 @@ func NewItemSitesItemContentTypesItemAssociateWithHubSitesRequestBuilder(rawUrl 
 // Post associate a published [content type][contentType] present in a content type hub with a list of hub sites.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/contenttype-associatewithhubsites?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/contenttype-associatewithhubsites?view=graph-rest-1.0
 func (m *ItemSitesItemContentTypesItemAssociateWithHubSitesRequestBuilder) Post(ctx context.Context, body ItemSitesItemContentTypesItemAssociateWithHubSitesPostRequestBodyable, requestConfiguration *ItemSitesItemContentTypesItemAssociateWithHubSitesRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -64,4 +64,8 @@ func (m *ItemSitesItemContentTypesItemAssociateWithHubSitesRequestBuilder) ToPos
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemSitesItemContentTypesItemAssociateWithHubSitesRequestBuilder) WithUrl(rawUrl string)(*ItemSitesItemContentTypesItemAssociateWithHubSitesRequestBuilder) {
+    return NewItemSitesItemContentTypesItemAssociateWithHubSitesRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

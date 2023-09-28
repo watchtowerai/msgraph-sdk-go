@@ -33,7 +33,7 @@ func NewItemChannelsItemMessagesItemRepliesItemSoftDeleteRequestBuilder(rawUrl s
 // Post delete a single chatMessage or a chat message reply in a channel or a chat.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/chatmessage-softdelete?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/chatmessage-softdelete?view=graph-rest-1.0
 func (m *ItemChannelsItemMessagesItemRepliesItemSoftDeleteRequestBuilder) Post(ctx context.Context, requestConfiguration *ItemChannelsItemMessagesItemRepliesItemSoftDeleteRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -60,4 +60,8 @@ func (m *ItemChannelsItemMessagesItemRepliesItemSoftDeleteRequestBuilder) ToPost
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemChannelsItemMessagesItemRepliesItemSoftDeleteRequestBuilder) WithUrl(rawUrl string)(*ItemChannelsItemMessagesItemRepliesItemSoftDeleteRequestBuilder) {
+    return NewItemChannelsItemMessagesItemRepliesItemSoftDeleteRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

@@ -40,7 +40,7 @@ func NewUsersItemAssignmentsItemCategoriesItemRefRequestBuilder(rawUrl string, r
 // Delete remove an educationCategory from an educationAssignment. Only teachers can perform this operation.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/educationassignment-remove-category?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/educationassignment-remove-category?view=graph-rest-1.0
 func (m *UsersItemAssignmentsItemCategoriesItemRefRequestBuilder) Delete(ctx context.Context, requestConfiguration *UsersItemAssignmentsItemCategoriesItemRefRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -70,4 +70,8 @@ func (m *UsersItemAssignmentsItemCategoriesItemRefRequestBuilder) ToDeleteReques
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *UsersItemAssignmentsItemCategoriesItemRefRequestBuilder) WithUrl(rawUrl string)(*UsersItemAssignmentsItemCategoriesItemRefRequestBuilder) {
+    return NewUsersItemAssignmentsItemCategoriesItemRefRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

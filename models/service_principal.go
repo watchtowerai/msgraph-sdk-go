@@ -9,7 +9,7 @@ import (
 type ServicePrincipal struct {
     DirectoryObject
 }
-// NewServicePrincipal instantiates a new ServicePrincipal and sets the default values.
+// NewServicePrincipal instantiates a new servicePrincipal and sets the default values.
 func NewServicePrincipal()(*ServicePrincipal) {
     m := &ServicePrincipal{
         DirectoryObject: *NewDirectoryObject(),
@@ -187,6 +187,17 @@ func (m *ServicePrincipal) GetCreatedObjects()([]DirectoryObjectable) {
     }
     return nil
 }
+// GetCustomSecurityAttributes gets the customSecurityAttributes property value. An open complex type that holds the value of a custom security attribute that is assigned to a directory object. Nullable. Returned only on $select. Supports $filter (eq, ne, not, startsWith). Filter value is case sensitive.
+func (m *ServicePrincipal) GetCustomSecurityAttributes()(CustomSecurityAttributeValueable) {
+    val, err := m.GetBackingStore().Get("customSecurityAttributes")
+    if err != nil {
+        panic(err)
+    }
+    if val != nil {
+        return val.(CustomSecurityAttributeValueable)
+    }
+    return nil
+}
 // GetDelegatedPermissionClassifications gets the delegatedPermissionClassifications property value. The delegatedPermissionClassifications property
 func (m *ServicePrincipal) GetDelegatedPermissionClassifications()([]DelegatedPermissionClassificationable) {
     val, err := m.GetBackingStore().Get("delegatedPermissionClassifications")
@@ -220,7 +231,7 @@ func (m *ServicePrincipal) GetDisabledByMicrosoftStatus()(*string) {
     }
     return nil
 }
-// GetDisplayName gets the displayName property value. The display name for the service principal. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderBy.
+// GetDisplayName gets the displayName property value. The display name for the service principal. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderby.
 func (m *ServicePrincipal) GetDisplayName()(*string) {
     val, err := m.GetBackingStore().Get("displayName")
     if err != nil {
@@ -451,6 +462,16 @@ func (m *ServicePrincipal) GetFieldDeserializers()(map[string]func(i878a80d2330e
                 }
             }
             m.SetCreatedObjects(res)
+        }
+        return nil
+    }
+    res["customSecurityAttributes"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreateCustomSecurityAttributeValueFromDiscriminatorValue)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetCustomSecurityAttributes(val.(CustomSecurityAttributeValueable))
         }
         return nil
     }
@@ -1041,7 +1062,7 @@ func (m *ServicePrincipal) GetOauth2PermissionScopes()([]PermissionScopeable) {
     }
     return nil
 }
-// GetOwnedObjects gets the ownedObjects property value. Directory objects that are owned by this service principal. Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
+// GetOwnedObjects gets the ownedObjects property value. Directory objects that are owned by this service principal. Read-only. Nullable. Supports $expand, $select nested in $expand, and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
 func (m *ServicePrincipal) GetOwnedObjects()([]DirectoryObjectable) {
     val, err := m.GetBackingStore().Get("ownedObjects")
     if err != nil {
@@ -1052,7 +1073,7 @@ func (m *ServicePrincipal) GetOwnedObjects()([]DirectoryObjectable) {
     }
     return nil
 }
-// GetOwners gets the owners property value. Directory objects that are owners of this servicePrincipal. The owners are a set of non-admin users or servicePrincipals who are allowed to modify this object. Read-only. Nullable.  Supports $expand and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
+// GetOwners gets the owners property value. Directory objects that are owners of this servicePrincipal. The owners are a set of non-admin users or servicePrincipals who are allowed to modify this object. Read-only. Nullable. Supports $expand, $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1), and $select nested in $expand.
 func (m *ServicePrincipal) GetOwners()([]DirectoryObjectable) {
     val, err := m.GetBackingStore().Get("owners")
     if err != nil {
@@ -1140,7 +1161,7 @@ func (m *ServicePrincipal) GetServicePrincipalNames()([]string) {
     }
     return nil
 }
-// GetServicePrincipalType gets the servicePrincipalType property value. Identifies whether the service principal represents an application, a managed identity, or a legacy application. This is set by Azure AD internally. The servicePrincipalType property can be set to three different values: __Application - A service principal that represents an application or service. The appId property identifies the associated app registration, and matches the appId of an application, possibly from a different tenant. If the associated app registration is missing, tokens are not issued for the service principal.__ManagedIdentity - A service principal that represents a managed identity. Service principals representing managed identities can be granted access and permissions, but cannot be updated or modified directly.__Legacy - A service principal that represents an app created before app registrations, or through legacy experiences. Legacy service principal can have credentials, service principal names, reply URLs, and other properties which are editable by an authorized user, but does not have an associated app registration. The appId value does not associate the service principal with an app registration. The service principal can only be used in the tenant where it was created.__SocialIdp - For internal use.
+// GetServicePrincipalType gets the servicePrincipalType property value. Identifies whether the service principal represents an application, a managed identity, or a legacy application. This is set by Azure AD internally. The servicePrincipalType property can be set to three different values: Application - A service principal that represents an application or service. The appId property identifies the associated app registration, and matches the appId of an application, possibly from a different tenant. If the associated app registration is missing, tokens are not issued for the service principal.ManagedIdentity - A service principal that represents a managed identity. Service principals representing managed identities can be granted access and permissions, but cannot be updated or modified directly.Legacy - A service principal that represents an app created before app registrations, or through legacy experiences. Legacy service principal can have credentials, service principal names, reply URLs, and other properties which are editable by an authorized user, but does not have an associated app registration. The appId value does not associate the service principal with an app registration. The service principal can only be used in the tenant where it was created.SocialIdp - For internal use.
 func (m *ServicePrincipal) GetServicePrincipalType()(*string) {
     val, err := m.GetBackingStore().Get("servicePrincipalType")
     if err != nil {
@@ -1162,7 +1183,7 @@ func (m *ServicePrincipal) GetSignInAudience()(*string) {
     }
     return nil
 }
-// GetSynchronization gets the synchronization property value. The synchronization property
+// GetSynchronization gets the synchronization property value. Represents the capability for Azure Active Directory (Azure AD) identity synchronization through the Microsoft Graph API.
 func (m *ServicePrincipal) GetSynchronization()(Synchronizationable) {
     val, err := m.GetBackingStore().Get("synchronization")
     if err != nil {
@@ -1373,6 +1394,12 @@ func (m *ServicePrincipal) Serialize(writer i878a80d2330e89d26896388a3f487eef27b
             }
         }
         err = writer.WriteCollectionOfObjectValues("createdObjects", cast)
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err = writer.WriteObjectValue("customSecurityAttributes", m.GetCustomSecurityAttributes())
         if err != nil {
             return err
         }
@@ -1784,6 +1811,13 @@ func (m *ServicePrincipal) SetCreatedObjects(value []DirectoryObjectable)() {
         panic(err)
     }
 }
+// SetCustomSecurityAttributes sets the customSecurityAttributes property value. An open complex type that holds the value of a custom security attribute that is assigned to a directory object. Nullable. Returned only on $select. Supports $filter (eq, ne, not, startsWith). Filter value is case sensitive.
+func (m *ServicePrincipal) SetCustomSecurityAttributes(value CustomSecurityAttributeValueable)() {
+    err := m.GetBackingStore().Set("customSecurityAttributes", value)
+    if err != nil {
+        panic(err)
+    }
+}
 // SetDelegatedPermissionClassifications sets the delegatedPermissionClassifications property value. The delegatedPermissionClassifications property
 func (m *ServicePrincipal) SetDelegatedPermissionClassifications(value []DelegatedPermissionClassificationable)() {
     err := m.GetBackingStore().Set("delegatedPermissionClassifications", value)
@@ -1805,7 +1839,7 @@ func (m *ServicePrincipal) SetDisabledByMicrosoftStatus(value *string)() {
         panic(err)
     }
 }
-// SetDisplayName sets the displayName property value. The display name for the service principal. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderBy.
+// SetDisplayName sets the displayName property value. The display name for the service principal. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderby.
 func (m *ServicePrincipal) SetDisplayName(value *string)() {
     err := m.GetBackingStore().Set("displayName", value)
     if err != nil {
@@ -1903,14 +1937,14 @@ func (m *ServicePrincipal) SetOauth2PermissionScopes(value []PermissionScopeable
         panic(err)
     }
 }
-// SetOwnedObjects sets the ownedObjects property value. Directory objects that are owned by this service principal. Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
+// SetOwnedObjects sets the ownedObjects property value. Directory objects that are owned by this service principal. Read-only. Nullable. Supports $expand, $select nested in $expand, and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
 func (m *ServicePrincipal) SetOwnedObjects(value []DirectoryObjectable)() {
     err := m.GetBackingStore().Set("ownedObjects", value)
     if err != nil {
         panic(err)
     }
 }
-// SetOwners sets the owners property value. Directory objects that are owners of this servicePrincipal. The owners are a set of non-admin users or servicePrincipals who are allowed to modify this object. Read-only. Nullable.  Supports $expand and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
+// SetOwners sets the owners property value. Directory objects that are owners of this servicePrincipal. The owners are a set of non-admin users or servicePrincipals who are allowed to modify this object. Read-only. Nullable. Supports $expand, $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1), and $select nested in $expand.
 func (m *ServicePrincipal) SetOwners(value []DirectoryObjectable)() {
     err := m.GetBackingStore().Set("owners", value)
     if err != nil {
@@ -1966,7 +2000,7 @@ func (m *ServicePrincipal) SetServicePrincipalNames(value []string)() {
         panic(err)
     }
 }
-// SetServicePrincipalType sets the servicePrincipalType property value. Identifies whether the service principal represents an application, a managed identity, or a legacy application. This is set by Azure AD internally. The servicePrincipalType property can be set to three different values: __Application - A service principal that represents an application or service. The appId property identifies the associated app registration, and matches the appId of an application, possibly from a different tenant. If the associated app registration is missing, tokens are not issued for the service principal.__ManagedIdentity - A service principal that represents a managed identity. Service principals representing managed identities can be granted access and permissions, but cannot be updated or modified directly.__Legacy - A service principal that represents an app created before app registrations, or through legacy experiences. Legacy service principal can have credentials, service principal names, reply URLs, and other properties which are editable by an authorized user, but does not have an associated app registration. The appId value does not associate the service principal with an app registration. The service principal can only be used in the tenant where it was created.__SocialIdp - For internal use.
+// SetServicePrincipalType sets the servicePrincipalType property value. Identifies whether the service principal represents an application, a managed identity, or a legacy application. This is set by Azure AD internally. The servicePrincipalType property can be set to three different values: Application - A service principal that represents an application or service. The appId property identifies the associated app registration, and matches the appId of an application, possibly from a different tenant. If the associated app registration is missing, tokens are not issued for the service principal.ManagedIdentity - A service principal that represents a managed identity. Service principals representing managed identities can be granted access and permissions, but cannot be updated or modified directly.Legacy - A service principal that represents an app created before app registrations, or through legacy experiences. Legacy service principal can have credentials, service principal names, reply URLs, and other properties which are editable by an authorized user, but does not have an associated app registration. The appId value does not associate the service principal with an app registration. The service principal can only be used in the tenant where it was created.SocialIdp - For internal use.
 func (m *ServicePrincipal) SetServicePrincipalType(value *string)() {
     err := m.GetBackingStore().Set("servicePrincipalType", value)
     if err != nil {
@@ -1980,7 +2014,7 @@ func (m *ServicePrincipal) SetSignInAudience(value *string)() {
         panic(err)
     }
 }
-// SetSynchronization sets the synchronization property value. The synchronization property
+// SetSynchronization sets the synchronization property value. Represents the capability for Azure Active Directory (Azure AD) identity synchronization through the Microsoft Graph API.
 func (m *ServicePrincipal) SetSynchronization(value Synchronizationable)() {
     err := m.GetBackingStore().Set("synchronization", value)
     if err != nil {
@@ -2048,6 +2082,7 @@ type ServicePrincipalable interface {
     GetAppRoles()([]AppRoleable)
     GetClaimsMappingPolicies()([]ClaimsMappingPolicyable)
     GetCreatedObjects()([]DirectoryObjectable)
+    GetCustomSecurityAttributes()(CustomSecurityAttributeValueable)
     GetDelegatedPermissionClassifications()([]DelegatedPermissionClassificationable)
     GetDescription()(*string)
     GetDisabledByMicrosoftStatus()(*string)
@@ -2098,6 +2133,7 @@ type ServicePrincipalable interface {
     SetAppRoles(value []AppRoleable)()
     SetClaimsMappingPolicies(value []ClaimsMappingPolicyable)()
     SetCreatedObjects(value []DirectoryObjectable)()
+    SetCustomSecurityAttributes(value CustomSecurityAttributeValueable)()
     SetDelegatedPermissionClassifications(value []DelegatedPermissionClassificationable)()
     SetDescription(value *string)()
     SetDisabledByMicrosoftStatus(value *string)()

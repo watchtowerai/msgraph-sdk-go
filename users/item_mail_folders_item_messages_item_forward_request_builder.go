@@ -30,10 +30,10 @@ func NewItemMailFoldersItemMessagesItemForwardRequestBuilder(rawUrl string, requ
     urlParams["request-raw-url"] = rawUrl
     return NewItemMailFoldersItemMessagesItemForwardRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Post forward a message using either JSON or MIME format. When using JSON format, you can:- Specify either a comment or the **body** property of the `message` parameter. Specifying both will return an HTTP 400 Bad Request error.- Specify either the `toRecipients` parameter or the **toRecipients** property of the `message` parameter. Specifying both or specifying neither will return an HTTP 400 Bad Request error. When using MIME format:- Provide the applicable Internet message headers and the MIME content, all encoded in **base64** format in the request body.- Add any attachments and S/MIME properties to the MIME content. This method saves the message in the **Sent Items** folder. Alternatively, create a draft to forward a message, and send it later.
+// Post forward a message using either JSON or MIME format. When using JSON format, you can:- Specify either a comment or the body property of the message parameter. Specifying both will return an HTTP 400 Bad Request error.- Specify either the toRecipients parameter or the toRecipients property of the message parameter. Specifying both or specifying neither will return an HTTP 400 Bad Request error. When using MIME format:- Provide the applicable Internet message headers and the MIME content, all encoded in base64 format in the request body.- Add any attachments and S/MIME properties to the MIME content. This method saves the message in the Sent Items folder. Alternatively, create a draft to forward a message, and send it later.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/message-forward?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/message-forward?view=graph-rest-1.0
 func (m *ItemMailFoldersItemMessagesItemForwardRequestBuilder) Post(ctx context.Context, body ItemMailFoldersItemMessagesItemForwardPostRequestBodyable, requestConfiguration *ItemMailFoldersItemMessagesItemForwardRequestBuilderPostRequestConfiguration)(error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -49,7 +49,7 @@ func (m *ItemMailFoldersItemMessagesItemForwardRequestBuilder) Post(ctx context.
     }
     return nil
 }
-// ToPostRequestInformation forward a message using either JSON or MIME format. When using JSON format, you can:- Specify either a comment or the **body** property of the `message` parameter. Specifying both will return an HTTP 400 Bad Request error.- Specify either the `toRecipients` parameter or the **toRecipients** property of the `message` parameter. Specifying both or specifying neither will return an HTTP 400 Bad Request error. When using MIME format:- Provide the applicable Internet message headers and the MIME content, all encoded in **base64** format in the request body.- Add any attachments and S/MIME properties to the MIME content. This method saves the message in the **Sent Items** folder. Alternatively, create a draft to forward a message, and send it later.
+// ToPostRequestInformation forward a message using either JSON or MIME format. When using JSON format, you can:- Specify either a comment or the body property of the message parameter. Specifying both will return an HTTP 400 Bad Request error.- Specify either the toRecipients parameter or the toRecipients property of the message parameter. Specifying both or specifying neither will return an HTTP 400 Bad Request error. When using MIME format:- Provide the applicable Internet message headers and the MIME content, all encoded in base64 format in the request body.- Add any attachments and S/MIME properties to the MIME content. This method saves the message in the Sent Items folder. Alternatively, create a draft to forward a message, and send it later.
 func (m *ItemMailFoldersItemMessagesItemForwardRequestBuilder) ToPostRequestInformation(ctx context.Context, body ItemMailFoldersItemMessagesItemForwardPostRequestBodyable, requestConfiguration *ItemMailFoldersItemMessagesItemForwardRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
@@ -64,4 +64,8 @@ func (m *ItemMailFoldersItemMessagesItemForwardRequestBuilder) ToPostRequestInfo
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemMailFoldersItemMessagesItemForwardRequestBuilder) WithUrl(rawUrl string)(*ItemMailFoldersItemMessagesItemForwardRequestBuilder) {
+    return NewItemMailFoldersItemMessagesItemForwardRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

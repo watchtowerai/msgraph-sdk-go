@@ -40,7 +40,7 @@ func NewItemRegisteredOwnersItemRefRequestBuilder(rawUrl string, requestAdapter 
 // Delete remove a user as a registered owner of the device.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/device-delete-registeredowners?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/device-delete-registeredowners?view=graph-rest-1.0
 func (m *ItemRegisteredOwnersItemRefRequestBuilder) Delete(ctx context.Context, requestConfiguration *ItemRegisteredOwnersItemRefRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -70,4 +70,8 @@ func (m *ItemRegisteredOwnersItemRefRequestBuilder) ToDeleteRequestInformation(c
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemRegisteredOwnersItemRefRequestBuilder) WithUrl(rawUrl string)(*ItemRegisteredOwnersItemRefRequestBuilder) {
+    return NewItemRegisteredOwnersItemRefRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

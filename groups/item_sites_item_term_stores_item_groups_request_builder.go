@@ -77,7 +77,7 @@ func (m *ItemSitesItemTermStoresItemGroupsRequestBuilder) Count()(*ItemSitesItem
 // Get get a list of group objects in a term store.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/termstore-list-groups?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/termstore-list-groups?view=graph-rest-1.0
 func (m *ItemSitesItemTermStoresItemGroupsRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemSitesItemTermStoresItemGroupsRequestBuilderGetRequestConfiguration)(ia3c27b33aa3d3ed80f9de797c48fbb8ed73f13887e301daf51f08450e9a634a3.GroupCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -96,7 +96,10 @@ func (m *ItemSitesItemTermStoresItemGroupsRequestBuilder) Get(ctx context.Contex
     }
     return res.(ia3c27b33aa3d3ed80f9de797c48fbb8ed73f13887e301daf51f08450e9a634a3.GroupCollectionResponseable), nil
 }
-// Post create new navigation property to groups for groups
+// Post create a new group object in a term store.
+// [Find more info here]
+// 
+// [Find more info here]: https://learn.microsoft.com/graph/api/termstore-group-post?view=graph-rest-1.0
 func (m *ItemSitesItemTermStoresItemGroupsRequestBuilder) Post(ctx context.Context, body ia3c27b33aa3d3ed80f9de797c48fbb8ed73f13887e301daf51f08450e9a634a3.Groupable, requestConfiguration *ItemSitesItemTermStoresItemGroupsRequestBuilderPostRequestConfiguration)(ia3c27b33aa3d3ed80f9de797c48fbb8ed73f13887e301daf51f08450e9a634a3.Groupable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -131,7 +134,7 @@ func (m *ItemSitesItemTermStoresItemGroupsRequestBuilder) ToGetRequestInformatio
     }
     return requestInfo, nil
 }
-// ToPostRequestInformation create new navigation property to groups for groups
+// ToPostRequestInformation create a new group object in a term store.
 func (m *ItemSitesItemTermStoresItemGroupsRequestBuilder) ToPostRequestInformation(ctx context.Context, body ia3c27b33aa3d3ed80f9de797c48fbb8ed73f13887e301daf51f08450e9a634a3.Groupable, requestConfiguration *ItemSitesItemTermStoresItemGroupsRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
     requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
@@ -147,4 +150,8 @@ func (m *ItemSitesItemTermStoresItemGroupsRequestBuilder) ToPostRequestInformati
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemSitesItemTermStoresItemGroupsRequestBuilder) WithUrl(rawUrl string)(*ItemSitesItemTermStoresItemGroupsRequestBuilder) {
+    return NewItemSitesItemTermStoresItemGroupsRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

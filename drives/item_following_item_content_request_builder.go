@@ -41,7 +41,7 @@ func NewItemFollowingItemContentRequestBuilder(rawUrl string, requestAdapter i2a
 // Get the content stream, if the item represents a file.
 // [Find more info here]
 // 
-// [Find more info here]: https://docs.microsoft.com/graph/api/drive-list-following?view=graph-rest-1.0
+// [Find more info here]: https://learn.microsoft.com/graph/api/drive-list-following?view=graph-rest-1.0
 func (m *ItemFollowingItemContentRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemFollowingItemContentRequestBuilderGetRequestConfiguration)([]byte, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -104,4 +104,8 @@ func (m *ItemFollowingItemContentRequestBuilder) ToPutRequestInformation(ctx con
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
     return requestInfo, nil
+}
+// WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+func (m *ItemFollowingItemContentRequestBuilder) WithUrl(rawUrl string)(*ItemFollowingItemContentRequestBuilder) {
+    return NewItemFollowingItemContentRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }
