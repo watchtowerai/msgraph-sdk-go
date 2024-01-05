@@ -31,6 +31,7 @@ func NewItemPermissionsItemGrantRequestBuilder(rawUrl string, requestAdapter i2a
     return NewItemPermissionsItemGrantRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Post grant users access to a link represented by a [permission][].
+// Deprecated: This method is obsolete. Use PostAsGrantPostResponse instead.
 // [Find more info here]
 // 
 // [Find more info here]: https://learn.microsoft.com/graph/api/permission-grant?view=graph-rest-1.0
@@ -52,20 +53,39 @@ func (m *ItemPermissionsItemGrantRequestBuilder) Post(ctx context.Context, body 
     }
     return res.(ItemPermissionsItemGrantResponseable), nil
 }
-// ToPostRequestInformation grant users access to a link represented by a [permission][].
-func (m *ItemPermissionsItemGrantRequestBuilder) ToPostRequestInformation(ctx context.Context, body ItemPermissionsItemGrantPostRequestBodyable, requestConfiguration *ItemPermissionsItemGrantRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
-    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
-    requestInfo.PathParameters = m.BaseRequestBuilder.PathParameters
-    requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST
-    requestInfo.Headers.Add("Accept", "application/json")
-    err := requestInfo.SetContentFromParsable(ctx, m.BaseRequestBuilder.RequestAdapter, "application/json", body)
+// PostAsGrantPostResponse grant users access to a link represented by a [permission][].
+// [Find more info here]
+// 
+// [Find more info here]: https://learn.microsoft.com/graph/api/permission-grant?view=graph-rest-1.0
+func (m *ItemPermissionsItemGrantRequestBuilder) PostAsGrantPostResponse(ctx context.Context, body ItemPermissionsItemGrantPostRequestBodyable, requestConfiguration *ItemPermissionsItemGrantRequestBuilderPostRequestConfiguration)(ItemPermissionsItemGrantPostResponseable, error) {
+    requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
         return nil, err
     }
+    errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
+        "4XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
+        "5XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
+    }
+    res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, CreateItemPermissionsItemGrantPostResponseFromDiscriminatorValue, errorMapping)
+    if err != nil {
+        return nil, err
+    }
+    if res == nil {
+        return nil, nil
+    }
+    return res.(ItemPermissionsItemGrantPostResponseable), nil
+}
+// ToPostRequestInformation grant users access to a link represented by a [permission][].
+func (m *ItemPermissionsItemGrantRequestBuilder) ToPostRequestInformation(ctx context.Context, body ItemPermissionsItemGrantPostRequestBodyable, requestConfiguration *ItemPermissionsItemGrantRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
         requestInfo.Headers.AddAll(requestConfiguration.Headers)
         requestInfo.AddRequestOptions(requestConfiguration.Options)
+    }
+    requestInfo.Headers.TryAdd("Accept", "application/json")
+    err := requestInfo.SetContentFromParsable(ctx, m.BaseRequestBuilder.RequestAdapter, "application/json", body)
+    if err != nil {
+        return nil, err
     }
     return requestInfo, nil
 }

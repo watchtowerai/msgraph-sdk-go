@@ -22,7 +22,7 @@ func NewSolutionsRoot()(*SolutionsRoot) {
 func CreateSolutionsRootFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewSolutionsRoot(), nil
 }
-// GetAdditionalData gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+// GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *SolutionsRoot) GetAdditionalData()(map[string]any) {
     val , err :=  m.backingStore.Get("additionalData")
     if err != nil {
@@ -34,7 +34,7 @@ func (m *SolutionsRoot) GetAdditionalData()(map[string]any) {
     }
     return val.(map[string]any)
 }
-// GetBackingStore gets the backingStore property value. Stores model information.
+// GetBackingStore gets the BackingStore property value. Stores model information.
 func (m *SolutionsRoot) GetBackingStore()(ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStore) {
     return m.backingStore
 }
@@ -105,6 +105,16 @@ func (m *SolutionsRoot) GetFieldDeserializers()(map[string]func(i878a80d2330e89d
         }
         return nil
     }
+    res["virtualEvents"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreateVirtualEventsRootFromDiscriminatorValue)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetVirtualEvents(val.(VirtualEventsRootable))
+        }
+        return nil
+    }
     return res
 }
 // GetOdataType gets the @odata.type property value. The OdataType property
@@ -115,6 +125,17 @@ func (m *SolutionsRoot) GetOdataType()(*string) {
     }
     if val != nil {
         return val.(*string)
+    }
+    return nil
+}
+// GetVirtualEvents gets the virtualEvents property value. The virtualEvents property
+func (m *SolutionsRoot) GetVirtualEvents()(VirtualEventsRootable) {
+    val, err := m.GetBackingStore().Get("virtualEvents")
+    if err != nil {
+        panic(err)
+    }
+    if val != nil {
+        return val.(VirtualEventsRootable)
     }
     return nil
 }
@@ -151,6 +172,12 @@ func (m *SolutionsRoot) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0
         }
     }
     {
+        err := writer.WriteObjectValue("virtualEvents", m.GetVirtualEvents())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteAdditionalData(m.GetAdditionalData())
         if err != nil {
             return err
@@ -158,14 +185,14 @@ func (m *SolutionsRoot) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0
     }
     return nil
 }
-// SetAdditionalData sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+// SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *SolutionsRoot) SetAdditionalData(value map[string]any)() {
     err := m.GetBackingStore().Set("additionalData", value)
     if err != nil {
         panic(err)
     }
 }
-// SetBackingStore sets the backingStore property value. Stores model information.
+// SetBackingStore sets the BackingStore property value. Stores model information.
 func (m *SolutionsRoot) SetBackingStore(value ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStore)() {
     m.backingStore = value
 }
@@ -190,6 +217,13 @@ func (m *SolutionsRoot) SetOdataType(value *string)() {
         panic(err)
     }
 }
+// SetVirtualEvents sets the virtualEvents property value. The virtualEvents property
+func (m *SolutionsRoot) SetVirtualEvents(value VirtualEventsRootable)() {
+    err := m.GetBackingStore().Set("virtualEvents", value)
+    if err != nil {
+        panic(err)
+    }
+}
 // SolutionsRootable 
 type SolutionsRootable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
@@ -199,8 +233,10 @@ type SolutionsRootable interface {
     GetBookingBusinesses()([]BookingBusinessable)
     GetBookingCurrencies()([]BookingCurrencyable)
     GetOdataType()(*string)
+    GetVirtualEvents()(VirtualEventsRootable)
     SetBackingStore(value ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStore)()
     SetBookingBusinesses(value []BookingBusinessable)()
     SetBookingCurrencies(value []BookingCurrencyable)()
     SetOdataType(value *string)()
+    SetVirtualEvents(value VirtualEventsRootable)()
 }

@@ -22,7 +22,7 @@ func NewSearchHitsContainer()(*SearchHitsContainer) {
 func CreateSearchHitsContainerFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewSearchHitsContainer(), nil
 }
-// GetAdditionalData gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+// GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *SearchHitsContainer) GetAdditionalData()(map[string]any) {
     val , err :=  m.backingStore.Get("additionalData")
     if err != nil {
@@ -45,7 +45,7 @@ func (m *SearchHitsContainer) GetAggregations()([]SearchAggregationable) {
     }
     return nil
 }
-// GetBackingStore gets the backingStore property value. Stores model information.
+// GetBackingStore gets the BackingStore property value. Stores model information.
 func (m *SearchHitsContainer) GetBackingStore()(ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStore) {
     return m.backingStore
 }
@@ -149,7 +149,7 @@ func (m *SearchHitsContainer) GetOdataType()(*string) {
     }
     return nil
 }
-// GetTotal gets the total property value. The total number of results. Note this is not the number of results on the page, but the total number of results satisfying the query.
+// GetTotal gets the total property value. The total number of results. Note this isn't the number of results on the page, but the total number of results satisfying the query.
 func (m *SearchHitsContainer) GetTotal()(*int32) {
     val, err := m.GetBackingStore().Get("total")
     if err != nil {
@@ -212,7 +212,7 @@ func (m *SearchHitsContainer) Serialize(writer i878a80d2330e89d26896388a3f487eef
     }
     return nil
 }
-// SetAdditionalData sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+// SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *SearchHitsContainer) SetAdditionalData(value map[string]any)() {
     err := m.GetBackingStore().Set("additionalData", value)
     if err != nil {
@@ -226,7 +226,7 @@ func (m *SearchHitsContainer) SetAggregations(value []SearchAggregationable)() {
         panic(err)
     }
 }
-// SetBackingStore sets the backingStore property value. Stores model information.
+// SetBackingStore sets the BackingStore property value. Stores model information.
 func (m *SearchHitsContainer) SetBackingStore(value ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStore)() {
     m.backingStore = value
 }
@@ -251,7 +251,7 @@ func (m *SearchHitsContainer) SetOdataType(value *string)() {
         panic(err)
     }
 }
-// SetTotal sets the total property value. The total number of results. Note this is not the number of results on the page, but the total number of results satisfying the query.
+// SetTotal sets the total property value. The total number of results. Note this isn't the number of results on the page, but the total number of results satisfying the query.
 func (m *SearchHitsContainer) SetTotal(value *int32)() {
     err := m.GetBackingStore().Set("total", value)
     if err != nil {

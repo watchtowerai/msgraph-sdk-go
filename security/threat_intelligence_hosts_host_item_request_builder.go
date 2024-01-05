@@ -41,6 +41,10 @@ type ThreatIntelligenceHostsHostItemRequestBuilderPatchRequestConfiguration stru
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
+// ChildHostPairs provides operations to manage the childHostPairs property of the microsoft.graph.security.host entity.
+func (m *ThreatIntelligenceHostsHostItemRequestBuilder) ChildHostPairs()(*ThreatIntelligenceHostsItemChildHostPairsRequestBuilder) {
+    return NewThreatIntelligenceHostsItemChildHostPairsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
 // Components provides operations to manage the components property of the microsoft.graph.security.host entity.
 func (m *ThreatIntelligenceHostsHostItemRequestBuilder) Components()(*ThreatIntelligenceHostsItemComponentsRequestBuilder) {
     return NewThreatIntelligenceHostsItemComponentsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
@@ -100,6 +104,14 @@ func (m *ThreatIntelligenceHostsHostItemRequestBuilder) Get(ctx context.Context,
     }
     return res.(idd6d442c3cc83a389b8f0b8dd7ac355916e813c2882ff3aaa23331424ba827ae.Hostable), nil
 }
+// HostPairs provides operations to manage the hostPairs property of the microsoft.graph.security.host entity.
+func (m *ThreatIntelligenceHostsHostItemRequestBuilder) HostPairs()(*ThreatIntelligenceHostsItemHostPairsRequestBuilder) {
+    return NewThreatIntelligenceHostsItemHostPairsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// ParentHostPairs provides operations to manage the parentHostPairs property of the microsoft.graph.security.host entity.
+func (m *ThreatIntelligenceHostsHostItemRequestBuilder) ParentHostPairs()(*ThreatIntelligenceHostsItemParentHostPairsRequestBuilder) {
+    return NewThreatIntelligenceHostsItemParentHostPairsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
 // PassiveDns provides operations to manage the passiveDns property of the microsoft.graph.security.host entity.
 func (m *ThreatIntelligenceHostsHostItemRequestBuilder) PassiveDns()(*ThreatIntelligenceHostsItemPassiveDnsRequestBuilder) {
     return NewThreatIntelligenceHostsItemPassiveDnsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
@@ -127,29 +139,35 @@ func (m *ThreatIntelligenceHostsHostItemRequestBuilder) Patch(ctx context.Contex
     }
     return res.(idd6d442c3cc83a389b8f0b8dd7ac355916e813c2882ff3aaa23331424ba827ae.Hostable), nil
 }
+// Ports provides operations to manage the ports property of the microsoft.graph.security.host entity.
+func (m *ThreatIntelligenceHostsHostItemRequestBuilder) Ports()(*ThreatIntelligenceHostsItemPortsRequestBuilder) {
+    return NewThreatIntelligenceHostsItemPortsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
 // Reputation provides operations to manage the reputation property of the microsoft.graph.security.host entity.
 func (m *ThreatIntelligenceHostsHostItemRequestBuilder) Reputation()(*ThreatIntelligenceHostsItemReputationRequestBuilder) {
     return NewThreatIntelligenceHostsItemReputationRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+// SslCertificates provides operations to manage the sslCertificates property of the microsoft.graph.security.host entity.
+func (m *ThreatIntelligenceHostsHostItemRequestBuilder) SslCertificates()(*ThreatIntelligenceHostsItemSslCertificatesRequestBuilder) {
+    return NewThreatIntelligenceHostsItemSslCertificatesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// Subdomains provides operations to manage the subdomains property of the microsoft.graph.security.host entity.
+func (m *ThreatIntelligenceHostsHostItemRequestBuilder) Subdomains()(*ThreatIntelligenceHostsItemSubdomainsRequestBuilder) {
+    return NewThreatIntelligenceHostsItemSubdomainsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
 // ToDeleteRequestInformation delete navigation property hosts for security
 func (m *ThreatIntelligenceHostsHostItemRequestBuilder) ToDeleteRequestInformation(ctx context.Context, requestConfiguration *ThreatIntelligenceHostsHostItemRequestBuilderDeleteRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
-    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
-    requestInfo.PathParameters = m.BaseRequestBuilder.PathParameters
-    requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DELETE
+    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DELETE, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
         requestInfo.Headers.AddAll(requestConfiguration.Headers)
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
+    requestInfo.Headers.TryAdd("Accept", "application/json")
     return requestInfo, nil
 }
 // ToGetRequestInformation read the properties and relationships of a host object. The host resource is the abstract base type that returns an implementation. A host can be of one of the following types:
 func (m *ThreatIntelligenceHostsHostItemRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *ThreatIntelligenceHostsHostItemRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
-    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
-    requestInfo.PathParameters = m.BaseRequestBuilder.PathParameters
-    requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET
-    requestInfo.Headers.Add("Accept", "application/json")
+    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
         if requestConfiguration.QueryParameters != nil {
             requestInfo.AddQueryParameters(*(requestConfiguration.QueryParameters))
@@ -157,28 +175,30 @@ func (m *ThreatIntelligenceHostsHostItemRequestBuilder) ToGetRequestInformation(
         requestInfo.Headers.AddAll(requestConfiguration.Headers)
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
+    requestInfo.Headers.TryAdd("Accept", "application/json")
     return requestInfo, nil
 }
 // ToPatchRequestInformation update the navigation property hosts in security
 func (m *ThreatIntelligenceHostsHostItemRequestBuilder) ToPatchRequestInformation(ctx context.Context, body idd6d442c3cc83a389b8f0b8dd7ac355916e813c2882ff3aaa23331424ba827ae.Hostable, requestConfiguration *ThreatIntelligenceHostsHostItemRequestBuilderPatchRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
-    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
-    requestInfo.PathParameters = m.BaseRequestBuilder.PathParameters
-    requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.PATCH
-    requestInfo.Headers.Add("Accept", "application/json")
-    err := requestInfo.SetContentFromParsable(ctx, m.BaseRequestBuilder.RequestAdapter, "application/json", body)
-    if err != nil {
-        return nil, err
-    }
+    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.PATCH, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
         requestInfo.Headers.AddAll(requestConfiguration.Headers)
         requestInfo.AddRequestOptions(requestConfiguration.Options)
+    }
+    requestInfo.Headers.TryAdd("Accept", "application/json")
+    err := requestInfo.SetContentFromParsable(ctx, m.BaseRequestBuilder.RequestAdapter, "application/json", body)
+    if err != nil {
+        return nil, err
     }
     return requestInfo, nil
 }
 // Trackers provides operations to manage the trackers property of the microsoft.graph.security.host entity.
 func (m *ThreatIntelligenceHostsHostItemRequestBuilder) Trackers()(*ThreatIntelligenceHostsItemTrackersRequestBuilder) {
     return NewThreatIntelligenceHostsItemTrackersRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// Whois provides operations to manage the whois property of the microsoft.graph.security.host entity.
+func (m *ThreatIntelligenceHostsHostItemRequestBuilder) Whois()(*ThreatIntelligenceHostsItemWhoisRequestBuilder) {
+    return NewThreatIntelligenceHostsItemWhoisRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
 func (m *ThreatIntelligenceHostsHostItemRequestBuilder) WithUrl(rawUrl string)(*ThreatIntelligenceHostsHostItemRequestBuilder) {

@@ -74,10 +74,6 @@ func NewFeatureRolloutPoliciesItemAppliesToRequestBuilder(rawUrl string, request
 func (m *FeatureRolloutPoliciesItemAppliesToRequestBuilder) Count()(*FeatureRolloutPoliciesItemAppliesToCountRequestBuilder) {
     return NewFeatureRolloutPoliciesItemAppliesToCountRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
-// Delta provides operations to call the delta method.
-func (m *FeatureRolloutPoliciesItemAppliesToRequestBuilder) Delta()(*FeatureRolloutPoliciesItemAppliesToDeltaRequestBuilder) {
-    return NewFeatureRolloutPoliciesItemAppliesToDeltaRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
-}
 // Get nullable. Specifies a list of directoryObjects that feature is enabled for.
 func (m *FeatureRolloutPoliciesItemAppliesToRequestBuilder) Get(ctx context.Context, requestConfiguration *FeatureRolloutPoliciesItemAppliesToRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.DirectoryObjectCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
@@ -96,14 +92,6 @@ func (m *FeatureRolloutPoliciesItemAppliesToRequestBuilder) Get(ctx context.Cont
         return nil, nil
     }
     return res.(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.DirectoryObjectCollectionResponseable), nil
-}
-// GetAvailableExtensionProperties provides operations to call the getAvailableExtensionProperties method.
-func (m *FeatureRolloutPoliciesItemAppliesToRequestBuilder) GetAvailableExtensionProperties()(*FeatureRolloutPoliciesItemAppliesToGetAvailableExtensionPropertiesRequestBuilder) {
-    return NewFeatureRolloutPoliciesItemAppliesToGetAvailableExtensionPropertiesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
-}
-// GetByIds provides operations to call the getByIds method.
-func (m *FeatureRolloutPoliciesItemAppliesToRequestBuilder) GetByIds()(*FeatureRolloutPoliciesItemAppliesToGetByIdsRequestBuilder) {
-    return NewFeatureRolloutPoliciesItemAppliesToGetByIdsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // Post add an appliesTo on a featureRolloutPolicy object to specify the directoryObject to which the featureRolloutPolicy should be applied.
 // [Find more info here]
@@ -133,11 +121,7 @@ func (m *FeatureRolloutPoliciesItemAppliesToRequestBuilder) Ref()(*FeatureRollou
 }
 // ToGetRequestInformation nullable. Specifies a list of directoryObjects that feature is enabled for.
 func (m *FeatureRolloutPoliciesItemAppliesToRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *FeatureRolloutPoliciesItemAppliesToRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
-    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
-    requestInfo.PathParameters = m.BaseRequestBuilder.PathParameters
-    requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET
-    requestInfo.Headers.Add("Accept", "application/json")
+    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
         if requestConfiguration.QueryParameters != nil {
             requestInfo.AddQueryParameters(*(requestConfiguration.QueryParameters))
@@ -145,28 +129,22 @@ func (m *FeatureRolloutPoliciesItemAppliesToRequestBuilder) ToGetRequestInformat
         requestInfo.Headers.AddAll(requestConfiguration.Headers)
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
+    requestInfo.Headers.TryAdd("Accept", "application/json")
     return requestInfo, nil
 }
 // ToPostRequestInformation add an appliesTo on a featureRolloutPolicy object to specify the directoryObject to which the featureRolloutPolicy should be applied.
 func (m *FeatureRolloutPoliciesItemAppliesToRequestBuilder) ToPostRequestInformation(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.DirectoryObjectable, requestConfiguration *FeatureRolloutPoliciesItemAppliesToRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
-    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
-    requestInfo.PathParameters = m.BaseRequestBuilder.PathParameters
-    requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST
-    requestInfo.Headers.Add("Accept", "application/json")
-    err := requestInfo.SetContentFromParsable(ctx, m.BaseRequestBuilder.RequestAdapter, "application/json", body)
-    if err != nil {
-        return nil, err
-    }
+    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
         requestInfo.Headers.AddAll(requestConfiguration.Headers)
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
+    requestInfo.Headers.TryAdd("Accept", "application/json")
+    err := requestInfo.SetContentFromParsable(ctx, m.BaseRequestBuilder.RequestAdapter, "application/json", body)
+    if err != nil {
+        return nil, err
+    }
     return requestInfo, nil
-}
-// ValidateProperties provides operations to call the validateProperties method.
-func (m *FeatureRolloutPoliciesItemAppliesToRequestBuilder) ValidateProperties()(*FeatureRolloutPoliciesItemAppliesToValidatePropertiesRequestBuilder) {
-    return NewFeatureRolloutPoliciesItemAppliesToValidatePropertiesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
 func (m *FeatureRolloutPoliciesItemAppliesToRequestBuilder) WithUrl(rawUrl string)(*FeatureRolloutPoliciesItemAppliesToRequestBuilder) {

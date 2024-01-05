@@ -20,7 +20,7 @@ func NewSignIn()(*SignIn) {
 func CreateSignInFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewSignIn(), nil
 }
-// GetAppDisplayName gets the appDisplayName property value. App name displayed in the Azure portal.  Supports $filter (eq, startsWith).
+// GetAppDisplayName gets the appDisplayName property value. App name displayed in the Microsoft Entra admin center.  Supports $filter (eq, startsWith).
 func (m *SignIn) GetAppDisplayName()(*string) {
     val, err := m.GetBackingStore().Get("appDisplayName")
     if err != nil {
@@ -31,7 +31,7 @@ func (m *SignIn) GetAppDisplayName()(*string) {
     }
     return nil
 }
-// GetAppId gets the appId property value. Unique GUID representing the app ID in the Azure Active Directory.  Supports $filter (eq).
+// GetAppId gets the appId property value. Unique GUID representing the app ID in the Microsoft Entra ID.  Supports $filter (eq).
 func (m *SignIn) GetAppId()(*string) {
     val, err := m.GetBackingStore().Get("appId")
     if err != nil {
@@ -42,7 +42,7 @@ func (m *SignIn) GetAppId()(*string) {
     }
     return nil
 }
-// GetAppliedConditionalAccessPolicies gets the appliedConditionalAccessPolicies property value. Provides a list of conditional access policies that are triggered by the corresponding sign-in activity.
+// GetAppliedConditionalAccessPolicies gets the appliedConditionalAccessPolicies property value. Provides a list of conditional access policies that are triggered by the corresponding sign-in activity. Apps need additional Conditional Access-related privileges to read the details of this property. For more information, see Viewing applied conditional access (CA) policies in sign-ins.
 func (m *SignIn) GetAppliedConditionalAccessPolicies()([]AppliedConditionalAccessPolicyable) {
     val, err := m.GetBackingStore().Get("appliedConditionalAccessPolicies")
     if err != nil {
@@ -416,7 +416,7 @@ func (m *SignIn) GetResourceId()(*string) {
     }
     return nil
 }
-// GetRiskDetail gets the riskDetail property value. Provides the 'reason' behind a specific state of a risky user, sign-in or a risk event. The possible values are: none, adminGeneratedTemporaryPassword, userPerformedSecuredPasswordChange, userPerformedSecuredPasswordReset, adminConfirmedSigninSafe, aiConfirmedSigninSafe, userPassedMFADrivenByRiskBasedPolicy, adminDismissedAllRiskForUser, adminConfirmedSigninCompromised, unknownFutureValue. The value none means that no action has been performed on the user or sign-in so far.  Supports $filter (eq).Note: Details for this property require an Azure AD Premium P2 license. Other licenses return the value hidden.
+// GetRiskDetail gets the riskDetail property value. Provides the 'reason' behind a specific state of a risky user, sign-in or a risk event. The possible values are: none, adminGeneratedTemporaryPassword, userPerformedSecuredPasswordChange, userPerformedSecuredPasswordReset, adminConfirmedSigninSafe, aiConfirmedSigninSafe, userPassedMFADrivenByRiskBasedPolicy, adminDismissedAllRiskForUser, adminConfirmedSigninCompromised, unknownFutureValue. The value none means that no action has been performed on the user or sign-in so far.  Supports $filter (eq).Note: Details for this property require a Microsoft Entra ID P2 license. Other licenses return the value hidden.
 func (m *SignIn) GetRiskDetail()(*RiskDetail) {
     val, err := m.GetBackingStore().Get("riskDetail")
     if err != nil {
@@ -449,7 +449,7 @@ func (m *SignIn) GetRiskEventTypesV2()([]string) {
     }
     return nil
 }
-// GetRiskLevelAggregated gets the riskLevelAggregated property value. Aggregated risk level. The possible values are: none, low, medium, high, hidden, and unknownFutureValue. The value hidden means the user or sign-in wasn't enabled for Azure AD Identity Protection.  Supports $filter (eq).  Note: Details for this property are only available for Azure AD Premium P2 customers. All other customers are returned hidden.
+// GetRiskLevelAggregated gets the riskLevelAggregated property value. Aggregated risk level. The possible values are: none, low, medium, high, hidden, and unknownFutureValue. The value hidden means the user or sign-in wasn't enabled for Microsoft Entra ID Protection.  Supports $filter (eq).  Note: Details for this property are only available for Microsoft Entra ID P2 customers. All other customers are returned hidden.
 func (m *SignIn) GetRiskLevelAggregated()(*RiskLevel) {
     val, err := m.GetBackingStore().Get("riskLevelAggregated")
     if err != nil {
@@ -460,7 +460,7 @@ func (m *SignIn) GetRiskLevelAggregated()(*RiskLevel) {
     }
     return nil
 }
-// GetRiskLevelDuringSignIn gets the riskLevelDuringSignIn property value. Risk level during sign-in. The possible values are: none, low, medium, high, hidden, and unknownFutureValue. The value hidden means the user or sign-in wasn't enabled for Azure AD Identity Protection.  Supports $filter (eq).  Note: Details for this property are only available for Azure AD Premium P2 customers. All other customers are returned hidden.
+// GetRiskLevelDuringSignIn gets the riskLevelDuringSignIn property value. Risk level during sign-in. The possible values are: none, low, medium, high, hidden, and unknownFutureValue. The value hidden means the user or sign-in wasn't enabled for Microsoft Entra ID Protection.  Supports $filter (eq).  Note: Details for this property are only available for Microsoft Entra ID P2 customers. All other customers are returned hidden.
 func (m *SignIn) GetRiskLevelDuringSignIn()(*RiskLevel) {
     val, err := m.GetBackingStore().Get("riskLevelDuringSignIn")
     if err != nil {
@@ -683,21 +683,21 @@ func (m *SignIn) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c
     }
     return nil
 }
-// SetAppDisplayName sets the appDisplayName property value. App name displayed in the Azure portal.  Supports $filter (eq, startsWith).
+// SetAppDisplayName sets the appDisplayName property value. App name displayed in the Microsoft Entra admin center.  Supports $filter (eq, startsWith).
 func (m *SignIn) SetAppDisplayName(value *string)() {
     err := m.GetBackingStore().Set("appDisplayName", value)
     if err != nil {
         panic(err)
     }
 }
-// SetAppId sets the appId property value. Unique GUID representing the app ID in the Azure Active Directory.  Supports $filter (eq).
+// SetAppId sets the appId property value. Unique GUID representing the app ID in the Microsoft Entra ID.  Supports $filter (eq).
 func (m *SignIn) SetAppId(value *string)() {
     err := m.GetBackingStore().Set("appId", value)
     if err != nil {
         panic(err)
     }
 }
-// SetAppliedConditionalAccessPolicies sets the appliedConditionalAccessPolicies property value. Provides a list of conditional access policies that are triggered by the corresponding sign-in activity.
+// SetAppliedConditionalAccessPolicies sets the appliedConditionalAccessPolicies property value. Provides a list of conditional access policies that are triggered by the corresponding sign-in activity. Apps need additional Conditional Access-related privileges to read the details of this property. For more information, see Viewing applied conditional access (CA) policies in sign-ins.
 func (m *SignIn) SetAppliedConditionalAccessPolicies(value []AppliedConditionalAccessPolicyable)() {
     err := m.GetBackingStore().Set("appliedConditionalAccessPolicies", value)
     if err != nil {
@@ -774,7 +774,7 @@ func (m *SignIn) SetResourceId(value *string)() {
         panic(err)
     }
 }
-// SetRiskDetail sets the riskDetail property value. Provides the 'reason' behind a specific state of a risky user, sign-in or a risk event. The possible values are: none, adminGeneratedTemporaryPassword, userPerformedSecuredPasswordChange, userPerformedSecuredPasswordReset, adminConfirmedSigninSafe, aiConfirmedSigninSafe, userPassedMFADrivenByRiskBasedPolicy, adminDismissedAllRiskForUser, adminConfirmedSigninCompromised, unknownFutureValue. The value none means that no action has been performed on the user or sign-in so far.  Supports $filter (eq).Note: Details for this property require an Azure AD Premium P2 license. Other licenses return the value hidden.
+// SetRiskDetail sets the riskDetail property value. Provides the 'reason' behind a specific state of a risky user, sign-in or a risk event. The possible values are: none, adminGeneratedTemporaryPassword, userPerformedSecuredPasswordChange, userPerformedSecuredPasswordReset, adminConfirmedSigninSafe, aiConfirmedSigninSafe, userPassedMFADrivenByRiskBasedPolicy, adminDismissedAllRiskForUser, adminConfirmedSigninCompromised, unknownFutureValue. The value none means that no action has been performed on the user or sign-in so far.  Supports $filter (eq).Note: Details for this property require a Microsoft Entra ID P2 license. Other licenses return the value hidden.
 func (m *SignIn) SetRiskDetail(value *RiskDetail)() {
     err := m.GetBackingStore().Set("riskDetail", value)
     if err != nil {
@@ -795,14 +795,14 @@ func (m *SignIn) SetRiskEventTypesV2(value []string)() {
         panic(err)
     }
 }
-// SetRiskLevelAggregated sets the riskLevelAggregated property value. Aggregated risk level. The possible values are: none, low, medium, high, hidden, and unknownFutureValue. The value hidden means the user or sign-in wasn't enabled for Azure AD Identity Protection.  Supports $filter (eq).  Note: Details for this property are only available for Azure AD Premium P2 customers. All other customers are returned hidden.
+// SetRiskLevelAggregated sets the riskLevelAggregated property value. Aggregated risk level. The possible values are: none, low, medium, high, hidden, and unknownFutureValue. The value hidden means the user or sign-in wasn't enabled for Microsoft Entra ID Protection.  Supports $filter (eq).  Note: Details for this property are only available for Microsoft Entra ID P2 customers. All other customers are returned hidden.
 func (m *SignIn) SetRiskLevelAggregated(value *RiskLevel)() {
     err := m.GetBackingStore().Set("riskLevelAggregated", value)
     if err != nil {
         panic(err)
     }
 }
-// SetRiskLevelDuringSignIn sets the riskLevelDuringSignIn property value. Risk level during sign-in. The possible values are: none, low, medium, high, hidden, and unknownFutureValue. The value hidden means the user or sign-in wasn't enabled for Azure AD Identity Protection.  Supports $filter (eq).  Note: Details for this property are only available for Azure AD Premium P2 customers. All other customers are returned hidden.
+// SetRiskLevelDuringSignIn sets the riskLevelDuringSignIn property value. Risk level during sign-in. The possible values are: none, low, medium, high, hidden, and unknownFutureValue. The value hidden means the user or sign-in wasn't enabled for Microsoft Entra ID Protection.  Supports $filter (eq).  Note: Details for this property are only available for Microsoft Entra ID P2 customers. All other customers are returned hidden.
 func (m *SignIn) SetRiskLevelDuringSignIn(value *RiskLevel)() {
     err := m.GetBackingStore().Set("riskLevelDuringSignIn", value)
     if err != nil {

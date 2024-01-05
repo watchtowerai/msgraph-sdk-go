@@ -27,6 +27,14 @@ type MobileAppsItemGraphManagedAndroidLobAppRequestBuilderGetRequestConfiguratio
     // Request query parameters
     QueryParameters *MobileAppsItemGraphManagedAndroidLobAppRequestBuilderGetQueryParameters
 }
+// Assignments provides operations to manage the assignments property of the microsoft.graph.mobileApp entity.
+func (m *MobileAppsItemGraphManagedAndroidLobAppRequestBuilder) Assignments()(*MobileAppsItemGraphManagedAndroidLobAppAssignmentsRequestBuilder) {
+    return NewMobileAppsItemGraphManagedAndroidLobAppAssignmentsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// Categories provides operations to manage the categories property of the microsoft.graph.mobileApp entity.
+func (m *MobileAppsItemGraphManagedAndroidLobAppRequestBuilder) Categories()(*MobileAppsItemGraphManagedAndroidLobAppCategoriesRequestBuilder) {
+    return NewMobileAppsItemGraphManagedAndroidLobAppCategoriesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
 // NewMobileAppsItemGraphManagedAndroidLobAppRequestBuilderInternal instantiates a new GraphManagedAndroidLobAppRequestBuilder and sets the default values.
 func NewMobileAppsItemGraphManagedAndroidLobAppRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*MobileAppsItemGraphManagedAndroidLobAppRequestBuilder) {
     m := &MobileAppsItemGraphManagedAndroidLobAppRequestBuilder{
@@ -39,6 +47,10 @@ func NewMobileAppsItemGraphManagedAndroidLobAppRequestBuilder(rawUrl string, req
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl
     return NewMobileAppsItemGraphManagedAndroidLobAppRequestBuilderInternal(urlParams, requestAdapter)
+}
+// ContentVersions provides operations to manage the contentVersions property of the microsoft.graph.managedMobileLobApp entity.
+func (m *MobileAppsItemGraphManagedAndroidLobAppRequestBuilder) ContentVersions()(*MobileAppsItemGraphManagedAndroidLobAppContentVersionsRequestBuilder) {
+    return NewMobileAppsItemGraphManagedAndroidLobAppContentVersionsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // Get get the item of type microsoft.graph.mobileApp as microsoft.graph.managedAndroidLobApp
 func (m *MobileAppsItemGraphManagedAndroidLobAppRequestBuilder) Get(ctx context.Context, requestConfiguration *MobileAppsItemGraphManagedAndroidLobAppRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ManagedAndroidLobAppable, error) {
@@ -61,11 +73,7 @@ func (m *MobileAppsItemGraphManagedAndroidLobAppRequestBuilder) Get(ctx context.
 }
 // ToGetRequestInformation get the item of type microsoft.graph.mobileApp as microsoft.graph.managedAndroidLobApp
 func (m *MobileAppsItemGraphManagedAndroidLobAppRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *MobileAppsItemGraphManagedAndroidLobAppRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
-    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
-    requestInfo.PathParameters = m.BaseRequestBuilder.PathParameters
-    requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET
-    requestInfo.Headers.Add("Accept", "application/json")
+    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
         if requestConfiguration.QueryParameters != nil {
             requestInfo.AddQueryParameters(*(requestConfiguration.QueryParameters))
@@ -73,6 +81,7 @@ func (m *MobileAppsItemGraphManagedAndroidLobAppRequestBuilder) ToGetRequestInfo
         requestInfo.Headers.AddAll(requestConfiguration.Headers)
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
+    requestInfo.Headers.TryAdd("Accept", "application/json")
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.

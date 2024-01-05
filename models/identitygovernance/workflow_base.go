@@ -44,7 +44,7 @@ func CreateWorkflowBaseFromDiscriminatorValue(parseNode i878a80d2330e89d26896388
     }
     return NewWorkflowBase(), nil
 }
-// GetAdditionalData gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+// GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *WorkflowBase) GetAdditionalData()(map[string]any) {
     val , err :=  m.backingStore.Get("additionalData")
     if err != nil {
@@ -56,7 +56,7 @@ func (m *WorkflowBase) GetAdditionalData()(map[string]any) {
     }
     return val.(map[string]any)
 }
-// GetBackingStore gets the backingStore property value. Stores model information.
+// GetBackingStore gets the BackingStore property value. Stores model information.
 func (m *WorkflowBase) GetBackingStore()(ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStore) {
     return m.backingStore
 }
@@ -279,7 +279,7 @@ func (m *WorkflowBase) GetIsSchedulingEnabled()(*bool) {
     }
     return nil
 }
-// GetLastModifiedBy gets the lastModifiedBy property value. The unique identifier of the Azure Active Directory identity that last modified the workflow.
+// GetLastModifiedBy gets the lastModifiedBy property value. The unique identifier of the Microsoft Entra identity that last modified the workflow.
 func (m *WorkflowBase) GetLastModifiedBy()(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.Userable) {
     val, err := m.GetBackingStore().Get("lastModifiedBy")
     if err != nil {
@@ -412,14 +412,14 @@ func (m *WorkflowBase) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e
     }
     return nil
 }
-// SetAdditionalData sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+// SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *WorkflowBase) SetAdditionalData(value map[string]any)() {
     err := m.GetBackingStore().Set("additionalData", value)
     if err != nil {
         panic(err)
     }
 }
-// SetBackingStore sets the backingStore property value. Stores model information.
+// SetBackingStore sets the BackingStore property value. Stores model information.
 func (m *WorkflowBase) SetBackingStore(value ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStore)() {
     m.backingStore = value
 }
@@ -479,7 +479,7 @@ func (m *WorkflowBase) SetIsSchedulingEnabled(value *bool)() {
         panic(err)
     }
 }
-// SetLastModifiedBy sets the lastModifiedBy property value. The unique identifier of the Azure Active Directory identity that last modified the workflow.
+// SetLastModifiedBy sets the lastModifiedBy property value. The unique identifier of the Microsoft Entra identity that last modified the workflow.
 func (m *WorkflowBase) SetLastModifiedBy(value iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.Userable)() {
     err := m.GetBackingStore().Set("lastModifiedBy", value)
     if err != nil {

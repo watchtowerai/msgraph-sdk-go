@@ -22,7 +22,7 @@ func NewConvertIdResult()(*ConvertIdResult) {
 func CreateConvertIdResultFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewConvertIdResult(), nil
 }
-// GetAdditionalData gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+// GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *ConvertIdResult) GetAdditionalData()(map[string]any) {
     val , err :=  m.backingStore.Get("additionalData")
     if err != nil {
@@ -34,11 +34,11 @@ func (m *ConvertIdResult) GetAdditionalData()(map[string]any) {
     }
     return val.(map[string]any)
 }
-// GetBackingStore gets the backingStore property value. Stores model information.
+// GetBackingStore gets the BackingStore property value. Stores model information.
 func (m *ConvertIdResult) GetBackingStore()(ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStore) {
     return m.backingStore
 }
-// GetErrorDetails gets the errorDetails property value. An error object indicating the reason for the conversion failure. This value is not present if the conversion succeeded.
+// GetErrorDetails gets the errorDetails property value. An error object indicating the reason for the conversion failure. This value isn't present if the conversion succeeded.
 func (m *ConvertIdResult) GetErrorDetails()(GenericErrorable) {
     val, err := m.GetBackingStore().Get("errorDetails")
     if err != nil {
@@ -116,7 +116,7 @@ func (m *ConvertIdResult) GetSourceId()(*string) {
     }
     return nil
 }
-// GetTargetId gets the targetId property value. The converted identifier. This value is not present if the conversion failed.
+// GetTargetId gets the targetId property value. The converted identifier. This value isn't present if the conversion failed.
 func (m *ConvertIdResult) GetTargetId()(*string) {
     val, err := m.GetBackingStore().Get("targetId")
     if err != nil {
@@ -161,18 +161,18 @@ func (m *ConvertIdResult) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0
     }
     return nil
 }
-// SetAdditionalData sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+// SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *ConvertIdResult) SetAdditionalData(value map[string]any)() {
     err := m.GetBackingStore().Set("additionalData", value)
     if err != nil {
         panic(err)
     }
 }
-// SetBackingStore sets the backingStore property value. Stores model information.
+// SetBackingStore sets the BackingStore property value. Stores model information.
 func (m *ConvertIdResult) SetBackingStore(value ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStore)() {
     m.backingStore = value
 }
-// SetErrorDetails sets the errorDetails property value. An error object indicating the reason for the conversion failure. This value is not present if the conversion succeeded.
+// SetErrorDetails sets the errorDetails property value. An error object indicating the reason for the conversion failure. This value isn't present if the conversion succeeded.
 func (m *ConvertIdResult) SetErrorDetails(value GenericErrorable)() {
     err := m.GetBackingStore().Set("errorDetails", value)
     if err != nil {
@@ -193,7 +193,7 @@ func (m *ConvertIdResult) SetSourceId(value *string)() {
         panic(err)
     }
 }
-// SetTargetId sets the targetId property value. The converted identifier. This value is not present if the conversion failed.
+// SetTargetId sets the targetId property value. The converted identifier. This value isn't present if the conversion failed.
 func (m *ConvertIdResult) SetTargetId(value *string)() {
     err := m.GetBackingStore().Set("targetId", value)
     if err != nil {

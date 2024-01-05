@@ -22,7 +22,7 @@ func NewAppIdentity()(*AppIdentity) {
 func CreateAppIdentityFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewAppIdentity(), nil
 }
-// GetAdditionalData gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+// GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *AppIdentity) GetAdditionalData()(map[string]any) {
     val , err :=  m.backingStore.Get("additionalData")
     if err != nil {
@@ -34,7 +34,7 @@ func (m *AppIdentity) GetAdditionalData()(map[string]any) {
     }
     return val.(map[string]any)
 }
-// GetAppId gets the appId property value. Refers to the Unique GUID representing Application Id in the Azure Active Directory.
+// GetAppId gets the appId property value. Refers to the unique ID representing application in Microsoft Entra ID.
 func (m *AppIdentity) GetAppId()(*string) {
     val, err := m.GetBackingStore().Get("appId")
     if err != nil {
@@ -45,11 +45,11 @@ func (m *AppIdentity) GetAppId()(*string) {
     }
     return nil
 }
-// GetBackingStore gets the backingStore property value. Stores model information.
+// GetBackingStore gets the BackingStore property value. Stores model information.
 func (m *AppIdentity) GetBackingStore()(ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStore) {
     return m.backingStore
 }
-// GetDisplayName gets the displayName property value. Refers to the Application Name displayed in the Azure Portal.
+// GetDisplayName gets the displayName property value. Refers to the application name displayed in the Microsoft Entra admin center.
 func (m *AppIdentity) GetDisplayName()(*string) {
     val, err := m.GetBackingStore().Get("displayName")
     if err != nil {
@@ -126,7 +126,7 @@ func (m *AppIdentity) GetOdataType()(*string) {
     }
     return nil
 }
-// GetServicePrincipalId gets the servicePrincipalId property value. Refers to the Unique GUID indicating Service Principal Id in Azure Active Directory for the corresponding App.
+// GetServicePrincipalId gets the servicePrincipalId property value. Refers to the unique ID for the service principal in Microsoft Entra ID.
 func (m *AppIdentity) GetServicePrincipalId()(*string) {
     val, err := m.GetBackingStore().Get("servicePrincipalId")
     if err != nil {
@@ -188,25 +188,25 @@ func (m *AppIdentity) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6
     }
     return nil
 }
-// SetAdditionalData sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+// SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *AppIdentity) SetAdditionalData(value map[string]any)() {
     err := m.GetBackingStore().Set("additionalData", value)
     if err != nil {
         panic(err)
     }
 }
-// SetAppId sets the appId property value. Refers to the Unique GUID representing Application Id in the Azure Active Directory.
+// SetAppId sets the appId property value. Refers to the unique ID representing application in Microsoft Entra ID.
 func (m *AppIdentity) SetAppId(value *string)() {
     err := m.GetBackingStore().Set("appId", value)
     if err != nil {
         panic(err)
     }
 }
-// SetBackingStore sets the backingStore property value. Stores model information.
+// SetBackingStore sets the BackingStore property value. Stores model information.
 func (m *AppIdentity) SetBackingStore(value ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStore)() {
     m.backingStore = value
 }
-// SetDisplayName sets the displayName property value. Refers to the Application Name displayed in the Azure Portal.
+// SetDisplayName sets the displayName property value. Refers to the application name displayed in the Microsoft Entra admin center.
 func (m *AppIdentity) SetDisplayName(value *string)() {
     err := m.GetBackingStore().Set("displayName", value)
     if err != nil {
@@ -220,7 +220,7 @@ func (m *AppIdentity) SetOdataType(value *string)() {
         panic(err)
     }
 }
-// SetServicePrincipalId sets the servicePrincipalId property value. Refers to the Unique GUID indicating Service Principal Id in Azure Active Directory for the corresponding App.
+// SetServicePrincipalId sets the servicePrincipalId property value. Refers to the unique ID for the service principal in Microsoft Entra ID.
 func (m *AppIdentity) SetServicePrincipalId(value *string)() {
     err := m.GetBackingStore().Set("servicePrincipalId", value)
     if err != nil {

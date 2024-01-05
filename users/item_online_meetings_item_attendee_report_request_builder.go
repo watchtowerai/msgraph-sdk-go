@@ -37,7 +37,7 @@ func NewItemOnlineMeetingsItemAttendeeReportRequestBuilder(rawUrl string, reques
     urlParams["request-raw-url"] = rawUrl
     return NewItemOnlineMeetingsItemAttendeeReportRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Get the content stream of the attendee report of a Microsoft Teams live event. Read-only.
+// Get get attendeeReport for the navigation property onlineMeetings from users
 // [Find more info here]
 // 
 // [Find more info here]: https://learn.microsoft.com/graph/api/onlinemeeting-get?view=graph-rest-1.0
@@ -59,7 +59,7 @@ func (m *ItemOnlineMeetingsItemAttendeeReportRequestBuilder) Get(ctx context.Con
     }
     return res.([]byte), nil
 }
-// Put the content stream of the attendee report of a Microsoft Teams live event. Read-only.
+// Put update attendeeReport for the navigation property onlineMeetings in users
 func (m *ItemOnlineMeetingsItemAttendeeReportRequestBuilder) Put(ctx context.Context, body []byte, requestConfiguration *ItemOnlineMeetingsItemAttendeeReportRequestBuilderPutRequestConfiguration)([]byte, error) {
     requestInfo, err := m.ToPutRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
@@ -78,29 +78,25 @@ func (m *ItemOnlineMeetingsItemAttendeeReportRequestBuilder) Put(ctx context.Con
     }
     return res.([]byte), nil
 }
-// ToGetRequestInformation the content stream of the attendee report of a Microsoft Teams live event. Read-only.
+// ToGetRequestInformation get attendeeReport for the navigation property onlineMeetings from users
 func (m *ItemOnlineMeetingsItemAttendeeReportRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *ItemOnlineMeetingsItemAttendeeReportRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
-    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
-    requestInfo.PathParameters = m.BaseRequestBuilder.PathParameters
-    requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET
+    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
         requestInfo.Headers.AddAll(requestConfiguration.Headers)
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
+    requestInfo.Headers.TryAdd("Accept", "application/octet-stream, application/json")
     return requestInfo, nil
 }
-// ToPutRequestInformation the content stream of the attendee report of a Microsoft Teams live event. Read-only.
+// ToPutRequestInformation update attendeeReport for the navigation property onlineMeetings in users
 func (m *ItemOnlineMeetingsItemAttendeeReportRequestBuilder) ToPutRequestInformation(ctx context.Context, body []byte, requestConfiguration *ItemOnlineMeetingsItemAttendeeReportRequestBuilderPutRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
-    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
-    requestInfo.PathParameters = m.BaseRequestBuilder.PathParameters
-    requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.PUT
-    requestInfo.SetStreamContent(body)
+    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.PUT, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
         requestInfo.Headers.AddAll(requestConfiguration.Headers)
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
+    requestInfo.Headers.TryAdd("Accept", "application/json")
+    requestInfo.SetStreamContentAndContentType(body, "application/octet-stream")
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.

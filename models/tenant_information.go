@@ -22,7 +22,7 @@ func NewTenantInformation()(*TenantInformation) {
 func CreateTenantInformationFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewTenantInformation(), nil
 }
-// GetAdditionalData gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+// GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *TenantInformation) GetAdditionalData()(map[string]any) {
     val , err :=  m.backingStore.Get("additionalData")
     if err != nil {
@@ -34,11 +34,11 @@ func (m *TenantInformation) GetAdditionalData()(map[string]any) {
     }
     return val.(map[string]any)
 }
-// GetBackingStore gets the backingStore property value. Stores model information.
+// GetBackingStore gets the BackingStore property value. Stores model information.
 func (m *TenantInformation) GetBackingStore()(ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStore) {
     return m.backingStore
 }
-// GetDefaultDomainName gets the defaultDomainName property value. Primary domain name of an Azure AD tenant.
+// GetDefaultDomainName gets the defaultDomainName property value. Primary domain name of a Microsoft Entra tenant.
 func (m *TenantInformation) GetDefaultDomainName()(*string) {
     val, err := m.GetBackingStore().Get("defaultDomainName")
     if err != nil {
@@ -49,7 +49,7 @@ func (m *TenantInformation) GetDefaultDomainName()(*string) {
     }
     return nil
 }
-// GetDisplayName gets the displayName property value. Display name of an Azure AD tenant.
+// GetDisplayName gets the displayName property value. Display name of a Microsoft Entra tenant.
 func (m *TenantInformation) GetDisplayName()(*string) {
     val, err := m.GetBackingStore().Get("displayName")
     if err != nil {
@@ -60,7 +60,7 @@ func (m *TenantInformation) GetDisplayName()(*string) {
     }
     return nil
 }
-// GetFederationBrandName gets the federationBrandName property value. Name shown to users that sign in to an Azure AD tenant.
+// GetFederationBrandName gets the federationBrandName property value. Name shown to users that sign in to a Microsoft Entra tenant.
 func (m *TenantInformation) GetFederationBrandName()(*string) {
     val, err := m.GetBackingStore().Get("federationBrandName")
     if err != nil {
@@ -137,7 +137,7 @@ func (m *TenantInformation) GetOdataType()(*string) {
     }
     return nil
 }
-// GetTenantId gets the tenantId property value. Unique identifier of an Azure AD tenant.
+// GetTenantId gets the tenantId property value. Unique identifier of a Microsoft Entra tenant.
 func (m *TenantInformation) GetTenantId()(*string) {
     val, err := m.GetBackingStore().Get("tenantId")
     if err != nil {
@@ -188,32 +188,32 @@ func (m *TenantInformation) Serialize(writer i878a80d2330e89d26896388a3f487eef27
     }
     return nil
 }
-// SetAdditionalData sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+// SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *TenantInformation) SetAdditionalData(value map[string]any)() {
     err := m.GetBackingStore().Set("additionalData", value)
     if err != nil {
         panic(err)
     }
 }
-// SetBackingStore sets the backingStore property value. Stores model information.
+// SetBackingStore sets the BackingStore property value. Stores model information.
 func (m *TenantInformation) SetBackingStore(value ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStore)() {
     m.backingStore = value
 }
-// SetDefaultDomainName sets the defaultDomainName property value. Primary domain name of an Azure AD tenant.
+// SetDefaultDomainName sets the defaultDomainName property value. Primary domain name of a Microsoft Entra tenant.
 func (m *TenantInformation) SetDefaultDomainName(value *string)() {
     err := m.GetBackingStore().Set("defaultDomainName", value)
     if err != nil {
         panic(err)
     }
 }
-// SetDisplayName sets the displayName property value. Display name of an Azure AD tenant.
+// SetDisplayName sets the displayName property value. Display name of a Microsoft Entra tenant.
 func (m *TenantInformation) SetDisplayName(value *string)() {
     err := m.GetBackingStore().Set("displayName", value)
     if err != nil {
         panic(err)
     }
 }
-// SetFederationBrandName sets the federationBrandName property value. Name shown to users that sign in to an Azure AD tenant.
+// SetFederationBrandName sets the federationBrandName property value. Name shown to users that sign in to a Microsoft Entra tenant.
 func (m *TenantInformation) SetFederationBrandName(value *string)() {
     err := m.GetBackingStore().Set("federationBrandName", value)
     if err != nil {
@@ -227,7 +227,7 @@ func (m *TenantInformation) SetOdataType(value *string)() {
         panic(err)
     }
 }
-// SetTenantId sets the tenantId property value. Unique identifier of an Azure AD tenant.
+// SetTenantId sets the tenantId property value. Unique identifier of a Microsoft Entra tenant.
 func (m *TenantInformation) SetTenantId(value *string)() {
     err := m.GetBackingStore().Set("tenantId", value)
     if err != nil {

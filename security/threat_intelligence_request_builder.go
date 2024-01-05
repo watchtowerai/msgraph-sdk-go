@@ -105,9 +105,21 @@ func (m *ThreatIntelligenceRequestBuilder) HostComponents()(*ThreatIntelligenceH
 func (m *ThreatIntelligenceRequestBuilder) HostCookies()(*ThreatIntelligenceHostCookiesRequestBuilder) {
     return NewThreatIntelligenceHostCookiesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
+// HostPairs provides operations to manage the hostPairs property of the microsoft.graph.security.threatIntelligence entity.
+func (m *ThreatIntelligenceRequestBuilder) HostPairs()(*ThreatIntelligenceHostPairsRequestBuilder) {
+    return NewThreatIntelligenceHostPairsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// HostPorts provides operations to manage the hostPorts property of the microsoft.graph.security.threatIntelligence entity.
+func (m *ThreatIntelligenceRequestBuilder) HostPorts()(*ThreatIntelligenceHostPortsRequestBuilder) {
+    return NewThreatIntelligenceHostPortsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
 // Hosts provides operations to manage the hosts property of the microsoft.graph.security.threatIntelligence entity.
 func (m *ThreatIntelligenceRequestBuilder) Hosts()(*ThreatIntelligenceHostsRequestBuilder) {
     return NewThreatIntelligenceHostsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// HostSslCertificates provides operations to manage the hostSslCertificates property of the microsoft.graph.security.threatIntelligence entity.
+func (m *ThreatIntelligenceRequestBuilder) HostSslCertificates()(*ThreatIntelligenceHostSslCertificatesRequestBuilder) {
+    return NewThreatIntelligenceHostSslCertificatesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // HostTrackers provides operations to manage the hostTrackers property of the microsoft.graph.security.threatIntelligence entity.
 func (m *ThreatIntelligenceRequestBuilder) HostTrackers()(*ThreatIntelligenceHostTrackersRequestBuilder) {
@@ -144,25 +156,27 @@ func (m *ThreatIntelligenceRequestBuilder) Patch(ctx context.Context, body idd6d
     }
     return res.(idd6d442c3cc83a389b8f0b8dd7ac355916e813c2882ff3aaa23331424ba827ae.ThreatIntelligenceable), nil
 }
+// SslCertificates provides operations to manage the sslCertificates property of the microsoft.graph.security.threatIntelligence entity.
+func (m *ThreatIntelligenceRequestBuilder) SslCertificates()(*ThreatIntelligenceSslCertificatesRequestBuilder) {
+    return NewThreatIntelligenceSslCertificatesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// Subdomains provides operations to manage the subdomains property of the microsoft.graph.security.threatIntelligence entity.
+func (m *ThreatIntelligenceRequestBuilder) Subdomains()(*ThreatIntelligenceSubdomainsRequestBuilder) {
+    return NewThreatIntelligenceSubdomainsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
 // ToDeleteRequestInformation delete navigation property threatIntelligence for security
 func (m *ThreatIntelligenceRequestBuilder) ToDeleteRequestInformation(ctx context.Context, requestConfiguration *ThreatIntelligenceRequestBuilderDeleteRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
-    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
-    requestInfo.PathParameters = m.BaseRequestBuilder.PathParameters
-    requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DELETE
+    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DELETE, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
         requestInfo.Headers.AddAll(requestConfiguration.Headers)
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
+    requestInfo.Headers.TryAdd("Accept", "application/json")
     return requestInfo, nil
 }
 // ToGetRequestInformation get threatIntelligence from security
 func (m *ThreatIntelligenceRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *ThreatIntelligenceRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
-    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
-    requestInfo.PathParameters = m.BaseRequestBuilder.PathParameters
-    requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET
-    requestInfo.Headers.Add("Accept", "application/json")
+    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
         if requestConfiguration.QueryParameters != nil {
             requestInfo.AddQueryParameters(*(requestConfiguration.QueryParameters))
@@ -170,28 +184,34 @@ func (m *ThreatIntelligenceRequestBuilder) ToGetRequestInformation(ctx context.C
         requestInfo.Headers.AddAll(requestConfiguration.Headers)
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
+    requestInfo.Headers.TryAdd("Accept", "application/json")
     return requestInfo, nil
 }
 // ToPatchRequestInformation update the navigation property threatIntelligence in security
 func (m *ThreatIntelligenceRequestBuilder) ToPatchRequestInformation(ctx context.Context, body idd6d442c3cc83a389b8f0b8dd7ac355916e813c2882ff3aaa23331424ba827ae.ThreatIntelligenceable, requestConfiguration *ThreatIntelligenceRequestBuilderPatchRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
-    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
-    requestInfo.PathParameters = m.BaseRequestBuilder.PathParameters
-    requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.PATCH
-    requestInfo.Headers.Add("Accept", "application/json")
-    err := requestInfo.SetContentFromParsable(ctx, m.BaseRequestBuilder.RequestAdapter, "application/json", body)
-    if err != nil {
-        return nil, err
-    }
+    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.PATCH, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
         requestInfo.Headers.AddAll(requestConfiguration.Headers)
         requestInfo.AddRequestOptions(requestConfiguration.Options)
+    }
+    requestInfo.Headers.TryAdd("Accept", "application/json")
+    err := requestInfo.SetContentFromParsable(ctx, m.BaseRequestBuilder.RequestAdapter, "application/json", body)
+    if err != nil {
+        return nil, err
     }
     return requestInfo, nil
 }
 // Vulnerabilities provides operations to manage the vulnerabilities property of the microsoft.graph.security.threatIntelligence entity.
 func (m *ThreatIntelligenceRequestBuilder) Vulnerabilities()(*ThreatIntelligenceVulnerabilitiesRequestBuilder) {
     return NewThreatIntelligenceVulnerabilitiesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// WhoisHistoryRecords provides operations to manage the whoisHistoryRecords property of the microsoft.graph.security.threatIntelligence entity.
+func (m *ThreatIntelligenceRequestBuilder) WhoisHistoryRecords()(*ThreatIntelligenceWhoisHistoryRecordsRequestBuilder) {
+    return NewThreatIntelligenceWhoisHistoryRecordsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// WhoisRecords provides operations to manage the whoisRecords property of the microsoft.graph.security.threatIntelligence entity.
+func (m *ThreatIntelligenceRequestBuilder) WhoisRecords()(*ThreatIntelligenceWhoisRecordsRequestBuilder) {
+    return NewThreatIntelligenceWhoisRecordsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
 func (m *ThreatIntelligenceRequestBuilder) WithUrl(rawUrl string)(*ThreatIntelligenceRequestBuilder) {

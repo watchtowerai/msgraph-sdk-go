@@ -11,7 +11,7 @@ import (
 type ItemTransitiveMemberOfDirectoryObjectItemRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
-// ItemTransitiveMemberOfDirectoryObjectItemRequestBuilderGetQueryParameters the groups that a group is a member of, either directly and through nested membership. Nullable.
+// ItemTransitiveMemberOfDirectoryObjectItemRequestBuilderGetQueryParameters the groups that a group is a member of, either directly or through nested membership. Nullable.
 type ItemTransitiveMemberOfDirectoryObjectItemRequestBuilderGetQueryParameters struct {
     // Expand related entities
     Expand []string `uriparametername:"%24expand"`
@@ -40,7 +40,7 @@ func NewItemTransitiveMemberOfDirectoryObjectItemRequestBuilder(rawUrl string, r
     urlParams["request-raw-url"] = rawUrl
     return NewItemTransitiveMemberOfDirectoryObjectItemRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Get the groups that a group is a member of, either directly and through nested membership. Nullable.
+// Get the groups that a group is a member of, either directly or through nested membership. Nullable.
 func (m *ItemTransitiveMemberOfDirectoryObjectItemRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemTransitiveMemberOfDirectoryObjectItemRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.DirectoryObjectable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -67,13 +67,9 @@ func (m *ItemTransitiveMemberOfDirectoryObjectItemRequestBuilder) GraphAdministr
 func (m *ItemTransitiveMemberOfDirectoryObjectItemRequestBuilder) GraphGroup()(*ItemTransitiveMemberOfItemGraphGroupRequestBuilder) {
     return NewItemTransitiveMemberOfItemGraphGroupRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
-// ToGetRequestInformation the groups that a group is a member of, either directly and through nested membership. Nullable.
+// ToGetRequestInformation the groups that a group is a member of, either directly or through nested membership. Nullable.
 func (m *ItemTransitiveMemberOfDirectoryObjectItemRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *ItemTransitiveMemberOfDirectoryObjectItemRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
-    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
-    requestInfo.PathParameters = m.BaseRequestBuilder.PathParameters
-    requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET
-    requestInfo.Headers.Add("Accept", "application/json")
+    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
         if requestConfiguration.QueryParameters != nil {
             requestInfo.AddQueryParameters(*(requestConfiguration.QueryParameters))
@@ -81,6 +77,7 @@ func (m *ItemTransitiveMemberOfDirectoryObjectItemRequestBuilder) ToGetRequestIn
         requestInfo.Headers.AddAll(requestConfiguration.Headers)
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
+    requestInfo.Headers.TryAdd("Accept", "application/json")
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.

@@ -22,7 +22,7 @@ func NewAdmin()(*Admin) {
 func CreateAdminFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewAdmin(), nil
 }
-// GetAdditionalData gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+// GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *Admin) GetAdditionalData()(map[string]any) {
     val , err :=  m.backingStore.Get("additionalData")
     if err != nil {
@@ -34,7 +34,7 @@ func (m *Admin) GetAdditionalData()(map[string]any) {
     }
     return val.(map[string]any)
 }
-// GetBackingStore gets the backingStore property value. Stores model information.
+// GetBackingStore gets the BackingStore property value. Stores model information.
 func (m *Admin) GetBackingStore()(ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStore) {
     return m.backingStore
 }
@@ -72,6 +72,16 @@ func (m *Admin) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388
         }
         return nil
     }
+    res["people"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetObjectValue(CreatePeopleAdminSettingsFromDiscriminatorValue)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetPeople(val.(PeopleAdminSettingsable))
+        }
+        return nil
+    }
     res["serviceAnnouncement"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetObjectValue(CreateServiceAnnouncementFromDiscriminatorValue)
         if err != nil {
@@ -102,6 +112,17 @@ func (m *Admin) GetOdataType()(*string) {
     }
     if val != nil {
         return val.(*string)
+    }
+    return nil
+}
+// GetPeople gets the people property value. Represents a setting to control people-related admin settings in the tenant.
+func (m *Admin) GetPeople()(PeopleAdminSettingsable) {
+    val, err := m.GetBackingStore().Get("people")
+    if err != nil {
+        panic(err)
+    }
+    if val != nil {
+        return val.(PeopleAdminSettingsable)
     }
     return nil
 }
@@ -142,6 +163,12 @@ func (m *Admin) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c4
         }
     }
     {
+        err := writer.WriteObjectValue("people", m.GetPeople())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err := writer.WriteObjectValue("serviceAnnouncement", m.GetServiceAnnouncement())
         if err != nil {
             return err
@@ -161,14 +188,14 @@ func (m *Admin) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c4
     }
     return nil
 }
-// SetAdditionalData sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+// SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *Admin) SetAdditionalData(value map[string]any)() {
     err := m.GetBackingStore().Set("additionalData", value)
     if err != nil {
         panic(err)
     }
 }
-// SetBackingStore sets the backingStore property value. Stores model information.
+// SetBackingStore sets the BackingStore property value. Stores model information.
 func (m *Admin) SetBackingStore(value ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStore)() {
     m.backingStore = value
 }
@@ -182,6 +209,13 @@ func (m *Admin) SetEdge(value Edgeable)() {
 // SetOdataType sets the @odata.type property value. The OdataType property
 func (m *Admin) SetOdataType(value *string)() {
     err := m.GetBackingStore().Set("odataType", value)
+    if err != nil {
+        panic(err)
+    }
+}
+// SetPeople sets the people property value. Represents a setting to control people-related admin settings in the tenant.
+func (m *Admin) SetPeople(value PeopleAdminSettingsable)() {
+    err := m.GetBackingStore().Set("people", value)
     if err != nil {
         panic(err)
     }
@@ -208,11 +242,13 @@ type Adminable interface {
     GetBackingStore()(ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStore)
     GetEdge()(Edgeable)
     GetOdataType()(*string)
+    GetPeople()(PeopleAdminSettingsable)
     GetServiceAnnouncement()(ServiceAnnouncementable)
     GetSharepoint()(Sharepointable)
     SetBackingStore(value ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStore)()
     SetEdge(value Edgeable)()
     SetOdataType(value *string)()
+    SetPeople(value PeopleAdminSettingsable)()
     SetServiceAnnouncement(value ServiceAnnouncementable)()
     SetSharepoint(value Sharepointable)()
 }

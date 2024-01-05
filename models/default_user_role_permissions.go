@@ -22,7 +22,7 @@ func NewDefaultUserRolePermissions()(*DefaultUserRolePermissions) {
 func CreateDefaultUserRolePermissionsFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewDefaultUserRolePermissions(), nil
 }
-// GetAdditionalData gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+// GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *DefaultUserRolePermissions) GetAdditionalData()(map[string]any) {
     val , err :=  m.backingStore.Get("additionalData")
     if err != nil {
@@ -34,7 +34,7 @@ func (m *DefaultUserRolePermissions) GetAdditionalData()(map[string]any) {
     }
     return val.(map[string]any)
 }
-// GetAllowedToCreateApps gets the allowedToCreateApps property value. Indicates whether the default user role can create applications. This setting corresponds to the Users can register applications setting in the User settings menu in the Azure portal.
+// GetAllowedToCreateApps gets the allowedToCreateApps property value. Indicates whether the default user role can create applications. This setting corresponds to the Users can register applications setting in the User settings menu in the Microsoft Entra admin center.
 func (m *DefaultUserRolePermissions) GetAllowedToCreateApps()(*bool) {
     val, err := m.GetBackingStore().Get("allowedToCreateApps")
     if err != nil {
@@ -45,7 +45,7 @@ func (m *DefaultUserRolePermissions) GetAllowedToCreateApps()(*bool) {
     }
     return nil
 }
-// GetAllowedToCreateSecurityGroups gets the allowedToCreateSecurityGroups property value. Indicates whether the default user role can create security groups. This setting corresponds to the following menus in the Azure portal:  The Users can create security groups in Azure portals, API or PowerShell setting in the Group settings menu.  Users can create security groups setting in the User settings menu.
+// GetAllowedToCreateSecurityGroups gets the allowedToCreateSecurityGroups property value. Indicates whether the default user role can create security groups. This setting corresponds to the following menus in the Microsoft Entra admin center:  The Users can create security groups in Microsoft Entra admin centers, API or PowerShell setting in the Group settings menu.  Users can create security groups setting in the User settings menu.
 func (m *DefaultUserRolePermissions) GetAllowedToCreateSecurityGroups()(*bool) {
     val, err := m.GetBackingStore().Get("allowedToCreateSecurityGroups")
     if err != nil {
@@ -56,7 +56,7 @@ func (m *DefaultUserRolePermissions) GetAllowedToCreateSecurityGroups()(*bool) {
     }
     return nil
 }
-// GetAllowedToCreateTenants gets the allowedToCreateTenants property value. Indicates whether the default user role can create tenants. This setting corresponds to the Restrict non-admin users from creating tenants setting in the User settings menu in the Azure portal.  When this setting is false, users assigned the Tenant Creator role can still create tenants.
+// GetAllowedToCreateTenants gets the allowedToCreateTenants property value. Indicates whether the default user role can create tenants. This setting corresponds to the Restrict non-admin users from creating tenants setting in the User settings menu in the Microsoft Entra admin center.  When this setting is false, users assigned the Tenant Creator role can still create tenants.
 func (m *DefaultUserRolePermissions) GetAllowedToCreateTenants()(*bool) {
     val, err := m.GetBackingStore().Get("allowedToCreateTenants")
     if err != nil {
@@ -89,7 +89,7 @@ func (m *DefaultUserRolePermissions) GetAllowedToReadOtherUsers()(*bool) {
     }
     return nil
 }
-// GetBackingStore gets the backingStore property value. Stores model information.
+// GetBackingStore gets the BackingStore property value. Stores model information.
 func (m *DefaultUserRolePermissions) GetBackingStore()(ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStore) {
     return m.backingStore
 }
@@ -248,28 +248,28 @@ func (m *DefaultUserRolePermissions) Serialize(writer i878a80d2330e89d26896388a3
     }
     return nil
 }
-// SetAdditionalData sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+// SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *DefaultUserRolePermissions) SetAdditionalData(value map[string]any)() {
     err := m.GetBackingStore().Set("additionalData", value)
     if err != nil {
         panic(err)
     }
 }
-// SetAllowedToCreateApps sets the allowedToCreateApps property value. Indicates whether the default user role can create applications. This setting corresponds to the Users can register applications setting in the User settings menu in the Azure portal.
+// SetAllowedToCreateApps sets the allowedToCreateApps property value. Indicates whether the default user role can create applications. This setting corresponds to the Users can register applications setting in the User settings menu in the Microsoft Entra admin center.
 func (m *DefaultUserRolePermissions) SetAllowedToCreateApps(value *bool)() {
     err := m.GetBackingStore().Set("allowedToCreateApps", value)
     if err != nil {
         panic(err)
     }
 }
-// SetAllowedToCreateSecurityGroups sets the allowedToCreateSecurityGroups property value. Indicates whether the default user role can create security groups. This setting corresponds to the following menus in the Azure portal:  The Users can create security groups in Azure portals, API or PowerShell setting in the Group settings menu.  Users can create security groups setting in the User settings menu.
+// SetAllowedToCreateSecurityGroups sets the allowedToCreateSecurityGroups property value. Indicates whether the default user role can create security groups. This setting corresponds to the following menus in the Microsoft Entra admin center:  The Users can create security groups in Microsoft Entra admin centers, API or PowerShell setting in the Group settings menu.  Users can create security groups setting in the User settings menu.
 func (m *DefaultUserRolePermissions) SetAllowedToCreateSecurityGroups(value *bool)() {
     err := m.GetBackingStore().Set("allowedToCreateSecurityGroups", value)
     if err != nil {
         panic(err)
     }
 }
-// SetAllowedToCreateTenants sets the allowedToCreateTenants property value. Indicates whether the default user role can create tenants. This setting corresponds to the Restrict non-admin users from creating tenants setting in the User settings menu in the Azure portal.  When this setting is false, users assigned the Tenant Creator role can still create tenants.
+// SetAllowedToCreateTenants sets the allowedToCreateTenants property value. Indicates whether the default user role can create tenants. This setting corresponds to the Restrict non-admin users from creating tenants setting in the User settings menu in the Microsoft Entra admin center.  When this setting is false, users assigned the Tenant Creator role can still create tenants.
 func (m *DefaultUserRolePermissions) SetAllowedToCreateTenants(value *bool)() {
     err := m.GetBackingStore().Set("allowedToCreateTenants", value)
     if err != nil {
@@ -290,7 +290,7 @@ func (m *DefaultUserRolePermissions) SetAllowedToReadOtherUsers(value *bool)() {
         panic(err)
     }
 }
-// SetBackingStore sets the backingStore property value. Stores model information.
+// SetBackingStore sets the BackingStore property value. Stores model information.
 func (m *DefaultUserRolePermissions) SetBackingStore(value ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStore)() {
     m.backingStore = value
 }

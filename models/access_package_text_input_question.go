@@ -46,7 +46,7 @@ func (m *AccessPackageTextInputQuestion) GetFieldDeserializers()(map[string]func
     }
     return res
 }
-// GetIsSingleLineQuestion gets the isSingleLineQuestion property value. Indicates whether the answer will be in single or multiple line format.
+// GetIsSingleLineQuestion gets the isSingleLineQuestion property value. Indicates whether the answer is in single or multiple line format.
 func (m *AccessPackageTextInputQuestion) GetIsSingleLineQuestion()(*bool) {
     val, err := m.GetBackingStore().Get("isSingleLineQuestion")
     if err != nil {
@@ -57,7 +57,7 @@ func (m *AccessPackageTextInputQuestion) GetIsSingleLineQuestion()(*bool) {
     }
     return nil
 }
-// GetRegexPattern gets the regexPattern property value. The regular expression pattern which any answer to this question must match.
+// GetRegexPattern gets the regexPattern property value. The regular expression pattern that any answer to this question must match.
 func (m *AccessPackageTextInputQuestion) GetRegexPattern()(*string) {
     val, err := m.GetBackingStore().Get("regexPattern")
     if err != nil {
@@ -88,14 +88,14 @@ func (m *AccessPackageTextInputQuestion) Serialize(writer i878a80d2330e89d268963
     }
     return nil
 }
-// SetIsSingleLineQuestion sets the isSingleLineQuestion property value. Indicates whether the answer will be in single or multiple line format.
+// SetIsSingleLineQuestion sets the isSingleLineQuestion property value. Indicates whether the answer is in single or multiple line format.
 func (m *AccessPackageTextInputQuestion) SetIsSingleLineQuestion(value *bool)() {
     err := m.GetBackingStore().Set("isSingleLineQuestion", value)
     if err != nil {
         panic(err)
     }
 }
-// SetRegexPattern sets the regexPattern property value. The regular expression pattern which any answer to this question must match.
+// SetRegexPattern sets the regexPattern property value. The regular expression pattern that any answer to this question must match.
 func (m *AccessPackageTextInputQuestion) SetRegexPattern(value *string)() {
     err := m.GetBackingStore().Set("regexPattern", value)
     if err != nil {

@@ -66,6 +66,16 @@ func (m *ExtensionProperty) GetFieldDeserializers()(map[string]func(i878a80d2330
         }
         return nil
     }
+    res["isMultiValued"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetBoolValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetIsMultiValued(val)
+        }
+        return nil
+    }
     res["isSyncedFromOnPremises"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetBoolValue()
         if err != nil {
@@ -104,7 +114,18 @@ func (m *ExtensionProperty) GetFieldDeserializers()(map[string]func(i878a80d2330
     }
     return res
 }
-// GetIsSyncedFromOnPremises gets the isSyncedFromOnPremises property value. Indicates if this extension property was synced from on-premises active directory using Azure AD Connect. Read-only.
+// GetIsMultiValued gets the isMultiValued property value. Defines the directory extension as a multi-valued property. When true, the directory extension property can store a collection of objects of the dataType; for example, a collection of integers. The default value is false. Supports $filter (eq).
+func (m *ExtensionProperty) GetIsMultiValued()(*bool) {
+    val, err := m.GetBackingStore().Get("isMultiValued")
+    if err != nil {
+        panic(err)
+    }
+    if val != nil {
+        return val.(*bool)
+    }
+    return nil
+}
+// GetIsSyncedFromOnPremises gets the isSyncedFromOnPremises property value. Indicates if this extension property was synced from on-premises active directory using Microsoft Entra Connect. Read-only.
 func (m *ExtensionProperty) GetIsSyncedFromOnPremises()(*bool) {
     val, err := m.GetBackingStore().Get("isSyncedFromOnPremises")
     if err != nil {
@@ -156,6 +177,12 @@ func (m *ExtensionProperty) Serialize(writer i878a80d2330e89d26896388a3f487eef27
         }
     }
     {
+        err = writer.WriteBoolValue("isMultiValued", m.GetIsMultiValued())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err = writer.WriteBoolValue("isSyncedFromOnPremises", m.GetIsSyncedFromOnPremises())
         if err != nil {
             return err
@@ -189,7 +216,14 @@ func (m *ExtensionProperty) SetDataType(value *string)() {
         panic(err)
     }
 }
-// SetIsSyncedFromOnPremises sets the isSyncedFromOnPremises property value. Indicates if this extension property was synced from on-premises active directory using Azure AD Connect. Read-only.
+// SetIsMultiValued sets the isMultiValued property value. Defines the directory extension as a multi-valued property. When true, the directory extension property can store a collection of objects of the dataType; for example, a collection of integers. The default value is false. Supports $filter (eq).
+func (m *ExtensionProperty) SetIsMultiValued(value *bool)() {
+    err := m.GetBackingStore().Set("isMultiValued", value)
+    if err != nil {
+        panic(err)
+    }
+}
+// SetIsSyncedFromOnPremises sets the isSyncedFromOnPremises property value. Indicates if this extension property was synced from on-premises active directory using Microsoft Entra Connect. Read-only.
 func (m *ExtensionProperty) SetIsSyncedFromOnPremises(value *bool)() {
     err := m.GetBackingStore().Set("isSyncedFromOnPremises", value)
     if err != nil {
@@ -216,11 +250,13 @@ type ExtensionPropertyable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetAppDisplayName()(*string)
     GetDataType()(*string)
+    GetIsMultiValued()(*bool)
     GetIsSyncedFromOnPremises()(*bool)
     GetName()(*string)
     GetTargetObjects()([]string)
     SetAppDisplayName(value *string)()
     SetDataType(value *string)()
+    SetIsMultiValued(value *bool)()
     SetIsSyncedFromOnPremises(value *bool)()
     SetName(value *string)()
     SetTargetObjects(value []string)()

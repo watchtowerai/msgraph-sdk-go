@@ -22,7 +22,7 @@ func NewAttachmentItem()(*AttachmentItem) {
 func CreateAttachmentItemFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewAttachmentItem(), nil
 }
-// GetAdditionalData gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+// GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *AttachmentItem) GetAdditionalData()(map[string]any) {
     val , err :=  m.backingStore.Get("additionalData")
     if err != nil {
@@ -45,11 +45,11 @@ func (m *AttachmentItem) GetAttachmentType()(*AttachmentType) {
     }
     return nil
 }
-// GetBackingStore gets the backingStore property value. Stores model information.
+// GetBackingStore gets the BackingStore property value. Stores model information.
 func (m *AttachmentItem) GetBackingStore()(ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStore) {
     return m.backingStore
 }
-// GetContentId gets the contentId property value. The CID or Content-Id of the attachment for referencing in case of in-line attachments using <img src='cid:contentId'> tag in HTML messages. Optional.
+// GetContentId gets the contentId property value. The CID or Content-Id of the attachment for referencing for the in-line attachments using the <img src='cid:contentId'> tag in HTML messages. Optional.
 func (m *AttachmentItem) GetContentId()(*string) {
     val, err := m.GetBackingStore().Get("contentId")
     if err != nil {
@@ -157,7 +157,7 @@ func (m *AttachmentItem) GetIsInline()(*bool) {
     }
     return nil
 }
-// GetName gets the name property value. The display name of the attachment. This can be a descriptive string and does not have to be the actual file name. Required.
+// GetName gets the name property value. The display name of the attachment. This can be a descriptive string and doesn't have to be the actual file name. Required.
 func (m *AttachmentItem) GetName()(*string) {
     val, err := m.GetBackingStore().Get("name")
     if err != nil {
@@ -243,7 +243,7 @@ func (m *AttachmentItem) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a
     }
     return nil
 }
-// SetAdditionalData sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+// SetAdditionalData sets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
 func (m *AttachmentItem) SetAdditionalData(value map[string]any)() {
     err := m.GetBackingStore().Set("additionalData", value)
     if err != nil {
@@ -257,11 +257,11 @@ func (m *AttachmentItem) SetAttachmentType(value *AttachmentType)() {
         panic(err)
     }
 }
-// SetBackingStore sets the backingStore property value. Stores model information.
+// SetBackingStore sets the BackingStore property value. Stores model information.
 func (m *AttachmentItem) SetBackingStore(value ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStore)() {
     m.backingStore = value
 }
-// SetContentId sets the contentId property value. The CID or Content-Id of the attachment for referencing in case of in-line attachments using <img src='cid:contentId'> tag in HTML messages. Optional.
+// SetContentId sets the contentId property value. The CID or Content-Id of the attachment for referencing for the in-line attachments using the <img src='cid:contentId'> tag in HTML messages. Optional.
 func (m *AttachmentItem) SetContentId(value *string)() {
     err := m.GetBackingStore().Set("contentId", value)
     if err != nil {
@@ -282,7 +282,7 @@ func (m *AttachmentItem) SetIsInline(value *bool)() {
         panic(err)
     }
 }
-// SetName sets the name property value. The display name of the attachment. This can be a descriptive string and does not have to be the actual file name. Required.
+// SetName sets the name property value. The display name of the attachment. This can be a descriptive string and doesn't have to be the actual file name. Required.
 func (m *AttachmentItem) SetName(value *string)() {
     err := m.GetBackingStore().Set("name", value)
     if err != nil {

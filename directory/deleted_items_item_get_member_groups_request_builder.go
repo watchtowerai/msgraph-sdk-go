@@ -31,6 +31,7 @@ func NewDeletedItemsItemGetMemberGroupsRequestBuilder(rawUrl string, requestAdap
     return NewDeletedItemsItemGetMemberGroupsRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Post return all the group IDs for the groups that the specified user, group, service principal, organizational contact, device, or directory object is a member of. This function is transitive. This API returns up to 11,000 group IDs. If more than 11,000 results are available, it returns a 400 Bad Request error with the Directory_ResultSizeLimitExceeded error code. As a workaround, use the List group transitive memberOf API.
+// Deprecated: This method is obsolete. Use PostAsGetMemberGroupsPostResponse instead.
 // [Find more info here]
 // 
 // [Find more info here]: https://learn.microsoft.com/graph/api/directoryobject-getmembergroups?view=graph-rest-1.0
@@ -52,20 +53,39 @@ func (m *DeletedItemsItemGetMemberGroupsRequestBuilder) Post(ctx context.Context
     }
     return res.(DeletedItemsItemGetMemberGroupsResponseable), nil
 }
-// ToPostRequestInformation return all the group IDs for the groups that the specified user, group, service principal, organizational contact, device, or directory object is a member of. This function is transitive. This API returns up to 11,000 group IDs. If more than 11,000 results are available, it returns a 400 Bad Request error with the Directory_ResultSizeLimitExceeded error code. As a workaround, use the List group transitive memberOf API.
-func (m *DeletedItemsItemGetMemberGroupsRequestBuilder) ToPostRequestInformation(ctx context.Context, body DeletedItemsItemGetMemberGroupsPostRequestBodyable, requestConfiguration *DeletedItemsItemGetMemberGroupsRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
-    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
-    requestInfo.PathParameters = m.BaseRequestBuilder.PathParameters
-    requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST
-    requestInfo.Headers.Add("Accept", "application/json")
-    err := requestInfo.SetContentFromParsable(ctx, m.BaseRequestBuilder.RequestAdapter, "application/json", body)
+// PostAsGetMemberGroupsPostResponse return all the group IDs for the groups that the specified user, group, service principal, organizational contact, device, or directory object is a member of. This function is transitive. This API returns up to 11,000 group IDs. If more than 11,000 results are available, it returns a 400 Bad Request error with the Directory_ResultSizeLimitExceeded error code. As a workaround, use the List group transitive memberOf API.
+// [Find more info here]
+// 
+// [Find more info here]: https://learn.microsoft.com/graph/api/directoryobject-getmembergroups?view=graph-rest-1.0
+func (m *DeletedItemsItemGetMemberGroupsRequestBuilder) PostAsGetMemberGroupsPostResponse(ctx context.Context, body DeletedItemsItemGetMemberGroupsPostRequestBodyable, requestConfiguration *DeletedItemsItemGetMemberGroupsRequestBuilderPostRequestConfiguration)(DeletedItemsItemGetMemberGroupsPostResponseable, error) {
+    requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
         return nil, err
     }
+    errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
+        "4XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
+        "5XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
+    }
+    res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, CreateDeletedItemsItemGetMemberGroupsPostResponseFromDiscriminatorValue, errorMapping)
+    if err != nil {
+        return nil, err
+    }
+    if res == nil {
+        return nil, nil
+    }
+    return res.(DeletedItemsItemGetMemberGroupsPostResponseable), nil
+}
+// ToPostRequestInformation return all the group IDs for the groups that the specified user, group, service principal, organizational contact, device, or directory object is a member of. This function is transitive. This API returns up to 11,000 group IDs. If more than 11,000 results are available, it returns a 400 Bad Request error with the Directory_ResultSizeLimitExceeded error code. As a workaround, use the List group transitive memberOf API.
+func (m *DeletedItemsItemGetMemberGroupsRequestBuilder) ToPostRequestInformation(ctx context.Context, body DeletedItemsItemGetMemberGroupsPostRequestBodyable, requestConfiguration *DeletedItemsItemGetMemberGroupsRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
         requestInfo.Headers.AddAll(requestConfiguration.Headers)
         requestInfo.AddRequestOptions(requestConfiguration.Options)
+    }
+    requestInfo.Headers.TryAdd("Accept", "application/json")
+    err := requestInfo.SetContentFromParsable(ctx, m.BaseRequestBuilder.RequestAdapter, "application/json", body)
+    if err != nil {
+        return nil, err
     }
     return requestInfo, nil
 }

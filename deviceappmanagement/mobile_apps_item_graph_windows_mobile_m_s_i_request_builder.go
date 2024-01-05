@@ -27,6 +27,14 @@ type MobileAppsItemGraphWindowsMobileMSIRequestBuilderGetRequestConfiguration st
     // Request query parameters
     QueryParameters *MobileAppsItemGraphWindowsMobileMSIRequestBuilderGetQueryParameters
 }
+// Assignments provides operations to manage the assignments property of the microsoft.graph.mobileApp entity.
+func (m *MobileAppsItemGraphWindowsMobileMSIRequestBuilder) Assignments()(*MobileAppsItemGraphWindowsMobileMSIAssignmentsRequestBuilder) {
+    return NewMobileAppsItemGraphWindowsMobileMSIAssignmentsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// Categories provides operations to manage the categories property of the microsoft.graph.mobileApp entity.
+func (m *MobileAppsItemGraphWindowsMobileMSIRequestBuilder) Categories()(*MobileAppsItemGraphWindowsMobileMSICategoriesRequestBuilder) {
+    return NewMobileAppsItemGraphWindowsMobileMSICategoriesRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
 // NewMobileAppsItemGraphWindowsMobileMSIRequestBuilderInternal instantiates a new GraphWindowsMobileMSIRequestBuilder and sets the default values.
 func NewMobileAppsItemGraphWindowsMobileMSIRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*MobileAppsItemGraphWindowsMobileMSIRequestBuilder) {
     m := &MobileAppsItemGraphWindowsMobileMSIRequestBuilder{
@@ -39,6 +47,10 @@ func NewMobileAppsItemGraphWindowsMobileMSIRequestBuilder(rawUrl string, request
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl
     return NewMobileAppsItemGraphWindowsMobileMSIRequestBuilderInternal(urlParams, requestAdapter)
+}
+// ContentVersions provides operations to manage the contentVersions property of the microsoft.graph.mobileLobApp entity.
+func (m *MobileAppsItemGraphWindowsMobileMSIRequestBuilder) ContentVersions()(*MobileAppsItemGraphWindowsMobileMSIContentVersionsRequestBuilder) {
+    return NewMobileAppsItemGraphWindowsMobileMSIContentVersionsRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
 // Get get the item of type microsoft.graph.mobileApp as microsoft.graph.windowsMobileMSI
 func (m *MobileAppsItemGraphWindowsMobileMSIRequestBuilder) Get(ctx context.Context, requestConfiguration *MobileAppsItemGraphWindowsMobileMSIRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.WindowsMobileMSIable, error) {
@@ -61,11 +73,7 @@ func (m *MobileAppsItemGraphWindowsMobileMSIRequestBuilder) Get(ctx context.Cont
 }
 // ToGetRequestInformation get the item of type microsoft.graph.mobileApp as microsoft.graph.windowsMobileMSI
 func (m *MobileAppsItemGraphWindowsMobileMSIRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *MobileAppsItemGraphWindowsMobileMSIRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
-    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
-    requestInfo.PathParameters = m.BaseRequestBuilder.PathParameters
-    requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET
-    requestInfo.Headers.Add("Accept", "application/json")
+    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
         if requestConfiguration.QueryParameters != nil {
             requestInfo.AddQueryParameters(*(requestConfiguration.QueryParameters))
@@ -73,6 +81,7 @@ func (m *MobileAppsItemGraphWindowsMobileMSIRequestBuilder) ToGetRequestInformat
         requestInfo.Headers.AddAll(requestConfiguration.Headers)
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
+    requestInfo.Headers.TryAdd("Accept", "application/json")
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.

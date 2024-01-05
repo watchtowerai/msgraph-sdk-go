@@ -120,7 +120,7 @@ func (m *Alert) GetDescription()(*string) {
     }
     return nil
 }
-// GetDetectionSource gets the detectionSource property value. Detection technology or sensor that identified the notable component or activity. Possible values are: unknown, microsoftDefenderForEndpoint, antivirus, smartScreen, customTi, microsoftDefenderForOffice365, automatedInvestigation, microsoftThreatExperts, customDetection, microsoftDefenderForIdentity, cloudAppSecurity, microsoft365Defender, azureAdIdentityProtection, manual, microsoftDataLossPrevention, appGovernancePolicy, appGovernanceDetection, unknownFutureValue, microsoftDefenderForCloud. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: microsoftDefenderForCloud.
+// GetDetectionSource gets the detectionSource property value. Detection technology or sensor that identified the notable component or activity. Possible values are: unknown, microsoftDefenderForEndpoint, antivirus, smartScreen, customTi, microsoftDefenderForOffice365, automatedInvestigation, microsoftThreatExperts, customDetection, microsoftDefenderForIdentity, cloudAppSecurity, microsoft365Defender, azureAdIdentityProtection, manual, microsoftDataLossPrevention, appGovernancePolicy, appGovernanceDetection, unknownFutureValue, microsoftDefenderForCloud, microsoftDefenderForIoT, microsoftDefenderForServers, microsoftDefenderForStorage, microsoftDefenderForDNS, microsoftDefenderForDatabases, microsoftDefenderForContainers, microsoftDefenderForNetwork, microsoftDefenderForAppService, microsoftDefenderForKeyVault, microsoftDefenderForResourceManager, microsoftDefenderForApiManagement. You must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: microsoftDefenderForCloud, microsoftDefenderForIoT, microsoftDefenderForServers, microsoftDefenderForStorage, microsoftDefenderForDNS, microsoftDefenderForDatabases, microsoftDefenderForContainers, microsoftDefenderForNetwork, microsoftDefenderForAppService, microsoftDefenderForKeyVault, microsoftDefenderForResourceManager, microsoftDefenderForApiManagement.
 func (m *Alert) GetDetectionSource()(*DetectionSource) {
     val, err := m.GetBackingStore().Get("detectionSource")
     if err != nil {
@@ -375,6 +375,16 @@ func (m *Alert) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388
         }
         return nil
     }
+    res["productName"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetStringValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetProductName(val)
+        }
+        return nil
+    }
     res["providerAlertId"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetStringValue()
         if err != nil {
@@ -543,6 +553,17 @@ func (m *Alert) GetMitreTechniques()([]string) {
     }
     return nil
 }
+// GetProductName gets the productName property value. The productName property
+func (m *Alert) GetProductName()(*string) {
+    val, err := m.GetBackingStore().Get("productName")
+    if err != nil {
+        panic(err)
+    }
+    if val != nil {
+        return val.(*string)
+    }
+    return nil
+}
 // GetProviderAlertId gets the providerAlertId property value. The ID of the alert as it appears in the security provider product that generated the alert.
 func (m *Alert) GetProviderAlertId()(*string) {
     val, err := m.GetBackingStore().Get("providerAlertId")
@@ -609,7 +630,7 @@ func (m *Alert) GetStatus()(*AlertStatus) {
     }
     return nil
 }
-// GetTenantId gets the tenantId property value. The Azure Active Directory tenant the alert was created in.
+// GetTenantId gets the tenantId property value. The Microsoft Entra tenant the alert was created in.
 func (m *Alert) GetTenantId()(*string) {
     val, err := m.GetBackingStore().Get("tenantId")
     if err != nil {
@@ -789,6 +810,12 @@ func (m *Alert) Serialize(writer i878a80d2330e89d26896388a3f487eef27b0a0e6c010c4
         }
     }
     {
+        err = writer.WriteStringValue("productName", m.GetProductName())
+        if err != nil {
+            return err
+        }
+    }
+    {
         err = writer.WriteStringValue("providerAlertId", m.GetProviderAlertId())
         if err != nil {
             return err
@@ -916,7 +943,7 @@ func (m *Alert) SetDescription(value *string)() {
         panic(err)
     }
 }
-// SetDetectionSource sets the detectionSource property value. Detection technology or sensor that identified the notable component or activity. Possible values are: unknown, microsoftDefenderForEndpoint, antivirus, smartScreen, customTi, microsoftDefenderForOffice365, automatedInvestigation, microsoftThreatExperts, customDetection, microsoftDefenderForIdentity, cloudAppSecurity, microsoft365Defender, azureAdIdentityProtection, manual, microsoftDataLossPrevention, appGovernancePolicy, appGovernanceDetection, unknownFutureValue, microsoftDefenderForCloud. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: microsoftDefenderForCloud.
+// SetDetectionSource sets the detectionSource property value. Detection technology or sensor that identified the notable component or activity. Possible values are: unknown, microsoftDefenderForEndpoint, antivirus, smartScreen, customTi, microsoftDefenderForOffice365, automatedInvestigation, microsoftThreatExperts, customDetection, microsoftDefenderForIdentity, cloudAppSecurity, microsoft365Defender, azureAdIdentityProtection, manual, microsoftDataLossPrevention, appGovernancePolicy, appGovernanceDetection, unknownFutureValue, microsoftDefenderForCloud, microsoftDefenderForIoT, microsoftDefenderForServers, microsoftDefenderForStorage, microsoftDefenderForDNS, microsoftDefenderForDatabases, microsoftDefenderForContainers, microsoftDefenderForNetwork, microsoftDefenderForAppService, microsoftDefenderForKeyVault, microsoftDefenderForResourceManager, microsoftDefenderForApiManagement. You must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: microsoftDefenderForCloud, microsoftDefenderForIoT, microsoftDefenderForServers, microsoftDefenderForStorage, microsoftDefenderForDNS, microsoftDefenderForDatabases, microsoftDefenderForContainers, microsoftDefenderForNetwork, microsoftDefenderForAppService, microsoftDefenderForKeyVault, microsoftDefenderForResourceManager, microsoftDefenderForApiManagement.
 func (m *Alert) SetDetectionSource(value *DetectionSource)() {
     err := m.GetBackingStore().Set("detectionSource", value)
     if err != nil {
@@ -986,6 +1013,13 @@ func (m *Alert) SetMitreTechniques(value []string)() {
         panic(err)
     }
 }
+// SetProductName sets the productName property value. The productName property
+func (m *Alert) SetProductName(value *string)() {
+    err := m.GetBackingStore().Set("productName", value)
+    if err != nil {
+        panic(err)
+    }
+}
 // SetProviderAlertId sets the providerAlertId property value. The ID of the alert as it appears in the security provider product that generated the alert.
 func (m *Alert) SetProviderAlertId(value *string)() {
     err := m.GetBackingStore().Set("providerAlertId", value)
@@ -1028,7 +1062,7 @@ func (m *Alert) SetStatus(value *AlertStatus)() {
         panic(err)
     }
 }
-// SetTenantId sets the tenantId property value. The Azure Active Directory tenant the alert was created in.
+// SetTenantId sets the tenantId property value. The Microsoft Entra tenant the alert was created in.
 func (m *Alert) SetTenantId(value *string)() {
     err := m.GetBackingStore().Set("tenantId", value)
     if err != nil {
@@ -1079,6 +1113,7 @@ type Alertable interface {
     GetLastActivityDateTime()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetLastUpdateDateTime()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
     GetMitreTechniques()([]string)
+    GetProductName()(*string)
     GetProviderAlertId()(*string)
     GetRecommendedActions()(*string)
     GetResolvedDateTime()(*i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)
@@ -1108,6 +1143,7 @@ type Alertable interface {
     SetLastActivityDateTime(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetLastUpdateDateTime(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()
     SetMitreTechniques(value []string)()
+    SetProductName(value *string)()
     SetProviderAlertId(value *string)()
     SetRecommendedActions(value *string)()
     SetResolvedDateTime(value *i336074805fc853987abe6f7fe3ad97a6a6f3077a16391fec744f671a015fbd7e.Time)()

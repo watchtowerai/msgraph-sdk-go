@@ -31,6 +31,7 @@ func NewServiceAnnouncementMessagesArchiveRequestBuilder(rawUrl string, requestA
     return NewServiceAnnouncementMessagesArchiveRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Post archive a list of serviceUpdateMessages for the signed in user.
+// Deprecated: This method is obsolete. Use PostAsArchivePostResponse instead.
 // [Find more info here]
 // 
 // [Find more info here]: https://learn.microsoft.com/graph/api/serviceupdatemessage-archive?view=graph-rest-1.0
@@ -52,20 +53,39 @@ func (m *ServiceAnnouncementMessagesArchiveRequestBuilder) Post(ctx context.Cont
     }
     return res.(ServiceAnnouncementMessagesArchiveResponseable), nil
 }
-// ToPostRequestInformation archive a list of serviceUpdateMessages for the signed in user.
-func (m *ServiceAnnouncementMessagesArchiveRequestBuilder) ToPostRequestInformation(ctx context.Context, body ServiceAnnouncementMessagesArchivePostRequestBodyable, requestConfiguration *ServiceAnnouncementMessagesArchiveRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
-    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
-    requestInfo.PathParameters = m.BaseRequestBuilder.PathParameters
-    requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST
-    requestInfo.Headers.Add("Accept", "application/json")
-    err := requestInfo.SetContentFromParsable(ctx, m.BaseRequestBuilder.RequestAdapter, "application/json", body)
+// PostAsArchivePostResponse archive a list of serviceUpdateMessages for the signed in user.
+// [Find more info here]
+// 
+// [Find more info here]: https://learn.microsoft.com/graph/api/serviceupdatemessage-archive?view=graph-rest-1.0
+func (m *ServiceAnnouncementMessagesArchiveRequestBuilder) PostAsArchivePostResponse(ctx context.Context, body ServiceAnnouncementMessagesArchivePostRequestBodyable, requestConfiguration *ServiceAnnouncementMessagesArchiveRequestBuilderPostRequestConfiguration)(ServiceAnnouncementMessagesArchivePostResponseable, error) {
+    requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
         return nil, err
     }
+    errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
+        "4XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
+        "5XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
+    }
+    res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, CreateServiceAnnouncementMessagesArchivePostResponseFromDiscriminatorValue, errorMapping)
+    if err != nil {
+        return nil, err
+    }
+    if res == nil {
+        return nil, nil
+    }
+    return res.(ServiceAnnouncementMessagesArchivePostResponseable), nil
+}
+// ToPostRequestInformation archive a list of serviceUpdateMessages for the signed in user.
+func (m *ServiceAnnouncementMessagesArchiveRequestBuilder) ToPostRequestInformation(ctx context.Context, body ServiceAnnouncementMessagesArchivePostRequestBodyable, requestConfiguration *ServiceAnnouncementMessagesArchiveRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
+    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
         requestInfo.Headers.AddAll(requestConfiguration.Headers)
         requestInfo.AddRequestOptions(requestConfiguration.Options)
+    }
+    requestInfo.Headers.TryAdd("Accept", "application/json")
+    err := requestInfo.SetContentFromParsable(ctx, m.BaseRequestBuilder.RequestAdapter, "application/json", body)
+    if err != nil {
+        return nil, err
     }
     return requestInfo, nil
 }

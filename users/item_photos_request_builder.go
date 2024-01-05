@@ -11,10 +11,8 @@ import (
 type ItemPhotosRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
-// ItemPhotosRequestBuilderGetQueryParameters get photos from users
+// ItemPhotosRequestBuilderGetQueryParameters the collection of the user's profile photos in different sizes. Read-only.
 type ItemPhotosRequestBuilderGetQueryParameters struct {
-    // Include count of items
-    Count *bool `uriparametername:"%24count"`
     // Filter items by property values
     Filter *string `uriparametername:"%24filter"`
     // Order items by property values
@@ -49,7 +47,7 @@ func (m *ItemPhotosRequestBuilder) ByProfilePhotoId(profilePhotoId string)(*Item
 // NewItemPhotosRequestBuilderInternal instantiates a new PhotosRequestBuilder and sets the default values.
 func NewItemPhotosRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemPhotosRequestBuilder) {
     m := &ItemPhotosRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/users/{user%2Did}/photos{?%24top,%24skip,%24filter,%24count,%24orderby,%24select}", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/users/{user%2Did}/photos{?%24top,%24skip,%24filter,%24orderby,%24select}", pathParameters),
     }
     return m
 }
@@ -59,11 +57,7 @@ func NewItemPhotosRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263
     urlParams["request-raw-url"] = rawUrl
     return NewItemPhotosRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Count provides operations to count the resources in the collection.
-func (m *ItemPhotosRequestBuilder) Count()(*ItemPhotosCountRequestBuilder) {
-    return NewItemPhotosCountRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
-}
-// Get get photos from users
+// Get the collection of the user's profile photos in different sizes. Read-only.
 func (m *ItemPhotosRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemPhotosRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ProfilePhotoCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
@@ -82,13 +76,9 @@ func (m *ItemPhotosRequestBuilder) Get(ctx context.Context, requestConfiguration
     }
     return res.(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ProfilePhotoCollectionResponseable), nil
 }
-// ToGetRequestInformation get photos from users
+// ToGetRequestInformation the collection of the user's profile photos in different sizes. Read-only.
 func (m *ItemPhotosRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *ItemPhotosRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
-    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformation()
-    requestInfo.UrlTemplate = m.BaseRequestBuilder.UrlTemplate
-    requestInfo.PathParameters = m.BaseRequestBuilder.PathParameters
-    requestInfo.Method = i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET
-    requestInfo.Headers.Add("Accept", "application/json")
+    requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
         if requestConfiguration.QueryParameters != nil {
             requestInfo.AddQueryParameters(*(requestConfiguration.QueryParameters))
@@ -96,6 +86,7 @@ func (m *ItemPhotosRequestBuilder) ToGetRequestInformation(ctx context.Context, 
         requestInfo.Headers.AddAll(requestConfiguration.Headers)
         requestInfo.AddRequestOptions(requestConfiguration.Options)
     }
+    requestInfo.Headers.TryAdd("Accept", "application/json")
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
