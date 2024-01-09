@@ -30,8 +30,6 @@ type ItemMessagesRequestBuilderGetQueryParameters struct {
 	Skip *int32 `uriparametername:"%24skip"`
 	// Show only the first n items
 	Top *int32 `uriparametername:"%24top"`
-
-	SkipToken *string `uriparametername:"%24skiptoken"`
 }
 
 // ItemMessagesRequestBuilderGetRequestConfiguration configuration for the request such as headers, query parameters, and middleware options.
@@ -65,10 +63,10 @@ func (m *ItemMessagesRequestBuilder) ByChatMessageId(chatMessageId string) *Item
 	return NewItemMessagesChatMessageItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
 }
 
-// NewItemMessagesRequestBuilderInternal instantiates a new ItemMessagesRequestBuilder and sets the default values.
+// NewItemMessagesRequestBuilderInternal instantiates a new MessagesRequestBuilder and sets the default values.
 func NewItemMessagesRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter) *ItemMessagesRequestBuilder {
 	m := &ItemMessagesRequestBuilder{
-		BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/chats/{chat%2Did}/messages{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand,%24skiptoken}", pathParameters),
+		BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/chats/{chat%2Did}/messages{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", pathParameters),
 	}
 	return m
 }
