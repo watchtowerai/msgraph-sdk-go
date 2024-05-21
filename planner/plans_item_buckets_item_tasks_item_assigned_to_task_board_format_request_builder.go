@@ -18,7 +18,7 @@ type PlansItemBucketsItemTasksItemAssignedToTaskBoardFormatRequestBuilderDeleteR
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
-// PlansItemBucketsItemTasksItemAssignedToTaskBoardFormatRequestBuilderGetQueryParameters retrieve the properties and relationships of a plannerAssignedToTaskBoardTaskFormat object.
+// PlansItemBucketsItemTasksItemAssignedToTaskBoardFormatRequestBuilderGetQueryParameters read-only. Nullable. Used to render the task correctly in the task board view when grouped by assignedTo.
 type PlansItemBucketsItemTasksItemAssignedToTaskBoardFormatRequestBuilderGetQueryParameters struct {
     // Expand related entities
     Expand []string `uriparametername:"%24expand"`
@@ -41,28 +41,28 @@ type PlansItemBucketsItemTasksItemAssignedToTaskBoardFormatRequestBuilderPatchRe
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
-// NewPlansItemBucketsItemTasksItemAssignedToTaskBoardFormatRequestBuilderInternal instantiates a new AssignedToTaskBoardFormatRequestBuilder and sets the default values.
+// NewPlansItemBucketsItemTasksItemAssignedToTaskBoardFormatRequestBuilderInternal instantiates a new PlansItemBucketsItemTasksItemAssignedToTaskBoardFormatRequestBuilder and sets the default values.
 func NewPlansItemBucketsItemTasksItemAssignedToTaskBoardFormatRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*PlansItemBucketsItemTasksItemAssignedToTaskBoardFormatRequestBuilder) {
     m := &PlansItemBucketsItemTasksItemAssignedToTaskBoardFormatRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/planner/plans/{plannerPlan%2Did}/buckets/{plannerBucket%2Did}/tasks/{plannerTask%2Did}/assignedToTaskBoardFormat{?%24select,%24expand}", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/planner/plans/{plannerPlan%2Did}/buckets/{plannerBucket%2Did}/tasks/{plannerTask%2Did}/assignedToTaskBoardFormat{?%24expand,%24select}", pathParameters),
     }
     return m
 }
-// NewPlansItemBucketsItemTasksItemAssignedToTaskBoardFormatRequestBuilder instantiates a new AssignedToTaskBoardFormatRequestBuilder and sets the default values.
+// NewPlansItemBucketsItemTasksItemAssignedToTaskBoardFormatRequestBuilder instantiates a new PlansItemBucketsItemTasksItemAssignedToTaskBoardFormatRequestBuilder and sets the default values.
 func NewPlansItemBucketsItemTasksItemAssignedToTaskBoardFormatRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*PlansItemBucketsItemTasksItemAssignedToTaskBoardFormatRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl
     return NewPlansItemBucketsItemTasksItemAssignedToTaskBoardFormatRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Delete delete navigation property assignedToTaskBoardFormat for planner
+// returns a ODataError error when the service returns a 4XX or 5XX status code
 func (m *PlansItemBucketsItemTasksItemAssignedToTaskBoardFormatRequestBuilder) Delete(ctx context.Context, requestConfiguration *PlansItemBucketsItemTasksItemAssignedToTaskBoardFormatRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return err
     }
     errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
-        "4XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
-        "5XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
+        "XXX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
     }
     err = m.BaseRequestBuilder.RequestAdapter.SendNoContent(ctx, requestInfo, errorMapping)
     if err != nil {
@@ -70,18 +70,16 @@ func (m *PlansItemBucketsItemTasksItemAssignedToTaskBoardFormatRequestBuilder) D
     }
     return nil
 }
-// Get retrieve the properties and relationships of a plannerAssignedToTaskBoardTaskFormat object.
-// [Find more info here]
-// 
-// [Find more info here]: https://learn.microsoft.com/graph/api/plannerassignedtotaskboardtaskformat-get?view=graph-rest-1.0
+// Get read-only. Nullable. Used to render the task correctly in the task board view when grouped by assignedTo.
+// returns a PlannerAssignedToTaskBoardTaskFormatable when successful
+// returns a ODataError error when the service returns a 4XX or 5XX status code
 func (m *PlansItemBucketsItemTasksItemAssignedToTaskBoardFormatRequestBuilder) Get(ctx context.Context, requestConfiguration *PlansItemBucketsItemTasksItemAssignedToTaskBoardFormatRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.PlannerAssignedToTaskBoardTaskFormatable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return nil, err
     }
     errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
-        "4XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
-        "5XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
+        "XXX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
     }
     res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.CreatePlannerAssignedToTaskBoardTaskFormatFromDiscriminatorValue, errorMapping)
     if err != nil {
@@ -93,17 +91,15 @@ func (m *PlansItemBucketsItemTasksItemAssignedToTaskBoardFormatRequestBuilder) G
     return res.(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.PlannerAssignedToTaskBoardTaskFormatable), nil
 }
 // Patch update the navigation property assignedToTaskBoardFormat in planner
-// [Find more info here]
-// 
-// [Find more info here]: https://learn.microsoft.com/graph/api/plannerassignedtotaskboardtaskformat-update?view=graph-rest-1.0
+// returns a PlannerAssignedToTaskBoardTaskFormatable when successful
+// returns a ODataError error when the service returns a 4XX or 5XX status code
 func (m *PlansItemBucketsItemTasksItemAssignedToTaskBoardFormatRequestBuilder) Patch(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.PlannerAssignedToTaskBoardTaskFormatable, requestConfiguration *PlansItemBucketsItemTasksItemAssignedToTaskBoardFormatRequestBuilderPatchRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.PlannerAssignedToTaskBoardTaskFormatable, error) {
     requestInfo, err := m.ToPatchRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
         return nil, err
     }
     errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
-        "4XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
-        "5XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
+        "XXX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
     }
     res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.CreatePlannerAssignedToTaskBoardTaskFormatFromDiscriminatorValue, errorMapping)
     if err != nil {
@@ -115,6 +111,7 @@ func (m *PlansItemBucketsItemTasksItemAssignedToTaskBoardFormatRequestBuilder) P
     return res.(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.PlannerAssignedToTaskBoardTaskFormatable), nil
 }
 // ToDeleteRequestInformation delete navigation property assignedToTaskBoardFormat for planner
+// returns a *RequestInformation when successful
 func (m *PlansItemBucketsItemTasksItemAssignedToTaskBoardFormatRequestBuilder) ToDeleteRequestInformation(ctx context.Context, requestConfiguration *PlansItemBucketsItemTasksItemAssignedToTaskBoardFormatRequestBuilderDeleteRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DELETE, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -124,7 +121,8 @@ func (m *PlansItemBucketsItemTasksItemAssignedToTaskBoardFormatRequestBuilder) T
     requestInfo.Headers.TryAdd("Accept", "application/json")
     return requestInfo, nil
 }
-// ToGetRequestInformation retrieve the properties and relationships of a plannerAssignedToTaskBoardTaskFormat object.
+// ToGetRequestInformation read-only. Nullable. Used to render the task correctly in the task board view when grouped by assignedTo.
+// returns a *RequestInformation when successful
 func (m *PlansItemBucketsItemTasksItemAssignedToTaskBoardFormatRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *PlansItemBucketsItemTasksItemAssignedToTaskBoardFormatRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -138,6 +136,7 @@ func (m *PlansItemBucketsItemTasksItemAssignedToTaskBoardFormatRequestBuilder) T
     return requestInfo, nil
 }
 // ToPatchRequestInformation update the navigation property assignedToTaskBoardFormat in planner
+// returns a *RequestInformation when successful
 func (m *PlansItemBucketsItemTasksItemAssignedToTaskBoardFormatRequestBuilder) ToPatchRequestInformation(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.PlannerAssignedToTaskBoardTaskFormatable, requestConfiguration *PlansItemBucketsItemTasksItemAssignedToTaskBoardFormatRequestBuilderPatchRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.PATCH, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -152,6 +151,7 @@ func (m *PlansItemBucketsItemTasksItemAssignedToTaskBoardFormatRequestBuilder) T
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+// returns a *PlansItemBucketsItemTasksItemAssignedToTaskBoardFormatRequestBuilder when successful
 func (m *PlansItemBucketsItemTasksItemAssignedToTaskBoardFormatRequestBuilder) WithUrl(rawUrl string)(*PlansItemBucketsItemTasksItemAssignedToTaskBoardFormatRequestBuilder) {
     return NewPlansItemBucketsItemTasksItemAssignedToTaskBoardFormatRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

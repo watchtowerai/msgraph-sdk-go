@@ -1,22 +1,23 @@
 package security
 import (
-    "errors"
+    "math"
     "strings"
 )
-// 
 type PurgeAreas int
 
 const (
-    MAILBOXES_PURGEAREAS PurgeAreas = iota
-    TEAMSMESSAGES_PURGEAREAS
-    UNKNOWNFUTUREVALUE_PURGEAREAS
+    MAILBOXES_PURGEAREAS = 1
+    TEAMSMESSAGES_PURGEAREAS = 2
+    UNKNOWNFUTUREVALUE_PURGEAREAS = 4
 )
 
 func (i PurgeAreas) String() string {
     var values []string
-    for p := PurgeAreas(1); p <= UNKNOWNFUTUREVALUE_PURGEAREAS; p <<= 1 {
-        if i&p == p {
-            values = append(values, []string{"mailboxes", "teamsMessages", "unknownFutureValue"}[p])
+    options := []string{"mailboxes", "teamsMessages", "unknownFutureValue"}
+    for p := 0; p < 3; p++ {
+        mantis := PurgeAreas(int(math.Pow(2, float64(p))))
+        if i&mantis == mantis {
+            values = append(values, options[p])
         }
     }
     return strings.Join(values, ",")
@@ -33,7 +34,7 @@ func ParsePurgeAreas(v string) (any, error) {
             case "unknownFutureValue":
                 result |= UNKNOWNFUTUREVALUE_PURGEAREAS
             default:
-                return 0, errors.New("Unknown PurgeAreas value: " + v)
+                return nil, nil
         }
     }
     return &result, nil

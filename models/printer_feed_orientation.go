@@ -1,8 +1,4 @@
 package models
-import (
-    "errors"
-)
-// 
 type PrinterFeedOrientation int
 
 const (
@@ -24,7 +20,7 @@ func ParsePrinterFeedOrientation(v string) (any, error) {
         case "unknownFutureValue":
             result = UNKNOWNFUTUREVALUE_PRINTERFEEDORIENTATION
         default:
-            return 0, errors.New("Unknown PrinterFeedOrientation value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

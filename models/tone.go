@@ -1,8 +1,4 @@
 package models
-import (
-    "errors"
-)
-// 
 type Tone int
 
 const (
@@ -66,7 +62,7 @@ func ParseTone(v string) (any, error) {
         case "flash":
             result = FLASH_TONE
         default:
-            return 0, errors.New("Unknown Tone value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

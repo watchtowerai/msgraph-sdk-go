@@ -1,8 +1,4 @@
 package models
-import (
-    "errors"
-)
-// 
 type AccessPackageRequestType int
 
 const (
@@ -51,7 +47,7 @@ func ParseAccessPackageRequestType(v string) (any, error) {
         case "unknownFutureValue":
             result = UNKNOWNFUTUREVALUE_ACCESSPACKAGEREQUESTTYPE
         default:
-            return 0, errors.New("Unknown AccessPackageRequestType value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

@@ -1,8 +1,4 @@
 package models
-import (
-    "errors"
-)
-// 
 type BodyType int
 
 const (
@@ -21,7 +17,7 @@ func ParseBodyType(v string) (any, error) {
         case "html":
             result = HTML_BODYTYPE
         default:
-            return 0, errors.New("Unknown BodyType value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

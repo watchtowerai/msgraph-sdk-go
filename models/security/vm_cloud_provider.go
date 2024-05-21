@@ -1,8 +1,4 @@
 package security
-import (
-    "errors"
-)
-// 
 type VmCloudProvider int
 
 const (
@@ -24,7 +20,7 @@ func ParseVmCloudProvider(v string) (any, error) {
         case "unknownFutureValue":
             result = UNKNOWNFUTUREVALUE_VMCLOUDPROVIDER
         default:
-            return 0, errors.New("Unknown VmCloudProvider value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

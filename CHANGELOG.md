@@ -11,6 +11,84 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+## [1.42.0]- 2024-05-16
+
+### Changed
+
+- Weekly generation.
+
+## [1.41.0]- 2024-05-08
+
+### Changed
+
+- Weekly generation.
+
+## [1.40.0]- 2024-04-30
+
+### Changed
+
+- Weekly generation.
+
+## [1.39.0]- 2024-04-25
+
+### Changed
+
+- Weekly generation.
+
+## [1.38.0]- 2024-04-17
+
+### Changed
+
+- Weekly generation.
+
+## [1.37.0]- 2024-03-26
+
+### Changed
+
+- Weekly generation.
+
+## [1.36.0]- 2024-03-07
+
+### Changed
+
+- Weekly generation.
+
+## [1.35.0]- 2024-02-29
+
+### Changed
+
+- Weekly generation.
+
+## [1.34.0]- 2024-02-21
+
+### Changed
+
+- Weekly generation.
+
+## [1.33.0]- 2024-02-14
+
+### Changed
+
+- Weekly generation.
+
+## [1.32.0]- 2024-02-01
+
+### Changed
+
+- Weekly generation.
+
+## [1.31.0]- 2024-01-23
+
+### Changed
+
+- Weekly generation.
+
+## [1.30.0]- 2024-01-17
+
+### Changed
+
+- Weekly generation.
+
 ## [1.29.0]- 2024-01-03
 
 ### Changed

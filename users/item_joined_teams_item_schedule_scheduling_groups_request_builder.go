@@ -11,7 +11,7 @@ import (
 type ItemJoinedTeamsItemScheduleSchedulingGroupsRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
-// ItemJoinedTeamsItemScheduleSchedulingGroupsRequestBuilderGetQueryParameters get the list of schedulingGroups in this schedule.
+// ItemJoinedTeamsItemScheduleSchedulingGroupsRequestBuilderGetQueryParameters the logical grouping of users in the schedule (usually by role).
 type ItemJoinedTeamsItemScheduleSchedulingGroupsRequestBuilderGetQueryParameters struct {
     // Include count of items
     Count *bool `uriparametername:"%24count"`
@@ -45,6 +45,7 @@ type ItemJoinedTeamsItemScheduleSchedulingGroupsRequestBuilderPostRequestConfigu
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
 // BySchedulingGroupId provides operations to manage the schedulingGroups property of the microsoft.graph.schedule entity.
+// returns a *ItemJoinedTeamsItemScheduleSchedulingGroupsSchedulingGroupItemRequestBuilder when successful
 func (m *ItemJoinedTeamsItemScheduleSchedulingGroupsRequestBuilder) BySchedulingGroupId(schedulingGroupId string)(*ItemJoinedTeamsItemScheduleSchedulingGroupsSchedulingGroupItemRequestBuilder) {
     urlTplParams := make(map[string]string)
     for idx, item := range m.BaseRequestBuilder.PathParameters {
@@ -55,35 +56,34 @@ func (m *ItemJoinedTeamsItemScheduleSchedulingGroupsRequestBuilder) ByScheduling
     }
     return NewItemJoinedTeamsItemScheduleSchedulingGroupsSchedulingGroupItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
 }
-// NewItemJoinedTeamsItemScheduleSchedulingGroupsRequestBuilderInternal instantiates a new SchedulingGroupsRequestBuilder and sets the default values.
+// NewItemJoinedTeamsItemScheduleSchedulingGroupsRequestBuilderInternal instantiates a new ItemJoinedTeamsItemScheduleSchedulingGroupsRequestBuilder and sets the default values.
 func NewItemJoinedTeamsItemScheduleSchedulingGroupsRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemJoinedTeamsItemScheduleSchedulingGroupsRequestBuilder) {
     m := &ItemJoinedTeamsItemScheduleSchedulingGroupsRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/users/{user%2Did}/joinedTeams/{team%2Did}/schedule/schedulingGroups{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select}", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/users/{user%2Did}/joinedTeams/{team%2Did}/schedule/schedulingGroups{?%24count,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", pathParameters),
     }
     return m
 }
-// NewItemJoinedTeamsItemScheduleSchedulingGroupsRequestBuilder instantiates a new SchedulingGroupsRequestBuilder and sets the default values.
+// NewItemJoinedTeamsItemScheduleSchedulingGroupsRequestBuilder instantiates a new ItemJoinedTeamsItemScheduleSchedulingGroupsRequestBuilder and sets the default values.
 func NewItemJoinedTeamsItemScheduleSchedulingGroupsRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemJoinedTeamsItemScheduleSchedulingGroupsRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl
     return NewItemJoinedTeamsItemScheduleSchedulingGroupsRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Count provides operations to count the resources in the collection.
+// returns a *ItemJoinedTeamsItemScheduleSchedulingGroupsCountRequestBuilder when successful
 func (m *ItemJoinedTeamsItemScheduleSchedulingGroupsRequestBuilder) Count()(*ItemJoinedTeamsItemScheduleSchedulingGroupsCountRequestBuilder) {
     return NewItemJoinedTeamsItemScheduleSchedulingGroupsCountRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
-// Get get the list of schedulingGroups in this schedule.
-// [Find more info here]
-// 
-// [Find more info here]: https://learn.microsoft.com/graph/api/schedule-list-schedulinggroups?view=graph-rest-1.0
+// Get the logical grouping of users in the schedule (usually by role).
+// returns a SchedulingGroupCollectionResponseable when successful
+// returns a ODataError error when the service returns a 4XX or 5XX status code
 func (m *ItemJoinedTeamsItemScheduleSchedulingGroupsRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemJoinedTeamsItemScheduleSchedulingGroupsRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.SchedulingGroupCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return nil, err
     }
     errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
-        "4XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
-        "5XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
+        "XXX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
     }
     res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.CreateSchedulingGroupCollectionResponseFromDiscriminatorValue, errorMapping)
     if err != nil {
@@ -94,18 +94,16 @@ func (m *ItemJoinedTeamsItemScheduleSchedulingGroupsRequestBuilder) Get(ctx cont
     }
     return res.(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.SchedulingGroupCollectionResponseable), nil
 }
-// Post create a new schedulingGroup.
-// [Find more info here]
-// 
-// [Find more info here]: https://learn.microsoft.com/graph/api/schedule-post-schedulinggroups?view=graph-rest-1.0
+// Post create new navigation property to schedulingGroups for users
+// returns a SchedulingGroupable when successful
+// returns a ODataError error when the service returns a 4XX or 5XX status code
 func (m *ItemJoinedTeamsItemScheduleSchedulingGroupsRequestBuilder) Post(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.SchedulingGroupable, requestConfiguration *ItemJoinedTeamsItemScheduleSchedulingGroupsRequestBuilderPostRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.SchedulingGroupable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
         return nil, err
     }
     errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
-        "4XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
-        "5XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
+        "XXX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
     }
     res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.CreateSchedulingGroupFromDiscriminatorValue, errorMapping)
     if err != nil {
@@ -116,7 +114,8 @@ func (m *ItemJoinedTeamsItemScheduleSchedulingGroupsRequestBuilder) Post(ctx con
     }
     return res.(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.SchedulingGroupable), nil
 }
-// ToGetRequestInformation get the list of schedulingGroups in this schedule.
+// ToGetRequestInformation the logical grouping of users in the schedule (usually by role).
+// returns a *RequestInformation when successful
 func (m *ItemJoinedTeamsItemScheduleSchedulingGroupsRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *ItemJoinedTeamsItemScheduleSchedulingGroupsRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -129,7 +128,8 @@ func (m *ItemJoinedTeamsItemScheduleSchedulingGroupsRequestBuilder) ToGetRequest
     requestInfo.Headers.TryAdd("Accept", "application/json")
     return requestInfo, nil
 }
-// ToPostRequestInformation create a new schedulingGroup.
+// ToPostRequestInformation create new navigation property to schedulingGroups for users
+// returns a *RequestInformation when successful
 func (m *ItemJoinedTeamsItemScheduleSchedulingGroupsRequestBuilder) ToPostRequestInformation(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.SchedulingGroupable, requestConfiguration *ItemJoinedTeamsItemScheduleSchedulingGroupsRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -144,6 +144,7 @@ func (m *ItemJoinedTeamsItemScheduleSchedulingGroupsRequestBuilder) ToPostReques
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+// returns a *ItemJoinedTeamsItemScheduleSchedulingGroupsRequestBuilder when successful
 func (m *ItemJoinedTeamsItemScheduleSchedulingGroupsRequestBuilder) WithUrl(rawUrl string)(*ItemJoinedTeamsItemScheduleSchedulingGroupsRequestBuilder) {
     return NewItemJoinedTeamsItemScheduleSchedulingGroupsRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

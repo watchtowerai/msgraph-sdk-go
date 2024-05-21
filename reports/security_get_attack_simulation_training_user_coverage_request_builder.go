@@ -10,7 +10,7 @@ import (
 type SecurityGetAttackSimulationTrainingUserCoverageRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
-// SecurityGetAttackSimulationTrainingUserCoverageRequestBuilderGetQueryParameters invoke function getAttackSimulationTrainingUserCoverage
+// SecurityGetAttackSimulationTrainingUserCoverageRequestBuilderGetQueryParameters list training coverage for tenant users in attack simulation and training campaigns. This function supports @odata.nextLink for pagination.
 type SecurityGetAttackSimulationTrainingUserCoverageRequestBuilderGetQueryParameters struct {
     // Include count of items
     Count *bool `uriparametername:"%24count"`
@@ -32,29 +32,33 @@ type SecurityGetAttackSimulationTrainingUserCoverageRequestBuilderGetRequestConf
     // Request query parameters
     QueryParameters *SecurityGetAttackSimulationTrainingUserCoverageRequestBuilderGetQueryParameters
 }
-// NewSecurityGetAttackSimulationTrainingUserCoverageRequestBuilderInternal instantiates a new GetAttackSimulationTrainingUserCoverageRequestBuilder and sets the default values.
+// NewSecurityGetAttackSimulationTrainingUserCoverageRequestBuilderInternal instantiates a new SecurityGetAttackSimulationTrainingUserCoverageRequestBuilder and sets the default values.
 func NewSecurityGetAttackSimulationTrainingUserCoverageRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*SecurityGetAttackSimulationTrainingUserCoverageRequestBuilder) {
     m := &SecurityGetAttackSimulationTrainingUserCoverageRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/reports/security/getAttackSimulationTrainingUserCoverage(){?%24top,%24skip,%24search,%24filter,%24count}", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/reports/security/getAttackSimulationTrainingUserCoverage(){?%24count,%24filter,%24search,%24skip,%24top}", pathParameters),
     }
     return m
 }
-// NewSecurityGetAttackSimulationTrainingUserCoverageRequestBuilder instantiates a new GetAttackSimulationTrainingUserCoverageRequestBuilder and sets the default values.
+// NewSecurityGetAttackSimulationTrainingUserCoverageRequestBuilder instantiates a new SecurityGetAttackSimulationTrainingUserCoverageRequestBuilder and sets the default values.
 func NewSecurityGetAttackSimulationTrainingUserCoverageRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*SecurityGetAttackSimulationTrainingUserCoverageRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl
     return NewSecurityGetAttackSimulationTrainingUserCoverageRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Get invoke function getAttackSimulationTrainingUserCoverage
+// Get list training coverage for tenant users in attack simulation and training campaigns. This function supports @odata.nextLink for pagination.
 // Deprecated: This method is obsolete. Use GetAsGetAttackSimulationTrainingUserCoverageGetResponse instead.
+// returns a SecurityGetAttackSimulationTrainingUserCoverageResponseable when successful
+// returns a ODataError error when the service returns a 4XX or 5XX status code
+// [Find more info here]
+// 
+// [Find more info here]: https://learn.microsoft.com/graph/api/securityreportsroot-getattacksimulationtrainingusercoverage?view=graph-rest-1.0
 func (m *SecurityGetAttackSimulationTrainingUserCoverageRequestBuilder) Get(ctx context.Context, requestConfiguration *SecurityGetAttackSimulationTrainingUserCoverageRequestBuilderGetRequestConfiguration)(SecurityGetAttackSimulationTrainingUserCoverageResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return nil, err
     }
     errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
-        "4XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
-        "5XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
+        "XXX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
     }
     res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, CreateSecurityGetAttackSimulationTrainingUserCoverageResponseFromDiscriminatorValue, errorMapping)
     if err != nil {
@@ -65,15 +69,19 @@ func (m *SecurityGetAttackSimulationTrainingUserCoverageRequestBuilder) Get(ctx 
     }
     return res.(SecurityGetAttackSimulationTrainingUserCoverageResponseable), nil
 }
-// GetAsGetAttackSimulationTrainingUserCoverageGetResponse invoke function getAttackSimulationTrainingUserCoverage
+// GetAsGetAttackSimulationTrainingUserCoverageGetResponse list training coverage for tenant users in attack simulation and training campaigns. This function supports @odata.nextLink for pagination.
+// returns a SecurityGetAttackSimulationTrainingUserCoverageGetResponseable when successful
+// returns a ODataError error when the service returns a 4XX or 5XX status code
+// [Find more info here]
+// 
+// [Find more info here]: https://learn.microsoft.com/graph/api/securityreportsroot-getattacksimulationtrainingusercoverage?view=graph-rest-1.0
 func (m *SecurityGetAttackSimulationTrainingUserCoverageRequestBuilder) GetAsGetAttackSimulationTrainingUserCoverageGetResponse(ctx context.Context, requestConfiguration *SecurityGetAttackSimulationTrainingUserCoverageRequestBuilderGetRequestConfiguration)(SecurityGetAttackSimulationTrainingUserCoverageGetResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return nil, err
     }
     errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
-        "4XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
-        "5XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
+        "XXX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
     }
     res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, CreateSecurityGetAttackSimulationTrainingUserCoverageGetResponseFromDiscriminatorValue, errorMapping)
     if err != nil {
@@ -84,7 +92,8 @@ func (m *SecurityGetAttackSimulationTrainingUserCoverageRequestBuilder) GetAsGet
     }
     return res.(SecurityGetAttackSimulationTrainingUserCoverageGetResponseable), nil
 }
-// ToGetRequestInformation invoke function getAttackSimulationTrainingUserCoverage
+// ToGetRequestInformation list training coverage for tenant users in attack simulation and training campaigns. This function supports @odata.nextLink for pagination.
+// returns a *RequestInformation when successful
 func (m *SecurityGetAttackSimulationTrainingUserCoverageRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *SecurityGetAttackSimulationTrainingUserCoverageRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -98,6 +107,7 @@ func (m *SecurityGetAttackSimulationTrainingUserCoverageRequestBuilder) ToGetReq
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+// returns a *SecurityGetAttackSimulationTrainingUserCoverageRequestBuilder when successful
 func (m *SecurityGetAttackSimulationTrainingUserCoverageRequestBuilder) WithUrl(rawUrl string)(*SecurityGetAttackSimulationTrainingUserCoverageRequestBuilder) {
     return NewSecurityGetAttackSimulationTrainingUserCoverageRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

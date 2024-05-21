@@ -1,8 +1,4 @@
 package security
-import (
-    "errors"
-)
-// 
 type EvidenceVerdict int
 
 const (
@@ -30,7 +26,7 @@ func ParseEvidenceVerdict(v string) (any, error) {
         case "unknownFutureValue":
             result = UNKNOWNFUTUREVALUE_EVIDENCEVERDICT
         default:
-            return 0, errors.New("Unknown EvidenceVerdict value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

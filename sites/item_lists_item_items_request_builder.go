@@ -11,8 +11,10 @@ import (
 type ItemListsItemItemsRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
-// ItemListsItemItemsRequestBuilderGetQueryParameters get the collection of [items][item] in a [list][].
+// ItemListsItemItemsRequestBuilderGetQueryParameters get the collection of items in a list.
 type ItemListsItemItemsRequestBuilderGetQueryParameters struct {
+    // Include count of items
+    Count *bool `uriparametername:"%24count"`
     // Expand related entities
     Expand []string `uriparametername:"%24expand"`
     // Filter items by property values
@@ -45,6 +47,7 @@ type ItemListsItemItemsRequestBuilderPostRequestConfiguration struct {
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
 // ByListItemId provides operations to manage the items property of the microsoft.graph.list entity.
+// returns a *ItemListsItemItemsListItemItemRequestBuilder when successful
 func (m *ItemListsItemItemsRequestBuilder) ByListItemId(listItemId string)(*ItemListsItemItemsListItemItemRequestBuilder) {
     urlTplParams := make(map[string]string)
     for idx, item := range m.BaseRequestBuilder.PathParameters {
@@ -55,20 +58,32 @@ func (m *ItemListsItemItemsRequestBuilder) ByListItemId(listItemId string)(*Item
     }
     return NewItemListsItemItemsListItemItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
 }
-// NewItemListsItemItemsRequestBuilderInternal instantiates a new ItemsRequestBuilder and sets the default values.
+// NewItemListsItemItemsRequestBuilderInternal instantiates a new ItemListsItemItemsRequestBuilder and sets the default values.
 func NewItemListsItemItemsRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemListsItemItemsRequestBuilder) {
     m := &ItemListsItemItemsRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/sites/{site%2Did}/lists/{list%2Did}/items{?%24top,%24skip,%24search,%24filter,%24orderby,%24select,%24expand}", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/sites/{site%2Did}/lists/{list%2Did}/items{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", pathParameters),
     }
     return m
 }
-// NewItemListsItemItemsRequestBuilder instantiates a new ItemsRequestBuilder and sets the default values.
+// NewItemListsItemItemsRequestBuilder instantiates a new ItemListsItemItemsRequestBuilder and sets the default values.
 func NewItemListsItemItemsRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemListsItemItemsRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl
     return NewItemListsItemItemsRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Get get the collection of [items][item] in a [list][].
+// Delta provides operations to call the delta method.
+// returns a *ItemListsItemItemsDeltaRequestBuilder when successful
+func (m *ItemListsItemItemsRequestBuilder) Delta()(*ItemListsItemItemsDeltaRequestBuilder) {
+    return NewItemListsItemItemsDeltaRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// DeltaWithToken provides operations to call the delta method.
+// returns a *ItemListsItemItemsDeltaWithTokenRequestBuilder when successful
+func (m *ItemListsItemItemsRequestBuilder) DeltaWithToken(token *string)(*ItemListsItemItemsDeltaWithTokenRequestBuilder) {
+    return NewItemListsItemItemsDeltaWithTokenRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter, token)
+}
+// Get get the collection of items in a list.
+// returns a ListItemCollectionResponseable when successful
+// returns a ODataError error when the service returns a 4XX or 5XX status code
 // [Find more info here]
 // 
 // [Find more info here]: https://learn.microsoft.com/graph/api/listitem-list?view=graph-rest-1.0
@@ -78,8 +93,7 @@ func (m *ItemListsItemItemsRequestBuilder) Get(ctx context.Context, requestConfi
         return nil, err
     }
     errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
-        "4XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
-        "5XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
+        "XXX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
     }
     res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.CreateListItemCollectionResponseFromDiscriminatorValue, errorMapping)
     if err != nil {
@@ -90,7 +104,9 @@ func (m *ItemListsItemItemsRequestBuilder) Get(ctx context.Context, requestConfi
     }
     return res.(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ListItemCollectionResponseable), nil
 }
-// Post create a new [listItem][] in a [list][].
+// Post create a new listItem in a list.
+// returns a ListItemable when successful
+// returns a ODataError error when the service returns a 4XX or 5XX status code
 // [Find more info here]
 // 
 // [Find more info here]: https://learn.microsoft.com/graph/api/listitem-create?view=graph-rest-1.0
@@ -100,8 +116,7 @@ func (m *ItemListsItemItemsRequestBuilder) Post(ctx context.Context, body iadcd8
         return nil, err
     }
     errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
-        "4XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
-        "5XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
+        "XXX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
     }
     res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.CreateListItemFromDiscriminatorValue, errorMapping)
     if err != nil {
@@ -112,7 +127,8 @@ func (m *ItemListsItemItemsRequestBuilder) Post(ctx context.Context, body iadcd8
     }
     return res.(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ListItemable), nil
 }
-// ToGetRequestInformation get the collection of [items][item] in a [list][].
+// ToGetRequestInformation get the collection of items in a list.
+// returns a *RequestInformation when successful
 func (m *ItemListsItemItemsRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *ItemListsItemItemsRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -125,7 +141,8 @@ func (m *ItemListsItemItemsRequestBuilder) ToGetRequestInformation(ctx context.C
     requestInfo.Headers.TryAdd("Accept", "application/json")
     return requestInfo, nil
 }
-// ToPostRequestInformation create a new [listItem][] in a [list][].
+// ToPostRequestInformation create a new listItem in a list.
+// returns a *RequestInformation when successful
 func (m *ItemListsItemItemsRequestBuilder) ToPostRequestInformation(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ListItemable, requestConfiguration *ItemListsItemItemsRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -140,6 +157,7 @@ func (m *ItemListsItemItemsRequestBuilder) ToPostRequestInformation(ctx context.
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+// returns a *ItemListsItemItemsRequestBuilder when successful
 func (m *ItemListsItemItemsRequestBuilder) WithUrl(rawUrl string)(*ItemListsItemItemsRequestBuilder) {
     return NewItemListsItemItemsRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

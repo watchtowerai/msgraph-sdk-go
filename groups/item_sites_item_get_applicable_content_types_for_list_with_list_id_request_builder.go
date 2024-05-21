@@ -10,10 +10,12 @@ import (
 type ItemSitesItemGetApplicableContentTypesForListWithListIdRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
-// ItemSitesItemGetApplicableContentTypesForListWithListIdRequestBuilderGetQueryParameters invoke function getApplicableContentTypesForList
+// ItemSitesItemGetApplicableContentTypesForListWithListIdRequestBuilderGetQueryParameters get site contentTypes that can be added to a list.
 type ItemSitesItemGetApplicableContentTypesForListWithListIdRequestBuilderGetQueryParameters struct {
     // Include count of items
     Count *bool `uriparametername:"%24count"`
+    // Expand related entities
+    Expand []string `uriparametername:"%24expand"`
     // Filter items by property values
     Filter *string `uriparametername:"%24filter"`
     // Order items by property values
@@ -36,32 +38,36 @@ type ItemSitesItemGetApplicableContentTypesForListWithListIdRequestBuilderGetReq
     // Request query parameters
     QueryParameters *ItemSitesItemGetApplicableContentTypesForListWithListIdRequestBuilderGetQueryParameters
 }
-// NewItemSitesItemGetApplicableContentTypesForListWithListIdRequestBuilderInternal instantiates a new GetApplicableContentTypesForListWithListIdRequestBuilder and sets the default values.
+// NewItemSitesItemGetApplicableContentTypesForListWithListIdRequestBuilderInternal instantiates a new ItemSitesItemGetApplicableContentTypesForListWithListIdRequestBuilder and sets the default values.
 func NewItemSitesItemGetApplicableContentTypesForListWithListIdRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter, listId *string)(*ItemSitesItemGetApplicableContentTypesForListWithListIdRequestBuilder) {
     m := &ItemSitesItemGetApplicableContentTypesForListWithListIdRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/groups/{group%2Did}/sites/{site%2Did}/getApplicableContentTypesForList(listId='{listId}'){?%24top,%24skip,%24search,%24filter,%24count,%24select,%24orderby}", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/groups/{group%2Did}/sites/{site%2Did}/getApplicableContentTypesForList(listId='{listId}'){?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", pathParameters),
     }
     if listId != nil {
         m.BaseRequestBuilder.PathParameters["listId"] = *listId
     }
     return m
 }
-// NewItemSitesItemGetApplicableContentTypesForListWithListIdRequestBuilder instantiates a new GetApplicableContentTypesForListWithListIdRequestBuilder and sets the default values.
+// NewItemSitesItemGetApplicableContentTypesForListWithListIdRequestBuilder instantiates a new ItemSitesItemGetApplicableContentTypesForListWithListIdRequestBuilder and sets the default values.
 func NewItemSitesItemGetApplicableContentTypesForListWithListIdRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemSitesItemGetApplicableContentTypesForListWithListIdRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl
     return NewItemSitesItemGetApplicableContentTypesForListWithListIdRequestBuilderInternal(urlParams, requestAdapter, nil)
 }
-// Get invoke function getApplicableContentTypesForList
+// Get get site contentTypes that can be added to a list.
 // Deprecated: This method is obsolete. Use GetAsGetApplicableContentTypesForListWithListIdGetResponse instead.
+// returns a ItemSitesItemGetApplicableContentTypesForListWithListIdResponseable when successful
+// returns a ODataError error when the service returns a 4XX or 5XX status code
+// [Find more info here]
+// 
+// [Find more info here]: https://learn.microsoft.com/graph/api/site-getapplicablecontenttypesforlist?view=graph-rest-1.0
 func (m *ItemSitesItemGetApplicableContentTypesForListWithListIdRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemSitesItemGetApplicableContentTypesForListWithListIdRequestBuilderGetRequestConfiguration)(ItemSitesItemGetApplicableContentTypesForListWithListIdResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return nil, err
     }
     errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
-        "4XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
-        "5XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
+        "XXX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
     }
     res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, CreateItemSitesItemGetApplicableContentTypesForListWithListIdResponseFromDiscriminatorValue, errorMapping)
     if err != nil {
@@ -72,15 +78,19 @@ func (m *ItemSitesItemGetApplicableContentTypesForListWithListIdRequestBuilder) 
     }
     return res.(ItemSitesItemGetApplicableContentTypesForListWithListIdResponseable), nil
 }
-// GetAsGetApplicableContentTypesForListWithListIdGetResponse invoke function getApplicableContentTypesForList
+// GetAsGetApplicableContentTypesForListWithListIdGetResponse get site contentTypes that can be added to a list.
+// returns a ItemSitesItemGetApplicableContentTypesForListWithListIdGetResponseable when successful
+// returns a ODataError error when the service returns a 4XX or 5XX status code
+// [Find more info here]
+// 
+// [Find more info here]: https://learn.microsoft.com/graph/api/site-getapplicablecontenttypesforlist?view=graph-rest-1.0
 func (m *ItemSitesItemGetApplicableContentTypesForListWithListIdRequestBuilder) GetAsGetApplicableContentTypesForListWithListIdGetResponse(ctx context.Context, requestConfiguration *ItemSitesItemGetApplicableContentTypesForListWithListIdRequestBuilderGetRequestConfiguration)(ItemSitesItemGetApplicableContentTypesForListWithListIdGetResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return nil, err
     }
     errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
-        "4XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
-        "5XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
+        "XXX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
     }
     res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, CreateItemSitesItemGetApplicableContentTypesForListWithListIdGetResponseFromDiscriminatorValue, errorMapping)
     if err != nil {
@@ -91,7 +101,8 @@ func (m *ItemSitesItemGetApplicableContentTypesForListWithListIdRequestBuilder) 
     }
     return res.(ItemSitesItemGetApplicableContentTypesForListWithListIdGetResponseable), nil
 }
-// ToGetRequestInformation invoke function getApplicableContentTypesForList
+// ToGetRequestInformation get site contentTypes that can be added to a list.
+// returns a *RequestInformation when successful
 func (m *ItemSitesItemGetApplicableContentTypesForListWithListIdRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *ItemSitesItemGetApplicableContentTypesForListWithListIdRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -105,6 +116,7 @@ func (m *ItemSitesItemGetApplicableContentTypesForListWithListIdRequestBuilder) 
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+// returns a *ItemSitesItemGetApplicableContentTypesForListWithListIdRequestBuilder when successful
 func (m *ItemSitesItemGetApplicableContentTypesForListWithListIdRequestBuilder) WithUrl(rawUrl string)(*ItemSitesItemGetApplicableContentTypesForListWithListIdRequestBuilder) {
     return NewItemSitesItemGetApplicableContentTypesForListWithListIdRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

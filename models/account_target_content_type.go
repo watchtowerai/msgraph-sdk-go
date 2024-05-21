@@ -1,8 +1,4 @@
 package models
-import (
-    "errors"
-)
-// 
 type AccountTargetContentType int
 
 const (
@@ -27,7 +23,7 @@ func ParseAccountTargetContentType(v string) (any, error) {
         case "unknownFutureValue":
             result = UNKNOWNFUTUREVALUE_ACCOUNTTARGETCONTENTTYPE
         default:
-            return 0, errors.New("Unknown AccountTargetContentType value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

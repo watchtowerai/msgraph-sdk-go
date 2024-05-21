@@ -1,26 +1,27 @@
 package models
 import (
-    "errors"
+    "math"
     "strings"
 )
-// 
 type TemplateScenarios int
 
 const (
-    NEW_TEMPLATESCENARIOS TemplateScenarios = iota
-    SECUREFOUNDATION_TEMPLATESCENARIOS
-    ZEROTRUST_TEMPLATESCENARIOS
-    REMOTEWORK_TEMPLATESCENARIOS
-    PROTECTADMINS_TEMPLATESCENARIOS
-    EMERGINGTHREATS_TEMPLATESCENARIOS
-    UNKNOWNFUTUREVALUE_TEMPLATESCENARIOS
+    NEW_TEMPLATESCENARIOS = 1
+    SECUREFOUNDATION_TEMPLATESCENARIOS = 2
+    ZEROTRUST_TEMPLATESCENARIOS = 4
+    REMOTEWORK_TEMPLATESCENARIOS = 8
+    PROTECTADMINS_TEMPLATESCENARIOS = 16
+    EMERGINGTHREATS_TEMPLATESCENARIOS = 32
+    UNKNOWNFUTUREVALUE_TEMPLATESCENARIOS = 64
 )
 
 func (i TemplateScenarios) String() string {
     var values []string
-    for p := TemplateScenarios(1); p <= UNKNOWNFUTUREVALUE_TEMPLATESCENARIOS; p <<= 1 {
-        if i&p == p {
-            values = append(values, []string{"new", "secureFoundation", "zeroTrust", "remoteWork", "protectAdmins", "emergingThreats", "unknownFutureValue"}[p])
+    options := []string{"new", "secureFoundation", "zeroTrust", "remoteWork", "protectAdmins", "emergingThreats", "unknownFutureValue"}
+    for p := 0; p < 7; p++ {
+        mantis := TemplateScenarios(int(math.Pow(2, float64(p))))
+        if i&mantis == mantis {
+            values = append(values, options[p])
         }
     }
     return strings.Join(values, ",")
@@ -45,7 +46,7 @@ func ParseTemplateScenarios(v string) (any, error) {
             case "unknownFutureValue":
                 result |= UNKNOWNFUTUREVALUE_TEMPLATESCENARIOS
             default:
-                return 0, errors.New("Unknown TemplateScenarios value: " + v)
+                return nil, nil
         }
     }
     return &result, nil

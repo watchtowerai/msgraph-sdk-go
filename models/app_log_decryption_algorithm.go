@@ -1,8 +1,4 @@
 package models
-import (
-    "errors"
-)
-// 
 type AppLogDecryptionAlgorithm int
 
 const (
@@ -23,7 +19,7 @@ func ParseAppLogDecryptionAlgorithm(v string) (any, error) {
         case "unknownFutureValue":
             result = UNKNOWNFUTUREVALUE_APPLOGDECRYPTIONALGORITHM
         default:
-            return 0, errors.New("Unknown AppLogDecryptionAlgorithm value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

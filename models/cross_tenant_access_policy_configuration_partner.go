@@ -5,12 +5,11 @@ import (
     ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e "github.com/microsoft/kiota-abstractions-go/store"
 )
 
-// CrossTenantAccessPolicyConfigurationPartner 
 type CrossTenantAccessPolicyConfigurationPartner struct {
     // Stores model information.
     backingStore ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStore
 }
-// NewCrossTenantAccessPolicyConfigurationPartner instantiates a new crossTenantAccessPolicyConfigurationPartner and sets the default values.
+// NewCrossTenantAccessPolicyConfigurationPartner instantiates a new CrossTenantAccessPolicyConfigurationPartner and sets the default values.
 func NewCrossTenantAccessPolicyConfigurationPartner()(*CrossTenantAccessPolicyConfigurationPartner) {
     m := &CrossTenantAccessPolicyConfigurationPartner{
     }
@@ -19,10 +18,12 @@ func NewCrossTenantAccessPolicyConfigurationPartner()(*CrossTenantAccessPolicyCo
     return m
 }
 // CreateCrossTenantAccessPolicyConfigurationPartnerFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
+// returns a Parsable when successful
 func CreateCrossTenantAccessPolicyConfigurationPartnerFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewCrossTenantAccessPolicyConfigurationPartner(), nil
 }
 // GetAdditionalData gets the AdditionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+// returns a map[string]any when successful
 func (m *CrossTenantAccessPolicyConfigurationPartner) GetAdditionalData()(map[string]any) {
     val , err :=  m.backingStore.Get("additionalData")
     if err != nil {
@@ -35,6 +36,7 @@ func (m *CrossTenantAccessPolicyConfigurationPartner) GetAdditionalData()(map[st
     return val.(map[string]any)
 }
 // GetAutomaticUserConsentSettings gets the automaticUserConsentSettings property value. Determines the partner-specific configuration for automatic user consent settings. Unless specifically configured, the inboundAllowed and outboundAllowed properties are null and inherit from the default settings, which is always false.
+// returns a InboundOutboundPolicyConfigurationable when successful
 func (m *CrossTenantAccessPolicyConfigurationPartner) GetAutomaticUserConsentSettings()(InboundOutboundPolicyConfigurationable) {
     val, err := m.GetBackingStore().Get("automaticUserConsentSettings")
     if err != nil {
@@ -46,6 +48,7 @@ func (m *CrossTenantAccessPolicyConfigurationPartner) GetAutomaticUserConsentSet
     return nil
 }
 // GetB2bCollaborationInbound gets the b2bCollaborationInbound property value. Defines your partner-specific configuration for users from other organizations accessing your resources via Microsoft Entra B2B collaboration.
+// returns a CrossTenantAccessPolicyB2BSettingable when successful
 func (m *CrossTenantAccessPolicyConfigurationPartner) GetB2bCollaborationInbound()(CrossTenantAccessPolicyB2BSettingable) {
     val, err := m.GetBackingStore().Get("b2bCollaborationInbound")
     if err != nil {
@@ -57,6 +60,7 @@ func (m *CrossTenantAccessPolicyConfigurationPartner) GetB2bCollaborationInbound
     return nil
 }
 // GetB2bCollaborationOutbound gets the b2bCollaborationOutbound property value. Defines your partner-specific configuration for users in your organization going outbound to access resources in another organization via Microsoft Entra B2B collaboration.
+// returns a CrossTenantAccessPolicyB2BSettingable when successful
 func (m *CrossTenantAccessPolicyConfigurationPartner) GetB2bCollaborationOutbound()(CrossTenantAccessPolicyB2BSettingable) {
     val, err := m.GetBackingStore().Get("b2bCollaborationOutbound")
     if err != nil {
@@ -68,6 +72,7 @@ func (m *CrossTenantAccessPolicyConfigurationPartner) GetB2bCollaborationOutboun
     return nil
 }
 // GetB2bDirectConnectInbound gets the b2bDirectConnectInbound property value. Defines your partner-specific configuration for users from other organizations accessing your resources via Azure B2B direct connect.
+// returns a CrossTenantAccessPolicyB2BSettingable when successful
 func (m *CrossTenantAccessPolicyConfigurationPartner) GetB2bDirectConnectInbound()(CrossTenantAccessPolicyB2BSettingable) {
     val, err := m.GetBackingStore().Get("b2bDirectConnectInbound")
     if err != nil {
@@ -79,6 +84,7 @@ func (m *CrossTenantAccessPolicyConfigurationPartner) GetB2bDirectConnectInbound
     return nil
 }
 // GetB2bDirectConnectOutbound gets the b2bDirectConnectOutbound property value. Defines your partner-specific configuration for users in your organization going outbound to access resources in another organization via Microsoft Entra B2B direct connect.
+// returns a CrossTenantAccessPolicyB2BSettingable when successful
 func (m *CrossTenantAccessPolicyConfigurationPartner) GetB2bDirectConnectOutbound()(CrossTenantAccessPolicyB2BSettingable) {
     val, err := m.GetBackingStore().Get("b2bDirectConnectOutbound")
     if err != nil {
@@ -90,10 +96,12 @@ func (m *CrossTenantAccessPolicyConfigurationPartner) GetB2bDirectConnectOutboun
     return nil
 }
 // GetBackingStore gets the BackingStore property value. Stores model information.
+// returns a BackingStore when successful
 func (m *CrossTenantAccessPolicyConfigurationPartner) GetBackingStore()(ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStore) {
     return m.backingStore
 }
 // GetFieldDeserializers the deserialization information for the current model
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *CrossTenantAccessPolicyConfigurationPartner) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := make(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error))
     res["automaticUserConsentSettings"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
@@ -166,6 +174,16 @@ func (m *CrossTenantAccessPolicyConfigurationPartner) GetFieldDeserializers()(ma
         }
         return nil
     }
+    res["isInMultiTenantOrganization"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetBoolValue()
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            m.SetIsInMultiTenantOrganization(val)
+        }
+        return nil
+    }
     res["isServiceProvider"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
         val, err := n.GetBoolValue()
         if err != nil {
@@ -199,6 +217,7 @@ func (m *CrossTenantAccessPolicyConfigurationPartner) GetFieldDeserializers()(ma
     return res
 }
 // GetIdentitySynchronization gets the identitySynchronization property value. Defines the cross-tenant policy for the synchronization of users from a partner tenant. Use this user synchronization policy to streamline collaboration between users in a multitenant organization by automating the creation, update, and deletion of users from one tenant to another.
+// returns a CrossTenantIdentitySyncPolicyPartnerable when successful
 func (m *CrossTenantAccessPolicyConfigurationPartner) GetIdentitySynchronization()(CrossTenantIdentitySyncPolicyPartnerable) {
     val, err := m.GetBackingStore().Get("identitySynchronization")
     if err != nil {
@@ -210,6 +229,7 @@ func (m *CrossTenantAccessPolicyConfigurationPartner) GetIdentitySynchronization
     return nil
 }
 // GetInboundTrust gets the inboundTrust property value. Determines the partner-specific configuration for trusting other Conditional Access claims from external Microsoft Entra organizations.
+// returns a CrossTenantAccessPolicyInboundTrustable when successful
 func (m *CrossTenantAccessPolicyConfigurationPartner) GetInboundTrust()(CrossTenantAccessPolicyInboundTrustable) {
     val, err := m.GetBackingStore().Get("inboundTrust")
     if err != nil {
@@ -220,7 +240,20 @@ func (m *CrossTenantAccessPolicyConfigurationPartner) GetInboundTrust()(CrossTen
     }
     return nil
 }
+// GetIsInMultiTenantOrganization gets the isInMultiTenantOrganization property value. Identifies whether a tenant is a member of a multitenant organization.
+// returns a *bool when successful
+func (m *CrossTenantAccessPolicyConfigurationPartner) GetIsInMultiTenantOrganization()(*bool) {
+    val, err := m.GetBackingStore().Get("isInMultiTenantOrganization")
+    if err != nil {
+        panic(err)
+    }
+    if val != nil {
+        return val.(*bool)
+    }
+    return nil
+}
 // GetIsServiceProvider gets the isServiceProvider property value. Identifies whether the partner-specific configuration is a Cloud Service Provider for your organization.
+// returns a *bool when successful
 func (m *CrossTenantAccessPolicyConfigurationPartner) GetIsServiceProvider()(*bool) {
     val, err := m.GetBackingStore().Get("isServiceProvider")
     if err != nil {
@@ -232,6 +265,7 @@ func (m *CrossTenantAccessPolicyConfigurationPartner) GetIsServiceProvider()(*bo
     return nil
 }
 // GetOdataType gets the @odata.type property value. The OdataType property
+// returns a *string when successful
 func (m *CrossTenantAccessPolicyConfigurationPartner) GetOdataType()(*string) {
     val, err := m.GetBackingStore().Get("odataType")
     if err != nil {
@@ -243,6 +277,7 @@ func (m *CrossTenantAccessPolicyConfigurationPartner) GetOdataType()(*string) {
     return nil
 }
 // GetTenantId gets the tenantId property value. The tenant identifier for the partner Microsoft Entra organization. Read-only. Key.
+// returns a *string when successful
 func (m *CrossTenantAccessPolicyConfigurationPartner) GetTenantId()(*string) {
     val, err := m.GetBackingStore().Get("tenantId")
     if err != nil {
@@ -293,6 +328,12 @@ func (m *CrossTenantAccessPolicyConfigurationPartner) Serialize(writer i878a80d2
     }
     {
         err := writer.WriteObjectValue("inboundTrust", m.GetInboundTrust())
+        if err != nil {
+            return err
+        }
+    }
+    {
+        err := writer.WriteBoolValue("isInMultiTenantOrganization", m.GetIsInMultiTenantOrganization())
         if err != nil {
             return err
         }
@@ -383,6 +424,13 @@ func (m *CrossTenantAccessPolicyConfigurationPartner) SetInboundTrust(value Cros
         panic(err)
     }
 }
+// SetIsInMultiTenantOrganization sets the isInMultiTenantOrganization property value. Identifies whether a tenant is a member of a multitenant organization.
+func (m *CrossTenantAccessPolicyConfigurationPartner) SetIsInMultiTenantOrganization(value *bool)() {
+    err := m.GetBackingStore().Set("isInMultiTenantOrganization", value)
+    if err != nil {
+        panic(err)
+    }
+}
 // SetIsServiceProvider sets the isServiceProvider property value. Identifies whether the partner-specific configuration is a Cloud Service Provider for your organization.
 func (m *CrossTenantAccessPolicyConfigurationPartner) SetIsServiceProvider(value *bool)() {
     err := m.GetBackingStore().Set("isServiceProvider", value)
@@ -404,7 +452,6 @@ func (m *CrossTenantAccessPolicyConfigurationPartner) SetTenantId(value *string)
         panic(err)
     }
 }
-// CrossTenantAccessPolicyConfigurationPartnerable 
 type CrossTenantAccessPolicyConfigurationPartnerable interface {
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.AdditionalDataHolder
     ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackedModel
@@ -417,6 +464,7 @@ type CrossTenantAccessPolicyConfigurationPartnerable interface {
     GetBackingStore()(ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStore)
     GetIdentitySynchronization()(CrossTenantIdentitySyncPolicyPartnerable)
     GetInboundTrust()(CrossTenantAccessPolicyInboundTrustable)
+    GetIsInMultiTenantOrganization()(*bool)
     GetIsServiceProvider()(*bool)
     GetOdataType()(*string)
     GetTenantId()(*string)
@@ -428,6 +476,7 @@ type CrossTenantAccessPolicyConfigurationPartnerable interface {
     SetBackingStore(value ie8677ce2c7e1b4c22e9c3827ecd078d41185424dd9eeb92b7d971ed2d49a392e.BackingStore)()
     SetIdentitySynchronization(value CrossTenantIdentitySyncPolicyPartnerable)()
     SetInboundTrust(value CrossTenantAccessPolicyInboundTrustable)()
+    SetIsInMultiTenantOrganization(value *bool)()
     SetIsServiceProvider(value *bool)()
     SetOdataType(value *string)()
     SetTenantId(value *string)()

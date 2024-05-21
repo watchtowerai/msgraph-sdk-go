@@ -1,8 +1,4 @@
 package models
-import (
-    "errors"
-)
-// 
 type AccessPackageCustomExtensionStage int
 
 const (
@@ -36,7 +32,7 @@ func ParseAccessPackageCustomExtensionStage(v string) (any, error) {
         case "unknownFutureValue":
             result = UNKNOWNFUTUREVALUE_ACCESSPACKAGECUSTOMEXTENSIONSTAGE
         default:
-            return 0, errors.New("Unknown AccessPackageCustomExtensionStage value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

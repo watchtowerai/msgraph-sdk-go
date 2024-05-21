@@ -1,8 +1,4 @@
 package models
-import (
-    "errors"
-)
-// 
 type AttackSimulationOperationType int
 
 const (
@@ -24,7 +20,7 @@ func ParseAttackSimulationOperationType(v string) (any, error) {
         case "unknownFutureValue":
             result = UNKNOWNFUTUREVALUE_ATTACKSIMULATIONOPERATIONTYPE
         default:
-            return 0, errors.New("Unknown AttackSimulationOperationType value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

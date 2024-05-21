@@ -1,8 +1,4 @@
 package models
-import (
-    "errors"
-)
-// 
 type BaseAuthenticationMethod int
 
 const (
@@ -54,7 +50,7 @@ func ParseBaseAuthenticationMethod(v string) (any, error) {
         case "unknownFutureValue":
             result = UNKNOWNFUTUREVALUE_BASEAUTHENTICATIONMETHOD
         default:
-            return 0, errors.New("Unknown BaseAuthenticationMethod value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

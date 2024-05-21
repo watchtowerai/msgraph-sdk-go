@@ -11,7 +11,7 @@ import (
 type UsersItemAssignmentsItemGradingCategoryRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
-// UsersItemAssignmentsItemGradingCategoryRequestBuilderGetQueryParameters get gradingCategory from education
+// UsersItemAssignmentsItemGradingCategoryRequestBuilderGetQueryParameters when set, enables users to weight assignments differently when computing a class average grade.
 type UsersItemAssignmentsItemGradingCategoryRequestBuilderGetQueryParameters struct {
     // Expand related entities
     Expand []string `uriparametername:"%24expand"`
@@ -27,28 +27,29 @@ type UsersItemAssignmentsItemGradingCategoryRequestBuilderGetRequestConfiguratio
     // Request query parameters
     QueryParameters *UsersItemAssignmentsItemGradingCategoryRequestBuilderGetQueryParameters
 }
-// NewUsersItemAssignmentsItemGradingCategoryRequestBuilderInternal instantiates a new GradingCategoryRequestBuilder and sets the default values.
+// NewUsersItemAssignmentsItemGradingCategoryRequestBuilderInternal instantiates a new UsersItemAssignmentsItemGradingCategoryRequestBuilder and sets the default values.
 func NewUsersItemAssignmentsItemGradingCategoryRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*UsersItemAssignmentsItemGradingCategoryRequestBuilder) {
     m := &UsersItemAssignmentsItemGradingCategoryRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/education/users/{educationUser%2Did}/assignments/{educationAssignment%2Did}/gradingCategory{?%24select,%24expand}", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/education/users/{educationUser%2Did}/assignments/{educationAssignment%2Did}/gradingCategory{?%24expand,%24select}", pathParameters),
     }
     return m
 }
-// NewUsersItemAssignmentsItemGradingCategoryRequestBuilder instantiates a new GradingCategoryRequestBuilder and sets the default values.
+// NewUsersItemAssignmentsItemGradingCategoryRequestBuilder instantiates a new UsersItemAssignmentsItemGradingCategoryRequestBuilder and sets the default values.
 func NewUsersItemAssignmentsItemGradingCategoryRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*UsersItemAssignmentsItemGradingCategoryRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl
     return NewUsersItemAssignmentsItemGradingCategoryRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Get get gradingCategory from education
+// Get when set, enables users to weight assignments differently when computing a class average grade.
+// returns a EducationGradingCategoryable when successful
+// returns a ODataError error when the service returns a 4XX or 5XX status code
 func (m *UsersItemAssignmentsItemGradingCategoryRequestBuilder) Get(ctx context.Context, requestConfiguration *UsersItemAssignmentsItemGradingCategoryRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.EducationGradingCategoryable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return nil, err
     }
     errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
-        "4XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
-        "5XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
+        "XXX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
     }
     res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.CreateEducationGradingCategoryFromDiscriminatorValue, errorMapping)
     if err != nil {
@@ -59,7 +60,8 @@ func (m *UsersItemAssignmentsItemGradingCategoryRequestBuilder) Get(ctx context.
     }
     return res.(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.EducationGradingCategoryable), nil
 }
-// ToGetRequestInformation get gradingCategory from education
+// ToGetRequestInformation when set, enables users to weight assignments differently when computing a class average grade.
+// returns a *RequestInformation when successful
 func (m *UsersItemAssignmentsItemGradingCategoryRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *UsersItemAssignmentsItemGradingCategoryRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -73,6 +75,7 @@ func (m *UsersItemAssignmentsItemGradingCategoryRequestBuilder) ToGetRequestInfo
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+// returns a *UsersItemAssignmentsItemGradingCategoryRequestBuilder when successful
 func (m *UsersItemAssignmentsItemGradingCategoryRequestBuilder) WithUrl(rawUrl string)(*UsersItemAssignmentsItemGradingCategoryRequestBuilder) {
     return NewUsersItemAssignmentsItemGradingCategoryRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

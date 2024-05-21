@@ -1,8 +1,4 @@
 package models
-import (
-    "errors"
-)
-// 
 type TeamworkConversationIdentityType int
 
 const (
@@ -27,7 +23,7 @@ func ParseTeamworkConversationIdentityType(v string) (any, error) {
         case "unknownFutureValue":
             result = UNKNOWNFUTUREVALUE_TEAMWORKCONVERSATIONIDENTITYTYPE
         default:
-            return 0, errors.New("Unknown TeamworkConversationIdentityType value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

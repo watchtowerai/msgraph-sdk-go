@@ -1,8 +1,4 @@
 package models
-import (
-    "errors"
-)
-// 
 type TrainingType int
 
 const (
@@ -24,7 +20,7 @@ func ParseTrainingType(v string) (any, error) {
         case "unknownFutureValue":
             result = UNKNOWNFUTUREVALUE_TRAININGTYPE
         default:
-            return 0, errors.New("Unknown TrainingType value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

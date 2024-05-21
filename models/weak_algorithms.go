@@ -1,21 +1,22 @@
 package models
 import (
-    "errors"
+    "math"
     "strings"
 )
-// 
 type WeakAlgorithms int
 
 const (
-    RSASHA1_WEAKALGORITHMS WeakAlgorithms = iota
-    UNKNOWNFUTUREVALUE_WEAKALGORITHMS
+    RSASHA1_WEAKALGORITHMS = 1
+    UNKNOWNFUTUREVALUE_WEAKALGORITHMS = 2
 )
 
 func (i WeakAlgorithms) String() string {
     var values []string
-    for p := WeakAlgorithms(1); p <= UNKNOWNFUTUREVALUE_WEAKALGORITHMS; p <<= 1 {
-        if i&p == p {
-            values = append(values, []string{"rsaSha1", "unknownFutureValue"}[p])
+    options := []string{"rsaSha1", "unknownFutureValue"}
+    for p := 0; p < 2; p++ {
+        mantis := WeakAlgorithms(int(math.Pow(2, float64(p))))
+        if i&mantis == mantis {
+            values = append(values, options[p])
         }
     }
     return strings.Join(values, ",")
@@ -30,7 +31,7 @@ func ParseWeakAlgorithms(v string) (any, error) {
             case "unknownFutureValue":
                 result |= UNKNOWNFUTUREVALUE_WEAKALGORITHMS
             default:
-                return 0, errors.New("Unknown WeakAlgorithms value: " + v)
+                return nil, nil
         }
     }
     return &result, nil

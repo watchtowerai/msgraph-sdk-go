@@ -19,7 +19,7 @@ type ItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexRequestBuilderGetReque
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
-// NewItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexRequestBuilderInternal instantiates a new ItemAtWithIndexRequestBuilder and sets the default values.
+// NewItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexRequestBuilderInternal instantiates a new ItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexRequestBuilder and sets the default values.
 func NewItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter, index *int32)(*ItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexRequestBuilder) {
     m := &ItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexRequestBuilder{
         BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/tables/{workbookTable%2Did}/columns/itemAt(index={index})", pathParameters),
@@ -29,21 +29,35 @@ func NewItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexRequestBuilderInter
     }
     return m
 }
-// NewItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexRequestBuilder instantiates a new ItemAtWithIndexRequestBuilder and sets the default values.
+// NewItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexRequestBuilder instantiates a new ItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexRequestBuilder and sets the default values.
 func NewItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl
     return NewItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexRequestBuilderInternal(urlParams, requestAdapter, nil)
 }
-// Get invoke function itemAt
+// DataBodyRange provides operations to call the dataBodyRange method.
+// returns a *ItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexDataBodyRangeRequestBuilder when successful
+func (m *ItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexRequestBuilder) DataBodyRange()(*ItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexDataBodyRangeRequestBuilder) {
+    return NewItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexDataBodyRangeRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// Filter provides operations to manage the filter property of the microsoft.graph.workbookTableColumn entity.
+// returns a *ItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexFilterRequestBuilder when successful
+func (m *ItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexRequestBuilder) Filter()(*ItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexFilterRequestBuilder) {
+    return NewItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexFilterRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// Get gets a column based on its position in the collection.
+// returns a WorkbookTableColumnable when successful
+// returns a ODataError error when the service returns a 4XX or 5XX status code
+// [Find more info here]
+// 
+// [Find more info here]: https://learn.microsoft.com/graph/api/tablecolumncollection-itemat?view=graph-rest-1.0
 func (m *ItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.WorkbookTableColumnable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return nil, err
     }
     errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
-        "4XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
-        "5XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
+        "XXX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
     }
     res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.CreateWorkbookTableColumnFromDiscriminatorValue, errorMapping)
     if err != nil {
@@ -54,7 +68,18 @@ func (m *ItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexRequestBuilder) Ge
     }
     return res.(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.WorkbookTableColumnable), nil
 }
-// ToGetRequestInformation invoke function itemAt
+// HeaderRowRange provides operations to call the headerRowRange method.
+// returns a *ItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexHeaderRowRangeRequestBuilder when successful
+func (m *ItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexRequestBuilder) HeaderRowRange()(*ItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexHeaderRowRangeRequestBuilder) {
+    return NewItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexHeaderRowRangeRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// RangeEscaped provides operations to call the range method.
+// returns a *ItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexRangeRequestBuilder when successful
+func (m *ItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexRequestBuilder) RangeEscaped()(*ItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexRangeRequestBuilder) {
+    return NewItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexRangeRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
+// ToGetRequestInformation gets a column based on its position in the collection.
+// returns a *RequestInformation when successful
 func (m *ItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *ItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -64,7 +89,13 @@ func (m *ItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexRequestBuilder) To
     requestInfo.Headers.TryAdd("Accept", "application/json")
     return requestInfo, nil
 }
+// TotalRowRange provides operations to call the totalRowRange method.
+// returns a *ItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexTotalRowRangeRequestBuilder when successful
+func (m *ItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexRequestBuilder) TotalRowRange()(*ItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexTotalRowRangeRequestBuilder) {
+    return NewItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexTotalRowRangeRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
+}
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+// returns a *ItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexRequestBuilder when successful
 func (m *ItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexRequestBuilder) WithUrl(rawUrl string)(*ItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexRequestBuilder) {
     return NewItemItemsItemWorkbookTablesItemColumnsItemAtWithIndexRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

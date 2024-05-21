@@ -1,8 +1,4 @@
 package models
-import (
-    "errors"
-)
-// 
 type ConditionalAccessClientApp int
 
 const (
@@ -36,7 +32,7 @@ func ParseConditionalAccessClientApp(v string) (any, error) {
         case "unknownFutureValue":
             result = UNKNOWNFUTUREVALUE_CONDITIONALACCESSCLIENTAPP
         default:
-            return 0, errors.New("Unknown ConditionalAccessClientApp value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

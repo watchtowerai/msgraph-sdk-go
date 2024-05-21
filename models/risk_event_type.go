@@ -1,8 +1,4 @@
 package models
-import (
-    "errors"
-)
-// 
 type RiskEventType int
 
 const (
@@ -60,7 +56,7 @@ func ParseRiskEventType(v string) (any, error) {
         case "unknownFutureValue":
             result = UNKNOWNFUTUREVALUE_RISKEVENTTYPE
         default:
-            return 0, errors.New("Unknown RiskEventType value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

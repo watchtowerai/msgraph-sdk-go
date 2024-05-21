@@ -1,8 +1,4 @@
 package models
-import (
-    "errors"
-)
-// 
 type ThreatAssessmentStatus int
 
 const (
@@ -21,7 +17,7 @@ func ParseThreatAssessmentStatus(v string) (any, error) {
         case "completed":
             result = COMPLETED_THREATASSESSMENTSTATUS
         default:
-            return 0, errors.New("Unknown ThreatAssessmentStatus value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

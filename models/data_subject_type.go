@@ -1,8 +1,4 @@
 package models
-import (
-    "errors"
-)
-// 
 type DataSubjectType int
 
 const (
@@ -42,7 +38,7 @@ func ParseDataSubjectType(v string) (any, error) {
         case "unknownFutureValue":
             result = UNKNOWNFUTUREVALUE_DATASUBJECTTYPE
         default:
-            return 0, errors.New("Unknown DataSubjectType value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

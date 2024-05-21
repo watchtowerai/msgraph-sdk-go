@@ -18,7 +18,7 @@ type ItemJoinedTeamsItemScheduleShiftsShiftItemRequestBuilderDeleteRequestConfig
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
-// ItemJoinedTeamsItemScheduleShiftsShiftItemRequestBuilderGetQueryParameters retrieve the properties and relationships of a shift object by ID.
+// ItemJoinedTeamsItemScheduleShiftsShiftItemRequestBuilderGetQueryParameters the shifts in the schedule.
 type ItemJoinedTeamsItemScheduleShiftsShiftItemRequestBuilderGetQueryParameters struct {
     // Select properties to be returned
     Select []string `uriparametername:"%24select"`
@@ -39,31 +39,28 @@ type ItemJoinedTeamsItemScheduleShiftsShiftItemRequestBuilderPatchRequestConfigu
     // Request options
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
-// NewItemJoinedTeamsItemScheduleShiftsShiftItemRequestBuilderInternal instantiates a new ShiftItemRequestBuilder and sets the default values.
+// NewItemJoinedTeamsItemScheduleShiftsShiftItemRequestBuilderInternal instantiates a new ItemJoinedTeamsItemScheduleShiftsShiftItemRequestBuilder and sets the default values.
 func NewItemJoinedTeamsItemScheduleShiftsShiftItemRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemJoinedTeamsItemScheduleShiftsShiftItemRequestBuilder) {
     m := &ItemJoinedTeamsItemScheduleShiftsShiftItemRequestBuilder{
         BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/users/{user%2Did}/joinedTeams/{team%2Did}/schedule/shifts/{shift%2Did}{?%24select}", pathParameters),
     }
     return m
 }
-// NewItemJoinedTeamsItemScheduleShiftsShiftItemRequestBuilder instantiates a new ShiftItemRequestBuilder and sets the default values.
+// NewItemJoinedTeamsItemScheduleShiftsShiftItemRequestBuilder instantiates a new ItemJoinedTeamsItemScheduleShiftsShiftItemRequestBuilder and sets the default values.
 func NewItemJoinedTeamsItemScheduleShiftsShiftItemRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemJoinedTeamsItemScheduleShiftsShiftItemRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl
     return NewItemJoinedTeamsItemScheduleShiftsShiftItemRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Delete delete a shift from the schedule.
-// [Find more info here]
-// 
-// [Find more info here]: https://learn.microsoft.com/graph/api/shift-delete?view=graph-rest-1.0
+// Delete delete navigation property shifts for users
+// returns a ODataError error when the service returns a 4XX or 5XX status code
 func (m *ItemJoinedTeamsItemScheduleShiftsShiftItemRequestBuilder) Delete(ctx context.Context, requestConfiguration *ItemJoinedTeamsItemScheduleShiftsShiftItemRequestBuilderDeleteRequestConfiguration)(error) {
     requestInfo, err := m.ToDeleteRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return err
     }
     errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
-        "4XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
-        "5XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
+        "XXX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
     }
     err = m.BaseRequestBuilder.RequestAdapter.SendNoContent(ctx, requestInfo, errorMapping)
     if err != nil {
@@ -71,18 +68,16 @@ func (m *ItemJoinedTeamsItemScheduleShiftsShiftItemRequestBuilder) Delete(ctx co
     }
     return nil
 }
-// Get retrieve the properties and relationships of a shift object by ID.
-// [Find more info here]
-// 
-// [Find more info here]: https://learn.microsoft.com/graph/api/shift-get?view=graph-rest-1.0
+// Get the shifts in the schedule.
+// returns a Shiftable when successful
+// returns a ODataError error when the service returns a 4XX or 5XX status code
 func (m *ItemJoinedTeamsItemScheduleShiftsShiftItemRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemJoinedTeamsItemScheduleShiftsShiftItemRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.Shiftable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return nil, err
     }
     errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
-        "4XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
-        "5XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
+        "XXX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
     }
     res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.CreateShiftFromDiscriminatorValue, errorMapping)
     if err != nil {
@@ -93,18 +88,16 @@ func (m *ItemJoinedTeamsItemScheduleShiftsShiftItemRequestBuilder) Get(ctx conte
     }
     return res.(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.Shiftable), nil
 }
-// Patch replace an existing shift. If the specified shift doesn't exist, this method returns 404 Not found. The duration of a shift can't be less than 1 minute or longer than 24 hours.
-// [Find more info here]
-// 
-// [Find more info here]: https://learn.microsoft.com/graph/api/shift-put?view=graph-rest-1.0
+// Patch update the navigation property shifts in users
+// returns a Shiftable when successful
+// returns a ODataError error when the service returns a 4XX or 5XX status code
 func (m *ItemJoinedTeamsItemScheduleShiftsShiftItemRequestBuilder) Patch(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.Shiftable, requestConfiguration *ItemJoinedTeamsItemScheduleShiftsShiftItemRequestBuilderPatchRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.Shiftable, error) {
     requestInfo, err := m.ToPatchRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
         return nil, err
     }
     errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
-        "4XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
-        "5XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
+        "XXX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
     }
     res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.CreateShiftFromDiscriminatorValue, errorMapping)
     if err != nil {
@@ -115,7 +108,8 @@ func (m *ItemJoinedTeamsItemScheduleShiftsShiftItemRequestBuilder) Patch(ctx con
     }
     return res.(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.Shiftable), nil
 }
-// ToDeleteRequestInformation delete a shift from the schedule.
+// ToDeleteRequestInformation delete navigation property shifts for users
+// returns a *RequestInformation when successful
 func (m *ItemJoinedTeamsItemScheduleShiftsShiftItemRequestBuilder) ToDeleteRequestInformation(ctx context.Context, requestConfiguration *ItemJoinedTeamsItemScheduleShiftsShiftItemRequestBuilderDeleteRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.DELETE, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -125,7 +119,8 @@ func (m *ItemJoinedTeamsItemScheduleShiftsShiftItemRequestBuilder) ToDeleteReque
     requestInfo.Headers.TryAdd("Accept", "application/json")
     return requestInfo, nil
 }
-// ToGetRequestInformation retrieve the properties and relationships of a shift object by ID.
+// ToGetRequestInformation the shifts in the schedule.
+// returns a *RequestInformation when successful
 func (m *ItemJoinedTeamsItemScheduleShiftsShiftItemRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *ItemJoinedTeamsItemScheduleShiftsShiftItemRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -138,7 +133,8 @@ func (m *ItemJoinedTeamsItemScheduleShiftsShiftItemRequestBuilder) ToGetRequestI
     requestInfo.Headers.TryAdd("Accept", "application/json")
     return requestInfo, nil
 }
-// ToPatchRequestInformation replace an existing shift. If the specified shift doesn't exist, this method returns 404 Not found. The duration of a shift can't be less than 1 minute or longer than 24 hours.
+// ToPatchRequestInformation update the navigation property shifts in users
+// returns a *RequestInformation when successful
 func (m *ItemJoinedTeamsItemScheduleShiftsShiftItemRequestBuilder) ToPatchRequestInformation(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.Shiftable, requestConfiguration *ItemJoinedTeamsItemScheduleShiftsShiftItemRequestBuilderPatchRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.PATCH, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -153,6 +149,7 @@ func (m *ItemJoinedTeamsItemScheduleShiftsShiftItemRequestBuilder) ToPatchReques
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+// returns a *ItemJoinedTeamsItemScheduleShiftsShiftItemRequestBuilder when successful
 func (m *ItemJoinedTeamsItemScheduleShiftsShiftItemRequestBuilder) WithUrl(rawUrl string)(*ItemJoinedTeamsItemScheduleShiftsShiftItemRequestBuilder) {
     return NewItemJoinedTeamsItemScheduleShiftsShiftItemRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

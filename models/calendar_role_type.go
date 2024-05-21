@@ -1,8 +1,4 @@
 package models
-import (
-    "errors"
-)
-// 
 type CalendarRoleType int
 
 const (
@@ -39,7 +35,7 @@ func ParseCalendarRoleType(v string) (any, error) {
         case "custom":
             result = CUSTOM_CALENDARROLETYPE
         default:
-            return 0, errors.New("Unknown CalendarRoleType value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

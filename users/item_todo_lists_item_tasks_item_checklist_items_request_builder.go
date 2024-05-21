@@ -11,7 +11,7 @@ import (
 type ItemTodoListsItemTasksItemChecklistItemsRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
-// ItemTodoListsItemTasksItemChecklistItemsRequestBuilderGetQueryParameters get the checklistItem resources associated to a todoTask from the checklistItems navigation property.
+// ItemTodoListsItemTasksItemChecklistItemsRequestBuilderGetQueryParameters a collection of checklistItems linked to a task.
 type ItemTodoListsItemTasksItemChecklistItemsRequestBuilderGetQueryParameters struct {
     // Include count of items
     Count *bool `uriparametername:"%24count"`
@@ -47,6 +47,7 @@ type ItemTodoListsItemTasksItemChecklistItemsRequestBuilderPostRequestConfigurat
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
 // ByChecklistItemId provides operations to manage the checklistItems property of the microsoft.graph.todoTask entity.
+// returns a *ItemTodoListsItemTasksItemChecklistItemsChecklistItemItemRequestBuilder when successful
 func (m *ItemTodoListsItemTasksItemChecklistItemsRequestBuilder) ByChecklistItemId(checklistItemId string)(*ItemTodoListsItemTasksItemChecklistItemsChecklistItemItemRequestBuilder) {
     urlTplParams := make(map[string]string)
     for idx, item := range m.BaseRequestBuilder.PathParameters {
@@ -57,35 +58,34 @@ func (m *ItemTodoListsItemTasksItemChecklistItemsRequestBuilder) ByChecklistItem
     }
     return NewItemTodoListsItemTasksItemChecklistItemsChecklistItemItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
 }
-// NewItemTodoListsItemTasksItemChecklistItemsRequestBuilderInternal instantiates a new ChecklistItemsRequestBuilder and sets the default values.
+// NewItemTodoListsItemTasksItemChecklistItemsRequestBuilderInternal instantiates a new ItemTodoListsItemTasksItemChecklistItemsRequestBuilder and sets the default values.
 func NewItemTodoListsItemTasksItemChecklistItemsRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemTodoListsItemTasksItemChecklistItemsRequestBuilder) {
     m := &ItemTodoListsItemTasksItemChecklistItemsRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/users/{user%2Did}/todo/lists/{todoTaskList%2Did}/tasks/{todoTask%2Did}/checklistItems{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/users/{user%2Did}/todo/lists/{todoTaskList%2Did}/tasks/{todoTask%2Did}/checklistItems{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", pathParameters),
     }
     return m
 }
-// NewItemTodoListsItemTasksItemChecklistItemsRequestBuilder instantiates a new ChecklistItemsRequestBuilder and sets the default values.
+// NewItemTodoListsItemTasksItemChecklistItemsRequestBuilder instantiates a new ItemTodoListsItemTasksItemChecklistItemsRequestBuilder and sets the default values.
 func NewItemTodoListsItemTasksItemChecklistItemsRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemTodoListsItemTasksItemChecklistItemsRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl
     return NewItemTodoListsItemTasksItemChecklistItemsRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Count provides operations to count the resources in the collection.
+// returns a *ItemTodoListsItemTasksItemChecklistItemsCountRequestBuilder when successful
 func (m *ItemTodoListsItemTasksItemChecklistItemsRequestBuilder) Count()(*ItemTodoListsItemTasksItemChecklistItemsCountRequestBuilder) {
     return NewItemTodoListsItemTasksItemChecklistItemsCountRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
-// Get get the checklistItem resources associated to a todoTask from the checklistItems navigation property.
-// [Find more info here]
-// 
-// [Find more info here]: https://learn.microsoft.com/graph/api/todotask-list-checklistitems?view=graph-rest-1.0
+// Get a collection of checklistItems linked to a task.
+// returns a ChecklistItemCollectionResponseable when successful
+// returns a ODataError error when the service returns a 4XX or 5XX status code
 func (m *ItemTodoListsItemTasksItemChecklistItemsRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemTodoListsItemTasksItemChecklistItemsRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ChecklistItemCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return nil, err
     }
     errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
-        "4XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
-        "5XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
+        "XXX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
     }
     res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.CreateChecklistItemCollectionResponseFromDiscriminatorValue, errorMapping)
     if err != nil {
@@ -96,18 +96,16 @@ func (m *ItemTodoListsItemTasksItemChecklistItemsRequestBuilder) Get(ctx context
     }
     return res.(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ChecklistItemCollectionResponseable), nil
 }
-// Post create a new checklistItem object.
-// [Find more info here]
-// 
-// [Find more info here]: https://learn.microsoft.com/graph/api/todotask-post-checklistitems?view=graph-rest-1.0
+// Post create new navigation property to checklistItems for users
+// returns a ChecklistItemable when successful
+// returns a ODataError error when the service returns a 4XX or 5XX status code
 func (m *ItemTodoListsItemTasksItemChecklistItemsRequestBuilder) Post(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ChecklistItemable, requestConfiguration *ItemTodoListsItemTasksItemChecklistItemsRequestBuilderPostRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ChecklistItemable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
         return nil, err
     }
     errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
-        "4XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
-        "5XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
+        "XXX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
     }
     res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.CreateChecklistItemFromDiscriminatorValue, errorMapping)
     if err != nil {
@@ -118,7 +116,8 @@ func (m *ItemTodoListsItemTasksItemChecklistItemsRequestBuilder) Post(ctx contex
     }
     return res.(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ChecklistItemable), nil
 }
-// ToGetRequestInformation get the checklistItem resources associated to a todoTask from the checklistItems navigation property.
+// ToGetRequestInformation a collection of checklistItems linked to a task.
+// returns a *RequestInformation when successful
 func (m *ItemTodoListsItemTasksItemChecklistItemsRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *ItemTodoListsItemTasksItemChecklistItemsRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -131,7 +130,8 @@ func (m *ItemTodoListsItemTasksItemChecklistItemsRequestBuilder) ToGetRequestInf
     requestInfo.Headers.TryAdd("Accept", "application/json")
     return requestInfo, nil
 }
-// ToPostRequestInformation create a new checklistItem object.
+// ToPostRequestInformation create new navigation property to checklistItems for users
+// returns a *RequestInformation when successful
 func (m *ItemTodoListsItemTasksItemChecklistItemsRequestBuilder) ToPostRequestInformation(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ChecklistItemable, requestConfiguration *ItemTodoListsItemTasksItemChecklistItemsRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -146,6 +146,7 @@ func (m *ItemTodoListsItemTasksItemChecklistItemsRequestBuilder) ToPostRequestIn
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+// returns a *ItemTodoListsItemTasksItemChecklistItemsRequestBuilder when successful
 func (m *ItemTodoListsItemTasksItemChecklistItemsRequestBuilder) WithUrl(rawUrl string)(*ItemTodoListsItemTasksItemChecklistItemsRequestBuilder) {
     return NewItemTodoListsItemTasksItemChecklistItemsRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

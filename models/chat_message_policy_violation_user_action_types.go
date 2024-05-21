@@ -1,22 +1,23 @@
 package models
 import (
-    "errors"
+    "math"
     "strings"
 )
-// 
 type ChatMessagePolicyViolationUserActionTypes int
 
 const (
-    NONE_CHATMESSAGEPOLICYVIOLATIONUSERACTIONTYPES ChatMessagePolicyViolationUserActionTypes = iota
-    OVERRIDE_CHATMESSAGEPOLICYVIOLATIONUSERACTIONTYPES
-    REPORTFALSEPOSITIVE_CHATMESSAGEPOLICYVIOLATIONUSERACTIONTYPES
+    NONE_CHATMESSAGEPOLICYVIOLATIONUSERACTIONTYPES = 1
+    OVERRIDE_CHATMESSAGEPOLICYVIOLATIONUSERACTIONTYPES = 2
+    REPORTFALSEPOSITIVE_CHATMESSAGEPOLICYVIOLATIONUSERACTIONTYPES = 4
 )
 
 func (i ChatMessagePolicyViolationUserActionTypes) String() string {
     var values []string
-    for p := ChatMessagePolicyViolationUserActionTypes(1); p <= REPORTFALSEPOSITIVE_CHATMESSAGEPOLICYVIOLATIONUSERACTIONTYPES; p <<= 1 {
-        if i&p == p {
-            values = append(values, []string{"none", "override", "reportFalsePositive"}[p])
+    options := []string{"none", "override", "reportFalsePositive"}
+    for p := 0; p < 3; p++ {
+        mantis := ChatMessagePolicyViolationUserActionTypes(int(math.Pow(2, float64(p))))
+        if i&mantis == mantis {
+            values = append(values, options[p])
         }
     }
     return strings.Join(values, ",")
@@ -33,7 +34,7 @@ func ParseChatMessagePolicyViolationUserActionTypes(v string) (any, error) {
             case "reportFalsePositive":
                 result |= REPORTFALSEPOSITIVE_CHATMESSAGEPOLICYVIOLATIONUSERACTIONTYPES
             default:
-                return 0, errors.New("Unknown ChatMessagePolicyViolationUserActionTypes value: " + v)
+                return nil, nil
         }
     }
     return &result, nil

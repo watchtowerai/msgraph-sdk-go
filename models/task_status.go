@@ -1,8 +1,4 @@
 package models
-import (
-    "errors"
-)
-// 
 type TaskStatus int
 
 const (
@@ -30,7 +26,7 @@ func ParseTaskStatus(v string) (any, error) {
         case "deferred":
             result = DEFERRED_TASKSTATUS
         default:
-            return 0, errors.New("Unknown TaskStatus value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

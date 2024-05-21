@@ -1,8 +1,4 @@
 package models
-import (
-    "errors"
-)
-// 
 type WorkbookOperationStatus int
 
 const (
@@ -27,7 +23,7 @@ func ParseWorkbookOperationStatus(v string) (any, error) {
         case "failed":
             result = FAILED_WORKBOOKOPERATIONSTATUS
         default:
-            return 0, errors.New("Unknown WorkbookOperationStatus value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

@@ -4,11 +4,10 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// EducationAssignmentSettings 
 type EducationAssignmentSettings struct {
     Entity
 }
-// NewEducationAssignmentSettings instantiates a new educationAssignmentSettings and sets the default values.
+// NewEducationAssignmentSettings instantiates a new EducationAssignmentSettings and sets the default values.
 func NewEducationAssignmentSettings()(*EducationAssignmentSettings) {
     m := &EducationAssignmentSettings{
         Entity: *NewEntity(),
@@ -16,10 +15,12 @@ func NewEducationAssignmentSettings()(*EducationAssignmentSettings) {
     return m
 }
 // CreateEducationAssignmentSettingsFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
+// returns a Parsable when successful
 func CreateEducationAssignmentSettingsFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewEducationAssignmentSettings(), nil
 }
 // GetFieldDeserializers the deserialization information for the current model
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *EducationAssignmentSettings) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := m.Entity.GetFieldDeserializers()
     res["gradingCategories"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
@@ -50,7 +51,8 @@ func (m *EducationAssignmentSettings) GetFieldDeserializers()(map[string]func(i8
     }
     return res
 }
-// GetGradingCategories gets the gradingCategories property value. The gradingCategories property
+// GetGradingCategories gets the gradingCategories property value. When set, enables users to weight assignments differently when computing a class average grade.
+// returns a []EducationGradingCategoryable when successful
 func (m *EducationAssignmentSettings) GetGradingCategories()([]EducationGradingCategoryable) {
     val, err := m.GetBackingStore().Get("gradingCategories")
     if err != nil {
@@ -61,7 +63,8 @@ func (m *EducationAssignmentSettings) GetGradingCategories()([]EducationGradingC
     }
     return nil
 }
-// GetSubmissionAnimationDisabled gets the submissionAnimationDisabled property value. Indicates whether turn-in celebration animation is shown. A value of true indicates that the animation isn't shown. Default value is false.
+// GetSubmissionAnimationDisabled gets the submissionAnimationDisabled property value. Indicates whether to show the turn-in celebration animation. If true, indicates to skip the animation. The default value is false.
+// returns a *bool when successful
 func (m *EducationAssignmentSettings) GetSubmissionAnimationDisabled()(*bool) {
     val, err := m.GetBackingStore().Get("submissionAnimationDisabled")
     if err != nil {
@@ -98,21 +101,20 @@ func (m *EducationAssignmentSettings) Serialize(writer i878a80d2330e89d26896388a
     }
     return nil
 }
-// SetGradingCategories sets the gradingCategories property value. The gradingCategories property
+// SetGradingCategories sets the gradingCategories property value. When set, enables users to weight assignments differently when computing a class average grade.
 func (m *EducationAssignmentSettings) SetGradingCategories(value []EducationGradingCategoryable)() {
     err := m.GetBackingStore().Set("gradingCategories", value)
     if err != nil {
         panic(err)
     }
 }
-// SetSubmissionAnimationDisabled sets the submissionAnimationDisabled property value. Indicates whether turn-in celebration animation is shown. A value of true indicates that the animation isn't shown. Default value is false.
+// SetSubmissionAnimationDisabled sets the submissionAnimationDisabled property value. Indicates whether to show the turn-in celebration animation. If true, indicates to skip the animation. The default value is false.
 func (m *EducationAssignmentSettings) SetSubmissionAnimationDisabled(value *bool)() {
     err := m.GetBackingStore().Set("submissionAnimationDisabled", value)
     if err != nil {
         panic(err)
     }
 }
-// EducationAssignmentSettingsable 
 type EducationAssignmentSettingsable interface {
     Entityable
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable

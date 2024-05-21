@@ -1,26 +1,27 @@
 package models
 import (
-    "errors"
+    "math"
     "strings"
 )
-// 
 type SynchronizationJobRestartScope int
 
 const (
-    NONE_SYNCHRONIZATIONJOBRESTARTSCOPE SynchronizationJobRestartScope = iota
-    CONNECTORDATASTORE_SYNCHRONIZATIONJOBRESTARTSCOPE
-    ESCROWS_SYNCHRONIZATIONJOBRESTARTSCOPE
-    WATERMARK_SYNCHRONIZATIONJOBRESTARTSCOPE
-    QUARANTINESTATE_SYNCHRONIZATIONJOBRESTARTSCOPE
-    FULL_SYNCHRONIZATIONJOBRESTARTSCOPE
-    FORCEDELETES_SYNCHRONIZATIONJOBRESTARTSCOPE
+    NONE_SYNCHRONIZATIONJOBRESTARTSCOPE = 1
+    CONNECTORDATASTORE_SYNCHRONIZATIONJOBRESTARTSCOPE = 2
+    ESCROWS_SYNCHRONIZATIONJOBRESTARTSCOPE = 4
+    WATERMARK_SYNCHRONIZATIONJOBRESTARTSCOPE = 8
+    QUARANTINESTATE_SYNCHRONIZATIONJOBRESTARTSCOPE = 16
+    FULL_SYNCHRONIZATIONJOBRESTARTSCOPE = 32
+    FORCEDELETES_SYNCHRONIZATIONJOBRESTARTSCOPE = 64
 )
 
 func (i SynchronizationJobRestartScope) String() string {
     var values []string
-    for p := SynchronizationJobRestartScope(1); p <= FORCEDELETES_SYNCHRONIZATIONJOBRESTARTSCOPE; p <<= 1 {
-        if i&p == p {
-            values = append(values, []string{"None", "ConnectorDataStore", "Escrows", "Watermark", "QuarantineState", "Full", "ForceDeletes"}[p])
+    options := []string{"None", "ConnectorDataStore", "Escrows", "Watermark", "QuarantineState", "Full", "ForceDeletes"}
+    for p := 0; p < 7; p++ {
+        mantis := SynchronizationJobRestartScope(int(math.Pow(2, float64(p))))
+        if i&mantis == mantis {
+            values = append(values, options[p])
         }
     }
     return strings.Join(values, ",")
@@ -45,7 +46,7 @@ func ParseSynchronizationJobRestartScope(v string) (any, error) {
             case "ForceDeletes":
                 result |= FORCEDELETES_SYNCHRONIZATIONJOBRESTARTSCOPE
             default:
-                return 0, errors.New("Unknown SynchronizationJobRestartScope value: " + v)
+                return nil, nil
         }
     }
     return &result, nil

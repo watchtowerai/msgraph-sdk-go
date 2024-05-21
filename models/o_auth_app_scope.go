@@ -1,8 +1,4 @@
 package models
-import (
-    "errors"
-)
-// 
 type OAuthAppScope int
 
 const (
@@ -42,7 +38,7 @@ func ParseOAuthAppScope(v string) (any, error) {
         case "unknownFutureValue":
             result = UNKNOWNFUTUREVALUE_OAUTHAPPSCOPE
         default:
-            return 0, errors.New("Unknown OAuthAppScope value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

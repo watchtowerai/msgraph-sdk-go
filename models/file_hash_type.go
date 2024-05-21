@@ -1,8 +1,4 @@
 package models
-import (
-    "errors"
-)
-// 
 type FileHashType int
 
 const (
@@ -39,7 +35,7 @@ func ParseFileHashType(v string) (any, error) {
         case "unknownFutureValue":
             result = UNKNOWNFUTUREVALUE_FILEHASHTYPE
         default:
-            return 0, errors.New("Unknown FileHashType value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

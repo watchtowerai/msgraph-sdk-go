@@ -1,25 +1,26 @@
 package models
 import (
-    "errors"
+    "math"
     "strings"
 )
-// 
 type DirectoryDefinitionDiscoverabilities int
 
 const (
-    NONE_DIRECTORYDEFINITIONDISCOVERABILITIES DirectoryDefinitionDiscoverabilities = iota
-    ATTRIBUTENAMES_DIRECTORYDEFINITIONDISCOVERABILITIES
-    ATTRIBUTEDATATYPES_DIRECTORYDEFINITIONDISCOVERABILITIES
-    ATTRIBUTEREADONLY_DIRECTORYDEFINITIONDISCOVERABILITIES
-    REFERENCEATTRIBUTES_DIRECTORYDEFINITIONDISCOVERABILITIES
-    UNKNOWNFUTUREVALUE_DIRECTORYDEFINITIONDISCOVERABILITIES
+    NONE_DIRECTORYDEFINITIONDISCOVERABILITIES = 1
+    ATTRIBUTENAMES_DIRECTORYDEFINITIONDISCOVERABILITIES = 2
+    ATTRIBUTEDATATYPES_DIRECTORYDEFINITIONDISCOVERABILITIES = 4
+    ATTRIBUTEREADONLY_DIRECTORYDEFINITIONDISCOVERABILITIES = 8
+    REFERENCEATTRIBUTES_DIRECTORYDEFINITIONDISCOVERABILITIES = 16
+    UNKNOWNFUTUREVALUE_DIRECTORYDEFINITIONDISCOVERABILITIES = 32
 )
 
 func (i DirectoryDefinitionDiscoverabilities) String() string {
     var values []string
-    for p := DirectoryDefinitionDiscoverabilities(1); p <= UNKNOWNFUTUREVALUE_DIRECTORYDEFINITIONDISCOVERABILITIES; p <<= 1 {
-        if i&p == p {
-            values = append(values, []string{"None", "AttributeNames", "AttributeDataTypes", "AttributeReadOnly", "ReferenceAttributes", "UnknownFutureValue"}[p])
+    options := []string{"None", "AttributeNames", "AttributeDataTypes", "AttributeReadOnly", "ReferenceAttributes", "UnknownFutureValue"}
+    for p := 0; p < 6; p++ {
+        mantis := DirectoryDefinitionDiscoverabilities(int(math.Pow(2, float64(p))))
+        if i&mantis == mantis {
+            values = append(values, options[p])
         }
     }
     return strings.Join(values, ",")
@@ -42,7 +43,7 @@ func ParseDirectoryDefinitionDiscoverabilities(v string) (any, error) {
             case "UnknownFutureValue":
                 result |= UNKNOWNFUTUREVALUE_DIRECTORYDEFINITIONDISCOVERABILITIES
             default:
-                return 0, errors.New("Unknown DirectoryDefinitionDiscoverabilities value: " + v)
+                return nil, nil
         }
     }
     return &result, nil

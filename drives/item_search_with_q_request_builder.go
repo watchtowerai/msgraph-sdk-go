@@ -10,10 +10,12 @@ import (
 type ItemSearchWithQRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
-// ItemSearchWithQRequestBuilderGetQueryParameters invoke function search
+// ItemSearchWithQRequestBuilderGetQueryParameters search the hierarchy of items for items matching a query.You can search within a folder hierarchy, a whole drive, or files shared with the current user.
 type ItemSearchWithQRequestBuilderGetQueryParameters struct {
     // Include count of items
     Count *bool `uriparametername:"%24count"`
+    // Expand related entities
+    Expand []string `uriparametername:"%24expand"`
     // Filter items by property values
     Filter *string `uriparametername:"%24filter"`
     // Order items by property values
@@ -36,32 +38,36 @@ type ItemSearchWithQRequestBuilderGetRequestConfiguration struct {
     // Request query parameters
     QueryParameters *ItemSearchWithQRequestBuilderGetQueryParameters
 }
-// NewItemSearchWithQRequestBuilderInternal instantiates a new SearchWithQRequestBuilder and sets the default values.
+// NewItemSearchWithQRequestBuilderInternal instantiates a new ItemSearchWithQRequestBuilder and sets the default values.
 func NewItemSearchWithQRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter, q *string)(*ItemSearchWithQRequestBuilder) {
     m := &ItemSearchWithQRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/drives/{drive%2Did}/search(q='{q}'){?%24top,%24skip,%24search,%24filter,%24count,%24select,%24orderby}", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/drives/{drive%2Did}/search(q='{q}'){?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", pathParameters),
     }
     if q != nil {
         m.BaseRequestBuilder.PathParameters["q"] = *q
     }
     return m
 }
-// NewItemSearchWithQRequestBuilder instantiates a new SearchWithQRequestBuilder and sets the default values.
+// NewItemSearchWithQRequestBuilder instantiates a new ItemSearchWithQRequestBuilder and sets the default values.
 func NewItemSearchWithQRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemSearchWithQRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl
     return NewItemSearchWithQRequestBuilderInternal(urlParams, requestAdapter, nil)
 }
-// Get invoke function search
+// Get search the hierarchy of items for items matching a query.You can search within a folder hierarchy, a whole drive, or files shared with the current user.
 // Deprecated: This method is obsolete. Use GetAsSearchWithQGetResponse instead.
+// returns a ItemSearchWithQResponseable when successful
+// returns a ODataError error when the service returns a 4XX or 5XX status code
+// [Find more info here]
+// 
+// [Find more info here]: https://learn.microsoft.com/graph/api/driveitem-search?view=graph-rest-1.0
 func (m *ItemSearchWithQRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemSearchWithQRequestBuilderGetRequestConfiguration)(ItemSearchWithQResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return nil, err
     }
     errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
-        "4XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
-        "5XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
+        "XXX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
     }
     res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, CreateItemSearchWithQResponseFromDiscriminatorValue, errorMapping)
     if err != nil {
@@ -72,15 +78,19 @@ func (m *ItemSearchWithQRequestBuilder) Get(ctx context.Context, requestConfigur
     }
     return res.(ItemSearchWithQResponseable), nil
 }
-// GetAsSearchWithQGetResponse invoke function search
+// GetAsSearchWithQGetResponse search the hierarchy of items for items matching a query.You can search within a folder hierarchy, a whole drive, or files shared with the current user.
+// returns a ItemSearchWithQGetResponseable when successful
+// returns a ODataError error when the service returns a 4XX or 5XX status code
+// [Find more info here]
+// 
+// [Find more info here]: https://learn.microsoft.com/graph/api/driveitem-search?view=graph-rest-1.0
 func (m *ItemSearchWithQRequestBuilder) GetAsSearchWithQGetResponse(ctx context.Context, requestConfiguration *ItemSearchWithQRequestBuilderGetRequestConfiguration)(ItemSearchWithQGetResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return nil, err
     }
     errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
-        "4XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
-        "5XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
+        "XXX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
     }
     res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, CreateItemSearchWithQGetResponseFromDiscriminatorValue, errorMapping)
     if err != nil {
@@ -91,7 +101,8 @@ func (m *ItemSearchWithQRequestBuilder) GetAsSearchWithQGetResponse(ctx context.
     }
     return res.(ItemSearchWithQGetResponseable), nil
 }
-// ToGetRequestInformation invoke function search
+// ToGetRequestInformation search the hierarchy of items for items matching a query.You can search within a folder hierarchy, a whole drive, or files shared with the current user.
+// returns a *RequestInformation when successful
 func (m *ItemSearchWithQRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *ItemSearchWithQRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -105,6 +116,7 @@ func (m *ItemSearchWithQRequestBuilder) ToGetRequestInformation(ctx context.Cont
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+// returns a *ItemSearchWithQRequestBuilder when successful
 func (m *ItemSearchWithQRequestBuilder) WithUrl(rawUrl string)(*ItemSearchWithQRequestBuilder) {
     return NewItemSearchWithQRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

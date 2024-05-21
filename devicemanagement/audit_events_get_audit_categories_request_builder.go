@@ -10,7 +10,7 @@ import (
 type AuditEventsGetAuditCategoriesRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
-// AuditEventsGetAuditCategoriesRequestBuilderGetQueryParameters invoke function getAuditCategories
+// AuditEventsGetAuditCategoriesRequestBuilderGetQueryParameters not yet documented
 type AuditEventsGetAuditCategoriesRequestBuilderGetQueryParameters struct {
     // Include count of items
     Count *bool `uriparametername:"%24count"`
@@ -32,29 +32,33 @@ type AuditEventsGetAuditCategoriesRequestBuilderGetRequestConfiguration struct {
     // Request query parameters
     QueryParameters *AuditEventsGetAuditCategoriesRequestBuilderGetQueryParameters
 }
-// NewAuditEventsGetAuditCategoriesRequestBuilderInternal instantiates a new GetAuditCategoriesRequestBuilder and sets the default values.
+// NewAuditEventsGetAuditCategoriesRequestBuilderInternal instantiates a new AuditEventsGetAuditCategoriesRequestBuilder and sets the default values.
 func NewAuditEventsGetAuditCategoriesRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*AuditEventsGetAuditCategoriesRequestBuilder) {
     m := &AuditEventsGetAuditCategoriesRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/deviceManagement/auditEvents/getAuditCategories(){?%24top,%24skip,%24search,%24filter,%24count}", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/deviceManagement/auditEvents/getAuditCategories(){?%24count,%24filter,%24search,%24skip,%24top}", pathParameters),
     }
     return m
 }
-// NewAuditEventsGetAuditCategoriesRequestBuilder instantiates a new GetAuditCategoriesRequestBuilder and sets the default values.
+// NewAuditEventsGetAuditCategoriesRequestBuilder instantiates a new AuditEventsGetAuditCategoriesRequestBuilder and sets the default values.
 func NewAuditEventsGetAuditCategoriesRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*AuditEventsGetAuditCategoriesRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl
     return NewAuditEventsGetAuditCategoriesRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Get invoke function getAuditCategories
+// Get not yet documented
 // Deprecated: This method is obsolete. Use GetAsGetAuditCategoriesGetResponse instead.
+// returns a AuditEventsGetAuditCategoriesResponseable when successful
+// returns a ODataError error when the service returns a 4XX or 5XX status code
+// [Find more info here]
+// 
+// [Find more info here]: https://learn.microsoft.com/graph/api/intune-auditing-auditevent-getauditcategories?view=graph-rest-1.0
 func (m *AuditEventsGetAuditCategoriesRequestBuilder) Get(ctx context.Context, requestConfiguration *AuditEventsGetAuditCategoriesRequestBuilderGetRequestConfiguration)(AuditEventsGetAuditCategoriesResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return nil, err
     }
     errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
-        "4XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
-        "5XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
+        "XXX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
     }
     res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, CreateAuditEventsGetAuditCategoriesResponseFromDiscriminatorValue, errorMapping)
     if err != nil {
@@ -65,15 +69,19 @@ func (m *AuditEventsGetAuditCategoriesRequestBuilder) Get(ctx context.Context, r
     }
     return res.(AuditEventsGetAuditCategoriesResponseable), nil
 }
-// GetAsGetAuditCategoriesGetResponse invoke function getAuditCategories
+// GetAsGetAuditCategoriesGetResponse not yet documented
+// returns a AuditEventsGetAuditCategoriesGetResponseable when successful
+// returns a ODataError error when the service returns a 4XX or 5XX status code
+// [Find more info here]
+// 
+// [Find more info here]: https://learn.microsoft.com/graph/api/intune-auditing-auditevent-getauditcategories?view=graph-rest-1.0
 func (m *AuditEventsGetAuditCategoriesRequestBuilder) GetAsGetAuditCategoriesGetResponse(ctx context.Context, requestConfiguration *AuditEventsGetAuditCategoriesRequestBuilderGetRequestConfiguration)(AuditEventsGetAuditCategoriesGetResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return nil, err
     }
     errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
-        "4XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
-        "5XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
+        "XXX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
     }
     res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, CreateAuditEventsGetAuditCategoriesGetResponseFromDiscriminatorValue, errorMapping)
     if err != nil {
@@ -84,7 +92,8 @@ func (m *AuditEventsGetAuditCategoriesRequestBuilder) GetAsGetAuditCategoriesGet
     }
     return res.(AuditEventsGetAuditCategoriesGetResponseable), nil
 }
-// ToGetRequestInformation invoke function getAuditCategories
+// ToGetRequestInformation not yet documented
+// returns a *RequestInformation when successful
 func (m *AuditEventsGetAuditCategoriesRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *AuditEventsGetAuditCategoriesRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -98,6 +107,7 @@ func (m *AuditEventsGetAuditCategoriesRequestBuilder) ToGetRequestInformation(ct
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+// returns a *AuditEventsGetAuditCategoriesRequestBuilder when successful
 func (m *AuditEventsGetAuditCategoriesRequestBuilder) WithUrl(rawUrl string)(*AuditEventsGetAuditCategoriesRequestBuilder) {
     return NewAuditEventsGetAuditCategoriesRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

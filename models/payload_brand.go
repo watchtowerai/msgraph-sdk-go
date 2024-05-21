@@ -1,8 +1,4 @@
 package models
-import (
-    "errors"
-)
-// 
 type PayloadBrand int
 
 const (
@@ -78,7 +74,7 @@ func ParsePayloadBrand(v string) (any, error) {
         case "unknownFutureValue":
             result = UNKNOWNFUTUREVALUE_PAYLOADBRAND
         default:
-            return 0, errors.New("Unknown PayloadBrand value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

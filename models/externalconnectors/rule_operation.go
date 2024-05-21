@@ -1,8 +1,4 @@
 package externalconnectors
-import (
-    "errors"
-)
-// 
 type RuleOperation int
 
 const (
@@ -39,7 +35,7 @@ func ParseRuleOperation(v string) (any, error) {
         case "unknownFutureValue":
             result = UNKNOWNFUTUREVALUE_RULEOPERATION
         default:
-            return 0, errors.New("Unknown RuleOperation value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

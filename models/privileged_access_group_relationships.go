@@ -1,8 +1,4 @@
 package models
-import (
-    "errors"
-)
-// 
 type PrivilegedAccessGroupRelationships int
 
 const (
@@ -24,7 +20,7 @@ func ParsePrivilegedAccessGroupRelationships(v string) (any, error) {
         case "unknownFutureValue":
             result = UNKNOWNFUTUREVALUE_PRIVILEGEDACCESSGROUPRELATIONSHIPS
         default:
-            return 0, errors.New("Unknown PrivilegedAccessGroupRelationships value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

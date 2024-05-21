@@ -1,8 +1,4 @@
 package models
-import (
-    "errors"
-)
-// 
 type IosUpdatesInstallStatus int
 
 const (
@@ -69,7 +65,7 @@ func ParseIosUpdatesInstallStatus(v string) (any, error) {
         case "unknown":
             result = UNKNOWN_IOSUPDATESINSTALLSTATUS
         default:
-            return 0, errors.New("Unknown IosUpdatesInstallStatus value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

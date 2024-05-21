@@ -1,6 +1,6 @@
 package models
 import (
-    "errors"
+    "math"
     "strings"
 )
 // Contains properties for Windows architecture.
@@ -8,22 +8,24 @@ type WindowsArchitecture int
 
 const (
     // No flags set.
-    NONE_WINDOWSARCHITECTURE WindowsArchitecture = iota
+    NONE_WINDOWSARCHITECTURE = 1
     // Whether or not the X86 Windows architecture type is supported.
-    X86_WINDOWSARCHITECTURE
+    X86_WINDOWSARCHITECTURE = 2
     // Whether or not the X64 Windows architecture type is supported.
-    X64_WINDOWSARCHITECTURE
+    X64_WINDOWSARCHITECTURE = 4
     // Whether or not the Arm Windows architecture type is supported.
-    ARM_WINDOWSARCHITECTURE
+    ARM_WINDOWSARCHITECTURE = 8
     // Whether or not the Neutral Windows architecture type is supported.
-    NEUTRAL_WINDOWSARCHITECTURE
+    NEUTRAL_WINDOWSARCHITECTURE = 16
 )
 
 func (i WindowsArchitecture) String() string {
     var values []string
-    for p := WindowsArchitecture(1); p <= NEUTRAL_WINDOWSARCHITECTURE; p <<= 1 {
-        if i&p == p {
-            values = append(values, []string{"none", "x86", "x64", "arm", "neutral"}[p])
+    options := []string{"none", "x86", "x64", "arm", "neutral"}
+    for p := 0; p < 5; p++ {
+        mantis := WindowsArchitecture(int(math.Pow(2, float64(p))))
+        if i&mantis == mantis {
+            values = append(values, options[p])
         }
     }
     return strings.Join(values, ",")
@@ -44,7 +46,7 @@ func ParseWindowsArchitecture(v string) (any, error) {
             case "neutral":
                 result |= NEUTRAL_WINDOWSARCHITECTURE
             default:
-                return 0, errors.New("Unknown WindowsArchitecture value: " + v)
+                return nil, nil
         }
     }
     return &result, nil

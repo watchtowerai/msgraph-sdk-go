@@ -1,8 +1,4 @@
 package security
-import (
-    "errors"
-)
-// 
 type BehaviorDuringRetentionPeriod int
 
 const (
@@ -30,7 +26,7 @@ func ParseBehaviorDuringRetentionPeriod(v string) (any, error) {
         case "unknownFutureValue":
             result = UNKNOWNFUTUREVALUE_BEHAVIORDURINGRETENTIONPERIOD
         default:
-            return 0, errors.New("Unknown BehaviorDuringRetentionPeriod value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

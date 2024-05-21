@@ -4,11 +4,10 @@ import (
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91 "github.com/microsoft/kiota-abstractions-go/serialization"
 )
 
-// IdentityContainer 
 type IdentityContainer struct {
     Entity
 }
-// NewIdentityContainer instantiates a new identityContainer and sets the default values.
+// NewIdentityContainer instantiates a new IdentityContainer and sets the default values.
 func NewIdentityContainer()(*IdentityContainer) {
     m := &IdentityContainer{
         Entity: *NewEntity(),
@@ -16,10 +15,12 @@ func NewIdentityContainer()(*IdentityContainer) {
     return m
 }
 // CreateIdentityContainerFromDiscriminatorValue creates a new instance of the appropriate class based on discriminator value
+// returns a Parsable when successful
 func CreateIdentityContainerFromDiscriminatorValue(parseNode i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, error) {
     return NewIdentityContainer(), nil
 }
 // GetApiConnectors gets the apiConnectors property value. Represents entry point for API connectors.
+// returns a []IdentityApiConnectorable when successful
 func (m *IdentityContainer) GetApiConnectors()([]IdentityApiConnectorable) {
     val, err := m.GetBackingStore().Get("apiConnectors")
     if err != nil {
@@ -30,7 +31,20 @@ func (m *IdentityContainer) GetApiConnectors()([]IdentityApiConnectorable) {
     }
     return nil
 }
+// GetAuthenticationEventListeners gets the authenticationEventListeners property value. Represents listeners for custom authentication extension events in Azure AD for workforce and customers.
+// returns a []AuthenticationEventListenerable when successful
+func (m *IdentityContainer) GetAuthenticationEventListeners()([]AuthenticationEventListenerable) {
+    val, err := m.GetBackingStore().Get("authenticationEventListeners")
+    if err != nil {
+        panic(err)
+    }
+    if val != nil {
+        return val.([]AuthenticationEventListenerable)
+    }
+    return nil
+}
 // GetB2xUserFlows gets the b2xUserFlows property value. Represents entry point for B2X/self-service sign-up identity userflows.
+// returns a []B2xIdentityUserFlowable when successful
 func (m *IdentityContainer) GetB2xUserFlows()([]B2xIdentityUserFlowable) {
     val, err := m.GetBackingStore().Get("b2xUserFlows")
     if err != nil {
@@ -42,6 +56,7 @@ func (m *IdentityContainer) GetB2xUserFlows()([]B2xIdentityUserFlowable) {
     return nil
 }
 // GetConditionalAccess gets the conditionalAccess property value. the entry point for the Conditional Access (CA) object model.
+// returns a ConditionalAccessRootable when successful
 func (m *IdentityContainer) GetConditionalAccess()(ConditionalAccessRootable) {
     val, err := m.GetBackingStore().Get("conditionalAccess")
     if err != nil {
@@ -52,7 +67,20 @@ func (m *IdentityContainer) GetConditionalAccess()(ConditionalAccessRootable) {
     }
     return nil
 }
+// GetCustomAuthenticationExtensions gets the customAuthenticationExtensions property value. Represents custom extensions to authentication flows in Azure AD for workforce and customers.
+// returns a []CustomAuthenticationExtensionable when successful
+func (m *IdentityContainer) GetCustomAuthenticationExtensions()([]CustomAuthenticationExtensionable) {
+    val, err := m.GetBackingStore().Get("customAuthenticationExtensions")
+    if err != nil {
+        panic(err)
+    }
+    if val != nil {
+        return val.([]CustomAuthenticationExtensionable)
+    }
+    return nil
+}
 // GetFieldDeserializers the deserialization information for the current model
+// returns a map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error) when successful
 func (m *IdentityContainer) GetFieldDeserializers()(map[string]func(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode)(error)) {
     res := m.Entity.GetFieldDeserializers()
     res["apiConnectors"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
@@ -68,6 +96,22 @@ func (m *IdentityContainer) GetFieldDeserializers()(map[string]func(i878a80d2330
                 }
             }
             m.SetApiConnectors(res)
+        }
+        return nil
+    }
+    res["authenticationEventListeners"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetCollectionOfObjectValues(CreateAuthenticationEventListenerFromDiscriminatorValue)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            res := make([]AuthenticationEventListenerable, len(val))
+            for i, v := range val {
+                if v != nil {
+                    res[i] = v.(AuthenticationEventListenerable)
+                }
+            }
+            m.SetAuthenticationEventListeners(res)
         }
         return nil
     }
@@ -94,6 +138,22 @@ func (m *IdentityContainer) GetFieldDeserializers()(map[string]func(i878a80d2330
         }
         if val != nil {
             m.SetConditionalAccess(val.(ConditionalAccessRootable))
+        }
+        return nil
+    }
+    res["customAuthenticationExtensions"] = func (n i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.ParseNode) error {
+        val, err := n.GetCollectionOfObjectValues(CreateCustomAuthenticationExtensionFromDiscriminatorValue)
+        if err != nil {
+            return err
+        }
+        if val != nil {
+            res := make([]CustomAuthenticationExtensionable, len(val))
+            for i, v := range val {
+                if v != nil {
+                    res[i] = v.(CustomAuthenticationExtensionable)
+                }
+            }
+            m.SetCustomAuthenticationExtensions(res)
         }
         return nil
     }
@@ -132,6 +192,7 @@ func (m *IdentityContainer) GetFieldDeserializers()(map[string]func(i878a80d2330
     return res
 }
 // GetIdentityProviders gets the identityProviders property value. The identityProviders property
+// returns a []IdentityProviderBaseable when successful
 func (m *IdentityContainer) GetIdentityProviders()([]IdentityProviderBaseable) {
     val, err := m.GetBackingStore().Get("identityProviders")
     if err != nil {
@@ -143,6 +204,7 @@ func (m *IdentityContainer) GetIdentityProviders()([]IdentityProviderBaseable) {
     return nil
 }
 // GetUserFlowAttributes gets the userFlowAttributes property value. Represents entry point for identity userflow attributes.
+// returns a []IdentityUserFlowAttributeable when successful
 func (m *IdentityContainer) GetUserFlowAttributes()([]IdentityUserFlowAttributeable) {
     val, err := m.GetBackingStore().Get("userFlowAttributes")
     if err != nil {
@@ -171,6 +233,18 @@ func (m *IdentityContainer) Serialize(writer i878a80d2330e89d26896388a3f487eef27
             return err
         }
     }
+    if m.GetAuthenticationEventListeners() != nil {
+        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetAuthenticationEventListeners()))
+        for i, v := range m.GetAuthenticationEventListeners() {
+            if v != nil {
+                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+            }
+        }
+        err = writer.WriteCollectionOfObjectValues("authenticationEventListeners", cast)
+        if err != nil {
+            return err
+        }
+    }
     if m.GetB2xUserFlows() != nil {
         cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetB2xUserFlows()))
         for i, v := range m.GetB2xUserFlows() {
@@ -185,6 +259,18 @@ func (m *IdentityContainer) Serialize(writer i878a80d2330e89d26896388a3f487eef27
     }
     {
         err = writer.WriteObjectValue("conditionalAccess", m.GetConditionalAccess())
+        if err != nil {
+            return err
+        }
+    }
+    if m.GetCustomAuthenticationExtensions() != nil {
+        cast := make([]i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable, len(m.GetCustomAuthenticationExtensions()))
+        for i, v := range m.GetCustomAuthenticationExtensions() {
+            if v != nil {
+                cast[i] = v.(i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable)
+            }
+        }
+        err = writer.WriteCollectionOfObjectValues("customAuthenticationExtensions", cast)
         if err != nil {
             return err
         }
@@ -222,6 +308,13 @@ func (m *IdentityContainer) SetApiConnectors(value []IdentityApiConnectorable)()
         panic(err)
     }
 }
+// SetAuthenticationEventListeners sets the authenticationEventListeners property value. Represents listeners for custom authentication extension events in Azure AD for workforce and customers.
+func (m *IdentityContainer) SetAuthenticationEventListeners(value []AuthenticationEventListenerable)() {
+    err := m.GetBackingStore().Set("authenticationEventListeners", value)
+    if err != nil {
+        panic(err)
+    }
+}
 // SetB2xUserFlows sets the b2xUserFlows property value. Represents entry point for B2X/self-service sign-up identity userflows.
 func (m *IdentityContainer) SetB2xUserFlows(value []B2xIdentityUserFlowable)() {
     err := m.GetBackingStore().Set("b2xUserFlows", value)
@@ -232,6 +325,13 @@ func (m *IdentityContainer) SetB2xUserFlows(value []B2xIdentityUserFlowable)() {
 // SetConditionalAccess sets the conditionalAccess property value. the entry point for the Conditional Access (CA) object model.
 func (m *IdentityContainer) SetConditionalAccess(value ConditionalAccessRootable)() {
     err := m.GetBackingStore().Set("conditionalAccess", value)
+    if err != nil {
+        panic(err)
+    }
+}
+// SetCustomAuthenticationExtensions sets the customAuthenticationExtensions property value. Represents custom extensions to authentication flows in Azure AD for workforce and customers.
+func (m *IdentityContainer) SetCustomAuthenticationExtensions(value []CustomAuthenticationExtensionable)() {
+    err := m.GetBackingStore().Set("customAuthenticationExtensions", value)
     if err != nil {
         panic(err)
     }
@@ -250,18 +350,21 @@ func (m *IdentityContainer) SetUserFlowAttributes(value []IdentityUserFlowAttrib
         panic(err)
     }
 }
-// IdentityContainerable 
 type IdentityContainerable interface {
     Entityable
     i878a80d2330e89d26896388a3f487eef27b0a0e6c010c493bf80be1452208f91.Parsable
     GetApiConnectors()([]IdentityApiConnectorable)
+    GetAuthenticationEventListeners()([]AuthenticationEventListenerable)
     GetB2xUserFlows()([]B2xIdentityUserFlowable)
     GetConditionalAccess()(ConditionalAccessRootable)
+    GetCustomAuthenticationExtensions()([]CustomAuthenticationExtensionable)
     GetIdentityProviders()([]IdentityProviderBaseable)
     GetUserFlowAttributes()([]IdentityUserFlowAttributeable)
     SetApiConnectors(value []IdentityApiConnectorable)()
+    SetAuthenticationEventListeners(value []AuthenticationEventListenerable)()
     SetB2xUserFlows(value []B2xIdentityUserFlowable)()
     SetConditionalAccess(value ConditionalAccessRootable)()
+    SetCustomAuthenticationExtensions(value []CustomAuthenticationExtensionable)()
     SetIdentityProviders(value []IdentityProviderBaseable)()
     SetUserFlowAttributes(value []IdentityUserFlowAttributeable)()
 }

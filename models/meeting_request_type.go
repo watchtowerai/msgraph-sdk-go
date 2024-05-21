@@ -1,8 +1,4 @@
 package models
-import (
-    "errors"
-)
-// 
 type MeetingRequestType int
 
 const (
@@ -36,7 +32,7 @@ func ParseMeetingRequestType(v string) (any, error) {
         case "principalWantsCopy":
             result = PRINCIPALWANTSCOPY_MEETINGREQUESTTYPE
         default:
-            return 0, errors.New("Unknown MeetingRequestType value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

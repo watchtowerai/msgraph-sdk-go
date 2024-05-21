@@ -1,8 +1,4 @@
 package externalconnectors
-import (
-    "errors"
-)
-// 
 type Label int
 
 const (
@@ -48,7 +44,7 @@ func ParseLabel(v string) (any, error) {
         case "iconUrl":
             result = ICONURL_LABEL
         default:
-            return 0, errors.New("Unknown Label value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

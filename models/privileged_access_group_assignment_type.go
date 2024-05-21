@@ -1,8 +1,4 @@
 package models
-import (
-    "errors"
-)
-// 
 type PrivilegedAccessGroupAssignmentType int
 
 const (
@@ -24,7 +20,7 @@ func ParsePrivilegedAccessGroupAssignmentType(v string) (any, error) {
         case "unknownFutureValue":
             result = UNKNOWNFUTUREVALUE_PRIVILEGEDACCESSGROUPASSIGNMENTTYPE
         default:
-            return 0, errors.New("Unknown PrivilegedAccessGroupAssignmentType value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

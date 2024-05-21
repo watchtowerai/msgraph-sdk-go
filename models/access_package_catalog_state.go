@@ -1,8 +1,4 @@
 package models
-import (
-    "errors"
-)
-// 
 type AccessPackageCatalogState int
 
 const (
@@ -24,7 +20,7 @@ func ParseAccessPackageCatalogState(v string) (any, error) {
         case "unknownFutureValue":
             result = UNKNOWNFUTUREVALUE_ACCESSPACKAGECATALOGSTATE
         default:
-            return 0, errors.New("Unknown AccessPackageCatalogState value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

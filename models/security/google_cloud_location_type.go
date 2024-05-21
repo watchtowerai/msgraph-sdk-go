@@ -1,8 +1,4 @@
 package security
-import (
-    "errors"
-)
-// 
 type GoogleCloudLocationType int
 
 const (
@@ -30,7 +26,7 @@ func ParseGoogleCloudLocationType(v string) (any, error) {
         case "unknownFutureValue":
             result = UNKNOWNFUTUREVALUE_GOOGLECLOUDLOCATIONTYPE
         default:
-            return 0, errors.New("Unknown GoogleCloudLocationType value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

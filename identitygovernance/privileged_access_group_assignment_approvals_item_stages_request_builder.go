@@ -11,7 +11,7 @@ import (
 type PrivilegedAccessGroupAssignmentApprovalsItemStagesRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
-// PrivilegedAccessGroupAssignmentApprovalsItemStagesRequestBuilderGetQueryParameters list the approvalStage objects associated with an approval. This API request is made by an approver in the following scenarios: In Microsoft Entra entitlement management, providing the identifier of the access package assignment request.In PIM for groups, providing the identifier of the assignment schedule request.
+// PrivilegedAccessGroupAssignmentApprovalsItemStagesRequestBuilderGetQueryParameters a collection of stages in the approval decision.
 type PrivilegedAccessGroupAssignmentApprovalsItemStagesRequestBuilderGetQueryParameters struct {
     // Include count of items
     Count *bool `uriparametername:"%24count"`
@@ -47,6 +47,7 @@ type PrivilegedAccessGroupAssignmentApprovalsItemStagesRequestBuilderPostRequest
     Options []i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestOption
 }
 // ByApprovalStageId provides operations to manage the stages property of the microsoft.graph.approval entity.
+// returns a *PrivilegedAccessGroupAssignmentApprovalsItemStagesApprovalStageItemRequestBuilder when successful
 func (m *PrivilegedAccessGroupAssignmentApprovalsItemStagesRequestBuilder) ByApprovalStageId(approvalStageId string)(*PrivilegedAccessGroupAssignmentApprovalsItemStagesApprovalStageItemRequestBuilder) {
     urlTplParams := make(map[string]string)
     for idx, item := range m.BaseRequestBuilder.PathParameters {
@@ -57,35 +58,34 @@ func (m *PrivilegedAccessGroupAssignmentApprovalsItemStagesRequestBuilder) ByApp
     }
     return NewPrivilegedAccessGroupAssignmentApprovalsItemStagesApprovalStageItemRequestBuilderInternal(urlTplParams, m.BaseRequestBuilder.RequestAdapter)
 }
-// NewPrivilegedAccessGroupAssignmentApprovalsItemStagesRequestBuilderInternal instantiates a new StagesRequestBuilder and sets the default values.
+// NewPrivilegedAccessGroupAssignmentApprovalsItemStagesRequestBuilderInternal instantiates a new PrivilegedAccessGroupAssignmentApprovalsItemStagesRequestBuilder and sets the default values.
 func NewPrivilegedAccessGroupAssignmentApprovalsItemStagesRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*PrivilegedAccessGroupAssignmentApprovalsItemStagesRequestBuilder) {
     m := &PrivilegedAccessGroupAssignmentApprovalsItemStagesRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/identityGovernance/privilegedAccess/group/assignmentApprovals/{approval%2Did}/stages{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/identityGovernance/privilegedAccess/group/assignmentApprovals/{approval%2Did}/stages{?%24count,%24expand,%24filter,%24orderby,%24search,%24select,%24skip,%24top}", pathParameters),
     }
     return m
 }
-// NewPrivilegedAccessGroupAssignmentApprovalsItemStagesRequestBuilder instantiates a new StagesRequestBuilder and sets the default values.
+// NewPrivilegedAccessGroupAssignmentApprovalsItemStagesRequestBuilder instantiates a new PrivilegedAccessGroupAssignmentApprovalsItemStagesRequestBuilder and sets the default values.
 func NewPrivilegedAccessGroupAssignmentApprovalsItemStagesRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*PrivilegedAccessGroupAssignmentApprovalsItemStagesRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl
     return NewPrivilegedAccessGroupAssignmentApprovalsItemStagesRequestBuilderInternal(urlParams, requestAdapter)
 }
 // Count provides operations to count the resources in the collection.
+// returns a *PrivilegedAccessGroupAssignmentApprovalsItemStagesCountRequestBuilder when successful
 func (m *PrivilegedAccessGroupAssignmentApprovalsItemStagesRequestBuilder) Count()(*PrivilegedAccessGroupAssignmentApprovalsItemStagesCountRequestBuilder) {
     return NewPrivilegedAccessGroupAssignmentApprovalsItemStagesCountRequestBuilderInternal(m.BaseRequestBuilder.PathParameters, m.BaseRequestBuilder.RequestAdapter)
 }
-// Get list the approvalStage objects associated with an approval. This API request is made by an approver in the following scenarios: In Microsoft Entra entitlement management, providing the identifier of the access package assignment request.In PIM for groups, providing the identifier of the assignment schedule request.
-// [Find more info here]
-// 
-// [Find more info here]: https://learn.microsoft.com/graph/api/approval-list-stages?view=graph-rest-1.0
+// Get a collection of stages in the approval decision.
+// returns a ApprovalStageCollectionResponseable when successful
+// returns a ODataError error when the service returns a 4XX or 5XX status code
 func (m *PrivilegedAccessGroupAssignmentApprovalsItemStagesRequestBuilder) Get(ctx context.Context, requestConfiguration *PrivilegedAccessGroupAssignmentApprovalsItemStagesRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ApprovalStageCollectionResponseable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return nil, err
     }
     errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
-        "4XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
-        "5XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
+        "XXX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
     }
     res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.CreateApprovalStageCollectionResponseFromDiscriminatorValue, errorMapping)
     if err != nil {
@@ -97,14 +97,15 @@ func (m *PrivilegedAccessGroupAssignmentApprovalsItemStagesRequestBuilder) Get(c
     return res.(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ApprovalStageCollectionResponseable), nil
 }
 // Post create new navigation property to stages for identityGovernance
+// returns a ApprovalStageable when successful
+// returns a ODataError error when the service returns a 4XX or 5XX status code
 func (m *PrivilegedAccessGroupAssignmentApprovalsItemStagesRequestBuilder) Post(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ApprovalStageable, requestConfiguration *PrivilegedAccessGroupAssignmentApprovalsItemStagesRequestBuilderPostRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ApprovalStageable, error) {
     requestInfo, err := m.ToPostRequestInformation(ctx, body, requestConfiguration);
     if err != nil {
         return nil, err
     }
     errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
-        "4XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
-        "5XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
+        "XXX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
     }
     res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.CreateApprovalStageFromDiscriminatorValue, errorMapping)
     if err != nil {
@@ -115,7 +116,8 @@ func (m *PrivilegedAccessGroupAssignmentApprovalsItemStagesRequestBuilder) Post(
     }
     return res.(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ApprovalStageable), nil
 }
-// ToGetRequestInformation list the approvalStage objects associated with an approval. This API request is made by an approver in the following scenarios: In Microsoft Entra entitlement management, providing the identifier of the access package assignment request.In PIM for groups, providing the identifier of the assignment schedule request.
+// ToGetRequestInformation a collection of stages in the approval decision.
+// returns a *RequestInformation when successful
 func (m *PrivilegedAccessGroupAssignmentApprovalsItemStagesRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *PrivilegedAccessGroupAssignmentApprovalsItemStagesRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -129,6 +131,7 @@ func (m *PrivilegedAccessGroupAssignmentApprovalsItemStagesRequestBuilder) ToGet
     return requestInfo, nil
 }
 // ToPostRequestInformation create new navigation property to stages for identityGovernance
+// returns a *RequestInformation when successful
 func (m *PrivilegedAccessGroupAssignmentApprovalsItemStagesRequestBuilder) ToPostRequestInformation(ctx context.Context, body iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ApprovalStageable, requestConfiguration *PrivilegedAccessGroupAssignmentApprovalsItemStagesRequestBuilderPostRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.POST, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -143,6 +146,7 @@ func (m *PrivilegedAccessGroupAssignmentApprovalsItemStagesRequestBuilder) ToPos
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+// returns a *PrivilegedAccessGroupAssignmentApprovalsItemStagesRequestBuilder when successful
 func (m *PrivilegedAccessGroupAssignmentApprovalsItemStagesRequestBuilder) WithUrl(rawUrl string)(*PrivilegedAccessGroupAssignmentApprovalsItemStagesRequestBuilder) {
     return NewPrivilegedAccessGroupAssignmentApprovalsItemStagesRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

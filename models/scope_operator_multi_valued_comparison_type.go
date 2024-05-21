@@ -1,8 +1,4 @@
 package models
-import (
-    "errors"
-)
-// 
 type ScopeOperatorMultiValuedComparisonType int
 
 const (
@@ -21,7 +17,7 @@ func ParseScopeOperatorMultiValuedComparisonType(v string) (any, error) {
         case "Any":
             result = ANY_SCOPEOPERATORMULTIVALUEDCOMPARISONTYPE
         default:
-            return 0, errors.New("Unknown ScopeOperatorMultiValuedComparisonType value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

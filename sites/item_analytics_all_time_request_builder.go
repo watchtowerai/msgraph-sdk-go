@@ -11,7 +11,7 @@ import (
 type ItemAnalyticsAllTimeRequestBuilder struct {
     i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.BaseRequestBuilder
 }
-// ItemAnalyticsAllTimeRequestBuilderGetQueryParameters get [itemAnalytics][] about the views that took place under this resource.The itemAnalytics resource is a convenient way to get activity stats for allTime and the lastSevenDays.For a custom time range or interval, use the [getActivitiesByInterval][] API.
+// ItemAnalyticsAllTimeRequestBuilderGetQueryParameters get allTime from sites
 type ItemAnalyticsAllTimeRequestBuilderGetQueryParameters struct {
     // Expand related entities
     Expand []string `uriparametername:"%24expand"`
@@ -27,31 +27,29 @@ type ItemAnalyticsAllTimeRequestBuilderGetRequestConfiguration struct {
     // Request query parameters
     QueryParameters *ItemAnalyticsAllTimeRequestBuilderGetQueryParameters
 }
-// NewItemAnalyticsAllTimeRequestBuilderInternal instantiates a new AllTimeRequestBuilder and sets the default values.
+// NewItemAnalyticsAllTimeRequestBuilderInternal instantiates a new ItemAnalyticsAllTimeRequestBuilder and sets the default values.
 func NewItemAnalyticsAllTimeRequestBuilderInternal(pathParameters map[string]string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemAnalyticsAllTimeRequestBuilder) {
     m := &ItemAnalyticsAllTimeRequestBuilder{
-        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/sites/{site%2Did}/analytics/allTime{?%24select,%24expand}", pathParameters),
+        BaseRequestBuilder: *i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewBaseRequestBuilder(requestAdapter, "{+baseurl}/sites/{site%2Did}/analytics/allTime{?%24expand,%24select}", pathParameters),
     }
     return m
 }
-// NewItemAnalyticsAllTimeRequestBuilder instantiates a new AllTimeRequestBuilder and sets the default values.
+// NewItemAnalyticsAllTimeRequestBuilder instantiates a new ItemAnalyticsAllTimeRequestBuilder and sets the default values.
 func NewItemAnalyticsAllTimeRequestBuilder(rawUrl string, requestAdapter i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestAdapter)(*ItemAnalyticsAllTimeRequestBuilder) {
     urlParams := make(map[string]string)
     urlParams["request-raw-url"] = rawUrl
     return NewItemAnalyticsAllTimeRequestBuilderInternal(urlParams, requestAdapter)
 }
-// Get get [itemAnalytics][] about the views that took place under this resource.The itemAnalytics resource is a convenient way to get activity stats for allTime and the lastSevenDays.For a custom time range or interval, use the [getActivitiesByInterval][] API.
-// [Find more info here]
-// 
-// [Find more info here]: https://learn.microsoft.com/graph/api/itemanalytics-get?view=graph-rest-1.0
+// Get get allTime from sites
+// returns a ItemActivityStatable when successful
+// returns a ODataError error when the service returns a 4XX or 5XX status code
 func (m *ItemAnalyticsAllTimeRequestBuilder) Get(ctx context.Context, requestConfiguration *ItemAnalyticsAllTimeRequestBuilderGetRequestConfiguration)(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ItemActivityStatable, error) {
     requestInfo, err := m.ToGetRequestInformation(ctx, requestConfiguration);
     if err != nil {
         return nil, err
     }
     errorMapping := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.ErrorMappings {
-        "4XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
-        "5XX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
+        "XXX": ia572726a95efa92ddd544552cd950653dc691023836923576b2f4bf716cf204a.CreateODataErrorFromDiscriminatorValue,
     }
     res, err := m.BaseRequestBuilder.RequestAdapter.Send(ctx, requestInfo, iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.CreateItemActivityStatFromDiscriminatorValue, errorMapping)
     if err != nil {
@@ -62,7 +60,8 @@ func (m *ItemAnalyticsAllTimeRequestBuilder) Get(ctx context.Context, requestCon
     }
     return res.(iadcd81124412c61e647227ecfc4449d8bba17de0380ddda76f641a29edf2b242.ItemActivityStatable), nil
 }
-// ToGetRequestInformation get [itemAnalytics][] about the views that took place under this resource.The itemAnalytics resource is a convenient way to get activity stats for allTime and the lastSevenDays.For a custom time range or interval, use the [getActivitiesByInterval][] API.
+// ToGetRequestInformation get allTime from sites
+// returns a *RequestInformation when successful
 func (m *ItemAnalyticsAllTimeRequestBuilder) ToGetRequestInformation(ctx context.Context, requestConfiguration *ItemAnalyticsAllTimeRequestBuilderGetRequestConfiguration)(*i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.RequestInformation, error) {
     requestInfo := i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.NewRequestInformationWithMethodAndUrlTemplateAndPathParameters(i2ae4187f7daee263371cb1c977df639813ab50ffa529013b7437480d1ec0158f.GET, m.BaseRequestBuilder.UrlTemplate, m.BaseRequestBuilder.PathParameters)
     if requestConfiguration != nil {
@@ -76,6 +75,7 @@ func (m *ItemAnalyticsAllTimeRequestBuilder) ToGetRequestInformation(ctx context
     return requestInfo, nil
 }
 // WithUrl returns a request builder with the provided arbitrary URL. Using this method means any other path or query parameters are ignored.
+// returns a *ItemAnalyticsAllTimeRequestBuilder when successful
 func (m *ItemAnalyticsAllTimeRequestBuilder) WithUrl(rawUrl string)(*ItemAnalyticsAllTimeRequestBuilder) {
     return NewItemAnalyticsAllTimeRequestBuilder(rawUrl, m.BaseRequestBuilder.RequestAdapter);
 }

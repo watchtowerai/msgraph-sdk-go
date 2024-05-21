@@ -1,8 +1,4 @@
 package identitygovernance
-import (
-    "errors"
-)
-// 
 type WorkflowExecutionType int
 
 const (
@@ -24,7 +20,7 @@ func ParseWorkflowExecutionType(v string) (any, error) {
         case "unknownFutureValue":
             result = UNKNOWNFUTUREVALUE_WORKFLOWEXECUTIONTYPE
         default:
-            return 0, errors.New("Unknown WorkflowExecutionType value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

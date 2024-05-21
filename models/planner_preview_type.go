@@ -1,8 +1,4 @@
 package models
-import (
-    "errors"
-)
-// 
 type PlannerPreviewType int
 
 const (
@@ -30,7 +26,7 @@ func ParsePlannerPreviewType(v string) (any, error) {
         case "reference":
             result = REFERENCE_PLANNERPREVIEWTYPE
         default:
-            return 0, errors.New("Unknown PlannerPreviewType value: " + v)
+            return nil, nil
     }
     return &result, nil
 }

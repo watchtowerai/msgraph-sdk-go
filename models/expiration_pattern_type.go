@@ -1,8 +1,4 @@
 package models
-import (
-    "errors"
-)
-// 
 type ExpirationPatternType int
 
 const (
@@ -27,7 +23,7 @@ func ParseExpirationPatternType(v string) (any, error) {
         case "afterDuration":
             result = AFTERDURATION_EXPIRATIONPATTERNTYPE
         default:
-            return 0, errors.New("Unknown ExpirationPatternType value: " + v)
+            return nil, nil
     }
     return &result, nil
 }
