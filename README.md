@@ -1,5 +1,16 @@
 # Microsoft Graph SDK for Go
 
+## Service Metadata
+
+| Key                             | Value                          |
+|---------------------------------|--------------------------------|
+| **TEAM**                        | Team Name                      |
+| **TEAM-MANAGER-EMAIL**          | amit@nightfall.ai                     |
+| **SLACK-DEPLOY-NOTIFY-CHANNEL** | #deploy-notifications-channel  |
+| **SLACK-TEAM-CHANNEL**          | #team-slack-channel            |
+| **TEAM-LINEAR-SLUG**            | DTE                 |
+
+
 [![PkgGoDev](https://pkg.go.dev/badge/github.com/microsoftgraph/msgraph-sdk-go/)](https://pkg.go.dev/github.com/microsoftgraph/msgraph-sdk-go/)
 
 Get started with the Microsoft Graph SDK for Go by integrating the [Microsoft Graph API](https://docs.microsoft.com/graph/overview) into your Go application!
