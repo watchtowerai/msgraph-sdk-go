@@ -4,12 +4,11 @@
 
 | Key                             | Value                          |
 |---------------------------------|--------------------------------|
-| **TEAM**                        | Team Name                      |
-| **TEAM-MANAGER-EMAIL**          | amit@nightfall.ai                     |
+| **TEAM**                        | Detection                      |
+| **TEAM-MANAGER-EMAIL**          | amit@nightfall.ai              |
 | **SLACK-DEPLOY-NOTIFY-CHANNEL** | #deploy-notifications-channel  |
 | **SLACK-TEAM-CHANNEL**          | #team-slack-channel            |
-| **TEAM-LINEAR-SLUG**            | DTE                 |
-
+| **TEAM-LINEAR-SLUG**            | DTE                            |
 
 [![PkgGoDev](https://pkg.go.dev/badge/github.com/microsoftgraph/msgraph-sdk-go/)](https://pkg.go.dev/github.com/microsoftgraph/msgraph-sdk-go/)
 
